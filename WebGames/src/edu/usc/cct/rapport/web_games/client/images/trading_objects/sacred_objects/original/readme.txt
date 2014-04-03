@@ -1,0 +1,1 @@
+All these items have been purchased from shutterstock.com by Peter Evanson.

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='webgames'>
+	<!-- Inherit the core Web Toolkit stuff. -->
+	<inherits name='com.google.gwt.user.User' />
+
+	<!-- Inherit the default GWT style sheet. You can change -->
+	<!-- the theme of your GWT application by uncommenting -->
+	<!-- any one of the following lines. -->
+	<inherits name='com.google.gwt.user.theme.standard.Standard' />
+	<!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
+	<!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/> -->
+
+	<!-- Other module inherits -->
+	<inherits name="com.google.gwt.i18n.I18N"/>
+	<inherits name="com.google.gwt.activity.Activity" />
+	<inherits name="com.google.gwt.place.Place" />
+	<inherits name="com.google.gwt.inject.Inject"/>
+	<inherits name="com.google.gwt.logging.Logging"/>
+	<inherits name="com.google.gwt.resources.Resources" />
+	<inherits name="com.google.gwt.junit.JUnit"/>
+	<inherits name="com.allen_sauer.gwt.dnd.gwt-dnd"/>
+	<inherits name="edu.usc.cct.rapport.web_games.WebGames"/>
+
+	<!-- Specify the app entry point class. -->
+	<entry-point class='edu.usc.cct.rapport.web_games.client.WebGames' />
+
+	<!-- Specify the paths for translatable code -->
+	<source path='client' />
+	<source path='shared' />
+	<source path='test' />
+
+	<!-- Configure the logger. -->
+	<set-property name="gwt.logging.enabled" value="TRUE"/>
+	<set-property name="gwt.logging.logLevel" value="FINEST"/>
+<!-- 
+    <set-property name="gwt.logging.logLevel" value="SEVERE"/>
+-->
+    <set-property name="gwt.logging.consoleHandler" value="ENABLED"/>
+	<set-property name="gwt.logging.developmentModeHandler" value="DISABLED" />
+	<set-property name="gwt.logging.firebugHandler" value="ENABLED" />
+	<set-property name="gwt.logging.hasWidgetsHandler" value="DISABLED" />
+	<set-property name="gwt.logging.popupHandler" value="DISABLED" />
+	<set-property name="gwt.logging.simpleRemoteHandler" value="DISABLED"/>
+	<set-property name="gwt.logging.systemHandler" value="DISABLED" />
+
+	<!-- For debugging the ant build file, restrict the number of permutations generated. -->
+<!-- -->
+    <extend-property name="locale" values="en,fa,fr,tr,ko"/>
+	<set-property-fallback name="locale" value="en"/>
+    <set-property name="locale" value="en,fa,fr,tr,ko"/>
+erated. -->
+<!--
+	<set-property name="user.agent" value="gecko1_8"></set-property>
+-->
+
+<!-- To remove client-side stack info (reduce code size up to 15%)
+	<set-property name="compiler.stackMode" value="strip"/>
+-->
+
+<!-- To shrink javascript in another way
+	<set-configuration-property name="CssResource.obfuscationPrefix" value="empty"/>
+-->
+
+</module>
