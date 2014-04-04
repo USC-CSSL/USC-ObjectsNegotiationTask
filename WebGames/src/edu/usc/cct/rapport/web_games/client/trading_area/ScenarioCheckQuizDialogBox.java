@@ -213,8 +213,8 @@ public class ScenarioCheckQuizDialogBox extends DialogBox {
 				if(!getAnswers(Quiz1).equals("0") & !getAnswers(Quiz2).equals("0") & !getAnswers(Quiz3).equals("0") & !getAnswers(Quiz4).equals("0") 
 						& !getAnswers(Quiz5).equals("0")) {
 					
-					if(getAnswers(Quiz1).equals(constants.scenario_quiz_no1_ans()) 			& getAnswers(Quiz2).equals(String.valueOf(experimentConditions.getExpScenario())) 
-							& getAnswers(Quiz3).equals(constants.scenario_quiz_no3_ans()) 	& getAnswers(Quiz4).equals(constants.scenario_quiz_no4_ans()) 
+					if(getAnswers(Quiz1).equals(constants.scenario_quiz_forNSA_no1_ans()) 			& getAnswers(Quiz2).equals(constants.scenario_quiz_forNSA_no2_ans()) 
+							& getAnswers(Quiz3).equals(constants.scenario_quiz_forNSA_no3_ans()) 	& getAnswers(Quiz4).equals(constants.scenario_quiz_no4_ans()) 
 							& getAnswers(Quiz5).equals(constants.scenario_quiz_no5_ans())) {
 						hide();
 						final ScenarioCheckQuizResultDialogBox dialogBox = new ScenarioCheckQuizResultDialogBox (eventBus, experimentConditions, true);

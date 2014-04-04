@@ -13,6 +13,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextArea;
 
 import edu.usc.cct.rapport.web_games.client.specify_experiment_conditions.ExperimentConditions;
+
 import com.google.gwt.user.client.ui.Button;
 
 public class ParticipantIDDialogBox extends DialogBox {
@@ -74,7 +75,7 @@ public class ParticipantIDDialogBox extends DialogBox {
 					Timer timer = new Timer() {
 					      public void run() {
 					    	  final MoralFoundationsQuestionnaire1DialogBox dialogBox = new MoralFoundationsQuestionnaire1DialogBox (eventBus, experimentConditions);
-//					    	  final StartGameHelpWindowDialogBox dialogBox = new StartGameHelpWindowDialogBox(eventBus, 0); // To ease testing
+//							  final StartGameHelpWindowDialogBox dialogBox = new StartGameHelpWindowDialogBox(eventBus, 0, experimentConditions); // To ease testing
 //					    	  final ScenarioDialogBox dialogBox = new ScenarioDialogBox (eventBus, experimentConditions);
 					    	  dialogBox.center();
 					      }

@@ -1,0 +1,42 @@
+package edu.usc.cct.rapport.web_games.client.trading_area.agent_behaviour.emotion_modelling;
+
+import java.util.EnumSet;
+
+import edu.usc.cct.rapport.web_games.client.trading_area.AgentEnum;
+import edu.usc.cct.rapport.web_games.client.trading_area.NegotiationSession;
+import edu.usc.cct.rapport.web_games.client.trading_area.Proposal;
+import edu.usc.cct.rapport.web_games.client.trading_area.TradingObjectEnum;
+import edu.usc.cct.rapport.web_games.client.trading_area.agent_behaviour.decision_making.PrespecifiedConceder;
+import edu.usc.cct.rapport.web_games.client.trading_area.agent_behaviour.decision_making.PrespecifiedNonconceder;
+
+public class ComputeMeanAgentPerceivedUtilityOfOffersThatEachAvailableAlgorithmicCounterpartWouldHaveMade implements IComputeAnticipatedProposalUtility {
+
+	final PrespecifiedConceder prespecifiedConceder;
+	final PrespecifiedNonconceder prespecifiedNonconceder;
+//	final Titfortat titfortat; //
+
+	public ComputeMeanAgentPerceivedUtilityOfOffersThatEachAvailableAlgorithmicCounterpartWouldHaveMade() {
+		this.prespecifiedConceder = new PrespecifiedConceder();
+		this.prespecifiedNonconceder = new PrespecifiedNonconceder();
+//		this.titfortat = new Titfortat(); //
+	};
+
+
+	@Override
+	public double computeAnticipatedProposalUtility(final int playerBATNA, final int counterpartBATNA, final NegotiationSession negotiationSessionAtPlyImmediatelyPriorToWhereAlternativesAreBeingConsidered) {
+
+		final EnumSet<TradingObjectEnum> setOfTradingObjectEnum = negotiationSessionAtPlyImmediatelyPriorToWhereAlternativesAreBeingConsidered.getTradingObjectSetEnum().getSetOfTradingObjectEnum();
+		final int plyRemaining = negotiationSessionAtPlyImmediatelyPriorToWhereAlternativesAreBeingConsidered.getPlyRemaining();
+
+		final Proposal proposalPrespecifiedConcederWouldHaveOffered = this.prespecifiedConceder.getPrespecifiedPotentialCounterproposal(setOfTradingObjectEnum, plyRemaining);
+		final Proposal proposalPrespecifiedNonconcederWouldHaveOffered = this.prespecifiedNonconceder.getPrespecifiedPotentialCounterproposal(setOfTradingObjectEnum, plyRemaining);
+//		final Proposal proposalTitfortatWouldHaveOffered = this.titfortat.getPrespecifiedPotentialCounterproposal(setOfTradingObjectEnum, plyRemaining);
+
+		final double result = (proposalPrespecifiedConcederWouldHaveOffered.getProposalValueFromAgentPerspective(AgentEnum.counterpart) + proposalPrespecifiedNonconcederWouldHaveOffered.getProposalValueFromAgentPerspective(AgentEnum.counterpart))/2.0;
+//		final double result = (proposalPrespecifiedConcederWouldHaveOffered.getProposalValueFromAgentPerspective(AgentEnum.counterpart) 
+//				+ proposalPrespecifiedNonconcederWouldHaveOffered.getProposalValueFromAgentPerspective(AgentEnum.counterpart)
+//				+ proposalTitfortatWouldHaveOffered.getProposalValueFromAgentPerspective(AgentEnum.counterpart))/3.0;
+		return result;
+	};
+
+};

@@ -27,6 +27,8 @@ public class DemographicsDialogBox extends DialogBox {
 	final ArrayList<RadioButton> educationQuestion = new ArrayList<RadioButton>();
 	final ArrayList<RadioButton> religiosityQuestion = new ArrayList<RadioButton>();
 	final ArrayList<RadioButton> ethnicityQuestion = new ArrayList<RadioButton>();
+	final ArrayList<RadioButton> economicClassQuestion = new ArrayList<RadioButton>();
+	final ArrayList<RadioButton> politicalOrientationQuestion = new ArrayList<RadioButton>();
 	
 //	@SuppressWarnings("unused")
 	static final private HelpWindowInternationalizationConstants constants = (HelpWindowInternationalizationConstants) (GWT.isClient() ? GWT.create(HelpWindowInternationalizationConstants.class) : null);
@@ -43,7 +45,7 @@ public class DemographicsDialogBox extends DialogBox {
 		
 		AbsolutePanel absolutePanel = new AbsolutePanel();
 		setWidget(absolutePanel);
-		absolutePanel.setSize("597px", "555px"); // 597, 610
+		absolutePanel.setSize("597px", "610px"); // 597, 610 // 597, 555 (w/o economic class and political orientation questions)
 		
 		String localName = com.google.gwt.i18n.client.LocaleInfo.getCurrentLocale().getLocaleName();
 		final IntegerBox integerBox = new IntegerBox();
@@ -282,13 +284,59 @@ public class DemographicsDialogBox extends DialogBox {
 				ethnicityQuestion.add(radioButtonQuestions4_7);
 			}
 			
+			Label lblEconomic = new Label(constants.economic_class());
+			lblEconomic.setStylePrimaryName("RadioButton-style");
+			absolutePanel.add(lblEconomic, 10, 355);
+			lblEconomic.setSize("502px", "18px");
+			
+			RadioButton radioButtonQuestions5_1 = new RadioButton("economicClassQuestion", constants.lower());
+			radioButtonQuestions5_1.setStylePrimaryName("RadioButton-style");
+			radioButtonQuestions5_1.setFormValue("1");
+			absolutePanel.add(radioButtonQuestions5_1, 90, 380);
+			economicClassQuestion.add(radioButtonQuestions5_1);
+			
+			RadioButton radioButtonQuestions5_2 = new RadioButton("economicClassQuestion", constants.middle());
+			radioButtonQuestions5_2.setStylePrimaryName("RadioButton-style");
+			radioButtonQuestions5_2.setFormValue("2");
+			absolutePanel.add(radioButtonQuestions5_2, 230, 380);
+			economicClassQuestion.add(radioButtonQuestions5_2);
+			
+			RadioButton radioButtonQuestions5_3 = new RadioButton("economicClassQuestion", constants.upper());
+			radioButtonQuestions5_3.setStylePrimaryName("RadioButton-style");
+			radioButtonQuestions5_3.setFormValue("3");
+			absolutePanel.add(radioButtonQuestions5_3, 370, 380);
+			economicClassQuestion.add(radioButtonQuestions5_3);
+			
+			Label lblPolitical = new Label(constants.political_orientation());
+			lblPolitical.setStylePrimaryName("RadioButton-style");
+			absolutePanel.add(lblPolitical, 10, 425);
+			lblPolitical.setSize("502px", "18px");
+
+			RadioButton radioButtonQuestions6_1 = new RadioButton("politicalOrientationQuestion", constants.liberal());
+			radioButtonQuestions6_1.setStylePrimaryName("RadioButton-style");
+			radioButtonQuestions6_1.setFormValue("1");
+			absolutePanel.add(radioButtonQuestions6_1, 90, 450);
+			politicalOrientationQuestion.add(radioButtonQuestions6_1);
+			
+			RadioButton radioButtonQuestions6_2 = new RadioButton("politicalOrientationQuestion", constants.conservative());
+			radioButtonQuestions6_2.setStylePrimaryName("RadioButton-style");
+			radioButtonQuestions6_2.setFormValue("2");
+			absolutePanel.add(radioButtonQuestions6_2, 230, 450);
+			politicalOrientationQuestion.add(radioButtonQuestions6_2);
+			
+			RadioButton radioButtonQuestions6_3 = new RadioButton("politicalOrientationQuestion", constants.no_orientation());
+			radioButtonQuestions6_3.setStylePrimaryName("RadioButton-style");
+			radioButtonQuestions6_3.setFormValue("3");
+			absolutePanel.add(radioButtonQuestions6_3, 370, 450);
+			politicalOrientationQuestion.add(radioButtonQuestions6_3);
+			
 			Label lblComments = new Label(constants.comments());
 			lblComments.setStylePrimaryName("RadioButton-style");
-			absolutePanel.add(lblComments, 10, 355); // 10, 410
+			absolutePanel.add(lblComments, 10, 495);
 			lblComments.setSize("502px", "18px");
 
-			absolutePanel.add(textArea, 14, 380); //14, 435
-			textArea.setSize("450px", "100px");
+			absolutePanel.add(textArea, 14, 520);
+			textArea.setSize("450px", "60px");
 		}	
 			
 		if (localName == "fa"){
@@ -462,7 +510,8 @@ public class DemographicsDialogBox extends DialogBox {
 			public void onClick(ClickEvent event) {
 				if(textArea.getText().isEmpty()) textArea.setText("");
 
-				if(!getAnswers(genderQuestion).equals(0) & !getAnswers(educationQuestion).equals(0) & !getAnswers(religiosityQuestion).equals(0) & !getAnswers(ethnicityQuestion).equals(0)
+				if(!getAnswers(genderQuestion).equals("0") & !getAnswers(educationQuestion).equals("0") & !getAnswers(religiosityQuestion).equals("0") & !getAnswers(ethnicityQuestion).equals("0")
+						& !getAnswers(economicClassQuestion).equals("0") & !getAnswers(politicalOrientationQuestion).equals("0")
 						& integerBox.getValue() != null) {
 					
 					String localName = com.google.gwt.i18n.client.LocaleInfo.getCurrentLocale().getLocaleName();
@@ -472,7 +521,8 @@ public class DemographicsDialogBox extends DialogBox {
 					experimentConditions.setEducationOfParticipant(Integer.parseInt(getAnswers (educationQuestion)));
 					experimentConditions.setReligiosityOfParticipant(Integer.parseInt(getAnswers (religiosityQuestion)));
 					if (localName == "en") experimentConditions.setEthnicityOfParticipant(Integer.parseInt(getAnswers (ethnicityQuestion)));
-	
+					experimentConditions.setEconomicClassOfParticipant(Integer.parseInt(getAnswers (economicClassQuestion)));
+					experimentConditions.setPoliticalOrientationOfParticipant(Integer.parseInt(getAnswers (politicalOrientationQuestion)));
 					experimentConditions.setCommentOfParticipant(textArea.getText());
 					experimentConditions.setAgeOfParticipant(integerBox.getValue());
 					
@@ -486,7 +536,7 @@ public class DemographicsDialogBox extends DialogBox {
 
 	});
 		btnSubmit.setSize("92px", "33px");
-		absolutePanel.add(btnSubmit, 471, 515); // 471, 570
+		absolutePanel.add(btnSubmit, 471, 550); // 471, 570 // 471, 515
 		
 	}
 	
@@ -494,26 +544,27 @@ public class DemographicsDialogBox extends DialogBox {
 	      public void run() {
 	    	  eventBus.fireEvent(new NegotiationConclusionAcknowledgedEvent());
 	      }
-	    };
+	};
 	    
 		
-		public String getAnswers(final ArrayList<RadioButton> questions){
-			final Iterator<RadioButton> iterator = questions.iterator();
-			String valueofButton = "";
-			RadioButton radioButtonTemp;
-			final StringBuilder builder = new StringBuilder();
+	public String getAnswers(final ArrayList<RadioButton> questions){
+		final Iterator<RadioButton> iterator = questions.iterator();
+		String valueofButton = "";
+		RadioButton radioButtonTemp;
+		final StringBuilder builder = new StringBuilder();
 			
-			while (iterator.hasNext()) {
-				radioButtonTemp = iterator.next();
-				if (radioButtonTemp.getValue()){
-					builder.append(radioButtonTemp.getFormValue());
-				}
-				
+		while (iterator.hasNext()) {
+			radioButtonTemp = iterator.next();
+			if (radioButtonTemp.getValue()){
+				builder.append(radioButtonTemp.getFormValue());
+			}		
 		};
+		
 		valueofButton = builder.toString();
-		if (valueofButton.isEmpty())
+		if (valueofButton.isEmpty()) {
 			valueofButton = "0";
-		return valueofButton;
-			
-		};
+		}
+	
+		return valueofButton;	
+	};
 }

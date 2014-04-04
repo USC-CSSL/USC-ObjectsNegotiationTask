@@ -1,0 +1,51 @@
+package edu.usc.cct.rapport.web_games.client.trading_area;
+
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.shared.EventBus;
+
+import edu.usc.cct.rapport.web_games.client.instructions.InstructionsView;
+import edu.usc.cct.rapport.web_games.client.instructions.UserConfirmsInstructionsReadEvent;
+import edu.usc.cct.rapport.web_games.client.specify_experiment_conditions.ExperimentConditions;
+
+
+public class ReviewScenarioWidget extends Composite {
+	final private FlexTable flexTableBasePanel;	
+	final private ExperimentConditions experimentConditions;
+	final private EventBus eventBus;
+	final private int width;
+
+//	public AgentObjectValuationWidget(final AgentEnum agentEnum, final TradingObjectSetEnum tradingObjectSetEnum, final String width) {
+	public ReviewScenarioWidget(final EventBus eventBus, final ExperimentConditions experimentConditions, final int width) {
+
+		this.eventBus = eventBus;
+		this.experimentConditions = experimentConditions;
+		this.width = width;
+		this.flexTableBasePanel = new FlexTable();
+		initWidget(this.flexTableBasePanel);
+		populateFlexTableBasePanel(this.flexTableBasePanel, this.experimentConditions, this.width);
+	};
+
+
+	private void populateFlexTableBasePanel(final FlexTable flexTableBasePanel, final ExperimentConditions experimentConditions, final int width) {
+		flexTableBasePanel.clear();
+		final Button button = new Button("Review Scenario");
+		
+		button.addClickHandler(new ClickHandler() {				
+			public void onClick(final ClickEvent event) {
+				final ScenarioDialogBox dialogBox = new ScenarioDialogBox (eventBus, experimentConditions, "review");
+				dialogBox.center();
+			};
+		});
+		
+		flexTableBasePanel.setWidth(String.valueOf(width)+"px");
+		flexTableBasePanel.setWidget(0, 0, button);
+		flexTableBasePanel.getCellFormatter().setHorizontalAlignment(0, 0, HasHorizontalAlignment.ALIGN_RIGHT);
+	};
+};
+

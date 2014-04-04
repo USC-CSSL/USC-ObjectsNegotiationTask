@@ -60,7 +60,8 @@ public class EmotionalModelOfAlgorithmicCounterpart {
 			final double expectationDeviation = proposalUtilityAsPerceivedByAlgorithmicCounterpart - proposalUtilityAnticipatedByAlgorithmicCounterpart;
 			final double changeInEmotion = this.emotionModellingPolicy.computeChangeInEmotion(emotionValue, expectationDeviation, relativePowerEnum);
 			this.emotionValue = this.emotionValue + changeInEmotion;
-			if (this.emotionModellingPolicyEnum.toString()== "everyOtherTurnSad" || this.emotionModellingPolicyEnum.toString()== "everyOtherTurnAngry"){
+			if (this.emotionModellingPolicyEnum.toString()== "everyOtherTurnSad" || this.emotionModellingPolicyEnum.toString()== "everyOtherTurnAngry" ||
+					this.emotionModellingPolicyEnum.toString()== "after134Sad" || this.emotionModellingPolicyEnum.toString()== "after134Angry"){
 				final Pair<FacialExpressionEnum, Double> facialExpressionAndIntensity = this.emotionModellingPolicy.computeFacialExpressionAndIntensity(immediatelyPriorNegotiationSession.getPlyRemaining(),relativePowerEnum);
 				this.facialExpressionEnum = this.emotionModellingPolicy.computeFlattenedFacialExpression(facialExpressionAndIntensity);
 			}

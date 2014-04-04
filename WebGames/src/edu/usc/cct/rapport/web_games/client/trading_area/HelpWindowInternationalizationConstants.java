@@ -31,7 +31,16 @@ public interface HelpWindowInternationalizationConstants extends Constants {
 //	@DefaultStringValue("[TRANSLATION MISSING] How do you feel about giving up the money?")
 	@DefaultStringValue("[TRANSLATION MISSING] How do you feel about giving up the hand sanitizer?")
 	String SV_QuestionD();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] How do you feel about giving up the classified documents which prove the unconstitutional operations?")
+	String SV_Question_document();
 
+	@DefaultStringValue("[TRANSLATION MISSING] How do you feel about giving up the idea of reforming the unconstitutional operation principles?")	
+	String SV_Question_reform();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] How do you feel about giving up the bonus payment?")	
+	String SV_Question_bonus();
+	
 	@DefaultStringValue("[TRANSLATION MISSING] I think this definitely needs to happen.")
 	String SV_Question_1();
 	
@@ -175,6 +184,30 @@ public interface HelpWindowInternationalizationConstants extends Constants {
 	
 	@DefaultStringValue("[TRANSLATION MISSING] Other")
 	String ethnicity7();
+
+	@DefaultStringValue("[TRANSLATION MISSING] What is your economic class?")
+	String economic_class();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Lower")
+	String lower();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Middle")
+	String middle();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Upper")
+	String upper();
+
+	@DefaultStringValue("[TRANSLATION MISSING] What describes your political orientation best?")
+	String political_orientation();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Liberal")
+	String liberal();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Conservative")
+	String conservative();
+
+	@DefaultStringValue("[TRANSLATION MISSING] No orientation")
+	String no_orientation();
 	
 	@DefaultStringValue("[TRANSLATION MISSING] Comments:")
 	String comments();
@@ -406,6 +439,63 @@ public interface HelpWindowInternationalizationConstants extends Constants {
 
 	@DefaultStringValue("[TRANSLATION MISSING] The other participant rejected your offer and made a counteroffer.")
 	String proposal_rejected();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] How much have you heard about Edward Snowden, a government contractor who leaked information about National Security Agency (NSA) surveillance programs?")
+	String NSA_Question1();	
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Heard a lot")
+	String NSA_Question1_1();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] Heard a little")
+	String NSA_Question1_2();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] Heard nothing at all")
+	String NSA_Question1_3();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] Based on what you have heard, do you think the NSA ... in its surveillance activities")
+	String NSA_Question2();	
+	
+	@DefaultStringValue("[TRANSLATION MISSING] goes too far")
+	String NSA_Question2_1();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] does not go far enough")
+	String NSA_Question2_2();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] gets it about right")
+	String NSA_Question2_3();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] Based on what you have heard, do you think Snowden's leak of top-secret information about government surveillance programs to the media was the right thing to do or the wrong thing to do?")
+	String NSA_Question3();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] The right thing to do")
+	String NSA_Question3_1();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] The wrong thing to do")
+	String NSA_Question3_2();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] Not sure")
+	String NSA_Question3_3();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] Would you support or oppose the NSA to reform their operation principles?")
+	String NSA_Question4();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] Strongly support")
+	String NSA_Question4_1();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] Somewhat support")
+	String NSA_Question4_2();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] Somewhat oppose")
+	String NSA_Question4_3();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] Strongly oppose")
+	String NSA_Question4_4();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] Not sure")
+	String NSA_Question4_5();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] Would you support or oppose Snowden to accept a financial reward in order to return the classified documents?")
+	String NSA_Question5();	
 
 	//String btnOk_html();
 };

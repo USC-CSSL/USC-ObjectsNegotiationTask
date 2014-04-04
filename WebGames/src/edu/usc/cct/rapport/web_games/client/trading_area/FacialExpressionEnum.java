@@ -16,7 +16,13 @@ public enum FacialExpressionEnum {
 	angry,
 	sad,
 	angry_neutral,
-	sad_neutral;
+	angry_neutral2,
+	angry_neutral_player,
+	angry_neutral_player2,
+	sad_neutral,
+	sad_neutral2,
+	sad_neutral_player,
+	sad_neutral_player2;
 
 
 	static final private AgentEmotionsInternationalizationConstants constants = (AgentEmotionsInternationalizationConstants) (GWT.isClient() ? GWT.create(AgentEmotionsInternationalizationConstants.class) : null);
@@ -54,7 +60,25 @@ public enum FacialExpressionEnum {
 		case angry_neutral:
 			result = constants.angry();
 			break;
+		case angry_neutral2:
+			result = constants.angry();
+			break;
+		case angry_neutral_player:
+			result = constants.angry();
+			break;
+		case angry_neutral_player2:
+			result = constants.angry();
+			break;
 		case sad_neutral:
+			result = constants.sad();
+			break;
+		case sad_neutral2:
+			result = constants.sad();
+			break;
+		case sad_neutral_player:
+			result = constants.sad();
+			break;
+		case sad_neutral_player2:
 			result = constants.sad();
 			break;
 		default:
@@ -109,7 +133,25 @@ public enum FacialExpressionEnum {
 		case angry_neutral:
 			hoverHint = constants.angry();
 			break;
+		case angry_neutral2:
+			hoverHint = constants.angry();
+			break;
+		case angry_neutral_player:
+			hoverHint = constants.angry();
+			break;
+		case angry_neutral_player2:
+			hoverHint = constants.angry();
+			break;
 		case sad_neutral:
+			hoverHint = constants.sad();
+			break;
+		case sad_neutral2:
+			hoverHint = constants.sad();
+			break;
+		case sad_neutral_player:
+			hoverHint = constants.sad();
+			break;
+		case sad_neutral_player2:
 			hoverHint = constants.sad();
 			break;
 		default:

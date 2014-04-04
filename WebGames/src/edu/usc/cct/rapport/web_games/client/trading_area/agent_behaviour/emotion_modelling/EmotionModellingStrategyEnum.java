@@ -14,8 +14,10 @@ public enum EmotionModellingStrategyEnum {
 	chosenSimilarlyToCSharpCode,
 	everyOtherTurnSad,
 	everyOtherTurnAngry,
-	randomEveryOtherTurnSadOrAngryOrNeutral;
-
+	randomEveryOtherTurnSadOrAngryOrNeutral,
+	after134Angry,
+	after134Sad,
+	randomAfter134SadOrAngryOrNeutral;
 
 	public EmotionModellingStrategy getEmotionModellingStrategy() {
 
@@ -65,9 +67,21 @@ public enum EmotionModellingStrategyEnum {
 				computeChangeInEmotion = new DoNotBotherToComputeChangeInEmotion();
 				computeFacialExpressionAndIntensity = new FixedSadNeutralReactionEveryOtherTurn(FacialExpressionEnum.sad_neutral);
 				break;
+			case after134Angry:
+				computeChangeInEmotion = new DoNotBotherToComputeChangeInEmotion();
+				computeFacialExpressionAndIntensity = new FixedAngryNeutralReactionAfter134(FacialExpressionEnum.angry_neutral);
+				break;
+			case after134Sad:
+				computeChangeInEmotion = new DoNotBotherToComputeChangeInEmotion();
+				computeFacialExpressionAndIntensity = new FixedSadNeutralReactionAfter134(FacialExpressionEnum.sad_neutral);
+				break;
 			case randomEveryOtherTurnSadOrAngryOrNeutral:
 				computeChangeInEmotion = new DoNotBotherToComputeChangeInEmotion();
 				computeFacialExpressionAndIntensity = new FixedSadNeutralReactionEveryOtherTurn(FacialExpressionEnum.sad_neutral);
+				break;
+			case randomAfter134SadOrAngryOrNeutral:
+				computeChangeInEmotion = new DoNotBotherToComputeChangeInEmotion();
+				computeFacialExpressionAndIntensity = new FixedSadNeutralReactionAfter134(FacialExpressionEnum.sad_neutral);
 				break;
 			default:
 				final IllegalStateException e = new IllegalStateException("Unhandled |" + EmotionModellingStrategyEnum.class.getName() + "| in |" + EmotionModellingStrategyEnum.class.getName() + "|.getEmotionModellingPolicy().");

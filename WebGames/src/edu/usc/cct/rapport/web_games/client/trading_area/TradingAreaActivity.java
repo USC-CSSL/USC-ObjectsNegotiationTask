@@ -43,13 +43,14 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 			TradingAreaActivity.this.experimentConditions = event.getExperimentConditions();
 			TradingAreaActivity.this.negotiationSession = new NegotiationSession(TradingAreaActivity.this.experimentConditions.getTradingObjectSetEnum(), TradingAreaActivity.this.experimentConditions.getNegotiationSessionPlyCount(), TradingAreaActivity.this.experimentConditions.getAgentWhoActsLastIfNoAgreementIsReached());
 			
-			if(experimentConditions.getExpScenario()==1 & whichScenario==0) {
+/*			if(experimentConditions.getExpScenario()==1 & whichScenario==0) {
 				experimentConditions.setExpScenario(2);
 			} else if(experimentConditions.getExpScenario()==1 &  whichScenario==1){
 				experimentConditions.setExpScenario(3);
 			} else if(experimentConditions.getExpScenario()==1 &  whichScenario==2){
 				experimentConditions.setExpScenario(4);
-			}
+			}*/
+			experimentConditions.setExpScenario(1);			
 			
 			AlgorithmicCounterpartDecisionMakingStrategyEnum algorithmicCounterpartDecisionMakingStrategyEnum = TradingAreaActivity.this.experimentConditions.getDecisionMakingStrategyOfAlgorithmicCounterpart(); 
 			if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy2) & whichStrategy2==0){
@@ -73,12 +74,20 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 				algorithmicCounterpartDecisionMakingStrategyEnum = AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedNonconcederSteepSlope;
 				TradingAreaActivity.this.experimentConditions.setDecisionMakingStrategyOfAlgorithmicCounterpart(algorithmicCounterpartDecisionMakingStrategyEnum);
 			} 
-
+			
+			if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.SymbolicOrFinancialAgents) & whichStrategy2==0){
+				algorithmicCounterpartDecisionMakingStrategyEnum = AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedSymbolicAgent;
+				TradingAreaActivity.this.experimentConditions.setDecisionMakingStrategyOfAlgorithmicCounterpart(algorithmicCounterpartDecisionMakingStrategyEnum);
+			} else if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.SymbolicOrFinancialAgents) & whichStrategy2==1){
+				algorithmicCounterpartDecisionMakingStrategyEnum = AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedFinancialAgent;
+				TradingAreaActivity.this.experimentConditions.setDecisionMakingStrategyOfAlgorithmicCounterpart(algorithmicCounterpartDecisionMakingStrategyEnum);
+			}
 
 			TradingAreaActivity.this.proposalDecisionMakingStrategyOfAlgorithmicCounterpart = TradingAreaActivity.this.experimentConditions.getDecisionMakingStrategyOfAlgorithmicCounterpart().getProposalDecisionMakingStrategy(TradingAreaActivity.this.experimentConditions.getNegotiationSessionPlyCount());
 			
 			EmotionModellingStrategyEnum emotionModellingPolicyEnum = TradingAreaActivity.this.experimentConditions.getEmotionalModellingPolicyEnum();
 
+			// randomEveryOtherTurnSadOrAngryOrNeutral
 			if (emotionModellingPolicyEnum.equals(EmotionModellingStrategyEnum.randomEveryOtherTurnSadOrAngryOrNeutral) & whichEmotion==0){	
 				emotionModellingPolicyEnum = EmotionModellingStrategyEnum.everyOtherTurnAngry;
 				TradingAreaActivity.this.experimentConditions.setEmotionalReactionDeterminationStrategyOfAlgorithmicCounterpart(emotionModellingPolicyEnum);}
@@ -88,6 +97,19 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 				TradingAreaActivity.this.experimentConditions.setEmotionalReactionDeterminationStrategyOfAlgorithmicCounterpart(emotionModellingPolicyEnum);}	
 
 			else if (emotionModellingPolicyEnum.equals(EmotionModellingStrategyEnum.randomEveryOtherTurnSadOrAngryOrNeutral)){
+				emotionModellingPolicyEnum = EmotionModellingStrategyEnum.alwaysNeutral;
+				TradingAreaActivity.this.experimentConditions.setEmotionalReactionDeterminationStrategyOfAlgorithmicCounterpart(emotionModellingPolicyEnum);}	
+
+			// after134SadOrAngryOrNeutral
+			if (emotionModellingPolicyEnum.equals(EmotionModellingStrategyEnum.randomAfter134SadOrAngryOrNeutral) & whichEmotion==0){	
+				emotionModellingPolicyEnum = EmotionModellingStrategyEnum.after134Angry;
+				TradingAreaActivity.this.experimentConditions.setEmotionalReactionDeterminationStrategyOfAlgorithmicCounterpart(emotionModellingPolicyEnum);}
+			
+			else if (emotionModellingPolicyEnum.equals(EmotionModellingStrategyEnum.randomAfter134SadOrAngryOrNeutral) & whichEmotion==1){
+				emotionModellingPolicyEnum = EmotionModellingStrategyEnum.after134Sad;
+				TradingAreaActivity.this.experimentConditions.setEmotionalReactionDeterminationStrategyOfAlgorithmicCounterpart(emotionModellingPolicyEnum);}	
+
+			else if (emotionModellingPolicyEnum.equals(EmotionModellingStrategyEnum.randomAfter134SadOrAngryOrNeutral)){
 				emotionModellingPolicyEnum = EmotionModellingStrategyEnum.alwaysNeutral;
 				TradingAreaActivity.this.experimentConditions.setEmotionalReactionDeterminationStrategyOfAlgorithmicCounterpart(emotionModellingPolicyEnum);}	
 

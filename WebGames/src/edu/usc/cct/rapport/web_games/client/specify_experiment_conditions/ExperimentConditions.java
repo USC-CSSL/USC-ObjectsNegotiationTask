@@ -35,21 +35,30 @@ public class ExperimentConditions implements DoublySerializable {
 	private int expScenario;
 	
 	//pre-questions
-	private int SVValue;
+/*	private int SVValue;
 	private int SVValueFood;
 //	private int SVValueMoney;
 	private int SVValueWater;
 	private int SVValueSanitizer;
-/*	private int importanceOfObject;
-	private int moralIssueOfObject;
+//	private int importanceOfObject;
+//	private int moralIssueOfObject;
 
-	
 	//post-questions
-	private int negotationFair;
-	private int angeryWithDeal;
-	private int otherConsideredYourNeeds;
-	private int otherNegotationFair;
-	private int otherAngeryWithDeal;*/
+//	private int negotationFair;
+//	private int angeryWithDeal;
+//	private int otherConsideredYourNeeds;
+//	private int otherNegotationFair;
+//	private int otherAngeryWithDeal;*/
+	private int SVValueDocument;
+	private int SVValueReform;
+	private int SVValueBonus;
+	
+	// NSA Questions
+	private int NSA_01;
+	private int NSA_02;
+	private int NSA_03;
+	private int NSA_04;
+	private int NSA_05;
 		
 	// Moral Foundations Questions
 	private int MFQ_01;
@@ -104,6 +113,8 @@ public class ExperimentConditions implements DoublySerializable {
 	private int educationOfParticipant;
 	private int religiosityOfParticipant;
 	private int ethnicityOfParticipant;
+	private int economicClassOfParticipant;
+	private int politicalOrientationOfParticipant;
 	private String commentOfParticipant;
 	private String participantID;	
 
@@ -145,23 +156,35 @@ public class ExperimentConditions implements DoublySerializable {
 		this.expScenario=expScenario;
 		
 		
-		this.SVValue=0;
+/*		this.SVValue=0;
 		this.SVValueFood=0;
 		this.SVValueWater=0;
 //		this.SVValueMoney=0;
 		this.SVValueSanitizer=0;
-/*		this.importanceOfObject=0;
-		this.moralIssueOfObject=0;
-		this.negotationFair=0;
-		this.angeryWithDeal=0;
-		this.otherConsideredYourNeeds=0;
-		this.otherNegotationFair=0;
-		this.otherAngeryWithDeal=0;*/
+//		this.importanceOfObject=0;
+//		this.moralIssueOfObject=0;
+//		this.negotationFair=0;
+//		this.angeryWithDeal=0;
+//		this.otherConsideredYourNeeds=0;
+//		this.otherNegotationFair=0;
+//		this.otherAngeryWithDeal=0;*/
+		this.SVValueDocument=0;
+		this.SVValueReform=0;
+		this.SVValueBonus=0;
+		
+		this.NSA_01=0;
+		this.NSA_02=0;
+		this.NSA_03=0;
+		this.NSA_04=0;
+		this.NSA_05=0;
+		
 		this.ageOfParticipant=0;
 		this.genderOfParticipant=0;
 		this.educationOfParticipant=0;
 		this.religiosityOfParticipant=0;
 		this.ethnicityOfParticipant=0;
+		this.economicClassOfParticipant=0;
+		this.politicalOrientationOfParticipant=0;
 		this.commentOfParticipant= "";
 		this.participantID="0";
 				
@@ -237,25 +260,37 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add("playerDealValueVisible");
 		result.add("expScenario");
 		
-		result.add("SVValue");
+		result.add("SVValueDocument");
+		result.add("SVValueReform");
+		result.add("SVValueBonus");
+/*		result.add("SVValue");
 		result.add("SVValueFood");
 		result.add("SVValueWater");
 //		result.add("SVValueMoney");
 		result.add("SVValueSanitizer");
 		
-/*		result.add("importanceOfObject");
-		result.add("moralIssueOfObject");
+//		result.add("importanceOfObject");
+//		result.add("moralIssueOfObject");
+//		
+//		result.add("negotationFair");
+//		result.add("angeryWithDeal");
+//		result.add("otherConsideredYourNeeds");	
+//		result.add("otherNegotationFair");
+//		result.add("otherAngeryWithDeal");*/
 		
-		result.add("negotationFair");
-		result.add("angeryWithDeal");
-		result.add("otherConsideredYourNeeds");	
-		result.add("otherNegotationFair");
-		result.add("otherAngeryWithDeal");*/
+		result.add("NSA_01");
+		result.add("NSA_02");
+		result.add("NSA_03");
+		result.add("NSA_04");
+		result.add("NSA_05");
+		
 		result.add("ageOfParticipant");
 		result.add("genderOfParticipant");
 		result.add("educationOfParticipant");
 		result.add("religiosityOfParticipant");
 		result.add("ethnicityOfParticipant");
+		result.add("economicClassOfParticipant");
+		result.add("politicalOrientationOfParticipant");
 		result.add("commentOfParticipant");
 		result.add("participantID");
 				
@@ -293,7 +328,7 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add("MFQ_32");
 		result.add("MFQ_filter");
 		
-		result.add("VEQ_01");
+/*		result.add("VEQ_01");
 		result.add("VEQ_02");
 		result.add("VEQ_03");
 		result.add("VEQ_04");
@@ -303,7 +338,7 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add("VEQ_08");
 		result.add("VEQ_09");
 		result.add("VEQ_10");
-		result.add("VEQ_11");
+		result.add("VEQ_11");*/
 		
 		return result;
 	};
@@ -333,25 +368,36 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add(Boolean.toString(this.playerDealValueVisible));
 		result.add(Integer.toString(this.expScenario));
 		
-		
-		result.add(Integer.toString(this.SVValue));
+		result.add(Integer.toString(this.SVValueDocument));
+		result.add(Integer.toString(this.SVValueReform));
+		result.add(Integer.toString(this.SVValueBonus));
+/*		result.add(Integer.toString(this.SVValue));
 		result.add(Integer.toString(this.SVValueWater));
 		result.add(Integer.toString(this.SVValueFood));
 //		result.add(Integer.toString(this.SVValueMoney));
 		result.add(Integer.toString(this.SVValueSanitizer));
-/*		result.add(Integer.toString(this.importanceOfObject));
-		result.add(Integer.toString(this.moralIssueOfObject));
+//		result.add(Integer.toString(this.importanceOfObject));
+//		result.add(Integer.toString(this.moralIssueOfObject));
+//		
+//		result.add(Integer.toString(this.negotationFair));
+//		result.add(Integer.toString(this.angeryWithDeal));
+//		result.add(Integer.toString(this.otherConsideredYourNeeds));
+//		result.add(Integer.toString(this.otherNegotationFair));
+//		result.add(Integer.toString(this.otherAngeryWithDeal));*/
 		
-		result.add(Integer.toString(this.negotationFair));
-		result.add(Integer.toString(this.angeryWithDeal));
-		result.add(Integer.toString(this.otherConsideredYourNeeds));
-		result.add(Integer.toString(this.otherNegotationFair));
-		result.add(Integer.toString(this.otherAngeryWithDeal));*/
+		result.add(Integer.toString(this.NSA_01));
+		result.add(Integer.toString(this.NSA_02));
+		result.add(Integer.toString(this.NSA_03));
+		result.add(Integer.toString(this.NSA_04));
+		result.add(Integer.toString(this.NSA_05));
+
 		result.add(Integer.toString(this.ageOfParticipant));
 		result.add(Integer.toString(this.genderOfParticipant));
 		result.add(Integer.toString(this.educationOfParticipant));
 		result.add(Integer.toString(this.religiosityOfParticipant));
-		result.add(Integer.toString(this.ethnicityOfParticipant));
+		result.add(Integer.toString(this.ethnicityOfParticipant));		
+		result.add(Integer.toString(this.economicClassOfParticipant));
+		result.add(Integer.toString(this.politicalOrientationOfParticipant));
 		result.add(this.commentOfParticipant);
 		result.add(this.participantID);
 		
@@ -389,7 +435,7 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add(Integer.toString(this.MFQ_32));
 		result.add(Integer.toString(this.MFQ_filter));
 		
-		result.add(Integer.toString(this.VEQ_01));
+/*		result.add(Integer.toString(this.VEQ_01));
 		result.add(Integer.toString(this.VEQ_02));
 		result.add(Integer.toString(this.VEQ_03));
 		result.add(Integer.toString(this.VEQ_04));
@@ -399,7 +445,7 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add(Integer.toString(this.VEQ_08));
 		result.add(Integer.toString(this.VEQ_09));
 		result.add(Integer.toString(this.VEQ_10));
-		result.add(Integer.toString(this.VEQ_11));
+		result.add(Integer.toString(this.VEQ_11));*/
 
 		return result;
 	};
@@ -634,7 +680,7 @@ public class ExperimentConditions implements DoublySerializable {
 	};
 	
 	
-	public void setSVValue(int SVValue) {
+/*	public void setSVValue(int SVValue) {
 		this.SVValue = SVValue;
 	}
 
@@ -650,13 +696,13 @@ public class ExperimentConditions implements DoublySerializable {
 		return this.SVValueFood;
 	};
 	
-/*	public void setSVValueMoney (int SVValueMoney) {
-		this.SVValueMoney = SVValueMoney;
-	}
-
-	public int getSVValueMoney() {
-		return this.SVValueMoney;
-	};*/
+//	public void setSVValueMoney (int SVValueMoney) {
+//		this.SVValueMoney = SVValueMoney;
+//	}
+//
+//	public int getSVValueMoney() {
+//		return this.SVValueMoney;
+//	};
 	
 	public void setSVValueSanitizer (int SVValueSanitizer) {
 		this.SVValueSanitizer = SVValueSanitizer;
@@ -672,7 +718,32 @@ public class ExperimentConditions implements DoublySerializable {
 
 	public int getSVValueWater() {
 		return this.SVValueWater;
+	};*/
+	
+	public void setSVValueDocument(int SVValueDocument) {
+		this.SVValueDocument = SVValueDocument;
+	}
+
+	public int getSVValueDocument() {
+		return this.SVValueDocument;
 	};
+
+	public void setSVValueReform(int SVValueReform) {
+		this.SVValueReform = SVValueReform;
+	}
+
+	public int getSVValueReform() {
+		return this.SVValueReform;
+	};
+	
+	public void setSVValueBonus(int SVValueBonus) {
+		this.SVValueBonus = SVValueBonus;
+	}
+
+	public int getSVValueBonus() {
+		return this.SVValueBonus;
+	};
+
 	
 /*	public void setNegotationFair(int negotationFair) {
 		this.negotationFair = negotationFair;
@@ -722,8 +793,46 @@ public class ExperimentConditions implements DoublySerializable {
 		return this.otherAngeryWithDeal;
 	};*/
 
+	public void setNSA_01(int NSA_01) {
+		this.NSA_01 = NSA_01;
+	}
+
+	public int getNSA_01() {
+		return this.NSA_01;
+	};
+
+	public void setNSA_02(int NSA_02) {
+		this.NSA_02 = NSA_02;
+	}
+
+	public int getNSA_02() {
+		return this.NSA_02;
+	};
 	
+	public void setNSA_03(int NSA_03) {
+		this.NSA_03 = NSA_03;
+	}
+
+	public int getNSA_03() {
+		return this.NSA_03;
+	};
+
+	public void setNSA_04(int NSA_04) {
+		this.NSA_04 = NSA_04;
+	}
+
+	public int getNSA_04() {
+		return this.NSA_04;
+	};
 	
+	public void setNSA_05(int NSA_05) {
+		this.NSA_05 = NSA_05;
+	}
+
+	public int getNSA_05() {
+		return this.NSA_05;
+	};
+
 	public void setAgeOfParticipant(int ageOfParticipant) {
 		this.ageOfParticipant = ageOfParticipant;
 	}
@@ -770,6 +879,22 @@ public class ExperimentConditions implements DoublySerializable {
 		return this.ethnicityOfParticipant;
 	};	
 	
+	public void setEconomicClassOfParticipant(int economicClassOfParticipant) {
+		this.economicClassOfParticipant = economicClassOfParticipant;
+	}
+	
+	public int getEconomicClassOfParticipant() {
+		return this.economicClassOfParticipant;
+	}
+
+	public void setPoliticalOrientationOfParticipant(int politicalOrientationOfParticipant) {
+		this.politicalOrientationOfParticipant = politicalOrientationOfParticipant;
+	}
+	
+	public int getPoliticalOrientationOfParticipant() {
+		return this.politicalOrientationOfParticipant;
+	}
+
 	public void setCommentOfParticipant(String commentOfParticipant) {
 		this.commentOfParticipant = commentOfParticipant;
 	}

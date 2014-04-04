@@ -31,12 +31,36 @@ public class ObtainConsentView extends WebGamesView implements IObtainConsentVie
 	@Inject
 	public ObtainConsentView(final EventBus eventBus, final PlaceController placeController) {
 		super(eventBus, placeController);
-
+		
 		anchorPanel = new SimpleLayoutPanel();
 		viewBasePanel = new AbsolutePanel();
-		
+
 		anchorPanel.add(viewBasePanel);
 
+/*// ek test
+		final RichTextArea textAreaConsentInquiryText = new RichTextArea();
+		textAreaConsentInquiryText.setHTML("UserAgent: " + Window.Navigator.getUserAgent());
+		textAreaConsentInquiryText.setHeight("40px");
+		textAreaConsentInquiryText.setWidth("600px");
+		viewBasePanel.add(textAreaConsentInquiryText);*/
+		
+		if (Window.Navigator.getUserAgent().contains("Firefox")) {
+			populate(eventBus, placeController);
+		} else {
+			final RichTextArea textAreaConsentInquiryText = new RichTextArea();
+			textAreaConsentInquiryText.setHTML("Please use Firefox to participate in this experiment. Thank you.");
+			textAreaConsentInquiryText.setHeight("40px");
+			textAreaConsentInquiryText.setWidth("600px");
+		
+			viewBasePanel.add(textAreaConsentInquiryText);
+		}
+		
+		viewBasePanel.setVisible(true);
+		initWidget(viewBasePanel);
+	};
+	
+	public void populate(final EventBus eventBus, final PlaceController placeController) {
+		
 		final RichTextArea textAreaConsentInquiryText = new RichTextArea();
 		textAreaConsentInquiryText.setHTML(constants.textAreaConsentInquiry());
 		textAreaConsentInquiryText.setHeight("460px");
@@ -86,8 +110,8 @@ public class ObtainConsentView extends WebGamesView implements IObtainConsentVie
 		});
 		viewBasePanel.add(buttonUserDoesNotConsent,318,520);
 
-		viewBasePanel.setVisible(true);
-		initWidget(viewBasePanel);
+//		viewBasePanel.setVisible(true);
+//		initWidget(viewBasePanel);
 	};
 
 

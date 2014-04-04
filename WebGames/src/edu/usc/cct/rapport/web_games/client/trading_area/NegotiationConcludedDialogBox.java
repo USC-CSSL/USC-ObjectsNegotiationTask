@@ -42,7 +42,9 @@ public class NegotiationConcludedDialogBox extends DialogBox {
 		okButton.addClickHandler(new ClickHandler() {
 			public void onClick(final ClickEvent event) {
 				hide();
-				final ValueOfExpressionQuestionnaire1DialogBox dialogBox = new ValueOfExpressionQuestionnaire1DialogBox (eventBus, experimentConditions);
+//				final ValueOfExpressionQuestionnaire1DialogBox dialogBox = new ValueOfExpressionQuestionnaire1DialogBox (eventBus, experimentConditions);
+//				final DemographicsDialogBox dialogBox = new DemographicsDialogBox (eventBus, experimentConditions); // To ease testing
+				final NSAprinciplesQuestionnaire1DialogBox dialogBox = new NSAprinciplesQuestionnaire1DialogBox(eventBus, experimentConditions);
 //				final ValueOfExpressionQuestionnaireDialogBox dialogBox = new ValueOfExpressionQuestionnaireDialogBox (eventBus, experimentConditions);
 //				final PostGameQuestionnaireDialogBox dialogBox = new PostGameQuestionnaireDialogBox (eventBus, experimentConditions);
 				dialogBox.center();

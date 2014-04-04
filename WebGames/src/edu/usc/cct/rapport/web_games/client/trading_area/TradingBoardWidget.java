@@ -29,7 +29,8 @@ public class TradingBoardWidget extends Composite implements HasEnabled {
 	static final private int outerColumnsAcross = TradingBoardState.outerColumnsAcross;
 	static final private int outerRowsUpDown = TradingBoardState.outerRowsUpDown;
 
-	static final private int imageWidthInPixels = 45;
+//	static final private int imageWidthInPixels = 45;
+	static final private int imageWidthInPixels = 63;
 	static final private int imageHeightInPixels = 49;
 
 	final private EventBus eventBus;

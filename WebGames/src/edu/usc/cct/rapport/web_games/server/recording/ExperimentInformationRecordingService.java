@@ -17,6 +17,7 @@ import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.google.gwt.user.client.Timer;
@@ -46,10 +47,13 @@ public class ExperimentInformationRecordingService extends RemoteServiceServlet 
 	//static final private String excelFilePath = "";
 	private String unisheetFilename = excelFilePath + WebGames.class.getSimpleName() + "-unisheet.xlsx";
 	private String multisheetFilename =  excelFilePath + WebGames.class.getSimpleName() + "-multisheet.xlsx";
+	private String csvforUnisheetFilename = excelFilePath + WebGames.class.getSimpleName() + "-unisheet.csv";
+	private String csvforMultisheetFilename = excelFilePath + WebGames.class.getSimpleName() + "-multisheet.csv";
 	//static final 
 	static final private int maxActionPlyCount = 25;
 	static final private int agentEnumCount = AgentEnum.values().length;
-	static final private int tradingObjectEnumCount = 4;
+//	static final private int tradingObjectEnumCount = 4;
+	static final private int tradingObjectEnumCount = 3; // Sasha's experiment
 	static final private int allocationRepetitionCount = agentEnumCount * tradingObjectEnumCount;
 	static final private int maxExpressionCount = 200;
 
@@ -69,6 +73,10 @@ public class ExperimentInformationRecordingService extends RemoteServiceServlet 
 		    //};
 		   // timer.schedule(5432);
 		
+//		  		final String csvContents = obtainCSV(csvFilename);
+//		  		appendToCSV(finalExperimentInformation, csvContents)
+		  		recordCSV(csvforMultisheetFilename, multisheetExcelWorkbook,1);
+		  		recordCSV(csvforUnisheetFilename, unisheetExcelWorkbook,0);
 	};
 
 
@@ -101,11 +109,19 @@ public class ExperimentInformationRecordingService extends RemoteServiceServlet 
 			int i = excelSpreadsheetInputStream.available();
 			if (i > 0) result = new XSSFWorkbook(excelSpreadsheetInputStream);
 			else { 
-				result = new XSSFWorkbook();
-				final SimpleDateFormat dateTimeFormatter = new SimpleDateFormat("yyyy-MM-dd_HHmm");
-				final String dateTime = dateTimeFormatter.format(new Date());
-			if	(uniOrMulti==0) unisheetFilename = excelFilePath + dateTime + WebGames.class.getSimpleName() + "-unisheet.xlsx";
-			if	(uniOrMulti==1)	multisheetFilename =  excelFilePath + dateTime + WebGames.class.getSimpleName() + "-multisheet.xlsx";			
+					result = new XSSFWorkbook();
+					final SimpleDateFormat dateTimeFormatter = new SimpleDateFormat("yyyy-MM-dd_HHmm");
+					final String dateTime = dateTimeFormatter.format(new Date());
+					
+					if	(uniOrMulti==0) {
+						unisheetFilename = excelFilePath + dateTime + WebGames.class.getSimpleName() + "-unisheet.xlsx";
+						csvforUnisheetFilename = excelFilePath + dateTime + WebGames.class.getSimpleName() + "-unisheet.csv";
+					}
+					
+					if	(uniOrMulti==1)	{
+						multisheetFilename =  excelFilePath + dateTime + WebGames.class.getSimpleName() + "-multisheet.xlsx";			
+						csvforMultisheetFilename =  excelFilePath + dateTime + WebGames.class.getSimpleName() + "-multisheet.csv";			
+					}
 			}
 		} catch (final FileNotFoundException e) {
 			// The spreadsheet hasn't yet been created, so we will create it now.
@@ -116,14 +132,80 @@ public class ExperimentInformationRecordingService extends RemoteServiceServlet 
 			//result = new XSSFWorkbook();
 			final SimpleDateFormat dateTimeFormatter = new SimpleDateFormat("yyyy-MM-dd_HHmm");
 			final String dateTime = dateTimeFormatter.format(new Date());
-			unisheetFilename = excelFilePath + dateTime + WebGames.class.getSimpleName() + "-unisheet.xlsx";
-			multisheetFilename =  excelFilePath + dateTime + WebGames.class.getSimpleName() + "-multisheet.xlsx";
+			unisheetFilename 		 = excelFilePath + dateTime + WebGames.class.getSimpleName() + "-unisheet.xlsx";
+			csvforUnisheetFilename 	 = excelFilePath + dateTime + WebGames.class.getSimpleName() + "-unisheet.csv";
+			multisheetFilename 		 =  excelFilePath + dateTime + WebGames.class.getSimpleName() + "-multisheet.xlsx";
+			csvforMultisheetFilename =  excelFilePath + dateTime + WebGames.class.getSimpleName() + "-multisheet.csv";			
+
 			//e.printStackTrace();
 			throw new RuntimeException(e);
 			//result = 0;
 		};
 
 		return result;
+	};
+	
+	private void recordCSV(final String filename, final Workbook updatedExcelWorkbook, int uniOrMulti) {
+
+		StringBuffer data = new StringBuffer();
+
+        try {
+            FileOutputStream fos = new FileOutputStream(filename);
+//            XSSFSheet sheet = (XSSFSheet) updatedExcelWorkbook.getSheetAt(0);
+            XSSFWorkbook wb = (XSSFWorkbook) updatedExcelWorkbook;
+
+            for(XSSFSheet sheet:wb) {
+	            Row row;
+	            Cell cell;
+	
+	            // Iterate through each rows from first sheet
+	            Iterator<Row> rowIterator = sheet.iterator();
+	
+	            while (rowIterator.hasNext()) {
+	                row = rowIterator.next();
+	
+	                // For each row, iterate through each columns
+	                Iterator<Cell> cellIterator = row.cellIterator();
+	                while (cellIterator.hasNext()) {
+	
+	                    cell = cellIterator.next();
+	
+	                    switch (cell.getCellType()) {
+	                        case Cell.CELL_TYPE_BOOLEAN:
+	                            data.append(cell.getBooleanCellValue() + ",");
+	
+	                            break;
+	                        case Cell.CELL_TYPE_NUMERIC:
+	                            data.append(cell.getNumericCellValue() + ",");
+	
+	                            break;
+	                        case Cell.CELL_TYPE_STRING:
+	                            data.append(cell.getStringCellValue() + ",");
+	                            break;
+	
+	                        case Cell.CELL_TYPE_BLANK:
+	                            data.append("" + ",");
+	                            break;
+	                        default:
+	                            data.append(cell + ",");
+	
+	                    }
+	                }
+	                
+	                if(uniOrMulti == 0) {
+	                	data.append("\n");        
+	                }
+	            }
+	            
+            	data.append("\n");        
+            }
+
+            fos.write(data.toString().getBytes());
+            fos.close();
+
+        } catch (Exception ioe) {
+            ioe.printStackTrace();
+        }
 	};
 
 

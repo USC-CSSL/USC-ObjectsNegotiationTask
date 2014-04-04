@@ -33,10 +33,28 @@ public interface WebGamesClientBundle extends ClientBundle {
 
 	@Source(dramaFaceMaskEmoticonDirectoryPath + "sad_neutral.gif")
 	ImageResource drama_face_mask_sad_neutral();
-	
+
+	@Source(dramaFaceMaskEmoticonDirectoryPath + "sad_neutral2.gif")
+	ImageResource drama_face_mask_sad_neutral2();
+
+	@Source(dramaFaceMaskEmoticonDirectoryPath + "sad_neutral_noLoop.gif")
+	ImageResource drama_face_mask_sad_neutral_player();
+
+	@Source(dramaFaceMaskEmoticonDirectoryPath + "sad_neutral_noLoop2.gif")
+	ImageResource drama_face_mask_sad_neutral_player2();
+
 	@Source(dramaFaceMaskEmoticonDirectoryPath + "angry_neutral.gif")
 	ImageResource drama_face_mask_angry_neutral();
-		
+	
+	@Source(dramaFaceMaskEmoticonDirectoryPath + "angry_neutral2.gif")
+	ImageResource drama_face_mask_angry_neutral2();
+
+	@Source(dramaFaceMaskEmoticonDirectoryPath + "angry_neutral_noLoop.gif")
+	ImageResource drama_face_mask_angry_neutral_player();
+
+	@Source(dramaFaceMaskEmoticonDirectoryPath + "angry_neutral_noLoop2.gif")
+	ImageResource drama_face_mask_angry_neutral_player2();
+
 	@Source(dramaFaceMaskEmoticonDirectoryPath + "Angry.gif")
 	ImageResource drama_face_mask_displeased();
 
@@ -105,5 +123,13 @@ public interface WebGamesClientBundle extends ClientBundle {
 
 	@Source(sacredObjectsPath + "can-new.png")
 	ImageResource sacredObjects_tin_can();
+	
+	@Source(sacredObjectsPath + "document.jpg")
+	ImageResource sacredObjects_document();
+	
+	@Source(sacredObjectsPath + "reform.jpg")
+	ImageResource sacredObjects_reform();
 
+	@Source(sacredObjectsPath + "money.jpg")
+	ImageResource sacredObjects_bonus();
 };

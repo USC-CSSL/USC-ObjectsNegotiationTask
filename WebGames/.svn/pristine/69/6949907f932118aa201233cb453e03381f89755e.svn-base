@@ -1,0 +1,23 @@
+package edu.usc.cct.rapport.web_games.client.trading_area;
+
+import com.google.gwt.i18n.client.Constants;
+
+public interface ScenarioInternationalizationConstants extends Constants {
+
+	@DefaultStringValue("[TRANSLATION MISSING] Scenario")
+	String scenario_Window_Title();
+
+	@DefaultStringValue("[TRANSLATION MISSING] scenario missing")
+	String scenario_textA();
+
+	@DefaultStringValue("[TRANSLATION MISSING] scenario missing")
+	String scenario_textB();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] scenario missing")
+	String scenario_textC();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Continue")
+	String ok_button();
+	
+	//String btnContinue_html();
+};

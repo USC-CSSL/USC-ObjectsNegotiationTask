@@ -32,7 +32,8 @@ import edu.usc.cct.rapport.web_games.client.trading_area.agent_behaviour.emotion
 public class SpecifyExperimentConditionsView extends WebGamesView implements ISpecifyExperimentConditionsView {
 
 	//static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.enhanced_squiggles, 32, 50, true, true, true, 24, AgentEnum.counterpart, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedNonconcederFirstOfferFixed, EmotionModellingStrategyEnum.chosenUniformlyAtRandom,true,true,true,1,0,0,0,0,0,0,0,0,0,0,0,0,"");
-	static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.sacredObjects, 32, 50, false, false, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedNonconceder, EmotionModellingStrategyEnum.randomEveryOtherTurnSadOrAngryOrNeutral,true,false,false,1);
+	//static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.sacredObjects, 32, 50, false, false, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedNonconceder, EmotionModellingStrategyEnum.randomEveryOtherTurnSadOrAngryOrNeutral,true,false,false,1);
+	static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.sacredObjects, 32, 50, false, false, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy, EmotionModellingStrategyEnum.randomAfter134SadOrAngryOrNeutral,true,false,false,1);
 	static final private String largeFontSizeStyleName = "ict-rapport-largeFontSize";
 
 	static final private SafeHtml separatingLineFeed = SafeHtmlUtils.fromSafeConstant("<br/>");
@@ -217,7 +218,8 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 		for (final EmotionModellingStrategyEnum emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart: EmotionModellingStrategyEnum.values()) {
 			listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy.addItem(emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart.toString(), emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart.name());
 		};
-		listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy.setSelectedIndex(EmotionModellingStrategyEnum.randomEveryOtherTurnSadOrAngryOrNeutral.ordinal());
+//		listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy.setSelectedIndex(EmotionModellingStrategyEnum.randomEveryOtherTurnSadOrAngryOrNeutral.ordinal());
+		listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy.setSelectedIndex(EmotionModellingStrategyEnum.randomAfter134SadOrAngryOrNeutral.ordinal());
 		viewBasePanel.add(listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy);
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
@@ -226,10 +228,11 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 		labelWhichScienario.addStyleName(largeFontSizeStyleName);
 		viewBasePanel.add(labelWhichScienario);
 		final ListBox ListlabelWhichScienario = new ListBox();
-		ListlabelWhichScienario.addItem("Random", Integer.toString(1));
+		ListlabelWhichScienario.addItem("NSA scenario", Integer.toString(1));
+/*		ListlabelWhichScienario.addItem("Random", Integer.toString(1));
 		ListlabelWhichScienario.addItem("Scenario 1", Integer.toString(2));
 		ListlabelWhichScienario.addItem("Scenario 2", Integer.toString(3));
-		ListlabelWhichScienario.addItem("Scenario 3", Integer.toString(4));
+		ListlabelWhichScienario.addItem("Scenario 3", Integer.toString(4));*/
 		ListlabelWhichScienario.setSelectedIndex(1);
 		viewBasePanel.add(ListlabelWhichScienario);
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));

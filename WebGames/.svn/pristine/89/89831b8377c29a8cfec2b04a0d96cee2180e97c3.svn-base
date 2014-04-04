@@ -1,0 +1,6 @@
+counterpartDisplayName = The other family
+playerDisplayName = Your family
+counterpartBATNAValuationDescription = If no agreement is reached, then your counterpart will earn
+playerBATNAValuationDescription = If no agreement is reached, then you will earn
+counterpartDiagrammedProposalValuationDescription = The current proposal earns your counterpart
+playerDiagrammedProposalValuationDescription = The current proposal earns you

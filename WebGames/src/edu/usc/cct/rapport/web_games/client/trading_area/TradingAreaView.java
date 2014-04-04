@@ -83,6 +83,7 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 		final DockLayoutPanel dockLayoutPanelDragDropHoldingArea = new DockLayoutPanel(Unit.PX);
 		dockLayoutPanelDragDropHoldingArea.addStyleName(debuggingBorderStyle);
 		viewBasePanel.addWest(dockLayoutPanelDragDropHoldingArea, 465.0);
+//		viewBasePanel.addWest(dockLayoutPanelDragDropHoldingArea, 355.0);
 
 		dockLayoutPanelCounterpartArea = new DockLayoutPanel(Unit.PX);
 		
@@ -186,7 +187,8 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 		counterpartEmotionExpressionWidget = new AgentEmotionExpressionWidget(AgentEnum.counterpart, FacialExpressionEnum.neutral, this.facialExpressionStyleEnum, 215);
 		dockLayoutPanelRightPeriphery.addNorth(counterpartEmotionExpressionWidget, 180);
 
-		final FacialExpressionEnum[] desiredImagePresentationOrder = new FacialExpressionEnum[]{FacialExpressionEnum.happy, FacialExpressionEnum.content, FacialExpressionEnum.neutral, FacialExpressionEnum.angry, FacialExpressionEnum.sad};
+//		final FacialExpressionEnum[] desiredImagePresentationOrder = new FacialExpressionEnum[]{FacialExpressionEnum.happy, FacialExpressionEnum.content, FacialExpressionEnum.neutral, FacialExpressionEnum.angry, FacialExpressionEnum.sad};
+		final FacialExpressionEnum[] desiredImagePresentationOrder = new FacialExpressionEnum[]{FacialExpressionEnum.neutral, FacialExpressionEnum.angry, FacialExpressionEnum.sad};
 		final FacialExpressionEnum originalSelection = FacialExpressionEnum.neutral;
 		playerEmotionSelection = new AgentEmotionSelectionWidget(eventBus, FacialExpressionStyleEnum.drama_masks, desiredImagePresentationOrder, originalSelection);
 		dockLayoutPanelRightPeriphery.addSouth(playerEmotionSelection, 166.0+180.0);

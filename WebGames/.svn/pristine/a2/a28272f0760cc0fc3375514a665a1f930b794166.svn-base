@@ -1,0 +1,21 @@
+labelPlayersName = Vous
+labelCounterpartsName = Contrepartie
+imageTitleAfraid = peur
+imageTitleAngry = colère
+imageTitleContent = contenu
+imageTitleFrustrated = frustrés
+imageTitleHappy = heureux
+imageTitleNeutral = neutre
+imageTitleSad = triste
+buttonAcceptProposal = Accepter la proposition de
+buttonMakeProposal = Faire proposition
+buttonRejectProposal = Reject Proposal
+labelBestAlternativeToANegotiatedAgreement = Meilleure alternative à un accord négocié
+labelScoreUnderANegotiatedAgreement = Score vertu d'un accord négocié
+labelTurnIndicator = À qui le tour
+textAreaTitle = Tâche Objects
+
+labelPlayersPayoffMatrix = Quels sont les objets vaut pour vous
+labelCounterpartsPayoffMatrix = Quels sont les objets valent à votre homologue
+negotiationSummaryDialogBoxTitle = Revue de négociation
+negotiationSummaryDialogBoxButtonLabel = Congédiez

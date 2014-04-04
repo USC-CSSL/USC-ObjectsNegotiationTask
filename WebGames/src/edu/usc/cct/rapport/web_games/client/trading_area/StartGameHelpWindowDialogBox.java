@@ -32,12 +32,12 @@ public class StartGameHelpWindowDialogBox extends DialogBox implements ClickHand
 		this.setText(titleDiscription);
 //		final FlowPanel flowPanelDialogBoxContents = new FlowPanel();
 		AbsolutePanel absolutePanel = new AbsolutePanel();
-		absolutePanel.setSize("650px", "400px");
+		absolutePanel.setSize("650px", "435px");
 		
 	//	final TextArea dialogBoxTextArea = new TextArea();
 		RichTextArea dialogBoxTextArea = new RichTextArea();
 //		dialogBoxTextArea.setSize("450px", "500px");
-		dialogBoxTextArea.setSize("640px", "355px");
+		dialogBoxTextArea.setSize("640px", "390px");
 		//dialogBoxTextArea.setCharacterWidth(75);
 		//dialogBoxTextArea.setVisibleLines(10);
 
@@ -55,7 +55,7 @@ public class StartGameHelpWindowDialogBox extends DialogBox implements ClickHand
 //		flowPanelDialogBoxContents.add(okButton);
 //		this.setWidget(flowPanelDialogBoxContents);
 						
-		absolutePanel.add(button, 540, 365);
+		absolutePanel.add(button, 540, 400);
 		button.setSize("101px", "26px");
 		this.setWidget(absolutePanel);
 

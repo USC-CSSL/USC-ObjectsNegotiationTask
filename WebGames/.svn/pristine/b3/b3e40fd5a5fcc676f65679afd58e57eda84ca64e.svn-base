@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+	<!-- Servlets -->
+<!--
+	<servlet>
+		<servlet-name>xsrf</servlet-name>
+		<servlet-class>com.google.gwt.user.server.rpc.XsrfTokenServiceServlet</servlet-class>
+	</servlet>
+-->
+    <servlet>
+        <servlet-name>jUnitHostImpl</servlet-name>
+        <servlet-class>com.google.gwt.junit.server.JUnitHostImpl</servlet-class>
+    </servlet>
+	<servlet>
+		<servlet-name>Base64EncodingService</servlet-name>
+		<servlet-class>edu.usc.cct.rapport.web_games.server.base64.Base64EncodingService</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Base64DecodingService</servlet-name>
+		<servlet-class>edu.usc.cct.rapport.web_games.server.base64.Base64DecodingService</servlet-class>
+	</servlet>
+    <servlet>
+        <servlet-name>ExperimentInformationRecordingService</servlet-name>
+        <servlet-class>edu.usc.cct.rapport.web_games.server.recording.ExperimentInformationRecordingService</servlet-class>
+    </servlet>
+<!--
+	<servlet-mapping>
+		<servlet-name>xsrf</servlet-name>
+		<url-pattern>/gwt/xsrf</url-pattern>
+	</servlet-mapping>
+-->
+    <servlet-mapping>
+        <servlet-name>jUnitHostImpl</servlet-name>
+        <url-pattern>/webgames/junithost/*</url-pattern>
+    </servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Base64EncodingService</servlet-name>
+		<url-pattern>/webgames/Base64EncodingService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Base64DecodingService</servlet-name>
+		<url-pattern>/webgames/Base64DecodingService</url-pattern>
+	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExperimentInformationRecordingService</servlet-name>
+        <url-pattern>/webgames/ExperimentInformationRecordingService</url-pattern>
+    </servlet-mapping>
+	<context-param>
+		<param-name>gwt.xsrf.webgames_session_cookie</param-name>
+		<param-value>JSESSIONID</param-value>
+	</context-param>
+
+	<!-- Default page to serve -->
+	<welcome-file-list>
+		<welcome-file>WebGames.html</welcome-file>
+	</welcome-file-list>
+</web-app>

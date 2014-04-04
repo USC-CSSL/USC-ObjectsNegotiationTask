@@ -15,6 +15,9 @@ public interface ScenarioInternationalizationConstants extends Constants {
 	
 	@DefaultStringValue("[TRANSLATION MISSING] scenario missing")
 	String scenario_textC();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] scenario missing")
+	String scenario_symbolic();	
 
 	@DefaultStringValue("[TRANSLATION MISSING] Continue")
 	String ok_button();
@@ -106,5 +109,52 @@ public interface ScenarioInternationalizationConstants extends Constants {
 	@DefaultStringValue("[TRANSLATION MISSING] Please review the scenario again and answer the questions.")
 	String scenario_quiz_result_nonpass();
 	
+
+	// for NSA
+	@DefaultStringValue("[TRANSLATION MISSING] What is the mission of the NSA?")
+	String scenario_quiz_forNSA_no1();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] ")
+	String scenario_quiz_forNSA_no1_ans();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] To spy on American citizen")
+	String scenario_quiz_forNSA_no1_ans1();
+
+	@DefaultStringValue("[TRANSLATION MISSING] To protect American citizen and national interests")
+	String scenario_quiz_forNSA_no1_ans2();
+
+	@DefaultStringValue("[TRANSLATION MISSING] To control the internet")
+	String scenario_quiz_forNSA_no1_ans3();
+
+	@DefaultStringValue("[TRANSLATION MISSING] What did you realize in the scenario?")
+	String scenario_quiz_forNSA_no2();
+
+	@DefaultStringValue("[TRANSLATION MISSING] ")
+	String scenario_quiz_forNSA_no2_ans();
+
+	@DefaultStringValue("[TRANSLATION MISSING] That the NSA acts in accordance with U.S. laws")
+	String scenario_quiz_forNSA_no2_ans1();
+
+	@DefaultStringValue("[TRANSLATION MISSING] That the NSA is not protecting American citizens good enough")
+	String scenario_quiz_forNSA_no2_ans2();
+
+	@DefaultStringValue("[TRANSLATION MISSING] That the NSA is engaging in an indiscriminate mass-surveillance program")
+	String scenario_quiz_forNSA_no2_ans3();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Which items that are in your possession does the NSA want from you?")
+	String scenario_quiz_forNSA_no3();
+
+	@DefaultStringValue("[TRANSLATION MISSING] ")
+	String scenario_quiz_forNSA_no3_ans();
+
+	@DefaultStringValue("[TRANSLATION MISSING] The classified documents")
+	String scenario_quiz_forNSA_no3_ans1();
+
+	@DefaultStringValue("[TRANSLATION MISSING] The bonus payments")
+	String scenario_quiz_forNSA_no3_ans2();
+
+	@DefaultStringValue("[TRANSLATION MISSING] The reforms of operation priciples")
+	String scenario_quiz_forNSA_no3_ans3();
+
 	//String btnContinue_html();
 };

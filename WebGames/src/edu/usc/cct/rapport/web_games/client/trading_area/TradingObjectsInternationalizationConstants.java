@@ -54,4 +54,13 @@ public interface TradingObjectsInternationalizationConstants extends Constants {
 	
 	@DefaultStringValue("[TRANSLATION MISSING] Hand Sanitizer")
 	String sacredObjects_hand_sanitizer_Description();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Document")
+	String sacredObjects_document_Description();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Reform")
+	String sacredObjects_reform_Description();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Bonus")
+	String sacredObjects_bonus_Description();
 };

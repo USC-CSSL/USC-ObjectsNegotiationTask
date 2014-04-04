@@ -41,12 +41,13 @@ public class ScenarioDialogBox extends DialogBox {
 //		richTextArea.setSize("537px", "559px");
 		richTextArea.setSize("740px", "505px");
 		
-		if(experimentConditions.getExpScenario()==2)
+/*		if(experimentConditions.getExpScenario()==2)
 			richTextArea.setHTML(constants.scenario_textA());
 		if(experimentConditions.getExpScenario()==3)
 			richTextArea.setHTML(constants.scenario_textB());
 		if(experimentConditions.getExpScenario()==4)
-			richTextArea.setHTML(constants.scenario_textC());
+			richTextArea.setHTML(constants.scenario_textC());*/
+		richTextArea.setHTML(constants.scenario_symbolic());
 
 		Button button = new Button(constants.ok_button());
 //		absolutePanel.add(button, 440, 569);
@@ -58,7 +59,8 @@ public class ScenarioDialogBox extends DialogBox {
 				hide();				
 //				final StartGameHelpWindowDialogBox dialogBox = new StartGameHelpWindowDialogBox(eventBus, 1, experimentConditions);
 //				final PreGameQuestionnaireDialogBox dialogBox  = new PreGameQuestionnaireDialogBox(eventBus, 1, experimentConditions);
-				final ScenarioCheckQuizDialogBox dialogBox = new ScenarioCheckQuizDialogBox(eventBus, experimentConditions);
+//				final ScenarioCheckQuizDialogBox dialogBox = new ScenarioCheckQuizDialogBox(eventBus, experimentConditions);
+				final ScenarioCheckQuizforNSADialogBox dialogBox = new ScenarioCheckQuizforNSADialogBox(eventBus, experimentConditions);
 				dialogBox.center();
 			}
 		});
@@ -80,12 +82,14 @@ public class ScenarioDialogBox extends DialogBox {
 //		richTextArea.setSize("537px", "559px");
 		richTextArea.setSize("740px", "505px");
 		
-		if(expScenario==2)
+/*		if(expScenario==2)
 			richTextArea.setHTML(constants.scenario_textA());
 		if(expScenario==3)
 			richTextArea.setHTML(constants.scenario_textB());
 		if(expScenario==4)
-			richTextArea.setHTML(constants.scenario_textC());
+			richTextArea.setHTML(constants.scenario_textC());*/
+		richTextArea.setHTML(constants.scenario_symbolic());
+		
 		Button button = new Button(constants.ok_button());
 //		absolutePanel.add(button, 440, 569);
 		absolutePanel.add(button, 640, 515);

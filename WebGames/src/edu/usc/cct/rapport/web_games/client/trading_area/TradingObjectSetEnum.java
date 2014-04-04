@@ -10,6 +10,7 @@ public enum TradingObjectSetEnum {
 	mixture_1,
 	mixture_2,
 	istockphoto,
+	symbolicObjects_3columns,
 	sacredObjects,
 	sacredObjectsMoney;
 
@@ -41,6 +42,9 @@ public enum TradingObjectSetEnum {
 			break;
 		case sacredObjects:
 			result = EnumSet.of(TradingObjectEnum.sacredObjects_medication, TradingObjectEnum.sacredObjects_tin_can, TradingObjectEnum.sacredObjects_water_bottles, TradingObjectEnum.sacredObjects_hand_sanitizer);
+			break;
+		case symbolicObjects_3columns:
+			result = EnumSet.of(TradingObjectEnum.sacredObjects_document, TradingObjectEnum.sacredObjects_reform, TradingObjectEnum.sacredObjects_bonus);
 			break;
 		default:
 			throw new IllegalStateException("Unhandled TradingObjectSetEnum in TradingObjectSetEnum.getEnumSet().");			

@@ -41,7 +41,23 @@ final class PlayerFacialExpressionMouseInteractionHandler implements MouseDownHa
 				widgetRepresentingEmotion.addStyleName(selectedPlayerEmoticonCSSStyleName);
 				GWT.log("Mouse down on eventSource |" + eventSource.toString() + "|.");
 				final FacialExpressionEnum chosenFacialExpression = this.orderedWidgetsAndCorrespondingEmotionEnums.get(widgetRepresentingEmotion);
-				playerEmotionExpression.setFacialExpression(chosenFacialExpression);
+
+				if(chosenFacialExpression.equals(FacialExpressionEnum.angry)) {
+					if(playerEmotionExpression.getFacialExpression().equals(FacialExpressionEnum.angry_neutral_player)) {
+						playerEmotionExpression.setFacialExpression(FacialExpressionEnum.angry_neutral_player2);
+					} else {
+						playerEmotionExpression.setFacialExpression(FacialExpressionEnum.angry_neutral_player);
+					}
+				} else if(chosenFacialExpression.equals(FacialExpressionEnum.sad)) {
+					if(playerEmotionExpression.getFacialExpression().equals(FacialExpressionEnum.sad_neutral_player)) {
+						playerEmotionExpression.setFacialExpression(FacialExpressionEnum.sad_neutral_player2);
+					} else {
+						playerEmotionExpression.setFacialExpression(FacialExpressionEnum.sad_neutral_player);
+					}
+				} else {
+					playerEmotionExpression.setFacialExpression(chosenFacialExpression);
+				}
+				
 				final FacialExpressionChosenEvent newEvent = new FacialExpressionChosenEvent(new TradingExpression(AgentEnum.player, timestamp, chosenFacialExpression));
 				eventBus.fireEvent(newEvent);
 			} else {

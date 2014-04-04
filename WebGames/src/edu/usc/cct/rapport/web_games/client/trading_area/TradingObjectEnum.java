@@ -24,8 +24,10 @@ public enum TradingObjectEnum {
 	sacredObjects_water_bottles,
 	sacredObjects_tin_can,
 	sacredObjects_money_stack,
-	sacredObjects_hand_sanitizer;
-
+	sacredObjects_hand_sanitizer,
+	sacredObjects_document,
+	sacredObjects_reform,
+	sacredObjects_bonus;
 
 	static final private WebGamesClientBundle webGamesClientBundle = (WebGamesClientBundle) (GWT.isClient() ? GWT.create(WebGamesClientBundle.class) : null);
 	static final private TradingObjectsInternationalizationConstants constants = (TradingObjectsInternationalizationConstants) (GWT.isClient() ? GWT.create(TradingObjectsInternationalizationConstants.class) : null);
@@ -89,7 +91,16 @@ public enum TradingObjectEnum {
 			break;
 		case sacredObjects_hand_sanitizer:
 			result = constants.sacredObjects_hand_sanitizer_Description();
-			break;			
+			break;
+		case sacredObjects_document:
+			result = constants.sacredObjects_document_Description();
+			break;
+		case sacredObjects_reform:
+			result = constants.sacredObjects_reform_Description();
+			break;
+		case sacredObjects_bonus:
+			result = constants.sacredObjects_bonus_Description();
+			break;
 		default:
 			throw new IllegalStateException("Unhandled TradingObjectEnum in TradingObjectEnum.getDescription().");
 		};
@@ -156,6 +167,15 @@ public enum TradingObjectEnum {
 			break;
 		case sacredObjects_hand_sanitizer:
 			result = webGamesClientBundle.sacredObjects_hand_sanitizer();
+			break;
+		case sacredObjects_document:
+			result = webGamesClientBundle.sacredObjects_document();
+			break;
+		case sacredObjects_reform:
+			result = webGamesClientBundle.sacredObjects_reform();
+			break;
+		case sacredObjects_bonus:
+			result = webGamesClientBundle.sacredObjects_bonus();
 			break;
 		default:
 			throw new IllegalStateException("Unhandled TradingObjectEnum in TradingObjectEnum.getImage.");
@@ -237,6 +257,15 @@ public enum TradingObjectEnum {
 				case sacredObjects_medication:
 					result = 50;
 					break;
+				case sacredObjects_document:
+					result = 30;
+					break;
+				case sacredObjects_reform:
+					result = 20;
+					break;
+				case sacredObjects_bonus:
+					result = 10;
+					break;
 				case blank:
 					throw new IllegalStateException("Blank is not a true trading object: its worth to the counterpart should never be queried.");
 				default:
@@ -297,6 +326,15 @@ public enum TradingObjectEnum {
 					break;
 				case sacredObjects_medication:
 					result = 50;
+					break;
+				case sacredObjects_document:
+					result = 30;
+					break;
+				case sacredObjects_reform:
+					result = 20;
+					break;
+				case sacredObjects_bonus:
+					result = 10;
 					break;
 				case blank:
 					throw new IllegalStateException("Blank is not a true trading object: its worth to the player should never be queried.");

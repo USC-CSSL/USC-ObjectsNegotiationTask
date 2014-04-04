@@ -1,0 +1,374 @@
+/*package edu.usc.cct.rapport.web_games.client.trading_area;
+
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.DialogBox;
+import com.google.gwt.user.client.ui.VerticalSplitPanel;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import com.google.gwt.user.client.ui.AbsolutePanel;
+//import com.google.gwt.user.client.ui.ListBox;
+import com.google.gwt.user.client.ui.RadioButton;
+import com.google.gwt.user.client.ui.Label;
+
+import edu.usc.cct.rapport.web_games.client.specify_experiment_conditions.ExperimentConditions;
+
+
+@SuppressWarnings("deprecation")
+public class MoralFoundationsQuestionnaire2DialogBox extends DialogBox {
+
+	final ArrayList<ArrayList<RadioButton>> mfq_questions = new ArrayList<ArrayList<RadioButton>>(); 
+
+	
+	@SuppressWarnings("unused")
+	final private EventBus eventBus;
+
+//	@SuppressWarnings("unused")
+	static final private HelpWindowInternationalizationConstants constants = (HelpWindowInternationalizationConstants) (GWT.isClient() ? GWT.create(HelpWindowInternationalizationConstants.class) : null);
+	
+	
+	public MoralFoundationsQuestionnaire2DialogBox(final EventBus eventBus, final ExperimentConditions experimentConditions) {
+	
+		super(false, true);
+		this.eventBus = eventBus;
+		
+		setHTML("");
+		
+		AbsolutePanel absolutePanel = new AbsolutePanel();
+		setWidget(absolutePanel);
+
+		String localName = com.google.gwt.i18n.client.LocaleInfo.getCurrentLocale().getLocaleName();
+		int spacing = 10;
+		int spacing_between_explanation = 20;
+		int spacing_between_questions 	= 30;
+		int spacing_one_more_line 	  	= 15;
+
+		if (localName == "en" || localName == "ko"){
+			int one_line_length = 75; // 100;
+			if(localName == "ko")
+				one_line_length = 35; // 50
+			
+			ArrayList<Label> mfq_questions_label = new ArrayList<Label>();
+			mfq_questions_label.add(new Label(constants.mfq17()));
+			mfq_questions_label.add(new Label(constants.mfq18()));
+			mfq_questions_label.add(new Label(constants.mfq19()));
+			mfq_questions_label.add(new Label(constants.mfq20()));
+			mfq_questions_label.add(new Label(constants.mfq21()));
+			mfq_questions_label.add(new Label(constants.mfq22()));
+			mfq_questions_label.add(new Label(constants.mfq23()));
+			mfq_questions_label.add(new Label(constants.mfq24()));
+			mfq_questions_label.add(new Label(constants.mfq25()));
+			mfq_questions_label.add(new Label(constants.mfq26()));
+			mfq_questions_label.add(new Label(constants.mfq27()));
+			mfq_questions_label.add(new Label(constants.mfq28()));
+			mfq_questions_label.add(new Label(constants.mfq29()));
+			mfq_questions_label.add(new Label(constants.mfq30()));
+			mfq_questions_label.add(new Label(constants.mfq31()));
+			mfq_questions_label.add(new Label(constants.mfq32()));
+			
+			ArrayList<Label> mfq_explanation_label = new ArrayList<Label>();
+			mfq_explanation_label.add(new Label(constants.mfq_explanation_part2()));
+			mfq_explanation_label.add(new Label(constants.mfq_explanation_part2_zero()));
+			mfq_explanation_label.add(new Label(constants.mfq_explanation_part2_one()));
+			mfq_explanation_label.add(new Label(constants.mfq_explanation_part2_two()));
+			mfq_explanation_label.add(new Label(constants.mfq_explanation_part2_three()));
+			mfq_explanation_label.add(new Label(constants.mfq_explanation_part2_four()));
+			mfq_explanation_label.add(new Label(constants.mfq_explanation_part2_five()));
+
+			for(int i=0; i<mfq_explanation_label.size(); i++) {
+				mfq_explanation_label.get(i).setStylePrimaryName("Label-style");
+				absolutePanel.add(mfq_explanation_label.get(i), 10, spacing);
+				if(mfq_explanation_label.get(i).getText().length() > one_line_length) {
+					spacing = spacing + 2*spacing_between_explanation;
+				} else { 
+					spacing = spacing + spacing_between_explanation;
+				}
+			}
+			spacing = spacing + 10;
+			
+			VerticalSplitPanel verticalSplitPanel = new VerticalSplitPanel();
+			absolutePanel.add(verticalSplitPanel, 97, spacing);
+			verticalSplitPanel.setSize("446px", "15px");
+			spacing = spacing + 35;
+
+			for(int i=0; i<mfq_questions_label.size(); i++) {
+				ArrayList<RadioButton> mfq_part2 = new ArrayList<RadioButton>();
+				mfq_part2.add(new RadioButton(constants.zero(),  constants.zero()));
+				mfq_part2.add(new RadioButton(constants.one(),   constants.one()));
+				mfq_part2.add(new RadioButton(constants.two(),   constants.two()));
+				mfq_part2.add(new RadioButton(constants.three(), constants.three()));
+				mfq_part2.add(new RadioButton(constants.four(),  constants.four()));
+				mfq_part2.add(new RadioButton(constants.five(),  constants.five()));
+	
+				mfq_questions.add(mfq_part2);
+				for (int j=0; j<mfq_questions.get(i).size(); j++) {
+					absolutePanel.add(mfq_questions.get(i).get(j), 500+j*40, spacing);
+				}
+
+				mfq_questions_label.get(i).setStylePrimaryName("Label-style");
+				mfq_questions_label.get(i).setWidth(String.valueOf(one_line_length*7)+"px");
+				absolutePanel.add(mfq_questions_label.get(i), 10, spacing);
+
+				if(mfq_questions_label.get(i).getText().length() > one_line_length) {
+					spacing = spacing + spacing_between_questions + spacing_one_more_line;
+				} else { 
+					spacing = spacing + spacing_between_questions;
+				}
+
+			}
+		}
+	
+		Button btnSubmit = new Button(constants.ok_button());
+		btnSubmit.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				hide();
+				experimentConditions.setMFQ_17(Integer.parseInt(getAnswers(mfq_questions.get(0))));
+				experimentConditions.setMFQ_18(Integer.parseInt(getAnswers(mfq_questions.get(1))));
+				experimentConditions.setMFQ_19(Integer.parseInt(getAnswers(mfq_questions.get(2))));
+				experimentConditions.setMFQ_20(Integer.parseInt(getAnswers(mfq_questions.get(3))));
+				experimentConditions.setMFQ_21(Integer.parseInt(getAnswers(mfq_questions.get(4))));
+				experimentConditions.setMFQ_22(Integer.parseInt(getAnswers(mfq_questions.get(5))));
+				experimentConditions.setMFQ_23(Integer.parseInt(getAnswers(mfq_questions.get(6))));
+				experimentConditions.setMFQ_24(Integer.parseInt(getAnswers(mfq_questions.get(7))));
+				experimentConditions.setMFQ_25(Integer.parseInt(getAnswers(mfq_questions.get(8))));
+				experimentConditions.setMFQ_26(Integer.parseInt(getAnswers(mfq_questions.get(9))));
+				experimentConditions.setMFQ_27(Integer.parseInt(getAnswers(mfq_questions.get(10))));
+				experimentConditions.setMFQ_28(Integer.parseInt(getAnswers(mfq_questions.get(11))));
+				experimentConditions.setMFQ_29(Integer.parseInt(getAnswers(mfq_questions.get(12))));
+				experimentConditions.setMFQ_30(Integer.parseInt(getAnswers(mfq_questions.get(13))));
+				experimentConditions.setMFQ_31(Integer.parseInt(getAnswers(mfq_questions.get(14))));
+				experimentConditions.setMFQ_32(Integer.parseInt(getAnswers(mfq_questions.get(15))));
+				
+				final ScenarioDialogBox dialogBox = new ScenarioDialogBox (eventBus, experimentConditions);
+				dialogBox.center();
+			}
+		});
+		
+		btnSubmit.setSize("200px", "33px");
+		absolutePanel.add(btnSubmit, 225, spacing);
+		
+		spacing = spacing + 40;
+		String absolutePanelHeight = String.valueOf(spacing)+"px";
+		absolutePanel.setSize("750px", absolutePanelHeight);
+	}
+	
+	
+	public String getAnswers(final ArrayList<RadioButton> questions){
+		final Iterator<RadioButton> iterator = questions.iterator();
+		String valueofButton = "";
+		RadioButton radioButtonTemp;
+		final StringBuilder builder = new StringBuilder();
+		
+		while (iterator.hasNext()) {
+			radioButtonTemp = iterator.next();
+			if (radioButtonTemp.getValue()){
+				builder.append(radioButtonTemp.getFormValue());
+			}
+			
+		};
+		valueofButton = builder.toString();
+		if (valueofButton.isEmpty())
+			valueofButton = "-1";
+		return valueofButton;		
+	};
+	
+}*/
+
+package edu.usc.cct.rapport.web_games.client.trading_area;
+
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.DialogBox;
+import com.google.gwt.user.client.ui.VerticalSplitPanel;
+
+import java.util.ArrayList;
+import com.google.gwt.user.client.ui.AbsolutePanel;
+import com.google.gwt.user.client.ui.ListBox;
+import com.google.gwt.user.client.ui.Label;
+
+import edu.usc.cct.rapport.web_games.client.specify_experiment_conditions.ExperimentConditions;
+
+
+@SuppressWarnings("deprecation")
+public class MoralFoundationsQuestionnaire2DialogBox extends DialogBox {
+
+	final ArrayList<ListBox> mfq_questions = new ArrayList<ListBox>();
+	
+	@SuppressWarnings("unused")
+	final private EventBus eventBus;
+
+//	@SuppressWarnings("unused")
+	static final private HelpWindowInternationalizationConstants constants = (HelpWindowInternationalizationConstants) (GWT.isClient() ? GWT.create(HelpWindowInternationalizationConstants.class) : null);
+	
+	
+	public MoralFoundationsQuestionnaire2DialogBox(final EventBus eventBus, final ExperimentConditions experimentConditions) {
+	
+		super(false, true);
+		this.eventBus = eventBus;
+		
+		setHTML("");
+		
+		AbsolutePanel absolutePanel = new AbsolutePanel();
+		setWidget(absolutePanel);
+//		absolutePanel.setSize("650px", "715px");
+
+		String localName = com.google.gwt.i18n.client.LocaleInfo.getCurrentLocale().getLocaleName();
+		int spacing = 10;
+		int spacing_between_explanation = 20;
+		int spacing_between_questions 	= 30;
+		int spacing_one_more_line 	  	= 15;
+
+		if (localName == "en" || localName == "ko"){
+			
+			int one_line_length = 100;
+			if(localName == "ko")
+				one_line_length = 50;
+			
+			ArrayList<Label> mfq_questions_label = new ArrayList<Label>();
+			mfq_questions_label.add(new Label(constants.mfq17()));
+			mfq_questions_label.add(new Label(constants.mfq18()));
+			mfq_questions_label.add(new Label(constants.mfq19()));
+			mfq_questions_label.add(new Label(constants.mfq20()));
+			mfq_questions_label.add(new Label(constants.mfq21()));
+			mfq_questions_label.add(new Label(constants.mfq22()));
+			mfq_questions_label.add(new Label(constants.mfq23()));
+			mfq_questions_label.add(new Label(constants.mfq24()));
+			mfq_questions_label.add(new Label(constants.mfq25()));
+			mfq_questions_label.add(new Label(constants.mfq26()));
+			mfq_questions_label.add(new Label(constants.mfq27()));
+			mfq_questions_label.add(new Label(constants.mfq28()));
+			mfq_questions_label.add(new Label(constants.mfq29()));
+			mfq_questions_label.add(new Label(constants.mfq30()));
+			mfq_questions_label.add(new Label(constants.mfq31()));
+			mfq_questions_label.add(new Label(constants.mfq32()));
+			
+			ArrayList<Label> mfq_explanation_label = new ArrayList<Label>();
+			mfq_explanation_label.add(new Label(constants.mfq_explanation_part2()));
+			mfq_explanation_label.add(new Label(constants.mfq_explanation_part2_zero()));
+			mfq_explanation_label.add(new Label(constants.mfq_explanation_part2_one()));
+			mfq_explanation_label.add(new Label(constants.mfq_explanation_part2_two()));
+			mfq_explanation_label.add(new Label(constants.mfq_explanation_part2_three()));
+			mfq_explanation_label.add(new Label(constants.mfq_explanation_part2_four()));
+			mfq_explanation_label.add(new Label(constants.mfq_explanation_part2_five()));
+
+			for(int i=0; i<mfq_explanation_label.size(); i++) {
+				mfq_explanation_label.get(i).setStylePrimaryName("Label-style");
+				absolutePanel.add(mfq_explanation_label.get(i), 10, spacing);
+				if(mfq_explanation_label.get(i).getText().length() > one_line_length) {
+					spacing = spacing + 2*spacing_between_explanation;
+				} else { 
+					spacing = spacing + spacing_between_explanation;
+				}
+			}
+			spacing = spacing + 10;
+			
+//				if(i==0) {
+//					absolutePanel.add(mfq_explanation_label.get(i), 10, spacing_between_lines*i);
+//				} if else(mfq_explanation_label.get(i).getOffsetWidth() > 580) {
+//					absolutePanel.add(mfq_explanation_label.get(i), 10, 25+spacing_between_lines*i);
+//				}
+//			}
+			
+			VerticalSplitPanel verticalSplitPanel = new VerticalSplitPanel();
+			absolutePanel.add(verticalSplitPanel, 97, spacing);
+			verticalSplitPanel.setSize("446px", "15px");
+			spacing = spacing + 35;
+
+			for(int i=0; i<mfq_questions_label.size(); i++) {
+				ListBox mfq_part2 = new ListBox();
+				mfq_part2.addItem("");
+				mfq_part2.addItem(constants.zero());
+				mfq_part2.addItem(constants.one());
+				mfq_part2.addItem(constants.two());
+				mfq_part2.addItem(constants.three());
+				mfq_part2.addItem(constants.four());
+				mfq_part2.addItem(constants.five());
+	
+				mfq_questions.add(mfq_part2);
+				absolutePanel.add(mfq_questions.get(i), 10, spacing);
+
+				mfq_questions_label.get(i).setStylePrimaryName("Label-style");
+				absolutePanel.add(mfq_questions_label.get(i), 65, spacing);
+//				absolutePanel.add(mfq_questions_label.get(i), 65, 200+spacing_between_questions*i);
+
+				if(mfq_questions_label.get(i).getText().length() > one_line_length) {
+					spacing = spacing + spacing_between_questions + spacing_one_more_line;
+				} else { 
+					spacing = spacing + spacing_between_questions;
+				}
+
+			}
+		}
+	
+		Button btnSubmit = new Button(constants.ok_button());
+		btnSubmit.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				hide();
+				experimentConditions.setMFQ_17(Integer.parseInt(getAnswers(mfq_questions.get(0))));
+				experimentConditions.setMFQ_18(Integer.parseInt(getAnswers(mfq_questions.get(1))));
+				experimentConditions.setMFQ_19(Integer.parseInt(getAnswers(mfq_questions.get(2))));
+				experimentConditions.setMFQ_20(Integer.parseInt(getAnswers(mfq_questions.get(3))));
+				experimentConditions.setMFQ_21(Integer.parseInt(getAnswers(mfq_questions.get(4))));
+				experimentConditions.setMFQ_22(Integer.parseInt(getAnswers(mfq_questions.get(5))));
+				experimentConditions.setMFQ_23(Integer.parseInt(getAnswers(mfq_questions.get(6))));
+				experimentConditions.setMFQ_24(Integer.parseInt(getAnswers(mfq_questions.get(7))));
+				experimentConditions.setMFQ_25(Integer.parseInt(getAnswers(mfq_questions.get(8))));
+				experimentConditions.setMFQ_26(Integer.parseInt(getAnswers(mfq_questions.get(9))));
+				experimentConditions.setMFQ_27(Integer.parseInt(getAnswers(mfq_questions.get(10))));
+				experimentConditions.setMFQ_28(Integer.parseInt(getAnswers(mfq_questions.get(11))));
+				experimentConditions.setMFQ_29(Integer.parseInt(getAnswers(mfq_questions.get(12))));
+				experimentConditions.setMFQ_30(Integer.parseInt(getAnswers(mfq_questions.get(13))));
+				experimentConditions.setMFQ_31(Integer.parseInt(getAnswers(mfq_questions.get(14))));
+				experimentConditions.setMFQ_32(Integer.parseInt(getAnswers(mfq_questions.get(15))));
+				
+				final ScenarioDialogBox dialogBox = new ScenarioDialogBox (eventBus, experimentConditions);
+				dialogBox.center();
+			}
+		});
+		
+//		spacing = spacing + 30;
+		btnSubmit.setSize("200px", "33px");
+		absolutePanel.add(btnSubmit, 225, spacing);
+		
+		spacing = spacing + 40;
+		String absolutePanelHeight = String.valueOf(spacing)+"px";
+		absolutePanel.setSize("650px", absolutePanelHeight);
+	}
+	
+	public String getAnswers(final ListBox questions){
+		String value = "";
+		value = questions.getItemText(questions.getSelectedIndex());
+		if (value.isEmpty())
+			value = "-1";
+
+		return value;
+	}
+	
+/*	public String getAnswers(final ArrayList<RadioButton> questions){
+		final Iterator<RadioButton> iterator = questions.iterator();
+		String valueofButton = "";
+		RadioButton radioButtonTemp;
+		final StringBuilder builder = new StringBuilder();
+		
+		while (iterator.hasNext()) {
+			radioButtonTemp = iterator.next();
+			if (radioButtonTemp.getValue()){
+				builder.append(radioButtonTemp.getFormValue());
+			}
+			
+		};
+		valueofButton = builder.toString();
+		if (valueofButton.isEmpty())
+			valueofButton = "0";
+		return valueofButton;		
+	};*/
+	
+}
+

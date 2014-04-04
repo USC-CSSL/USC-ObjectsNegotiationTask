@@ -12,7 +12,8 @@ public class TradingBoardState {
 
 	static final private int agentCount = AgentEnum.values().length;
 	static final int agentAreasOnTradingBoard = agentCount + 1;
-	static final int distinctTradingObjectsCount = 4;
+//	static final int distinctTradingObjectsCount = 4;
+	static final int distinctTradingObjectsCount = 3;			// 140210: for Shasha's experiment
 //	static final int itemsPerTradingObjectCategoryCount = 3;
 	static final int itemsPerTradingObjectCategoryCount = 5;
 
@@ -35,9 +36,13 @@ public class TradingBoardState {
 	static private int[][] getInitialTradingObjectAllocations() {
 
 		final int[][] result = new int[agentAreasOnTradingBoard][distinctTradingObjectsCount];
-		for (int col = 0; col != distinctTradingObjectsCount; ++col) {
-			result[1][col] = itemsPerTradingObjectCategoryCount;
-		};
+//		for (int col = 0; col != distinctTradingObjectsCount; ++col) {
+//			result[1][col] = itemsPerTradingObjectCategoryCount;
+//		};
+		
+		result[0][1] = itemsPerTradingObjectCategoryCount;							// 140210: for Shasha's experiment
+		result[0][2] = itemsPerTradingObjectCategoryCount;							// 140210: for Shasha's experiment
+		result[agentAreasOnTradingBoard-1][0] = itemsPerTradingObjectCategoryCount;	// 140210: for Shasha's experiment
 
 		return result;
 	};

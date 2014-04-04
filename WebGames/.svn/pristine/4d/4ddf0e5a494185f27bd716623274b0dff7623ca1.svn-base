@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="webgames" basedir="." default="build-war">
+
+	<tstamp>
+		<!-- Use ISO 8601 format, because this is the proper form for JAR/WAR/EAR file manifests. -->
+		<format property="timestamp" pattern="yyyy-MM-dd'T'HH:mm:ss" />
+	</tstamp>
+
+	<!-- These defaults can be overridden by a local build.properties file, should it be necessary to do so. -->
+    <property name="mount-point" value="E:"/>
+	<property name="ant-project-name" value="webgames"/>
+	<property name="module" value="WebGames"/>
+	<property name="package" value="edu.usc.cct.rapport.web_games"/>
+	<property name="source-code-dir" value="src"/>
+	<property name="java-archive-name" value="${ant-project-name}.jar"/>
+	<property name="web-archive-name" value="${ant-project-name}.war"/>
+	<property name="library-dir" value="lib"/>
+	<property name="build-area-dir" value="build-area"/>
+	<property name="jar-classes-build-area-dir" value="${build-area-dir}/classes"/>
+	<property name="web-archive-dir" value="war"/>
+	<property name="webinf-dir" value="${web-archive-dir}/WEB-INF"/>
+	<property name="webinf-lib-dir" value="${webinf-dir}/lib"/>
+	<property name="svn-rapport-checkout-dir" value="${mount-point}/svn/svn_rapport"/>
+    <property name="gwt-sdk-dir" value="${svn-rapport-checkout-dir}/vendor/Google/GWT/2.4.0/gwt-2.4.0"/>
+	<property name="gwt-gin-dir" value="${svn-rapport-checkout-dir}/vendor/Google/Gin/1.5/gin-1.5"/>
+	<property name="gwt-dnd-path" value="${svn-rapport-checkout-dir}/vendor/Fred_Sauer/gwt-dnd/3.1.1-rc/gwt-dnd-3.1.1.jar"/>
+	<property name="tomcat-dir" value="${mount-point}/Program Files/Apache Software Foundation/Tomcat 7.0"/>
+	<property name="tomcat-lib-dir" value="${tomcat-dir}/lib"/>
+	<property name="tomcat-webapps-dir" value="${tomcat-dir}/webapps"/>
+<!--
+	<property name="poi-dir" value="${svn-rapport-checkout-dir}/vendor/Apache_S_F/POI/3.7/poi-3.7"/>
+-->
+    <property name="poi-dir" value="${svn-rapport-checkout-dir}/vendor/Apache_S_F/POI/3.8_beta_3/poi-3.8-beta-3"/>
+
+	<target name="echotest">
+		<echo message="${ant-project-name}"/>
+		<echo message="${module}"/>
+		<echo message="${package}"/>
+		<echo message="${source-code-dir}"/>
+		<echo message="${java-archive-name}"/>
+		<echo message="${web-archive-name}"/>
+		<echo message="${library-dir}"/>
+		<echo message="${build-area-dir}"/>
+		<echo message="${jar-classes-build-area-dir}"/>
+		<echo message="${web-archive-dir}"/>
+		<echo message="${webinf-dir}"/>
+		<echo message="${webinf-lib-dir}"/>
+		<echo message="${svn-rapport-checkout-dir}"/>
+		<echo message="${gwt-sdk-dir}"/>
+		<echo message="${gwt-gin-dir}"/>
+		<echo message="${gwt-dnd-path}"/>
+		<echo message="${tomcat-dir}"/>
+		<echo message="${tomcat-lib-dir}"/>
+		<echo message="${tomcat-webapps-dir}"/>
+		<echo message="${poi-dir}"/>
+	</target>
+
+	<path id="classpath">
+		<pathelement location="${source-code-dir}"/>
+		<pathelement location="${jar-classes-build-area-dir}"/>
+        <pathelement location="${gwt-dnd-path}"/>
+		<pathelement location="${gwt-gin-dir}/aopalliance.jar"/>
+        <pathelement location="${gwt-gin-dir}/gin-1.5-post-gwt-2.2.jar"/>
+        <pathelement location="${gwt-gin-dir}/guice-assistedinject-snapshot.jar"/>
+	    <pathelement location="${gwt-gin-dir}/guice-snapshot.jar"/>
+        <pathelement location="${gwt-gin-dir}/javax.inject.jar"/>
+		<pathelement location="${gwt-sdk-dir}/gwt-dev.jar"/>
+		<pathelement location="${gwt-sdk-dir}/gwt-user.jar"/>
+		<pathelement location="${gwt-sdk-dir}/gwt-servlet.jar"/>
+        <pathelement location="${gwt-sdk-dir}/gwt-servlet-deps.jar"/>
+        <pathelement location="${gwt-sdk-dir}/validation-api-1.0.0.GA.jar"/>
+        <pathelement location="${gwt-sdk-dir}/validation-api-1.0.0.GA-sources.jar"/>
+		<pathelement location="${tomcat-lib-dir}/servlet-api.jar"/>
+<!--
+		<pathelement location="${poi-dir}/poi-3.7-20101029.jar"/>
+		<pathelement location="${poi-dir}/poi-ooxml-3.7-20101029.jar"/>
+		<pathelement location="${poi-dir}/poi-ooxml-schemas-3.7-20101029.jar"/>
+-->
+        <pathelement location="${poi-dir}/poi-3.8-beta3-20110606.jar"/>
+        <pathelement location="${poi-dir}/poi-ooxml-3.8-beta3-20110606.jar"/>
+        <pathelement location="${poi-dir}/poi-ooxml-schemas-3.8-beta3-20110606.jar"/>
+<!--
+		<pathelement location="${poi-dir}/src/java"/>
+-->
+	</path>
+
+	<target name="clean">
+		<delete failonerror="false" dir=".gwt-cache"/>
+		<delete failonerror="false" dir="${build-area-dir}"/>
+		<delete failonerror="false" file="${webinf-lib-dir}/${java-archive-name}"/>
+		<mkdir dir="${build-area-dir}"/>
+		<mkdir dir="${jar-classes-build-area-dir}"/>
+	</target>
+
+	<target name="compile-server-side" depends="clean" description="Compile all of the Java code in the usual manner.">
+		<javac srcdir="${source-code-dir}" destdir="${jar-classes-build-area-dir}" verbose="no" classpathref="classpath" debug="true"/>
+	</target>
+
+	<target name="build-jar" depends="compile-server-side" description="Bundle the compiled java code into a library.">
+		<jar destfile="${build-area-dir}/${java-archive-name}" basedir="${jar-classes-build-area-dir}">
+			<manifest>
+				<attribute name="Built-On" value="${timestamp}"/>
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="compile-client-side" depends="build-jar" description="Compile the client-side Java code into ECMAScript.">
+		<java classname="com.google.gwt.dev.Compiler" classpathref="classpath" fork="true" failonerror="true">
+			<jvmarg value="-Xmx1024m"/>
+			<jvmarg value="-Xms256m"/>
+			<jvmarg value="-XX:+UseParallelGC"/>
+			<jvmarg value="-XX:PermSize=128M"/>
+			<jvmarg value="-XX:MaxPermSize=512M"/>
+<!--
+			<arg value="-draftCompile"/>
+-->
+			<arg value="-ea"/>
+			<arg value="-style"/>
+<!--
+			<arg value="PRETTY"/>
+            <arg value="DETAILED"/>
+-->
+            <arg value="OBFUSCATED"/>
+<!--
+			<arg value="-optimize"/>
+			<arg value="9"/>
+-->
+<!--
+			<arg value="-compileReport"/>
+			<arg value="-XsoycDetailed"/>
+-->
+			<arg value="-XdisableAggressiveOptimization"/>
+<!--
+			<arg value="-XdisableCastChecking"/>
+-->
+			<arg value="-extra"/>
+			<arg value="extras"/>
+			<arg value="-strict"/>
+			<arg value="-localWorkers"/>
+			<arg value="4"/>
+			<arg value="${package}.${module}"/>
+		</java>
+	</target>
+
+	<target name="build-war" depends="compile-client-side" description="Bundle the web application so that it may be deployed.">
+		<copy file="${build-area-dir}/${java-archive-name}" todir="${webinf-lib-dir}"/>
+		<war basedir="${web-archive-dir}" destfile="${web-archive-name}" webxml="${webinf-dir}/web.xml" compress="true" keepcompression="false" level="9">
+			<exclude name="WEB-INF/**"/>
+			<webinf dir="${webinf-dir}">
+				<include name="**/*.jar"/>
+			</webinf>
+		</war>
+		<move file="${web-archive-name}" todir="${build-area-dir}"/>
+	</target>
+
+</project>

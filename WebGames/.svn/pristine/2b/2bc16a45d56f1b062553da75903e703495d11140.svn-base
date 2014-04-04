@@ -1,0 +1,407 @@
+/** Add css rules here for your application. */
+* {
+	font-family: Arial, sans-serif;
+	font-size: 16px;
+	font-color: black;
+}
+
+body, input, button, select, option, textarea, table td, a, div, .p, pre {
+    font-family: Arial, sans-serif;
+}
+
+
+body {
+	font-size: 16px;
+}
+
+/*
+input, button, select, option, textarea, table td, a, div, .p, pre {
+    font-size: 100%;
+}
+*/
+
+.gwt-Button, .gwt-Label, .gwt-ListBox {
+	font-size: 12px !important;
+}
+
+
+* {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+}
+
+
+/** Example rules used by the template application (remove for your app) */
+/*
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  color: #777777;
+  margin: 40px 0px 70px;
+  text-align: center;
+}
+
+.sendButton {
+  display: block;
+  font-size: 16pt;
+}
+*/
+/** Most GWT widgets already have a style name defined */
+.dialogVPanel {
+  margin: 5px;
+}
+
+.serverResponseLabelError {
+  color: red;
+}
+
+/** Set ids using widget.getElement().setId("idOfElement") */
+#closeButton {
+  margin: 15px 6px 6px;
+}
+
+html, body {
+	height: 100%;
+}
+
+body { 
+	background-color: white;
+	color: black;
+	margin: 5px;
+}
+
+a {	
+	color: darkblue;
+}
+
+a:visited {	
+	color: darkblue; 
+}
+
+div.gwt-Hyperlink a {
+    font-size: 10px;
+}
+
+/*
+.gwt-HorizontalSplitPanel {
+	border: 8px solid #C3D9FF;
+}
+
+.gwt-HorizontalSplitPanel .splitter {
+	background-color: #C3D9FF;
+	cursor: move;
+}
+
+.gwt-HorizontalSplitPanel .left {
+  background-color: #E8EEF7;
+}
+
+.gwt-VerticalSplitPanel {
+	border: 8px solid #C3D9FF;
+}
+
+.gwt-VerticalSplitPanel .splitter {
+	background-color: #C3D9FF;
+	height: 8px;
+	cursor: move;
+}
+
+.gwt-SuggestBoxPopup {
+	border: 2px solid #C3D9FF;
+}
+
+.gwt-SuggestBoxPopup .item {
+	padding: 2px;
+}
+
+.gwt-SuggestBoxPopup .item-selected {
+	background-color: #C3D9FF;
+	padding: 2px;
+}
+
+.gwt-DisclosurePanel {
+	border: 2px solid #C3D9FF;
+}
+
+.gwt-DisclosurePanel .header {
+	background-color: #e8eef7;
+	cursor: hand;
+}
+
+.gwt-DecoratorPanel .middleCenter {
+	height: 100%;
+	width: 100%;
+}
+*/
+.ict-rapport-scoreStyle {
+	color: red;
+	border: 1px solid grey;
+}
+
+.ict-rapport-drop-zone-targeted {
+	background-color: grey;
+}
+
+.ict-rapport-selected-target-in-drop-zone {
+	background-color: light-grey;
+}
+
+.dragdrop-boundary {
+	margin: 0;
+}
+
+
+.ict-rapport-debuggingBorderStyle {
+	border: 1px dashed black;
+}
+
+
+.ict-rapport-defaultFontSize {
+	font-size: 16px;
+}
+
+
+.ict-rapport-largeFontSize {
+	font-size: 20px !important;
+}
+
+
+.ict-rapport-grid-1x1 {
+/*
+	border: 1px solid black;
+	margin: 3px;
+*/
+	border: 1px solid red;
+	margin: 1px;
+	background-color: white;
+}
+
+
+.ict-rapport-grid-1x1-cell {
+/*
+	border: 1px dashed grey;
+*/
+	margin: 0px;
+	background-color: white;
+}
+
+.ict-rapport-grid-2x2 {
+	border: 2px solid black;
+	margin: 3px;
+	background-color: white;
+}
+
+
+.ict-rapport-grid-2x2-cell {
+	border: 2px solid yellow;
+	margin: 0px;
+	background-color: white;
+}
+
+.ict-rapport-grid-4x3 {
+	margin: 3px;
+/*
+	border: 2px solid blue;
+	background-color: blue;
+*/
+}
+
+.ict-rapport-grid-4x3-cell {
+/*
+	border: 1px solid grey;
+*/
+	margin: 0;
+}
+
+
+.ict-rapport-agentDealValuationStyle {
+/*
+		border: 1px dotted black;
+*/
+}
+
+
+.ict-rapport-agentObjectValuationStyle {
+	border: 1px solid black;
+	margin: 1px;
+}
+
+
+.ict-rapport-agentObjectValuationHeaderStyle {
+	margin: 0;
+	font-size: 14px;
+}
+
+
+.ict-rapport-agentDealValuationDescriptionStyle {
+	border: 0;
+	background: transparent;
+	color: blue !important;
+	font-size: 14px;
+}
+
+
+.ict-rapport-agentDealValuationValueStyle {
+	border: 0;
+	padding: 2px;
+	color: red;
+	font-size: 30px !important;
+}
+
+.ict-rapport-describedValueStyle {
+/*	border: 1px solid black; */
+/*	background: yellow;*/
+}
+
+
+.ict-rapport-agentEmoticonStyle {
+	outline: 2px solid transparent;
+}
+
+
+.ict-rapport-playerEmoticonHovered {
+	outline: 2px solid red;
+}
+
+
+.ict-rapport-playerEmoticonSelected {
+	outline: 2px solid blue;
+}
+
+
+.ict-rapport-verticalAlignMiddle {
+	vertical-align: middle;
+}
+
+
+.ict-rapport-agentName {
+	color: red;
+	font-size: 24px !important;
+	align: center;
+}
+
+
+.ict-rapport-entireBoardStyle {
+	background-color: blue;
+	align: center;
+	vertical-align: middle;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+
+.ict-rapport-agentPossessionAreasStyle {
+	background-color: white;
+	align: center;
+	vertical-align: middle;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+
+.ict-rapport-particularTradingObjectsAreasStyle {
+	background-color: transparent;
+	align: center;
+	vertical-align: middle;
+	margin: 0;
+	padding: 0;
+	border: 2px solid blue;
+}
+
+
+.ict-rapport-itemsAreasStyle {
+	background-color: transparent;
+	align: center;
+	vertical-align: middle;
+	margin: 0;
+	padding: 0;
+/*	border: 1px dashed black; */
+}
+
+
+.ict-rapport-tradingBoardRegionForSpecificTradingObjectsForSpecificAgentStyle {
+	background-color: yellow;
+	align: center;
+	vertical-align: middle;
+	margin: 0;
+	padding: 0;
+/*	border: 1px dashed black; */
+}
+
+
+.ict-rapport-imageItemStyle {
+	background-color: transparent;
+	align: center;
+	vertical-align: middle;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+
+.ict-rapport-itemSpotStyle {
+	background-color: transparent;
+	align: center;
+	vertical-align: middle;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.RadioButton-style {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	font-color: black;
+}
+
+.Label-style {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+/*	font-color: black;*/
+}
+
+.splitLine {
+	font-family: Arial, sans-serif;
+	font-size: 3;
+	color: LightBlue;
+}
+
+/*.Label-style-OddRow {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	color: black;
+}
+
+.Label-style-EvenRow {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	color: black;
+}
+
+.gwt-TabBar-OddRow {
+}
+.gwt-TabBar-OddRow .gwt-TabBarFirst {
+  width: 5px;  
+}
+.gwt-TabBar-OddRow .gwt-TabBarRest {
+}
+.gwt-TabBar-OddRow .gwt-TabBarItem {
+  margin-left: 6px;
+  padding: 3px 6px 3px 6px;
+  cursor: pointer;
+  cursor: hand;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  background: #d0e4f6;
+}
+.gwt-TabBar-OddRow .gwt-TabBarItem-selected {
+  cursor: default;
+  background: #92c1f0;
+} 
+.gwt-TabBar-OddRow .gwt-TabBarItem-disabled {
+  cursor: default;
+  color: #999999;
+}*/

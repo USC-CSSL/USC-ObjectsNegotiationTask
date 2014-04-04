@@ -1,0 +1,486 @@
+package edu.usc.cct.rapport.web_games.client.trading_area;
+
+import java.util.EnumMap;
+import java.util.Iterator;
+
+import com.google.gwt.core.client.Duration;
+import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.place.shared.PlaceController;
+import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.DockLayoutPanel;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
+import com.google.gwt.user.client.ui.HasVerticalAlignment;
+import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Widget;
+import com.google.inject.Inject;
+
+import edu.usc.cct.rapport.web_games.client.SimpleLayoutPanel;
+import edu.usc.cct.rapport.web_games.client.WebGamesView;
+import edu.usc.cct.rapport.web_games.client.images.facial_expressions.FacialExpressionStyleEnum;
+import edu.usc.cct.rapport.web_games.client.specify_experiment_conditions.ExperimentConditions;
+//import edu.usc.cct.rapport.web_games.client.trading_area.agent_behaviour.emotion_modelling.EmotionModellingStrategyEnum;
+
+
+public class TradingAreaView extends WebGamesView implements ITradingAreaView {
+
+	static final private String debuggingBorderStyle = "ict-rapport-debuggingBorderStyle";
+
+	static final private int desiredEmotionSelectionImageWidthInPixels = 65;
+	static final private int desiredEmotionSelectionImageHeightInPixels = 65;
+	static final public ImageDimensionCalculator desiredEmotionSelectionImageDimensionCalculator = new ImageDimensionCalculator(desiredEmotionSelectionImageWidthInPixels, desiredEmotionSelectionImageHeightInPixels);	
+
+	final private SimpleLayoutPanel anchorPanel;
+	final private DockLayoutPanel viewBasePanel;
+
+	final private EnumMap<AgentEnum, AgentDealValuationWidget> agentDealValuationWidgets;
+	final private EnumMap<TradingActionEnum, Button> tradingActionButtons;
+	final private TradingBoardWidget tradingBoardWidget;
+	final private DockLayoutPanel dockLayoutPanelCounterpartArea;
+	final private DockLayoutPanel dockLayoutPanelPlayerArea;
+	final private AgentObjectValuationWidget counterpartObjectValuation;
+	final private AgentObjectValuationWidget playerObjectValuation;
+	final private AgentEmotionExpressionWidget counterpartEmotionExpressionWidget;
+	final AgentEmotionSelectionWidget playerEmotionSelection;
+	final private FacialExpressionStyleEnum facialExpressionStyleEnum;
+
+	private boolean counterpartDealValueVisible;
+	private boolean counterpartObjectValuationVisible;
+	private boolean counterpartEmotionExpressionVisible;
+	
+	private boolean playerEmotionExpressionVisible;
+	private boolean playerDealValueVisible;
+	private boolean playerDealValuationVisible;
+	
+	private int counterpartBATNA;
+	private int playerBATNA;
+
+
+	@Inject
+	public TradingAreaView(final EventBus eventBus, final PlaceController placeController) {
+		super(eventBus, placeController);
+
+		// These are garbage values that are overridden later, during state updates.
+		this.counterpartDealValueVisible = false;
+		this.counterpartObjectValuationVisible = false;
+		this.counterpartEmotionExpressionVisible = false;
+		this.counterpartBATNA = Integer.MIN_VALUE;
+		this.playerBATNA = Integer.MIN_VALUE;
+		this.playerEmotionExpressionVisible = false;
+		this.facialExpressionStyleEnum = FacialExpressionStyleEnum.drama_masks;
+
+		anchorPanel = new SimpleLayoutPanel();
+		viewBasePanel = new DockLayoutPanel(Unit.PX);
+		anchorPanel.add(viewBasePanel);
+
+		final DockLayoutPanel dockLayoutPanelDragDropHoldingArea = new DockLayoutPanel(Unit.PX);
+		dockLayoutPanelDragDropHoldingArea.addStyleName(debuggingBorderStyle);
+		viewBasePanel.addWest(dockLayoutPanelDragDropHoldingArea, 465.0);
+
+		dockLayoutPanelCounterpartArea = new DockLayoutPanel(Unit.PX);
+		dockLayoutPanelDragDropHoldingArea.addNorth(dockLayoutPanelCounterpartArea, 33);  // when there are 5 items each
+//		dockLayoutPanelDragDropHoldingArea.addNorth(dockLayoutPanelCounterpartArea, 110); // when there are 3 items each
+		
+		dockLayoutPanelPlayerArea = new DockLayoutPanel(Unit.PX);
+		dockLayoutPanelDragDropHoldingArea.addSouth(dockLayoutPanelPlayerArea, 33);  // when there are 5 items each
+//		dockLayoutPanelDragDropHoldingArea.addSouth(dockLayoutPanelPlayerArea, 110); // when there are 3 items each
+
+		
+		agentDealValuationWidgets = new EnumMap<AgentEnum, AgentDealValuationWidget>(AgentEnum.class);
+		final AgentDealValuationWidget counterpartDealValuation = new AgentDealValuationWidget(AgentEnum.counterpart, 440);
+		dockLayoutPanelCounterpartArea.add(counterpartDealValuation);
+		agentDealValuationWidgets.put(AgentEnum.counterpart, counterpartDealValuation);
+		final AgentDealValuationWidget playerDealValuation = new AgentDealValuationWidget(AgentEnum.player, 440);
+		dockLayoutPanelPlayerArea.add(playerDealValuation);
+		agentDealValuationWidgets.put(AgentEnum.player, playerDealValuation);
+
+		final TradingObjectSetEnum tradingObjectSetEnum = TradingObjectSetEnum.placeholder_to_allow_initialization_prior_to_trading_object_set_selection;
+		tradingObjectSetEnum.getSetOfTradingObjectEnum();
+
+		final TradingBoardState initialTradingBoardState = new TradingBoardState(tradingObjectSetEnum);
+		tradingBoardWidget = new TradingBoardWidget(eventBus, initialTradingBoardState);
+		dockLayoutPanelDragDropHoldingArea.add(tradingBoardWidget);
+		tradingBoardWidget.setState(initialTradingBoardState);
+
+		final DockLayoutPanel dockLayoutPanelRightPeriphery = new DockLayoutPanel(Unit.PX);
+		dockLayoutPanelRightPeriphery.addStyleName(debuggingBorderStyle);
+		viewBasePanel.addEast(dockLayoutPanelRightPeriphery, 225.0);
+
+		counterpartEmotionExpressionWidget = new AgentEmotionExpressionWidget(AgentEnum.counterpart, FacialExpressionEnum.neutral, this.facialExpressionStyleEnum, 215);
+		dockLayoutPanelRightPeriphery.addNorth(counterpartEmotionExpressionWidget, 180);
+
+		final FacialExpressionEnum[] desiredImagePresentationOrder = new FacialExpressionEnum[]{FacialExpressionEnum.happy, FacialExpressionEnum.content, FacialExpressionEnum.neutral, FacialExpressionEnum.angry, FacialExpressionEnum.sad};
+		final FacialExpressionEnum originalSelection = FacialExpressionEnum.neutral;
+		playerEmotionSelection = new AgentEmotionSelectionWidget(eventBus, FacialExpressionStyleEnum.drama_masks, desiredImagePresentationOrder, originalSelection);
+		dockLayoutPanelRightPeriphery.addSouth(playerEmotionSelection, 166.0+180.0);
+
+		final HorizontalPanel horizontalPanelButtons = new HorizontalPanel();
+		horizontalPanelButtons.setHeight("72px");
+		horizontalPanelButtons.setWidth("100%");
+		horizontalPanelButtons.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+		horizontalPanelButtons.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
+
+		tradingActionButtons = new EnumMap<TradingActionEnum, Button>(TradingActionEnum.class);
+		for (final TradingActionEnum tradingActionEnum: TradingActionEnum.values()) {
+			final Button button = new Button(tradingActionEnum.getButtonDescription());
+			button.setHeight("72px");
+			button.setWidth("100%");
+			button.setVisible(true);
+			button.setEnabled(true);
+			switch (tradingActionEnum) {
+			case makeInitialProposal:
+			case makeCounterproposal:
+				button.addClickHandler(new ClickHandler() {
+					@Override
+					public void onClick(final ClickEvent event) {
+						final double timestamp = Duration.currentTimeMillis();
+						final Proposal newProposal = new Proposal(AgentEnum.player, tradingBoardWidget.getState().getTradingObjectsRetainedByAgent(AgentEnum.player));
+						final TradingAction newTradingAction = new TradingAction(AgentEnum.player, timestamp, tradingActionEnum, newProposal);
+						TradingAreaView.this.eventBus.fireEvent(new ProposalMadeEvent(newTradingAction));
+					};
+				});
+				break;
+			case acceptProposal:
+				button.addClickHandler(new ClickHandler() {
+					@Override
+					public void onClick(final ClickEvent event) {
+						final double timestamp = Duration.currentTimeMillis();
+						final TradingAction newTradingAction = new TradingAction(AgentEnum.player, timestamp, tradingActionEnum, null);
+						TradingAreaView.this.eventBus.fireEvent(new ProposalAcceptedEvent(newTradingAction));
+					};
+				});
+				break;
+			case claimBATNAValue:
+				button.addClickHandler(new ClickHandler() {
+					@Override
+					public void onClick(final ClickEvent event) {
+						final double timestamp = Duration.currentTimeMillis();
+						final TradingAction newTradingAction = new TradingAction(AgentEnum.player, timestamp, tradingActionEnum, null);
+						TradingAreaView.this.eventBus.fireEvent(new BATNAClaimMadeEvent(newTradingAction));
+					};
+				});
+			};
+			horizontalPanelButtons.add(button);
+			tradingActionButtons.put(tradingActionEnum, button);
+		};
+
+		dockLayoutPanelRightPeriphery.add(horizontalPanelButtons);
+
+		final DockLayoutPanel dockLayoutPayoffInformation = new DockLayoutPanel(Unit.PX);
+		dockLayoutPayoffInformation.addStyleName(debuggingBorderStyle);
+		viewBasePanel.addEast(dockLayoutPayoffInformation, 110);
+
+		counterpartObjectValuation = new AgentObjectValuationWidget(AgentEnum.counterpart, tradingObjectSetEnum, "100px");
+		dockLayoutPayoffInformation.addNorth(counterpartObjectValuation, 300);
+		playerObjectValuation = new AgentObjectValuationWidget(AgentEnum.player, tradingObjectSetEnum, "100px");
+
+		dockLayoutPayoffInformation.addSouth(playerObjectValuation, 300);
+		
+		
+		viewBasePanel.setVisible(true);
+		initWidget(viewBasePanel);
+	};
+
+
+	@Override
+	public void setCounterpartInformationVisibilityAndBATNAValues(final ExperimentConditions experimentConditions) {
+		
+	
+		this.counterpartObjectValuationVisible = experimentConditions.getCounterpartPayoffMatrixVisible();
+		counterpartObjectValuation.setVisible(this.counterpartObjectValuationVisible);
+
+		this.counterpartEmotionExpressionVisible = experimentConditions.getCounterpartEmotionExpressionVisible();
+		counterpartEmotionExpressionWidget.setVisible(this.counterpartEmotionExpressionVisible);
+
+		
+		this.counterpartDealValueVisible = experimentConditions.getCounterpartDealValueVisible();
+		if(this.counterpartDealValueVisible==false & this.counterpartEmotionExpressionVisible==false){
+			agentDealValuationWidgets.get(AgentEnum.counterpart).setLabelVisibility(ValuationCategoryEnum.bestAlternativeToNegotiatedAgreement, false);
+			agentDealValuationWidgets.get(AgentEnum.counterpart).setLabelVisibility(ValuationCategoryEnum.proposalAsDiagrammed, false);
+			agentDealValuationWidgets.get(AgentEnum.counterpart).setLabelText(ValuationCategoryEnum.bestAlternativeToNegotiatedAgreement, "\tThe Other Family");
+			agentDealValuationWidgets.get(AgentEnum.counterpart).setLabelText(ValuationCategoryEnum.proposalAsDiagrammed, "");
+		}
+		else
+			dockLayoutPanelCounterpartArea.setVisible(this.counterpartDealValueVisible);
+		
+		
+		this.playerBATNA = experimentConditions.getPlayerBATNA();
+		agentDealValuationWidgets.get(AgentEnum.player).setDealValue(ValuationCategoryEnum.bestAlternativeToNegotiatedAgreement, this.playerBATNA);
+
+		this.counterpartBATNA = experimentConditions.getCounterpartBATNA();
+		agentDealValuationWidgets.get(AgentEnum.counterpart).setDealValue(ValuationCategoryEnum.bestAlternativeToNegotiatedAgreement, this.counterpartBATNA);
+	};
+
+	@Override
+	public void setPlayerInformationVisibilityAndBATNAValues(final ExperimentConditions experimentConditions) {
+
+		this.playerDealValuationVisible = experimentConditions.getPlayerPayoffMatrixVisible();
+		playerObjectValuation.setVisible(this.playerDealValuationVisible);
+		
+		this.playerDealValueVisible = experimentConditions.getPlayerDealValueVisible();
+//		dockLayoutPanelPlayerArea.setVisible(this.playerDealValueVisible);
+		
+		this.playerEmotionExpressionVisible = experimentConditions.getPlayerEmotionExpressionVisible();
+		playerEmotionSelection.setVisible(this.playerEmotionExpressionVisible);
+		//playerEmotionSelection.setFacialExpressionVisibility(this.playerEmotionExpressionVisible);
+
+		if(this.playerDealValueVisible==false & this.playerEmotionExpressionVisible==false){
+			agentDealValuationWidgets.get(AgentEnum.player).setLabelVisibility(ValuationCategoryEnum.bestAlternativeToNegotiatedAgreement, false);
+			agentDealValuationWidgets.get(AgentEnum.player).setLabelVisibility(ValuationCategoryEnum.proposalAsDiagrammed, false);
+			agentDealValuationWidgets.get(AgentEnum.player).setLabelText(ValuationCategoryEnum.bestAlternativeToNegotiatedAgreement, "");
+			agentDealValuationWidgets.get(AgentEnum.player).setLabelText(ValuationCategoryEnum.proposalAsDiagrammed, "\t\tYour Family");
+		}
+		else 
+			dockLayoutPanelPlayerArea.setVisible(this.counterpartDealValueVisible);
+		
+	};//Morteza
+
+	@Override
+	public void setFacialExpressionStyle(final FacialExpressionStyleEnum facialExpressionStyleEnum) {
+		this.counterpartEmotionExpressionWidget.setFacialExpressionStyle(facialExpressionStyleEnum);
+		this.playerEmotionSelection.setFacialExpressionStyle(facialExpressionStyleEnum);
+	};
+
+
+	@Override
+	public void setCounterpartEmotionState(final FacialExpressionEnum agentEmotionEnum) {
+		this.counterpartEmotionExpressionWidget.setFacialExpression(agentEmotionEnum);
+	};
+
+
+	@Override
+	public void updateTradingActionButtonAvailabilityWithoutRegardToTradingBoardState(final NegotiationSession negotiationSession) {
+
+		if (AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext())) {
+			
+			/* If it is the player's turn to move, we only want the buttons that are eligible to be used to be visible. */
+
+			final Button makeInitialProposal = tradingActionButtons.get(TradingActionEnum.makeInitialProposal);
+			final Button acceptProposal = tradingActionButtons.get(TradingActionEnum.acceptProposal);
+			final Button makeCounterproposal = tradingActionButtons.get(TradingActionEnum.makeCounterproposal);
+			final Button claimBATNAScore = tradingActionButtons.get(TradingActionEnum.claimBATNAValue);
+
+			final Proposal mostRecentlyOfferedProposal = negotiationSession.getMostRecentProposal();
+			acceptProposal.setEnabled(null != mostRecentlyOfferedProposal);
+			acceptProposal.setVisible(null != mostRecentlyOfferedProposal);
+
+			if (1 == negotiationSession.getPlyRemaining()) {
+				// We have reached the final ply.
+				makeInitialProposal.setEnabled(false);
+				makeInitialProposal.setVisible(false);
+				makeCounterproposal.setEnabled(false);
+				makeCounterproposal.setVisible(false);
+				claimBATNAScore.setEnabled(true);
+				claimBATNAScore.setVisible(true);
+			} else {
+				if (null == mostRecentlyOfferedProposal) {
+					makeInitialProposal.setEnabled(true);
+					makeInitialProposal.setVisible(true);
+					makeCounterproposal.setEnabled(false);
+					makeCounterproposal.setVisible(false);
+				} else {
+					makeInitialProposal.setEnabled(false);
+					makeInitialProposal.setVisible(false);
+					makeCounterproposal.setEnabled(true);
+					makeCounterproposal.setVisible(true);
+				};
+				claimBATNAScore.setEnabled(false);
+				claimBATNAScore.setVisible(false);
+			};
+
+		} else {
+
+			/* Whether it is the counterpart's ply to act, or no longer either agent's ply to act because no plies are remaining, we leave the old buttons visible, but ensure that they are all disabled. */
+
+			for (final Button button: tradingActionButtons.values()) {
+				button.setEnabled(false);
+			};
+
+			tradingBoardWidget.dropped = false;
+		};
+		
+
+		
+	};
+
+
+	@Override
+	public void updateTradingActionButtonEnablementBasedOnTradingBoardState(final AgentEnum agentWhoseTurnItIs, final Proposal mostRecentlyOfferedProposal) {
+
+		/*
+		 * When one or more objects is not allocated to either agent, the
+		 * dynamic trading board state does not yield an offerable proposal.
+		 * In these cases, proposal offer buttons are visible, but disabled.
+		 */
+		if (AgentEnum.player.equals(agentWhoseTurnItIs)) {
+			final Button makeInitialProposal = tradingActionButtons.get(TradingActionEnum.makeInitialProposal);
+			final Button makeCounterproposal = tradingActionButtons.get(TradingActionEnum.makeCounterproposal);
+
+			if (tradingBoardWidget.representsValidProposal()) {
+				makeInitialProposal.setEnabled(makeInitialProposal.isVisible());
+				makeCounterproposal.setEnabled(makeCounterproposal.isVisible());
+			} else {
+				makeInitialProposal.setEnabled(false);
+				makeCounterproposal.setEnabled(false);
+			};
+		};
+	/*	//if its the player's turn and the state of the board has changed 
+		final Button acceptProposal = tradingActionButtons.get(TradingActionEnum.acceptProposal);
+		final TradingAction lastTrade = negotiationSession.getMostRecentProposal(); 
+		
+		if (AgentEnum.player.equals(agentWhoseTurnItIs)) {acceptProposal.setEnabled(false);};*/
+		//if its the player's turn and the state of the board has changed 
+		final Button acceptProposal = tradingActionButtons.get(TradingActionEnum.acceptProposal);
+		final Button makeCounterProposal = tradingActionButtons.get(TradingActionEnum.makeCounterproposal);
+		if (AgentEnum.player.equals(agentWhoseTurnItIs) & tradingBoardWidget.dropped) {acceptProposal.setEnabled(false);};
+		if (AgentEnum.player.equals(agentWhoseTurnItIs) & !tradingBoardWidget.dropped) {makeCounterProposal.setEnabled(false);};
+	};
+
+
+	@Override
+	public void setTradingBoardState(final TradingBoardState newTradingBoardState) {
+		tradingBoardWidget.setState(newTradingBoardState);
+	};
+
+
+	@Override
+	public void updateTradingAreaViewAfterTradingBoardStateChange() {
+		tradingBoardWidget.updateTradingBoardAfterTradingBoardStateChange();
+		final EnumMap<AgentEnum, Integer> proposalValue = tradingBoardWidget.getState().getProposalValue();
+		for (final AgentEnum agentEnum: AgentEnum.values()) {
+			agentDealValuationWidgets.get(agentEnum).setDealValue(ValuationCategoryEnum.proposalAsDiagrammed, proposalValue.get(agentEnum));
+		};
+		final TradingObjectSetEnum tradingObjectSetEnum = this.tradingBoardWidget.getState().getTradingObjectSetEnum();
+		counterpartObjectValuation.setTradingObjectSetEnum(tradingObjectSetEnum);
+		playerObjectValuation.setTradingObjectSetEnum(tradingObjectSetEnum);
+		
+
+		
+	};
+
+	@Override
+	public void showNegotiationConcludedDialogBox(final ExperimentConditions experimentConditions) {
+		Timer timer = new Timer() {
+			public void run() {
+				final Button acceptProposal = tradingActionButtons.get(TradingActionEnum.acceptProposal);
+				final Button divideProposal = tradingActionButtons.get(TradingActionEnum.claimBATNAValue);
+				
+		    	acceptProposal.setEnabled(false);
+		    	divideProposal.setEnabled(false);
+		    	
+				final NegotiationConcludedDialogBox dialogBox = new NegotiationConcludedDialogBox(eventBus, experimentConditions);
+				dialogBox.center();
+			}
+	    };
+	    timer.schedule(2000);
+	};
+
+	@Override
+	public void showStartGameHelpWindowDialogBox(final int temp) {
+		final StartGameHelpWindowDialogBox dialogBox = new StartGameHelpWindowDialogBox(eventBus, temp);
+		dialogBox.center();
+	};
+	
+	public void showScenarioDialogBox (final ExperimentConditions experimentConditions) {
+		Timer timer = new Timer() {
+		      public void run() {
+		    	  final ScenarioDialogBox dialogBox = new ScenarioDialogBox (eventBus, experimentConditions);
+		    	  dialogBox.center();
+		      }
+		    };
+		    timer.schedule(1000);	
+	};
+	
+	@Override
+	public void showPreGameQuestionnaireDialogBox(final int temp,final ExperimentConditions experimentConditions) {
+		//final PreGameQuestionnaireDialogBox dialogBox;
+		Timer timer = new Timer() {
+		      public void run() {
+		    	  final PreGameQuestionnaireDialogBox dialogBox  = new PreGameQuestionnaireDialogBox(eventBus, temp, experimentConditions);
+		    	  dialogBox.center();
+		      }
+		    };
+		    timer.schedule(2000);
+	};
+
+
+	@Override
+	public void showDemographicsDialogBox(ExperimentConditions experimentConditions) {
+		final DemographicsDialogBox dialogBox = new DemographicsDialogBox(eventBus, experimentConditions);
+		dialogBox.center();
+	};
+	
+	@Override
+	public void showPostGameQuestionnaireDialogBox(ExperimentConditions experimentConditions) {
+		final PostGameQuestionnaireDialogBox dialogBox = new PostGameQuestionnaireDialogBox(eventBus, experimentConditions);
+		dialogBox.center();
+	};
+	
+	@Override
+	public void showLastRoundHelpWindowDialogBox(final int temp) {
+		Timer timer = new Timer() {
+		      public void run() {
+		    	  final LastRoundHelpWindowDialogBox dialogBox = new LastRoundHelpWindowDialogBox(eventBus, temp);
+		    	  dialogBox.center();
+		    	  
+		    	  
+		      }
+		};
+		timer.schedule(1000);
+	};
+	
+	
+	@Override
+	public void add(final Widget w) {
+		viewBasePanel.add(w);
+	};
+
+
+	@Override
+	public void clear() {
+		viewBasePanel.clear();
+	};
+
+
+	@Override
+	public Iterator<Widget> iterator() {
+		final Iterator<Widget> result = viewBasePanel.iterator();
+		return result;
+	};
+
+
+	@Override
+	public boolean remove(final Widget w) {
+		final boolean result = viewBasePanel.remove(w);
+		return result;
+	};
+
+
+	public boolean isTradingBoardEnabled() {
+		final boolean result = this.tradingBoardWidget.isEnabled();
+		return result;
+	};
+
+
+	public void setTradingBoardEnabled(final boolean enabled) {
+		this.tradingBoardWidget.setEnabled(enabled);
+	}
+
+
+	@Override
+	public void showParticipantIDBox(final ExperimentConditions experimentConditions) {
+		Timer timer = new Timer() {
+		      public void run() {
+		    	  final ParticipantIDDialogBox dialogBox = new ParticipantIDDialogBox (eventBus, experimentConditions);
+		    	 // final ScenarioDialogBox dialogBox = new ScenarioDialogBox (eventBus, experimentConditions);
+		    	  dialogBox.center();
+		      }
+		    };
+		    timer.schedule(1000);
+		
+	};
+
+};

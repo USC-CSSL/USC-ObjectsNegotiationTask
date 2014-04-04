@@ -18,5 +18,4 @@ public interface AgentEmotionsInternationalizationConstants extends Constants {
 
 	@DefaultStringValue("[TRANSLATION MISSING] Sad")
 	String sad();
-
 };

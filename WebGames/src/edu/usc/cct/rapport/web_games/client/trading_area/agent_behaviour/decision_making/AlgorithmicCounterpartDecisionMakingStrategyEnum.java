@@ -13,6 +13,9 @@ public enum AlgorithmicCounterpartDecisionMakingStrategyEnum {
 	prespecifiedNonconcederSteepSlope,
 	randomStrategy2,
 	randomStrategy,
+	prespecifiedSymbolicAgent,
+	prespecifiedFinancialAgent,
+	SymbolicOrFinancialAgents,
 	titfortat;
 
 	public String toString() {
@@ -38,11 +41,20 @@ public enum AlgorithmicCounterpartDecisionMakingStrategyEnum {
 /*		case prespecifiedNonconcederLastOfferFixed:
 			result = "Non-conceder, using its least greedy preprogrammed offers.";
 			break;*/
+		case prespecifiedSymbolicAgent:
+			result = "Symbolic agent, symbolic concessions in the second half";
+			break;
+		case prespecifiedFinancialAgent:
+			result = "Financial agent, financial concessions in the second half";
+			break;
 		case randomStrategy2:
 			result = "Random2: Non-conceder or Conceder";
 			break;
 		case randomStrategy:
 			result = "Random: Non-conceder, Non-conceder2, Conceder or Conceder2";
+			break;
+		case SymbolicOrFinancialAgents:
+			result = "Random: Symbolic agent, Financial agent";
 			break;
 		case titfortat:
 			result = "Tit for tat";
@@ -110,6 +122,12 @@ public enum AlgorithmicCounterpartDecisionMakingStrategyEnum {
 			break;
 		case prespecifiedNonconcederSteepSlope:
 			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedNonconcederSteepSlope(), 24 - negotiationSessionPlyCount);
+			break;
+		case prespecifiedSymbolicAgent:
+			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedSymbolicAgent(), 24 - negotiationSessionPlyCount);
+			break;
+		case prespecifiedFinancialAgent:
+			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedFinancialAgent(), 24 - negotiationSessionPlyCount);
 			break;
 		case titfortat:
 			tactic = new TitfortatPotentialCounterproposalTactic();
