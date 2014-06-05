@@ -19,6 +19,10 @@ public enum FacialExpressionEnum {
 	angry_neutral2,
 	angry_neutral_player,
 	angry_neutral_player2,
+	happy_neutral_player,
+	happy_neutral_player2,
+	content_neutral_player,
+	content_neutral_player2,
 	sad_neutral,
 	sad_neutral2,
 	sad_neutral_player,
@@ -80,6 +84,18 @@ public enum FacialExpressionEnum {
 			break;
 		case sad_neutral_player2:
 			result = constants.sad();
+			break;
+		case happy_neutral_player:
+			result = constants.happy();
+			break;
+		case happy_neutral_player2:
+			result = constants.happy();
+			break;
+		case content_neutral_player:
+			result = constants.content();
+			break;
+		case content_neutral_player2:
+			result = constants.content();
 			break;
 		default:
 			final IllegalStateException e = new IllegalStateException("Unhandled " + FacialExpressionEnum.class.getName() + " in " + FacialExpressionEnum.class.getName() + ".getDescription()");
@@ -153,6 +169,18 @@ public enum FacialExpressionEnum {
 			break;
 		case sad_neutral_player2:
 			hoverHint = constants.sad();
+			break;
+		case happy_neutral_player:
+			hoverHint = constants.happy();
+			break;
+		case happy_neutral_player2:
+			hoverHint = constants.happy();
+			break;
+		case content_neutral_player:
+			hoverHint = constants.content();
+			break;
+		case content_neutral_player2:
+			hoverHint = constants.content();
 			break;
 		default:
 			final IllegalStateException e = new IllegalStateException("Unhandled " + FacialExpressionEnum.class.getName() + " in " + FacialExpressionEnum.class.getName() + ".getDescription()");

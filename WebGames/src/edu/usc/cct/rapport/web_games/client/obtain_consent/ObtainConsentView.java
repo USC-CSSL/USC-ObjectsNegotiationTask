@@ -36,13 +36,6 @@ public class ObtainConsentView extends WebGamesView implements IObtainConsentVie
 		viewBasePanel = new AbsolutePanel();
 
 		anchorPanel.add(viewBasePanel);
-
-/*// ek test
-		final RichTextArea textAreaConsentInquiryText = new RichTextArea();
-		textAreaConsentInquiryText.setHTML("UserAgent: " + Window.Navigator.getUserAgent());
-		textAreaConsentInquiryText.setHeight("40px");
-		textAreaConsentInquiryText.setWidth("600px");
-		viewBasePanel.add(textAreaConsentInquiryText);*/
 		
 		if (Window.Navigator.getUserAgent().contains("Firefox")) {
 			populate(eventBus, placeController);

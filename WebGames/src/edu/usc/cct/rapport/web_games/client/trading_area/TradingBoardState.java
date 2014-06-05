@@ -40,10 +40,14 @@ public class TradingBoardState {
 //			result[1][col] = itemsPerTradingObjectCategoryCount;
 //		};
 		
-		result[0][1] = itemsPerTradingObjectCategoryCount;							// 140210: for Shasha's experiment
+/*		result[0][1] = itemsPerTradingObjectCategoryCount;							// 140210: for Shasha's experiment
 		result[0][2] = itemsPerTradingObjectCategoryCount;							// 140210: for Shasha's experiment
-		result[agentAreasOnTradingBoard-1][0] = itemsPerTradingObjectCategoryCount;	// 140210: for Shasha's experiment
-
+		result[agentAreasOnTradingBoard-1][0] = itemsPerTradingObjectCategoryCount;	// 140210: for Shasha's experiment */
+		
+		result[1][0] = itemsPerTradingObjectCategoryCount;							// 140525: for Shasha's follow-up experiment
+		result[1][1] = itemsPerTradingObjectCategoryCount;							// 140525: for Shasha's follow-up experiment
+		result[0][2] = itemsPerTradingObjectCategoryCount;	// 140525: for Shasha's follow-up experiment
+		
 		return result;
 	};
 

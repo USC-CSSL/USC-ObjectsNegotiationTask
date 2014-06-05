@@ -37,6 +37,32 @@ public enum AgentEnum {
 
 		return result;
 	};
+	
+	
+/*	String getDisplayName(final Integer expScenario) {
+
+		final String result;
+
+		initializeClientInternationalizationConstantsIfNecessary();
+
+		switch (this) {
+		case counterpart:
+			if(expScenario == 1 || expScenario == 4)
+				result = constants.republican_counterpartDisplayName();
+			else if (expScenario == 2 || expScenario == 5)
+				result = constants.democratic_counterpartDisplayName();
+			else		
+				result = constants.counterpartDisplayName();
+			break;
+		case player:
+			result = constants.playerDisplayName();
+			break;
+		default:
+			throw new IllegalStateException("Unhandled AgentEnum in AgentEnum.getName()");			
+		};
+
+		return result;
+	};*/
 
 
 	String getValuationDescription(final ValuationCategoryEnum valuationCategoryEnum) {

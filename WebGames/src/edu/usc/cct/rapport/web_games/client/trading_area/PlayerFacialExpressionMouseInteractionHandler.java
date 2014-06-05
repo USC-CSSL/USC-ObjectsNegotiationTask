@@ -54,6 +54,18 @@ final class PlayerFacialExpressionMouseInteractionHandler implements MouseDownHa
 					} else {
 						playerEmotionExpression.setFacialExpression(FacialExpressionEnum.sad_neutral_player);
 					}
+				} else if(chosenFacialExpression.equals(FacialExpressionEnum.happy)) {
+					if(playerEmotionExpression.getFacialExpression().equals(FacialExpressionEnum.happy_neutral_player)) {
+						playerEmotionExpression.setFacialExpression(FacialExpressionEnum.happy_neutral_player2);
+					} else {
+						playerEmotionExpression.setFacialExpression(FacialExpressionEnum.happy_neutral_player);
+					}
+				} else if(chosenFacialExpression.equals(FacialExpressionEnum.content)) {
+					if(playerEmotionExpression.getFacialExpression().equals(FacialExpressionEnum.content_neutral_player)) {
+						playerEmotionExpression.setFacialExpression(FacialExpressionEnum.content_neutral_player2);
+					} else {
+						playerEmotionExpression.setFacialExpression(FacialExpressionEnum.content_neutral_player);
+					}
 				} else {
 					playerEmotionExpression.setFacialExpression(chosenFacialExpression);
 				}

@@ -496,6 +496,39 @@ public interface HelpWindowInternationalizationConstants extends Constants {
 
 	@DefaultStringValue("[TRANSLATION MISSING] Would you support or oppose Snowden to accept a financial reward in order to return the classified documents?")
 	String NSA_Question5();	
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Do you support or oppose the Immigration Reform Bill?")
+	String SV_Question_Immigration_Reform_Bill();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] Is there a dollar amount that you would accept to switch your position on the Immigration Reform Bill?")
+	String SV_Question_Immigration_Reform_Bill2();	
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Do you support or oppose the Gun Control Reform Bill?")
+	String SV_Question_Gun_Control_Reform_Bill();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] Is there a dollar amount that you would accept to switch your position on the Gun Control Reform Bill?")
+	String SV_Question_Gun_Control_Reform_Bill2();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] Do you think it is acceptable for politicians to switch positions between public and private sector?")
+	String SV_Question_Private_Sector();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] Is there a dollar amount that you would accept to switch your position on politician's workplace?")
+	String SV_Question_Private_Sector2();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] Support")
+	String support();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] Oppose")
+	String oppose();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] Not sure")
+	String notSure();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] Yes")
+	String yes();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] No")
+	String no();	
 
 	//String btnOk_html();
 };

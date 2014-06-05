@@ -63,4 +63,13 @@ public interface TradingObjectsInternationalizationConstants extends Constants {
 	
 	@DefaultStringValue("[TRANSLATION MISSING] Bonus")
 	String sacredObjects_bonus_Description();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Immigration Reform Bill")
+	String sacredObjects_immigration_bill_Description();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Gun Control Reform Bill")
+	String sacredObjects_gun_bill_Description();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Board member positions in the private sector")
+	String sacredObjects_private_sector_Description();
 };

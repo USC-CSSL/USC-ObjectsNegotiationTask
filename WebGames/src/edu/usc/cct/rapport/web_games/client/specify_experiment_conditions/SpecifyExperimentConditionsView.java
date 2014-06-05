@@ -90,7 +90,7 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 			if (TradingObjectSetEnum.placeholder_to_allow_initialization_prior_to_trading_object_set_selection.equals(tradingObjectSetEnum)) continue;
 			listBoxSelectTradingObjectSetEnum.addItem(tradingObjectSetEnum.toString(), tradingObjectSetEnum.name());
 		};
-		listBoxSelectTradingObjectSetEnum.setSelectedIndex(5);
+		listBoxSelectTradingObjectSetEnum.setSelectedIndex(6);
 		viewBasePanel.add(listBoxSelectTradingObjectSetEnum);
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
@@ -228,12 +228,14 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 		labelWhichScienario.addStyleName(largeFontSizeStyleName);
 		viewBasePanel.add(labelWhichScienario);
 		final ListBox ListlabelWhichScienario = new ListBox();
-		ListlabelWhichScienario.addItem("NSA scenario", Integer.toString(1));
-/*		ListlabelWhichScienario.addItem("Random", Integer.toString(1));
-		ListlabelWhichScienario.addItem("Scenario 1", Integer.toString(2));
+//		ListlabelWhichScienario.addItem("NSA scenario", Integer.toString(1));
+		ListlabelWhichScienario.addItem("Democratic scenario", Integer.toString(1));
+		ListlabelWhichScienario.addItem("Republican scenario", Integer.toString(2));
+		ListlabelWhichScienario.addItem("Random", Integer.toString(3));
+/*		ListlabelWhichScienario.addItem("Scenario 1", Integer.toString(2));
 		ListlabelWhichScienario.addItem("Scenario 2", Integer.toString(3));
 		ListlabelWhichScienario.addItem("Scenario 3", Integer.toString(4));*/
-		ListlabelWhichScienario.setSelectedIndex(1);
+		ListlabelWhichScienario.setSelectedIndex(3);
 		viewBasePanel.add(ListlabelWhichScienario);
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));

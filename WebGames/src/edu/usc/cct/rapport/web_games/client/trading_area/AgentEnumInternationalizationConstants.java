@@ -6,6 +6,12 @@ public interface AgentEnumInternationalizationConstants extends Constants {
 
 	@DefaultStringValue("[TRANSLATION MISSING] Counterpart's Name")
 	String counterpartDisplayName();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Republican Party")
+	String republican_counterpartDisplayName();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Democratic Party")
+	String democratic_counterpartDisplayName();
 
 	@DefaultStringValue("[TRANSLATION MISSING] Player's Name")
 	String playerDisplayName();

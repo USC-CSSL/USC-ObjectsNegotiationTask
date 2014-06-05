@@ -24,9 +24,11 @@ public class ScenarioDialogBox extends DialogBox {
 	@SuppressWarnings("unused")
 //	final private EventBus eventBus;
 	
+//	public ScenarioDialogBox(final EventBus eventBus, final ExperimentConditions experimentConditions){
 	public ScenarioDialogBox(final EventBus eventBus, final ExperimentConditions experimentConditions){
 	super(false, true);
 //	this.eventBus = eventBus;
+	
 	
 	setHTML(constants.scenario_Window_Title());
 		
@@ -47,8 +49,15 @@ public class ScenarioDialogBox extends DialogBox {
 			richTextArea.setHTML(constants.scenario_textB());
 		if(experimentConditions.getExpScenario()==4)
 			richTextArea.setHTML(constants.scenario_textC());*/
-		richTextArea.setHTML(constants.scenario_symbolic());
+//		richTextArea.setHTML(constants.scenario_symbolic());
+		
+		if(experimentConditions.getExpScenario() == 1 || experimentConditions.getExpScenario() == 4)
+			richTextArea.setHTML(constants.scenario_democratic()); // liberal
+		
+		if(experimentConditions.getExpScenario() == 2 || experimentConditions.getExpScenario() == 5)
+			richTextArea.setHTML(constants.scenario_republican()); // conservative
 
+		
 		Button button = new Button(constants.ok_button());
 //		absolutePanel.add(button, 440, 569);
 		absolutePanel.add(button, 640, 515);
@@ -60,7 +69,8 @@ public class ScenarioDialogBox extends DialogBox {
 //				final StartGameHelpWindowDialogBox dialogBox = new StartGameHelpWindowDialogBox(eventBus, 1, experimentConditions);
 //				final PreGameQuestionnaireDialogBox dialogBox  = new PreGameQuestionnaireDialogBox(eventBus, 1, experimentConditions);
 //				final ScenarioCheckQuizDialogBox dialogBox = new ScenarioCheckQuizDialogBox(eventBus, experimentConditions);
-				final ScenarioCheckQuizforNSADialogBox dialogBox = new ScenarioCheckQuizforNSADialogBox(eventBus, experimentConditions);
+//				final ScenarioCheckQuizforNSADialogBox dialogBox = new ScenarioCheckQuizforNSADialogBox(eventBus, experimentConditions);
+				final ScenarioCheckQuizforPoliticalPartyDialogBox dialogBox = new ScenarioCheckQuizforPoliticalPartyDialogBox(eventBus, experimentConditions);
 				dialogBox.center();
 			}
 		});
@@ -73,22 +83,17 @@ public class ScenarioDialogBox extends DialogBox {
 		
 		AbsolutePanel absolutePanel = new AbsolutePanel();
 		setWidget(absolutePanel);
-//		absolutePanel.setSize("545px", "595px");
 		absolutePanel.setSize("750px", "550px");
 		
 		
 		RichTextArea richTextArea = new RichTextArea();
 		absolutePanel.add(richTextArea, 0, 0);
-//		richTextArea.setSize("537px", "559px");
 		richTextArea.setSize("740px", "505px");
 		
-/*		if(expScenario==2)
-			richTextArea.setHTML(constants.scenario_textA());
-		if(expScenario==3)
-			richTextArea.setHTML(constants.scenario_textB());
-		if(expScenario==4)
-			richTextArea.setHTML(constants.scenario_textC());*/
-		richTextArea.setHTML(constants.scenario_symbolic());
+		if(expScenario == 1 || expScenario == 4)
+			richTextArea.setHTML(constants.scenario_democratic());
+		if(expScenario == 2 || expScenario == 5)
+			richTextArea.setHTML(constants.scenario_republican());
 		
 		Button button = new Button(constants.ok_button());
 //		absolutePanel.add(button, 440, 569);

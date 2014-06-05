@@ -161,7 +161,8 @@ public class MoralFoundationsQuestionnaire4DialogBox extends DialogBox {
 				experimentConditions.setMFQ_31(userAnswer[6]);
 				experimentConditions.setMFQ_32(userAnswer[7]);
 				
-				final ScenarioDialogBox dialogBox = new ScenarioDialogBox (eventBus, experimentConditions);
+//				final ScenarioDialogBox dialogBox = new ScenarioDialogBox (eventBus, experimentConditions);
+				final DemographicsDialogBox dialogBox = new DemographicsDialogBox (eventBus, experimentConditions);
 				dialogBox.center();
 			}
 		});

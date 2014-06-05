@@ -185,10 +185,11 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 		viewBasePanel.addEast(dockLayoutPanelRightPeriphery, 225.0);
 
 		counterpartEmotionExpressionWidget = new AgentEmotionExpressionWidget(AgentEnum.counterpart, FacialExpressionEnum.neutral, this.facialExpressionStyleEnum, 215);
+//		counterpartEmotionExpressionWidget = new AgentEmotionExpressionWidget(AgentEnum.counterpart, FacialExpressionEnum.neutral, this.facialExpressionStyleEnum, 215, this.expScenario);
 		dockLayoutPanelRightPeriphery.addNorth(counterpartEmotionExpressionWidget, 180);
 
-//		final FacialExpressionEnum[] desiredImagePresentationOrder = new FacialExpressionEnum[]{FacialExpressionEnum.happy, FacialExpressionEnum.content, FacialExpressionEnum.neutral, FacialExpressionEnum.angry, FacialExpressionEnum.sad};
-		final FacialExpressionEnum[] desiredImagePresentationOrder = new FacialExpressionEnum[]{FacialExpressionEnum.neutral, FacialExpressionEnum.angry, FacialExpressionEnum.sad};
+		final FacialExpressionEnum[] desiredImagePresentationOrder = new FacialExpressionEnum[]{FacialExpressionEnum.happy, FacialExpressionEnum.content, FacialExpressionEnum.neutral, FacialExpressionEnum.angry, FacialExpressionEnum.sad};
+//		final FacialExpressionEnum[] desiredImagePresentationOrder = new FacialExpressionEnum[]{FacialExpressionEnum.neutral, FacialExpressionEnum.angry, FacialExpressionEnum.sad};
 		final FacialExpressionEnum originalSelection = FacialExpressionEnum.neutral;
 		playerEmotionSelection = new AgentEmotionSelectionWidget(eventBus, FacialExpressionStyleEnum.drama_masks, desiredImagePresentationOrder, originalSelection);
 		dockLayoutPanelRightPeriphery.addSouth(playerEmotionSelection, 166.0+180.0);
@@ -510,7 +511,7 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 		//final PreGameQuestionnaireDialogBox dialogBox;
 		Timer timer = new Timer() {
 		      public void run() {
-		    	  final PreGameQuestionnaireDialogBox dialogBox  = new PreGameQuestionnaireDialogBox(eventBus, temp, experimentConditions);
+		    	  final PreGameQuestionnaire1DialogBox dialogBox  = new PreGameQuestionnaire1DialogBox(eventBus, experimentConditions);
 		    	  dialogBox.center();
 		      }
 		    };

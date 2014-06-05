@@ -44,9 +44,10 @@ public class NegotiationConcludedDialogBox extends DialogBox {
 				hide();
 //				final ValueOfExpressionQuestionnaire1DialogBox dialogBox = new ValueOfExpressionQuestionnaire1DialogBox (eventBus, experimentConditions);
 //				final DemographicsDialogBox dialogBox = new DemographicsDialogBox (eventBus, experimentConditions); // To ease testing
-				final NSAprinciplesQuestionnaire1DialogBox dialogBox = new NSAprinciplesQuestionnaire1DialogBox(eventBus, experimentConditions);
+//				final NSAprinciplesQuestionnaire1DialogBox dialogBox = new NSAprinciplesQuestionnaire1DialogBox(eventBus, experimentConditions);
 //				final ValueOfExpressionQuestionnaireDialogBox dialogBox = new ValueOfExpressionQuestionnaireDialogBox (eventBus, experimentConditions);
 //				final PostGameQuestionnaireDialogBox dialogBox = new PostGameQuestionnaireDialogBox (eventBus, experimentConditions);
+				final CommentDialogBox dialogBox = new CommentDialogBox (eventBus, experimentConditions);
 				dialogBox.center();
 				//eventBus.fireEvent(new LogExperimentInformationEvent());
 				

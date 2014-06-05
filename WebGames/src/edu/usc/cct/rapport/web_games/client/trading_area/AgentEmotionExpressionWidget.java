@@ -60,6 +60,35 @@ public class AgentEmotionExpressionWidget extends Composite {
 		
 		
 	};
+	
+	
+/*	public AgentEmotionExpressionWidget(final AgentEnum agentEnum, final FacialExpressionEnum facialExpressionEnum, final FacialExpressionStyleEnum facialExpressionStyleEnum, final Integer widthHint, final Integer expScenario) {
+
+		this.agentEnum = agentEnum;
+
+		final Integer width = Math.max(targetPixelWidthAfterScaling, widthHint);
+		final String pixelWidth = inPixels(width);
+
+		this.flexTableBasePanel = new FlexTable();
+		initWidget(this.flexTableBasePanel);
+		this.addStyleName(agentEmotionExpressionStyleName);
+		this.flexTableBasePanel.setVisible(true);
+
+		this.labelDisplayName = new Label(this.agentEnum.getDisplayName(expScenario));
+		this.labelDisplayName.addStyleName(agentNameStyle);
+		this.labelDisplayName.addStyleName(verticalAlignMiddle);
+		this.labelDisplayName.setWidth(pixelWidth);
+		this.labelDisplayName.setHeight(pixelHeight);
+		this.labelDisplayName.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+		this.labelDisplayName.setVisible(true);
+		this.flexTableBasePanel.setWidget(0, 0, this.labelDisplayName);
+
+		final int boundingWidthInPixels = Math.max(emoticonDiameter, width);
+		this.facialExpressionWidget = new FacialExpressionWidget(boundingWidthInPixels, emoticonDiameter, true, facialExpressionStyleEnum, facialExpressionEnum);
+		this.flexTableBasePanel.setWidget(1, 0, this.facialExpressionWidget);
+		
+		
+	};*/
 
 
 	public FacialExpressionEnum getFacialExpression() {

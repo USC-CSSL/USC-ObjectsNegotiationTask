@@ -1,5 +1,7 @@
 package edu.usc.cct.rapport.web_games.client.trading_area;
 
+import java.util.EnumSet;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.ui.Image;
@@ -27,7 +29,10 @@ public enum TradingObjectEnum {
 	sacredObjects_hand_sanitizer,
 	sacredObjects_document,
 	sacredObjects_reform,
-	sacredObjects_bonus;
+	sacredObjects_bonus,
+	sacredObjects_immigration_bill,
+	sacredObjects_gun_bill,
+	sacredObjects_private_sector;
 
 	static final private WebGamesClientBundle webGamesClientBundle = (WebGamesClientBundle) (GWT.isClient() ? GWT.create(WebGamesClientBundle.class) : null);
 	static final private TradingObjectsInternationalizationConstants constants = (TradingObjectsInternationalizationConstants) (GWT.isClient() ? GWT.create(TradingObjectsInternationalizationConstants.class) : null);
@@ -101,6 +106,16 @@ public enum TradingObjectEnum {
 		case sacredObjects_bonus:
 			result = constants.sacredObjects_bonus_Description();
 			break;
+		case sacredObjects_immigration_bill:
+			result = constants.sacredObjects_immigration_bill_Description();
+			break;
+		case sacredObjects_gun_bill:
+			result = constants.sacredObjects_gun_bill_Description();
+			break;
+		case sacredObjects_private_sector:
+			result = constants.sacredObjects_private_sector_Description();
+			break;
+			
 		default:
 			throw new IllegalStateException("Unhandled TradingObjectEnum in TradingObjectEnum.getDescription().");
 		};
@@ -176,6 +191,15 @@ public enum TradingObjectEnum {
 			break;
 		case sacredObjects_bonus:
 			result = webGamesClientBundle.sacredObjects_bonus();
+			break;
+		case sacredObjects_immigration_bill:
+			result = webGamesClientBundle.sacredObjects_immigration_bill();
+			break;
+		case sacredObjects_gun_bill:
+			result = webGamesClientBundle.sacredObjects_gun_bill();
+			break;
+		case sacredObjects_private_sector:
+			result = webGamesClientBundle.sacredObjects_private_sector();
 			break;
 		default:
 			throw new IllegalStateException("Unhandled TradingObjectEnum in TradingObjectEnum.getImage.");
@@ -266,6 +290,15 @@ public enum TradingObjectEnum {
 				case sacredObjects_bonus:
 					result = 10;
 					break;
+				case sacredObjects_immigration_bill:
+					result = 30;
+					break;
+				case sacredObjects_gun_bill:
+					result = 20;
+					break;
+				case sacredObjects_private_sector:
+					result = 10;
+					break;
 				case blank:
 					throw new IllegalStateException("Blank is not a true trading object: its worth to the counterpart should never be queried.");
 				default:
@@ -334,6 +367,15 @@ public enum TradingObjectEnum {
 					result = 20;
 					break;
 				case sacredObjects_bonus:
+					result = 10;
+					break;
+				case sacredObjects_immigration_bill:
+					result = 30;
+					break;
+				case sacredObjects_gun_bill:
+					result = 20;
+					break;
+				case sacredObjects_private_sector:
 					result = 10;
 					break;
 				case blank:

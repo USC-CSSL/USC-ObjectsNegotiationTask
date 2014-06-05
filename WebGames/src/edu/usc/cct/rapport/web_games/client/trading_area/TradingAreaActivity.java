@@ -38,7 +38,7 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 			final int whichStrategy2 = otherRandom.nextInt(2);
 			final int whichEmotion = random.nextInt(3);
 			final int whichStrategy4 = otherRandom.nextInt(4);
-			final int whichScenario = random.nextInt(3);
+			final int whichScenario = random.nextInt(2);
 
 			TradingAreaActivity.this.experimentConditions = event.getExperimentConditions();
 			TradingAreaActivity.this.negotiationSession = new NegotiationSession(TradingAreaActivity.this.experimentConditions.getTradingObjectSetEnum(), TradingAreaActivity.this.experimentConditions.getNegotiationSessionPlyCount(), TradingAreaActivity.this.experimentConditions.getAgentWhoActsLastIfNoAgreementIsReached());
@@ -49,8 +49,13 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 				experimentConditions.setExpScenario(3);
 			} else if(experimentConditions.getExpScenario()==1 &  whichScenario==2){
 				experimentConditions.setExpScenario(4);
-			}*/
-			experimentConditions.setExpScenario(1);			
+			}
+			experimentConditions.setExpScenario(1);*/
+			if(experimentConditions.getExpScenario()==3 & whichScenario==0) {
+				experimentConditions.setExpScenario(4);				
+			} else if(experimentConditions.getExpScenario()==3 &  whichScenario==1){
+				experimentConditions.setExpScenario(5);
+			}
 			
 			AlgorithmicCounterpartDecisionMakingStrategyEnum algorithmicCounterpartDecisionMakingStrategyEnum = TradingAreaActivity.this.experimentConditions.getDecisionMakingStrategyOfAlgorithmicCounterpart(); 
 			if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy2) & whichStrategy2==0){

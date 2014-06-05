@@ -40,7 +40,8 @@ public class ScenarioCheckQuizResultDialogBox extends DialogBox {
 				hide();
 				
 				if(result) {
-					final PreGameQuestionnaireDialogBox dialogBox = new PreGameQuestionnaireDialogBox(eventBus, 1, experimentConditions);
+//					final PreGameQuestionnaireDialogBox dialogBox = new PreGameQuestionnaireDialogBox(eventBus, 1, experimentConditions);
+					final PreGameQuestionnaire1DialogBox dialogBox = new PreGameQuestionnaire1DialogBox(eventBus, experimentConditions);
 			    	dialogBox.center();
 				} else {
 					final ScenarioDialogBox dialogBox = new ScenarioDialogBox (eventBus, experimentConditions);

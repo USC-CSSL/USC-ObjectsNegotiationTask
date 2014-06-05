@@ -54,6 +54,18 @@ public interface WebGamesClientBundle extends ClientBundle {
 
 	@Source(dramaFaceMaskEmoticonDirectoryPath + "angry_neutral_noLoop2.gif")
 	ImageResource drama_face_mask_angry_neutral_player2();
+	
+	@Source(dramaFaceMaskEmoticonDirectoryPath + "happy_neutral_noLoop.gif")
+	ImageResource drama_face_mask_happy_neutral_player();
+
+	@Source(dramaFaceMaskEmoticonDirectoryPath + "happy_neutral_noLoop2.gif")
+	ImageResource drama_face_mask_happy_neutral_player2();
+
+	@Source(dramaFaceMaskEmoticonDirectoryPath + "content_neutral_noLoop.gif")
+	ImageResource drama_face_mask_content_neutral_player();
+
+	@Source(dramaFaceMaskEmoticonDirectoryPath + "content_neutral_noLoop2.gif")
+	ImageResource drama_face_mask_content_neutral_player2();
 
 	@Source(dramaFaceMaskEmoticonDirectoryPath + "Angry.gif")
 	ImageResource drama_face_mask_displeased();
@@ -132,4 +144,13 @@ public interface WebGamesClientBundle extends ClientBundle {
 
 	@Source(sacredObjectsPath + "money.jpg")
 	ImageResource sacredObjects_bonus();
+	
+	@Source(sacredObjectsPath + "immigration_bill.png")
+	ImageResource sacredObjects_immigration_bill();
+	
+	@Source(sacredObjectsPath + "gun_bill.jpg")
+	ImageResource sacredObjects_gun_bill();
+	
+	@Source(sacredObjectsPath + "private_sector.png")
+	ImageResource sacredObjects_private_sector();
 };

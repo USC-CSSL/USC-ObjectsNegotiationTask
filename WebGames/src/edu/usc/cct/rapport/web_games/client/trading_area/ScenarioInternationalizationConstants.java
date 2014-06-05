@@ -17,7 +17,13 @@ public interface ScenarioInternationalizationConstants extends Constants {
 	String scenario_textC();
 	
 	@DefaultStringValue("[TRANSLATION MISSING] scenario missing")
-	String scenario_symbolic();	
+	String scenario_symbolic();
+
+	@DefaultStringValue("[TRANSLATION MISSING] scenario missing")
+	String scenario_democratic();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] scenario missing")
+	String scenario_republican();
 
 	@DefaultStringValue("[TRANSLATION MISSING] Continue")
 	String ok_button();
@@ -155,6 +161,52 @@ public interface ScenarioInternationalizationConstants extends Constants {
 
 	@DefaultStringValue("[TRANSLATION MISSING] The reforms of operation priciples")
 	String scenario_quiz_forNSA_no3_ans3();
+	
+	// for political party
+	@DefaultStringValue("[TRANSLATION MISSING] What does the Republican Party stand for?")
+	String scenario_quiz_forPoliticalParty_no1();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] ")
+	String scenario_quiz_forPoliticalParty_no1_ans();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] For the implementation of Immigration reforms and gun control reforms")
+	String scenario_quiz_forPoliticalParty_no1_ans1();
+
+	@DefaultStringValue("[TRANSLATION MISSING] For the distribution of weapons")
+	String scenario_quiz_forPoliticalParty_no1_ans2();
+
+	@DefaultStringValue("[TRANSLATION MISSING] For leaving the current laws on Immigration and gun control in the status quo")
+	String scenario_quiz_forPoliticalParty_no1_ans3();
+
+	@DefaultStringValue("[TRANSLATION MISSING] What does the Democratic Party stand for?")
+	String scenario_quiz_forPoliticalParty_no2();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] ")
+	String scenario_quiz_forPoliticalParty_no2_ans();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] For unconditional admission of all illegal Immigrants")
+	String scenario_quiz_forPoliticalParty_no2_ans1();
+
+	@DefaultStringValue("[TRANSLATION MISSING] For the implementation of Immigration reforms and gun control reforms")
+	String scenario_quiz_forPoliticalParty_no2_ans2();
+
+	@DefaultStringValue("[TRANSLATION MISSING] For leaving the current laws on Immigration and gun control in the status quo")
+	String scenario_quiz_forPoliticalParty_no2_ans3();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] What does the other Party possess?")
+	String scenario_quiz_forPoliticalParty_no3();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] ")
+	String scenario_quiz_forPoliticalParty_no3_ans();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] the power to change the law")
+	String scenario_quiz_forPoliticalParty_no3_ans1();
+
+	@DefaultStringValue("[TRANSLATION MISSING] military style assault weapons and high capacity magazines")
+	String scenario_quiz_forPoliticalParty_no3_ans2();
+
+	@DefaultStringValue("[TRANSLATION MISSING] board member positions in the private sector")
+	String scenario_quiz_forPoliticalParty_no3_ans3();
 
 	//String btnContinue_html();
 };
