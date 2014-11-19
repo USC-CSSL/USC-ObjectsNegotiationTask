@@ -10,6 +10,7 @@ public interface WebGamesClientBundle extends ClientBundle {
 	static final String dramaFaceMaskEmoticonDirectoryPath = emoticonPackagePath + "scott_mccloud/drama_masks/";
 	static final String tradingObjectsDirectoryPath = "/images/trading_objects/";
 	static final String squigglesDirectoryPath = tradingObjectsDirectoryPath + "squiggles/";
+	static final String fruitsPath = tradingObjectsDirectoryPath + "fruits/";
 	static final String istockphotoTradingObjectsDirectoryPath = tradingObjectsDirectoryPath + "istockphoto_dot_com/";
 	static final String sacredObjectsPath = tradingObjectsDirectoryPath + "sacred_objects/";
 
@@ -105,6 +106,48 @@ public interface WebGamesClientBundle extends ClientBundle {
 
 	@Source(squigglesDirectoryPath + "squiggle_8.png")
 	ImageResource squiggle_8();
+	
+	@Source(fruitsPath + "apple.png")
+	ImageResource fruits_apple();
+
+	@Source(fruitsPath + "banana.png")
+	ImageResource fruits_banana();
+
+	@Source(fruitsPath + "orange.png")
+	ImageResource fruits_orange();
+	
+/*	@Source(fruitsPath + "lemon.png")
+	ImageResource fruits_lemon();
+
+	@Source(fruitsPath + "pepper.png")
+	ImageResource fruits_pepper();*/
+	
+	@Source(fruitsPath + "melon.png")
+	ImageResource fruits_melon();
+
+	@Source(fruitsPath + "pineapple.png")
+	ImageResource fruits_pineapple();
+
+	@Source(fruitsPath + "watermelon.png")
+	ImageResource fruits_watermelon();
+
+	@Source(fruitsPath + "strawberry.png")
+	ImageResource fruits_strawberry();
+
+	@Source(fruitsPath + "blueberry.png")
+	ImageResource fruits_blueberry();
+
+	@Source(fruitsPath + "cherry.png")
+	ImageResource fruits_cherry();
+
+	@Source(fruitsPath + "pepper.png")
+	ImageResource veggie_pepper();
+
+	@Source(fruitsPath + "broccoli.png")
+	ImageResource veggie_broccoli();
+
+	@Source(fruitsPath + "mushroom.png")
+	ImageResource veggie_mushroom();
 
 	@Source(istockphotoTradingObjectsDirectoryPath + "symbol1.jpg")
 	ImageResource istockphoto_medication();

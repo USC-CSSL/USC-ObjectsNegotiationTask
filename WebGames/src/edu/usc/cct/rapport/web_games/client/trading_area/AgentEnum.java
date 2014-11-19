@@ -3,6 +3,7 @@ package edu.usc.cct.rapport.web_games.client.trading_area;
 import com.google.gwt.core.client.GWT;
 
 public enum AgentEnum {
+//	system,
 	counterpart,
 	player;
 
@@ -72,20 +73,22 @@ public enum AgentEnum {
 		initializeClientInternationalizationConstantsIfNecessary();
 
 		switch (valuationCategoryEnum) {
-		case bestAlternativeToNegotiatedAgreement:
+/*		case bestAlternativeToNegotiatedAgreement:
 			{
 				switch (this) {
 				case counterpart:
-					result = constants.counterpartBATNAValuationDescription();
+//					result = constants.counterpartBATNAValuationDescription();
+					result = "";
 					break;
 				case player:
-					result = constants.playerBATNAValuationDescription();
+//					result = constants.playerBATNAValuationDescription();
+					result = "";
 					break;
 				default:
 					throw new IllegalStateException("Unhandled AgentEnum in AgentEnum.getValuationDescription()");
 				};
 			};
-			break;
+			break;*/
 		case proposalAsDiagrammed:
 			{
 				switch (this) {

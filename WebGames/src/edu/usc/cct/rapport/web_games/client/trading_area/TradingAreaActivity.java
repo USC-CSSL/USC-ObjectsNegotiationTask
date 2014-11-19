@@ -3,17 +3,11 @@ package edu.usc.cct.rapport.web_games.client.trading_area;
 import java.util.Random;
 
 import com.google.gwt.core.client.Duration;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.place.shared.PlaceController;
 //import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.HasHorizontalAlignment;
-import com.google.gwt.user.client.ui.HasVerticalAlignment;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.inject.Inject;
 
 import edu.usc.cct.rapport.web_games.client.WebGamesActivity;
@@ -162,6 +156,14 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 			view.updateTradingActionButtonEnablementBasedOnTradingBoardState(negotiationSession.getWhoseTurnIsNext(), negotiationSession.getMostRecentProposal());
 		};
 	};
+	
+	final private class HandleUserActionAndUpdate implements ProposalRejectedEventHandler {
+		@Override
+		public void onProposalRejection(final ProposalRejectedEvent event) {
+//			assert (negotiationSession.getWhoseTurnIsNext().equals(event.getTradingAction().getPerformingAgent()));
+			TradingAreaActivity.this.negotiationSession.add(event.getTradingAction());
+		}
+	}
 
 
 	final private class HandleTasksUponNegotiationSessionConclusion implements ProposalAcceptedEventHandler, BATNAClaimMadeEventHandler {
@@ -191,7 +193,9 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 		@Override
 		public void onNegotiationSessionConclusion(final NegotiationSessionConcludedEvent event) {
 			assert(null != TradingAreaActivity.this.finalExperimentInformation);
-			TradingAreaActivity.this.view.showNegotiationConcludedDialogBox(TradingAreaActivity.this.experimentConditions);
+//			TradingAreaActivity.this.view.showNegotiationConcludedDialogBox(TradingAreaActivity.this.experimentConditions);
+			// EK 10/30/14: added negotiation session info
+			TradingAreaActivity.this.view.showNegotiationConcludedDialogBox(TradingAreaActivity.this.experimentConditions, TradingAreaActivity.this.negotiationSession);
 		};
 	};
 
@@ -248,6 +252,7 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 		resettableEventBus.addHandler(ProposalMadeEvent.TYPE, new HandleUserActionAndExecuteTurnOfAlgorithmicOpponent());
 		resettableEventBus.addHandler(BATNAClaimMadeEvent.TYPE, new HandleTasksUponNegotiationSessionConclusion());
 		resettableEventBus.addHandler(ProposalAcceptedEvent.TYPE, new HandleTasksUponNegotiationSessionConclusion());
+		resettableEventBus.addHandler(ProposalRejectedEvent.TYPE, new HandleUserActionAndUpdate());
 		resettableEventBus.addHandler(NegotiationSessionConcludedEvent.TYPE, new PromptUserToAcknowledgeNegotiationConclusion());
 		resettableEventBus.addHandler(LogExperimentInformationEvent.TYPE, new LogExperimentInformation());
 	};
@@ -257,17 +262,42 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 		if (negotiationSession.getPlyRemaining() ==  TradingAreaActivity.this.experimentConditions.getNegotiationSessionPlyCount() & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible() ){
 			//TradingAreaActivity.this.view.showStartGameHelpWindowDialogBox(1);
 			//TradingAreaActivity.this.view.showScenarioDialogBox(TradingAreaActivity.this.experimentConditions);
-			TradingAreaActivity.this.view.showParticipantIDBox(TradingAreaActivity.this.experimentConditions);
+			//TradingAreaActivity.this.view.showParticipantIDBox(TradingAreaActivity.this.experimentConditions); // EK 10/23/14: commented out for fMRI experiment
+			TradingAreaActivity.this.experimentConditions.setParticipantID(Long.toString(System.currentTimeMillis()));
+//		} else if (negotiationSession.getPlyRemaining() == 1 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible() & AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext())){
+//			TradingAreaActivity.this.view.showLastRoundHelpWindowDialogBox(1);
+		} else if ((negotiationSession.getPlyRemaining()%3) == 2 & AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext())){
+//		} else if (AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext())){
+			// EK 10/08/14: added random delay
+			TradingAreaActivity.this.view.showReviewingOfferDialogBox(newTradingBoardState, negotiationSession);
+		} else {
+			
 		}
-		if (negotiationSession.getPlyRemaining() == 1 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible() & AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext())){
-		TradingAreaActivity.this.view.showLastRoundHelpWindowDialogBox(1);
-		}	
-
-		this.view.setTradingBoardState(newTradingBoardState);
-		this.view.updateTradingActionButtonAvailabilityWithoutRegardToTradingBoardState(negotiationSession);
-		this.view.updateTradingActionButtonEnablementBasedOnTradingBoardState(negotiationSession.getWhoseTurnIsNext(), negotiationSession.getMostRecentProposal());
-		this.view.updateTradingAreaViewAfterTradingBoardStateChange();
-		this.view.setTradingBoardEnabled(AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext()) && (1 < negotiationSession.getPlyRemaining()));
+		
+		if (negotiationSession.getPlyRemaining() ==  TradingAreaActivity.this.experimentConditions.getNegotiationSessionPlyCount() & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible() ){
+			this.view.setTradingBoardState(newTradingBoardState);
+			this.view.updateTradingActionButtonAvailabilityWithoutRegardToTradingBoardState(negotiationSession);
+			this.view.updateTradingActionButtonEnablementBasedOnTradingBoardState(negotiationSession.getWhoseTurnIsNext(), negotiationSession.getMostRecentProposal());
+			this.view.updateTradingAreaViewAfterTradingBoardStateChange();
+			this.view.setTradingBoardEnabled(AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext()) && (1 < negotiationSession.getPlyRemaining()));
+		} else {
+			this.view.setTradingBoardState(newTradingBoardState);
+			this.view.updateTradingActionButtonAvailabilityWithoutRegardToTradingBoardState(negotiationSession);
+			this.view.updateTradingActionButtonEnablementBasedOnTradingBoardState(negotiationSession.getWhoseTurnIsNext(), negotiationSession.getMostRecentProposal());
+			this.view.updateTradingAreaViewAfterTradingBoardStateChange();
+			
+			Timer timer = new Timer() {
+				public void run() {
+					TradingAreaActivity.this.view.setTradingBoardEnabled(AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext()) && (1 < negotiationSession.getPlyRemaining()));
+				}
+			};
+			
+	//		int randomDelay =(int)(Math.random() * (8000 - 5000 + 1) + 5000);
+		    timer.schedule(5500); 		// 5.5sec delay
+		    
+			this.view.setTradingBoardEnabled(false);
+		}
+//		this.view.setTradingBoardEnabled(AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext()) && (1 < negotiationSession.getPlyRemaining()));
 //		this.view.setReviewScenarioButtonEnabled("");
 	};
 
@@ -303,6 +333,13 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 //				}
 
 				resettableEventBus.fireEvent(new ProposalMadeEvent(tradingAction));
+/*			    Timer t = new Timer() { // EK 10/08/14: added random delay
+			        @Override
+			        public void run() {
+			        }
+			      };
+			      t.schedule((int)(Math.random() * (8000 - 5000 + 1) + 5000)); 		// random delay between 5sec and 8sec
+*/
 				break;
 			case acceptProposal:
 //				TradingAreaActivity.this.view.showProposalResultDialogBox("accepted");

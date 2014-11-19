@@ -31,8 +31,10 @@ public class AgentObjectValuationWidget extends Composite {
 
 		this.flexTableBasePanel = new FlexTable();
 		initWidget(this.flexTableBasePanel);
-		this.addStyleName(agentObjectValuationStyleName);
+//		this.addStyleName(agentObjectValuationStyleName);
+		this.setStyleName("ict-rapport-grid-2x2");
 		this.flexTableBasePanel.setVisible(true);
+		this.flexTableBasePanel.setWidth(width);
 
 		populateFlexTableBasePanel(this.flexTableBasePanel, this.agentEnum, this.tradingObjectSetEnum, this.width);
 	};
@@ -42,19 +44,21 @@ public class AgentObjectValuationWidget extends Composite {
 
 		flexTableBasePanel.clear();
 
-		final Label header = generateHeader(agentEnum, width);
-		flexTableBasePanel.setWidget(0, 0, header);
+//		final Label header = generateHeader(agentEnum, width);
+//		flexTableBasePanel.setWidget(0, 0, header);
 
 		for (final TradingObjectEnum tradingObjectEnum: tradingObjectSetEnum.getSetOfTradingObjectEnum()) {
 			final Image image = tradingObjectEnum.getImage();
+			image.setSize("35px", "35px");
 			final DescribedValueWidget describedValueWidget = new DescribedValueWidget(image, tradingObjectEnum.getPayoff(agentEnum));
 			this.describedValueWidgets.put(tradingObjectEnum, describedValueWidget);
-			this.flexTableBasePanel.setWidget(1 + tradingObjectEnum.ordinal(), 0, describedValueWidget);
+//			this.flexTableBasePanel.setWidget(1 + tradingObjectEnum.ordinal(), 0, describedValueWidget);
+			this.flexTableBasePanel.setWidget(tradingObjectEnum.ordinal(), 0, describedValueWidget);
 		};
 	};
 
 
-	private Label generateHeader(final AgentEnum agentEnum, final String width) {
+/*	private Label generateHeader(final AgentEnum agentEnum, final String width) {
 		final Label result = new Label();
 		result.setWidth(width);
 		result.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
@@ -71,7 +75,7 @@ public class AgentObjectValuationWidget extends Composite {
 		};
 
 		return result;
-	};
+	};*/
 
 
 	public TradingObjectSetEnum getTradingObjectSetEnum() {

@@ -14,10 +14,12 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 
@@ -87,7 +89,7 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 
 		dockLayoutPanelCounterpartArea = new DockLayoutPanel(Unit.PX);
 		
-		final Button reviewScenarioBtn = new Button("Review scenario");
+/*		final Button reviewScenarioBtn = new Button("Review scenario");
 		reviewScenarioBtn.setVisible(true);
 		reviewScenarioBtn.setEnabled(true);
 
@@ -95,13 +97,13 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 			public void onClick(final ClickEvent event) {
 				reviewScenarioDialogBox();
 			};
-		});
+		});*/
 		
 		FlexTable wrapper = new FlexTable();
 		wrapper.setSize("100%", "100%");
-		wrapper.setWidget(0, 0, reviewScenarioBtn);
-		wrapper.getFlexCellFormatter().setHorizontalAlignment(0, 0, HasHorizontalAlignment.ALIGN_RIGHT);
-		dockLayoutPanelDragDropHoldingArea.addNorth(wrapper, 30);
+//		wrapper.setWidget(0, 0, reviewScenarioBtn);
+//		wrapper.getFlexCellFormatter().setHorizontalAlignment(0, 0, HasHorizontalAlignment.ALIGN_RIGHT);
+//		dockLayoutPanelDragDropHoldingArea.addNorth(wrapper, 30);
 		
 		
 		final Button item1_up = new Button("^");
@@ -114,61 +116,27 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 //				reviewScenarioDialogBox();
 			};
 		});
-		
-		// ek buttons start
-		FlexTable wrapper_up = new FlexTable();
-		wrapper_up.setSize("100%", "100%");
-		wrapper_up.setWidget(0, 0, item1_up);
-		wrapper_up.setWidget(0, 1, item2_up);
-		wrapper_up.setWidget(0, 2, item3_up);
-		wrapper_up.setWidget(0, 3, item4_up);
-		wrapper_up.getFlexCellFormatter().setHorizontalAlignment(0, 0, HasHorizontalAlignment.ALIGN_CENTER);
-		wrapper_up.getFlexCellFormatter().setHorizontalAlignment(0, 1, HasHorizontalAlignment.ALIGN_CENTER);
-		wrapper_up.getFlexCellFormatter().setHorizontalAlignment(0, 2, HasHorizontalAlignment.ALIGN_CENTER);
-		wrapper_up.getFlexCellFormatter().setHorizontalAlignment(0, 3, HasHorizontalAlignment.ALIGN_CENTER);
-		
-		final Button item1_down = new Button("v");
-		final Button item2_down = new Button("v");
-		final Button item3_down = new Button("v");
-		final Button item4_down = new Button("v");
 
-		item1_up.addClickHandler(new ClickHandler() {				
-			public void onClick(final ClickEvent event) {
-//				reviewScenarioDialogBox();
-			};
-		});
 		
-		FlexTable wrapper_down = new FlexTable();
-		wrapper_down.setSize("100%", "100%");
-		wrapper_down.setWidget(0, 0, item1_down);
-		wrapper_down.setWidget(0, 1, item2_down);
-		wrapper_down.setWidget(0, 2, item3_down);
-		wrapper_down.setWidget(0, 3, item4_down);
-		wrapper_down.getFlexCellFormatter().setHorizontalAlignment(0, 0, HasHorizontalAlignment.ALIGN_CENTER);
-		wrapper_down.getFlexCellFormatter().setHorizontalAlignment(0, 1, HasHorizontalAlignment.ALIGN_CENTER);
-		wrapper_down.getFlexCellFormatter().setHorizontalAlignment(0, 2, HasHorizontalAlignment.ALIGN_CENTER);
-		wrapper_down.getFlexCellFormatter().setHorizontalAlignment(0, 3, HasHorizontalAlignment.ALIGN_CENTER);
-// ek buttons end
-		
-		dockLayoutPanelDragDropHoldingArea.addNorth(dockLayoutPanelCounterpartArea, 1);
-//		dockLayoutPanelDragDropHoldingArea.addNorth(dockLayoutPanelCounterpartArea, 18);
-//		dockLayoutPanelDragDropHoldingArea.addNorth(dockLayoutPanelCounterpartArea, 33);  // when there are 5 items each
+//		dockLayoutPanelDragDropHoldingArea.addNorth(dockLayoutPanelCounterpartArea, 1);  // when there are 5 items each
+		dockLayoutPanelDragDropHoldingArea.addNorth(dockLayoutPanelCounterpartArea, 30);
 //		dockLayoutPanelDragDropHoldingArea.addNorth(dockLayoutPanelCounterpartArea, 110); // when there are 3 items each
-//		dockLayoutPanelDragDropHoldingArea.addNorth(wrapper_up, 210);
+//		dockLayoutPanelDragDropHoldingArea.addNorth(wrapper_up, 210);*/
 
 		dockLayoutPanelPlayerArea = new DockLayoutPanel(Unit.PX);		
 
 //		dockLayoutPanelDragDropHoldingArea.addSouth(wrapper_down, 210);
-		dockLayoutPanelDragDropHoldingArea.addSouth(dockLayoutPanelPlayerArea, 1);
-//		dockLayoutPanelDragDropHoldingArea.addSouth(dockLayoutPanelPlayerArea, 18);
-//		dockLayoutPanelDragDropHoldingArea.addSouth(dockLayoutPanelPlayerArea, 33);  // when there are 5 items each
+//		dockLayoutPanelDragDropHoldingArea.addSouth(dockLayoutPanelPlayerArea, 1);  // when there are 5 items each
+		dockLayoutPanelDragDropHoldingArea.addSouth(dockLayoutPanelPlayerArea, 30);
 //		dockLayoutPanelDragDropHoldingArea.addSouth(dockLayoutPanelPlayerArea, 110); // when there are 3 items each
 		
 		agentDealValuationWidgets = new EnumMap<AgentEnum, AgentDealValuationWidget>(AgentEnum.class);
-		final AgentDealValuationWidget counterpartDealValuation = new AgentDealValuationWidget(AgentEnum.counterpart, 440);
+//		final AgentDealValuationWidget counterpartDealValuation = new AgentDealValuationWidget(AgentEnum.counterpart, 440);
+		final AgentDealValuationWidget counterpartDealValuation = new AgentDealValuationWidget(AgentEnum.counterpart, 480);
 		dockLayoutPanelCounterpartArea.add(counterpartDealValuation);
 		agentDealValuationWidgets.put(AgentEnum.counterpart, counterpartDealValuation);
-		final AgentDealValuationWidget playerDealValuation = new AgentDealValuationWidget(AgentEnum.player, 440);
+//		final AgentDealValuationWidget playerDealValuation = new AgentDealValuationWidget(AgentEnum.player, 440);
+		final AgentDealValuationWidget playerDealValuation = new AgentDealValuationWidget(AgentEnum.player, 480);
 		dockLayoutPanelPlayerArea.add(playerDealValuation);
 		agentDealValuationWidgets.put(AgentEnum.player, playerDealValuation);
 
@@ -179,20 +147,23 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 		tradingBoardWidget = new TradingBoardWidget(eventBus, initialTradingBoardState);
 		dockLayoutPanelDragDropHoldingArea.add(tradingBoardWidget);
 		tradingBoardWidget.setState(initialTradingBoardState);
-				
+		
 		final DockLayoutPanel dockLayoutPanelRightPeriphery = new DockLayoutPanel(Unit.PX);
 		dockLayoutPanelRightPeriphery.addStyleName(debuggingBorderStyle);
 		viewBasePanel.addEast(dockLayoutPanelRightPeriphery, 225.0);
 
 		counterpartEmotionExpressionWidget = new AgentEmotionExpressionWidget(AgentEnum.counterpart, FacialExpressionEnum.neutral, this.facialExpressionStyleEnum, 215);
 //		counterpartEmotionExpressionWidget = new AgentEmotionExpressionWidget(AgentEnum.counterpart, FacialExpressionEnum.neutral, this.facialExpressionStyleEnum, 215, this.expScenario);
-		dockLayoutPanelRightPeriphery.addNorth(counterpartEmotionExpressionWidget, 180);
+//		dockLayoutPanelRightPeriphery.addNorth(counterpartEmotionExpressionWidget, 180);
+		dockLayoutPanelRightPeriphery.addNorth(counterpartEmotionExpressionWidget, 260);
 
-		final FacialExpressionEnum[] desiredImagePresentationOrder = new FacialExpressionEnum[]{FacialExpressionEnum.happy, FacialExpressionEnum.content, FacialExpressionEnum.neutral, FacialExpressionEnum.angry, FacialExpressionEnum.sad};
+		final FacialExpressionEnum[] desiredImagePresentationOrder = new FacialExpressionEnum[]{}; // EK 10/08/14: no emotion change is allowed for participants.
+//		final FacialExpressionEnum[] desiredImagePresentationOrder = new FacialExpressionEnum[]{FacialExpressionEnum.happy, FacialExpressionEnum.content, FacialExpressionEnum.neutral, FacialExpressionEnum.angry, FacialExpressionEnum.sad};
 //		final FacialExpressionEnum[] desiredImagePresentationOrder = new FacialExpressionEnum[]{FacialExpressionEnum.neutral, FacialExpressionEnum.angry, FacialExpressionEnum.sad};
 		final FacialExpressionEnum originalSelection = FacialExpressionEnum.neutral;
 		playerEmotionSelection = new AgentEmotionSelectionWidget(eventBus, FacialExpressionStyleEnum.drama_masks, desiredImagePresentationOrder, originalSelection);
-		dockLayoutPanelRightPeriphery.addSouth(playerEmotionSelection, 166.0+180.0);
+//		dockLayoutPanelRightPeriphery.addSouth(playerEmotionSelection, 166.0+180.0);
+//		dockLayoutPanelRightPeriphery.addSouth(playerEmotionSelection, 200.0);
 		
 
 		
@@ -209,7 +180,7 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 			button.setWidth("100%");
 			button.setVisible(true);
 			button.setEnabled(true);
-			final WaitingDialogBox dialogBox = new WaitingDialogBox (eventBus);
+			final WaitingDialogBox dialogBox = new WaitingDialogBox (eventBus, "waitForCounterpart");
 
 			switch (tradingActionEnum) {
 			case makeInitialProposal:
@@ -228,8 +199,10 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 								TradingAreaView.this.eventBus.fireEvent(new ProposalMadeEvent(newTradingAction));					        
 					        }
 					      };
-				    	  dialogBox.center();
-					      t.schedule((int)(Math.random() * (8000 - 3000 + 1) + 3000)); 		// random delay between 3sec and 8sec
+					      dialogBox.setPopupPosition(0, 0);
+					      dialogBox.show(); // EK 10/27/2014: pop up the screen in the left uppermost area
+//				    	  dialogBox.center();
+					      t.schedule((int)(Math.random() * (8000 - 5000 + 1) + 5000)); 		// random delay between 5sec and 8sec
 					};
 				});
 				break;
@@ -252,24 +225,30 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 						TradingAreaView.this.eventBus.fireEvent(new BATNAClaimMadeEvent(newTradingAction));
 					};
 				});
+			case rejectProposal:
+				break;
 			};
 			horizontalPanelButtons.add(button);
 			tradingActionButtons.put(tradingActionEnum, button);
 		};
 
-		dockLayoutPanelRightPeriphery.add(horizontalPanelButtons);
+//		dockLayoutPanelRightPeriphery.add(horizontalPanelButtons);
+		dockLayoutPanelRightPeriphery.addSouth(horizontalPanelButtons, 170.0);
 
 		final DockLayoutPanel dockLayoutPayoffInformation = new DockLayoutPanel(Unit.PX);
 		dockLayoutPayoffInformation.addStyleName(debuggingBorderStyle);
 		viewBasePanel.addEast(dockLayoutPayoffInformation, 110);
 
-		counterpartObjectValuation = new AgentObjectValuationWidget(AgentEnum.counterpart, tradingObjectSetEnum, "100px");
-		dockLayoutPayoffInformation.addNorth(counterpartObjectValuation, 300);
-		playerObjectValuation = new AgentObjectValuationWidget(AgentEnum.player, tradingObjectSetEnum, "100px");
+//		counterpartObjectValuation = new AgentObjectValuationWidget(AgentEnum.counterpart, tradingObjectSetEnum, "100px");
+		counterpartObjectValuation = new AgentObjectValuationWidget(AgentEnum.counterpart, tradingObjectSetEnum, "98px");
+//		dockLayoutPayoffInformation.addNorth(counterpartObjectValuation, 300);
+		dockLayoutPayoffInformation.addNorth(new HTML(""), 40);
+		dockLayoutPayoffInformation.addNorth(counterpartObjectValuation, 270);
+//		playerObjectValuation = new AgentObjectValuationWidget(AgentEnum.player, tradingObjectSetEnum, "100px");
+		playerObjectValuation = new AgentObjectValuationWidget(AgentEnum.player, tradingObjectSetEnum, "98px");
+//		dockLayoutPayoffInformation.addSouth(playerObjectValuation, 300);
+		dockLayoutPayoffInformation.addSouth(playerObjectValuation, 210);
 
-		dockLayoutPayoffInformation.addSouth(playerObjectValuation, 300);
-		
-		
 		viewBasePanel.setVisible(true);
 		initWidget(viewBasePanel);
 	};
@@ -288,20 +267,20 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 		
 		this.counterpartDealValueVisible = experimentConditions.getCounterpartDealValueVisible();
 		if(this.counterpartDealValueVisible==false & this.counterpartEmotionExpressionVisible==false){
-			agentDealValuationWidgets.get(AgentEnum.counterpart).setLabelVisibility(ValuationCategoryEnum.bestAlternativeToNegotiatedAgreement, false);
+//			agentDealValuationWidgets.get(AgentEnum.counterpart).setLabelVisibility(ValuationCategoryEnum.bestAlternativeToNegotiatedAgreement, false);
 			agentDealValuationWidgets.get(AgentEnum.counterpart).setLabelVisibility(ValuationCategoryEnum.proposalAsDiagrammed, false);
-			agentDealValuationWidgets.get(AgentEnum.counterpart).setLabelText(ValuationCategoryEnum.bestAlternativeToNegotiatedAgreement, "\tThe Other Family");
+//			agentDealValuationWidgets.get(AgentEnum.counterpart).setLabelText(ValuationCategoryEnum.bestAlternativeToNegotiatedAgreement, "\tThe Other Family");
 			agentDealValuationWidgets.get(AgentEnum.counterpart).setLabelText(ValuationCategoryEnum.proposalAsDiagrammed, "");
 		}
 		else
 			dockLayoutPanelCounterpartArea.setVisible(this.counterpartDealValueVisible);
 		
 		
-		this.playerBATNA = experimentConditions.getPlayerBATNA();
+/*		this.playerBATNA = experimentConditions.getPlayerBATNA();
 		agentDealValuationWidgets.get(AgentEnum.player).setDealValue(ValuationCategoryEnum.bestAlternativeToNegotiatedAgreement, this.playerBATNA);
 
 		this.counterpartBATNA = experimentConditions.getCounterpartBATNA();
-		agentDealValuationWidgets.get(AgentEnum.counterpart).setDealValue(ValuationCategoryEnum.bestAlternativeToNegotiatedAgreement, this.counterpartBATNA);
+		agentDealValuationWidgets.get(AgentEnum.counterpart).setDealValue(ValuationCategoryEnum.bestAlternativeToNegotiatedAgreement, this.counterpartBATNA);*/
 	};
 
 	@Override
@@ -311,16 +290,16 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 		playerObjectValuation.setVisible(this.playerDealValuationVisible);
 		
 		this.playerDealValueVisible = experimentConditions.getPlayerDealValueVisible();
-//		dockLayoutPanelPlayerArea.setVisible(this.playerDealValueVisible);
+		dockLayoutPanelPlayerArea.setVisible(this.playerDealValueVisible);
 		
 		this.playerEmotionExpressionVisible = experimentConditions.getPlayerEmotionExpressionVisible();
 		playerEmotionSelection.setVisible(this.playerEmotionExpressionVisible);
-		//playerEmotionSelection.setFacialExpressionVisibility(this.playerEmotionExpressionVisible);
+		playerEmotionSelection.setFacialExpressionVisibility(this.playerEmotionExpressionVisible);
 
 		if(this.playerDealValueVisible==false & this.playerEmotionExpressionVisible==false){
-			agentDealValuationWidgets.get(AgentEnum.player).setLabelVisibility(ValuationCategoryEnum.bestAlternativeToNegotiatedAgreement, false);
+//			agentDealValuationWidgets.get(AgentEnum.player).setLabelVisibility(ValuationCategoryEnum.bestAlternativeToNegotiatedAgreement, false);
 			agentDealValuationWidgets.get(AgentEnum.player).setLabelVisibility(ValuationCategoryEnum.proposalAsDiagrammed, false);
-			agentDealValuationWidgets.get(AgentEnum.player).setLabelText(ValuationCategoryEnum.bestAlternativeToNegotiatedAgreement, "");
+//			agentDealValuationWidgets.get(AgentEnum.player).setLabelText(ValuationCategoryEnum.bestAlternativeToNegotiatedAgreement, "");
 			agentDealValuationWidgets.get(AgentEnum.player).setLabelText(ValuationCategoryEnum.proposalAsDiagrammed, "\t\tYour Family");
 		}
 		else 
@@ -352,10 +331,19 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 			final Button acceptProposal = tradingActionButtons.get(TradingActionEnum.acceptProposal);
 			final Button makeCounterproposal = tradingActionButtons.get(TradingActionEnum.makeCounterproposal);
 			final Button claimBATNAScore = tradingActionButtons.get(TradingActionEnum.claimBATNAValue);
+			final Button rejectProposal = tradingActionButtons.get(TradingActionEnum.rejectProposal);
+			makeInitialProposal.setStylePrimaryName("BigButton-style");
+			acceptProposal.setStylePrimaryName("BigButton-style");
+			makeCounterproposal.setStylePrimaryName("BigButton-style");
+			claimBATNAScore.setStylePrimaryName("BigButton-style");
+			
+			rejectProposal.setEnabled(false);
+			rejectProposal.setVisible(false);
 
 			final Proposal mostRecentlyOfferedProposal = negotiationSession.getMostRecentProposal();
-			acceptProposal.setEnabled(null != mostRecentlyOfferedProposal);
+//			acceptProposal.setEnabled(null != mostRecentlyOfferedProposal);
 			acceptProposal.setVisible(null != mostRecentlyOfferedProposal);
+			acceptProposal.setVisible(false);
 
 			if (1 == negotiationSession.getPlyRemaining()) {
 				// We have reached the final ply.
@@ -374,8 +362,17 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 				} else {
 					makeInitialProposal.setEnabled(false);
 					makeInitialProposal.setVisible(false);
-					makeCounterproposal.setEnabled(true);
-					makeCounterproposal.setVisible(true);
+					makeCounterproposal.setEnabled(false);
+					makeCounterproposal.setVisible(false);
+
+					Timer timer = new Timer() {
+					      public void run() {
+								makeCounterproposal.setEnabled(true);
+								makeCounterproposal.setVisible(true);
+					      }
+					};
+					timer.schedule(9000);
+
 				};
 				claimBATNAScore.setEnabled(false);
 				claimBATNAScore.setVisible(false);
@@ -446,13 +443,12 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 		final TradingObjectSetEnum tradingObjectSetEnum = this.tradingBoardWidget.getState().getTradingObjectSetEnum();
 		counterpartObjectValuation.setTradingObjectSetEnum(tradingObjectSetEnum);
 		playerObjectValuation.setTradingObjectSetEnum(tradingObjectSetEnum);
-		
-
-		
+				
 	};
 
 	@Override
-	public void showNegotiationConcludedDialogBox(final ExperimentConditions experimentConditions) {
+	public void showNegotiationConcludedDialogBox(final ExperimentConditions experimentConditions, final NegotiationSession negotiationSession) {
+//		public void showNegotiationConcludedDialogBox(final ExperimentConditions experimentConditions) {
 		Timer timer = new Timer() {
 			public void run() {
 				final Button acceptProposal = tradingActionButtons.get(TradingActionEnum.acceptProposal);
@@ -461,7 +457,8 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 		    	acceptProposal.setEnabled(false);
 		    	divideProposal.setEnabled(false);
 		    	
-				final NegotiationConcludedDialogBox dialogBox = new NegotiationConcludedDialogBox(eventBus, experimentConditions);
+//				final NegotiationConcludedDialogBox dialogBox = new NegotiationConcludedDialogBox(eventBus, experimentConditions);
+				final NegotiationConcludedDialogBox dialogBox = new NegotiationConcludedDialogBox(eventBus, experimentConditions, negotiationSession);
 				dialogBox.center();
 			}
 	    };
@@ -542,6 +539,27 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 		      }
 		};
 		timer.schedule(1000);
+	};
+	
+	@Override
+//	public void showReviewingOfferDialogBox(final int[][] tradingObjectAllocations) {
+	public void showReviewingOfferDialogBox(final TradingBoardState newTradingBoardState, final NegotiationSession negotiationSession) {
+/*	final ReviewingOfferDialogBox dialogBox = new ReviewingOfferDialogBox(eventBus);
+  	  dialogBox.setPopupPosition(0, 235);
+  	  dialogBox.show();*/
+
+		Timer timer = new Timer() {
+		      public void run() {
+//		    	  dialogBox.hide();
+//		      	  final OfferAcceptanceDialogBox dialogBoxOfferAcceptance = new OfferAcceptanceDialogBox(eventBus, tradingObjectAllocations);
+		      	  final OfferAcceptanceDialogBox dialogBoxOfferAcceptance = new OfferAcceptanceDialogBox(eventBus, newTradingBoardState, negotiationSession);
+		      	  dialogBoxOfferAcceptance.setPopupPosition(0, 0);
+		      	  dialogBoxOfferAcceptance.show();
+		      }
+		};
+		
+//		int randomDelay =(int)(Math.random() * (8000 - 5000 + 1) + 5000);
+	    timer.schedule(5000); 		// 5 sec delay for reviewing
 	};
 	
 	@Override

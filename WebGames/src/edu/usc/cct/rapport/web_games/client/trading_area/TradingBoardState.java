@@ -14,11 +14,13 @@ public class TradingBoardState {
 	static final int agentAreasOnTradingBoard = agentCount + 1;
 //	static final int distinctTradingObjectsCount = 4;
 	static final int distinctTradingObjectsCount = 3;			// 140210: for Shasha's experiment
-//	static final int itemsPerTradingObjectCategoryCount = 3;
-	static final int itemsPerTradingObjectCategoryCount = 5;
+//	static final int itemsPerTradingObjectCategoryCount = 3;	// when there are 3 items each
+	static final int itemsPerTradingObjectCategoryCount = 5;	// when there are 5 items each
 
 	static final int itemsAcrossPerTradingObjectCategoryCount = 2;
-	static final int itemsUpDownPerTradingObjectCategoryCount = 3; //2;
+	static final int itemsUpDownPerTradingObjectCategoryCount = itemsPerTradingObjectCategoryCount/2+1;
+//	static final int itemsUpDownPerTradingObjectCategoryCount = 3; 	// when there are 5 items each
+//	static final int itemsUpDownPerTradingObjectCategoryCount = 2;	// when there are 3 items each
 	static final int outerColumnsAcross = distinctTradingObjectsCount * itemsAcrossPerTradingObjectCategoryCount;
 	static final int outerRowsUpDown = agentAreasOnTradingBoard * itemsUpDownPerTradingObjectCategoryCount;
 
@@ -36,18 +38,24 @@ public class TradingBoardState {
 	static private int[][] getInitialTradingObjectAllocations() {
 
 		final int[][] result = new int[agentAreasOnTradingBoard][distinctTradingObjectsCount];
-//		for (int col = 0; col != distinctTradingObjectsCount; ++col) {
-//			result[1][col] = itemsPerTradingObjectCategoryCount;
-//		};
+/*		for (int col = 0; col != distinctTradingObjectsCount; ++col) {
+			result[1][col] = itemsPerTradingObjectCategoryCount;
+		};*/
+		
+		// EK 10/27/2014: To ease the testing
+		result[2][0] = itemsPerTradingObjectCategoryCount;
+		result[2][1] = itemsPerTradingObjectCategoryCount;
+		result[2][2] = itemsPerTradingObjectCategoryCount;
+		
 		
 /*		result[0][1] = itemsPerTradingObjectCategoryCount;							// 140210: for Shasha's experiment
 		result[0][2] = itemsPerTradingObjectCategoryCount;							// 140210: for Shasha's experiment
-		result[agentAreasOnTradingBoard-1][0] = itemsPerTradingObjectCategoryCount;	// 140210: for Shasha's experiment */
+		result[agentAreasOnTradingBoard-1][0] = itemsPerTradingObjectCategoryCount;	// 140210: for Shasha's experiment 
 		
 		result[1][0] = itemsPerTradingObjectCategoryCount;							// 140525: for Shasha's follow-up experiment
 		result[1][1] = itemsPerTradingObjectCategoryCount;							// 140525: for Shasha's follow-up experiment
-		result[0][2] = itemsPerTradingObjectCategoryCount;	// 140525: for Shasha's follow-up experiment
-		
+		result[0][2] = itemsPerTradingObjectCategoryCount;							// 140525: for Shasha's follow-up experiment */
+					
 		return result;
 	};
 
@@ -256,5 +264,10 @@ public class TradingBoardState {
 
 		return true;
 	};
+	
+	public Integer getItemsPerTradingObjectCategoryCount() {
+		return itemsPerTradingObjectCategoryCount;
+	};
+
 
 };

@@ -37,16 +37,16 @@ public class ObtainConsentView extends WebGamesView implements IObtainConsentVie
 
 		anchorPanel.add(viewBasePanel);
 		
-		if (Window.Navigator.getUserAgent().contains("Firefox")) {
+//		if (Window.Navigator.getUserAgent().contains("Firefox")) {
 			populate(eventBus, placeController);
-		} else {
+/*		} else {
 			final RichTextArea textAreaConsentInquiryText = new RichTextArea();
 			textAreaConsentInquiryText.setHTML("Please use Firefox to participate in this experiment. Thank you.");
 			textAreaConsentInquiryText.setHeight("40px");
 			textAreaConsentInquiryText.setWidth("600px");
 		
 			viewBasePanel.add(textAreaConsentInquiryText);
-		}
+		}*/
 		
 		viewBasePanel.setVisible(true);
 		initWidget(viewBasePanel);
@@ -54,14 +54,15 @@ public class ObtainConsentView extends WebGamesView implements IObtainConsentVie
 	
 	public void populate(final EventBus eventBus, final PlaceController placeController) {
 		
-		final RichTextArea textAreaConsentInquiryText = new RichTextArea();
+/*		final RichTextArea textAreaConsentInquiryText = new RichTextArea();
 		textAreaConsentInquiryText.setHTML(constants.textAreaConsentInquiry());
+//		textAreaConsentInquiryText.setHTML("Please click the enter button below to proceed");
 		textAreaConsentInquiryText.setHeight("460px");
 		textAreaConsentInquiryText.setWidth("600px");
 	
-		viewBasePanel.add(textAreaConsentInquiryText);
+		viewBasePanel.add(textAreaConsentInquiryText);*/
 		
-		Button openWindow = new Button(constants.openInformationSheet());
+/*		Button openWindow = new Button(constants.openInformationSheet());
 		
 		
 		openWindow.addClickHandler(new ClickHandler() {
@@ -80,10 +81,11 @@ public class ObtainConsentView extends WebGamesView implements IObtainConsentVie
 		if(localName== "fa")
 			viewBasePanel.add(openWindow,250,470);
 		else
-			viewBasePanel.add(openWindow,190,470);
+			viewBasePanel.add(openWindow,190,470);*/
 	    
 	    
-		final Button buttonUserConsents = new Button(constants.userConsents());
+//		final Button buttonUserConsents = new Button(constants.userConsents());
+		final Button buttonUserConsents = new Button("START");
 		buttonUserConsents.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(final ClickEvent event) {
@@ -92,8 +94,11 @@ public class ObtainConsentView extends WebGamesView implements IObtainConsentVie
 			};
 		});
 		
-		viewBasePanel.add(buttonUserConsents,128,520);
-
+//		viewBasePanel.add(buttonUserConsents,128,520);
+		buttonUserConsents.setSize("500px", "100px");
+		buttonUserConsents.setStylePrimaryName("BigLabel-style");
+		viewBasePanel.add(buttonUserConsents, 100, 300);
+/*
 		final Button buttonUserDoesNotConsent = new Button(constants.userDoesNotConsent());
 		buttonUserDoesNotConsent.addClickHandler(new ClickHandler() {				
 			@Override
@@ -101,7 +106,7 @@ public class ObtainConsentView extends WebGamesView implements IObtainConsentVie
 						ObtainConsentView.this.eventBus.fireEvent(new UserDoesNotConsentEvent());
 			};
 		});
-		viewBasePanel.add(buttonUserDoesNotConsent,318,520);
+		viewBasePanel.add(buttonUserDoesNotConsent,318,520);*/
 
 //		viewBasePanel.setVisible(true);
 //		initWidget(viewBasePanel);

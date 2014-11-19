@@ -33,7 +33,8 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 
 	//static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.enhanced_squiggles, 32, 50, true, true, true, 24, AgentEnum.counterpart, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedNonconcederFirstOfferFixed, EmotionModellingStrategyEnum.chosenUniformlyAtRandom,true,true,true,1,0,0,0,0,0,0,0,0,0,0,0,0,"");
 	//static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.sacredObjects, 32, 50, false, false, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedNonconceder, EmotionModellingStrategyEnum.randomEveryOtherTurnSadOrAngryOrNeutral,true,false,false,1);
-	static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.sacredObjects, 32, 50, false, false, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy, EmotionModellingStrategyEnum.randomAfter134SadOrAngryOrNeutral,true,false,false,1);
+	//static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.sacredObjects, 32, 50, false, false, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy, EmotionModellingStrategyEnum.randomAfter134SadOrAngryOrNeutral,true,false,false,1);
+	static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.veggie_3columns, 32, 50, true, true, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy, EmotionModellingStrategyEnum.randomEveryOtherTurnSadOrAngryOrNeutral,true,true,true,1);
 	static final private String largeFontSizeStyleName = "ict-rapport-largeFontSize";
 
 	static final private SafeHtml separatingLineFeed = SafeHtmlUtils.fromSafeConstant("<br/>");
@@ -90,7 +91,7 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 			if (TradingObjectSetEnum.placeholder_to_allow_initialization_prior_to_trading_object_set_selection.equals(tradingObjectSetEnum)) continue;
 			listBoxSelectTradingObjectSetEnum.addItem(tradingObjectSetEnum.toString(), tradingObjectSetEnum.name());
 		};
-		listBoxSelectTradingObjectSetEnum.setSelectedIndex(6);
+		listBoxSelectTradingObjectSetEnum.setSelectedIndex(2);
 		viewBasePanel.add(listBoxSelectTradingObjectSetEnum);
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
@@ -114,7 +115,8 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
 
-		final CheckBox checkBoxCounterpartDealValueVisible = new CheckBox("Are the counterpart BATNA non-deal and diagrammed deal values visible to the player?");
+//		final CheckBox checkBoxCounterpartDealValueVisible = new CheckBox("Are the counterpart BATNA non-deal and diagrammed deal values visible to the player?");
+		final CheckBox checkBoxCounterpartDealValueVisible = new CheckBox("Are the counterpart diagrammed deal values visible to the player?");
 		final boolean defaultCounterpartDealValueVisible = defaultExperimentConditions.getCounterpartDealValueVisible();
 		checkBoxCounterpartDealValueVisible.setValue(defaultCounterpartDealValueVisible);
 		viewBasePanel.add(checkBoxCounterpartDealValueVisible);
@@ -133,7 +135,8 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
 		
-		final CheckBox checkBoxPlayerDealValueVisible = new CheckBox("Are the player BATNA non-deal and diagrammed deal values visible to the player?");
+//		final CheckBox checkBoxPlayerDealValueVisible = new CheckBox("Are the player BATNA non-deal and diagrammed deal values visible to the player?");
+		final CheckBox checkBoxPlayerDealValueVisible = new CheckBox("Are the player diagrammed deal values visible to the player?");
 		final boolean defaultPlayerDealValueVisible = defaultExperimentConditions.getPlayerDealValueVisible();
 		checkBoxPlayerDealValueVisible.setValue(defaultPlayerDealValueVisible);
 		viewBasePanel.add(checkBoxPlayerDealValueVisible);
@@ -169,7 +172,8 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 		listBoxNegotiationSessionPlyCount.addItem("3 ply (each agent has a chance to offer an object-allocating proposal)", Integer.toString(3));
 		listBoxNegotiationSessionPlyCount.addItem("5 ply (each agent has up to two chances to offer an object-allocating proposal)", Integer.toString(5));
 		listBoxNegotiationSessionPlyCount.addItem("7 ply (each agent has up to three chances to offer object-allocating proposals)", Integer.toString(7));
-		listBoxNegotiationSessionPlyCount.addItem("13 ply (each agent has up to six chances to offer object-allocating proposals)", Integer.toString(13));
+//		listBoxNegotiationSessionPlyCount.addItem("13 ply (each agent has up to six chances to offer object-allocating proposals)", Integer.toString(13));
+		listBoxNegotiationSessionPlyCount.addItem("13 ply (each agent has up to six chances to offer object-allocating proposals)", Integer.toString(19));
 		listBoxNegotiationSessionPlyCount.addItem("25 ply (each agent has up to twelve chances to offer object-allocating proposals)", Integer.toString(25));
 		listBoxNegotiationSessionPlyCount.setSelectedIndex(5);
 		viewBasePanel.add(listBoxNegotiationSessionPlyCount);
@@ -218,8 +222,8 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 		for (final EmotionModellingStrategyEnum emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart: EmotionModellingStrategyEnum.values()) {
 			listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy.addItem(emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart.toString(), emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart.name());
 		};
-//		listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy.setSelectedIndex(EmotionModellingStrategyEnum.randomEveryOtherTurnSadOrAngryOrNeutral.ordinal());
-		listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy.setSelectedIndex(EmotionModellingStrategyEnum.randomAfter134SadOrAngryOrNeutral.ordinal());
+		listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy.setSelectedIndex(EmotionModellingStrategyEnum.randomEveryOtherTurnSadOrAngryOrNeutral.ordinal());
+//		listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy.setSelectedIndex(EmotionModellingStrategyEnum.randomAfter134SadOrAngryOrNeutral.ordinal());
 		viewBasePanel.add(listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy);
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));

@@ -4,7 +4,9 @@ import com.google.gwt.core.client.GWT;
 
 public enum TradingActionEnum {
 	makeInitialProposal,
+//	reviewProposal,
 	acceptProposal,
+	rejectProposal,
 	makeCounterproposal,
 	claimBATNAValue;
 //	reviewScenario;
@@ -23,6 +25,9 @@ public enum TradingActionEnum {
 			break;
 		case acceptProposal:
 			result = constants.acceptProposal();
+			break;
+		case rejectProposal:
+			result = constants.rejectProposal();
 			break;
 		case makeCounterproposal:
 			result = constants.makeCounterproposal();
@@ -51,6 +56,9 @@ public enum TradingActionEnum {
 			break;
 		case claimBATNAValue:
 			result = constants.agreementNotReached();
+			break;
+		case rejectProposal:
+			result = constants.rejectProposal();
 			break;
 //		case reviewScenario:
 //			result = constants.reviewScenario();

@@ -1,7 +1,5 @@
 package edu.usc.cct.rapport.web_games.client.trading_area;
 
-import java.util.Random;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;

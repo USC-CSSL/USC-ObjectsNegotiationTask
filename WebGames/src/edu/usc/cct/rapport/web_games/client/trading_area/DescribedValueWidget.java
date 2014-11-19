@@ -39,8 +39,8 @@ public class DescribedValueWidget extends Composite {
 
 	public DescribedValueWidget(final String description, final Integer value, final Integer totalWidthHint) {
 
-		Integer widthDescription = totalWidthHint - width;
-		if (20 > widthDescription) widthDescription = 20;
+//		Integer widthDescription = totalWidthHint - width;
+//		if (20 > widthDescription) widthDescription = 20;
 
 		this.flexTableBasePanel = new FlexTable();
 		initWidget(this.flexTableBasePanel);
@@ -59,30 +59,34 @@ public class DescribedValueWidget extends Composite {
 		this.widgetValueDescription = textArea;*/
 
 		this.labelText = new Label();
-		//this.labelText.addStyleName(agentDealValuationDescriptionStyleName);
-		this.labelText.addStyleName(agentNameStyle);
+		this.labelText.addStyleName(agentDealValuationDescriptionStyleName);
+		//this.labelText.addStyleName(agentNameStyle);
 		this.labelText.addStyleName(verticalAlignMiddle);
-		this.labelText.setWidth(inPixels(widthDescription));
+//		this.labelText.setWidth(inPixels(widthDescription));
+		this.labelText.setWidth(inPixels(totalWidthHint/2));
 		this.labelText.setHeight(pixelHeight);
-		this.labelText.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
-		this.labelText.setAutoHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+//		this.labelText.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+//		this.labelText.setAutoHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+		this.labelText.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
 		this.labelText.setVisible(true);
 		setText(description);
 		this.widgetValueDescription = labelText;
 		
 		
 		this.labelValue = new Label();
-		this.labelValue.addStyleName(agentDealValuationValueStyleName);
+		this.labelValue.addStyleName(agentDealValuationDescriptionStyleName);
+//		this.labelValue.addStyleName(agentDealValuationValueStyleName);
 		this.labelValue.addStyleName(verticalAlignMiddle);
-		this.labelValue.setWidth(pixelWidthValue);
+//		this.labelValue.setWidth(pixelWidthValue);
+		this.labelValue.setWidth(inPixels(totalWidthHint/2));
 		this.labelValue.setHeight(pixelHeight);
-		this.labelValue.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+//		this.labelValue.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+		this.labelValue.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
 		this.labelValue.setVisible(true);
 		setValue(value);
 		
 		this.flexTableBasePanel.setWidget(0, 0, this.widgetValueDescription);
-		this.flexTableBasePanel.setWidget(0, 1, this.labelValue);
-		
+		this.flexTableBasePanel.setWidget(0, 1, this.labelValue);		
 	};
 
 

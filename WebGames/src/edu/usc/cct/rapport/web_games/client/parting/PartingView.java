@@ -5,21 +5,10 @@ import java.util.Random;
 import java.math.BigInteger;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.i18n.client.HasDirection.Direction;
 import com.google.gwt.place.shared.PlaceController;
-import com.google.gwt.safehtml.shared.SafeHtml;
-import com.google.gwt.safehtml.shared.SafeHtmlUtils;
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.AbsolutePanel;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.InlineHTML;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.RichTextArea;
-import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 
@@ -146,7 +135,7 @@ public class PartingView extends WebGamesView implements IPartingView {
 			Random random = new Random();
 //			String uuid = UUID.randomUUID().toString();
 			String uuid = new BigInteger(130, random).toString(32);
-			partingLabel.setText(constants.partingMessage() + "\nPlease make sure to copy and paste the following completion code in the box provided on the Mechanical Turk HIT page:\n" + uuid);
+//			partingLabel.setText(constants.partingMessage() + "\nPlease make sure to copy and paste the following completion code in the box provided on the Mechanical Turk HIT page:\n" + uuid);
 			//random.toString();
 		}
 		

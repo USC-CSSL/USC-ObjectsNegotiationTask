@@ -433,6 +433,15 @@ public interface HelpWindowInternationalizationConstants extends Constants {
 
 	@DefaultStringValue("[TRANSLATION MISSING] Please wait until the other participant makes a decision.")
 	String waiting_msg();	
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Review")
+	String reviewingOffer();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Please review the offer you got.")
+	String reviewingOffer_msg();	
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Accept?")
+	String offerAcceptance_msg();	
 
 	@DefaultStringValue("[TRANSLATION MISSING] The other participant accepted your offer.")
 	String proposal_accepted();	
@@ -529,6 +538,12 @@ public interface HelpWindowInternationalizationConstants extends Constants {
 
 	@DefaultStringValue("[TRANSLATION MISSING] No")
 	String no();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] Accept")
+	String accept();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] Reject")
+	String reject();	
 
 	//String btnOk_html();
 };

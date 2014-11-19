@@ -492,7 +492,15 @@ public class ExperimentInformationRecordingService extends RemoteServiceServlet 
 		final Cell timestampAsDateCell = rowToPopulate.createCell(cellColumnIndex++, Cell.CELL_TYPE_NUMERIC);
 		populateTimestampCellFormattedAsDate(timestampAsDateCell, tradingAction.getTimestamp(), dateCellStyle);
 		final Cell performingAgentCell = rowToPopulate.createCell(cellColumnIndex++, Cell.CELL_TYPE_STRING);
-		performingAgentCell.setCellValue(tradingAction.getPerformingAgent().name());
+//		performingAgentCell.setCellValue(tradingAction.getPerformingAgent().name());
+
+		String name = "";
+		if (tradingAction.getPerformingAgent().name().equals("counterpart"))
+			name = "system";
+		else
+			name = tradingAction.getPerformingAgent().name();
+		
+		performingAgentCell.setCellValue(name);
 		final Cell tradingActionEnumCell = rowToPopulate.createCell(cellColumnIndex++, Cell.CELL_TYPE_STRING);
 		tradingActionEnumCell.setCellValue(tradingAction.getTradingActionEnum());
 

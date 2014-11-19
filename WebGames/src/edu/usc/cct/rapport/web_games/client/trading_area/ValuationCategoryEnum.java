@@ -1,7 +1,7 @@
 package edu.usc.cct.rapport.web_games.client.trading_area;
 
 public enum ValuationCategoryEnum {
-	bestAlternativeToNegotiatedAgreement,
+//	bestAlternativeToNegotiatedAgreement,
 	proposalAsDiagrammed;
 
 

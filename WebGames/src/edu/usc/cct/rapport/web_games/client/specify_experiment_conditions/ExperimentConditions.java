@@ -177,12 +177,12 @@ public class ExperimentConditions implements DoublySerializable {
 /*		this.SVValueDocument=0;
 		this.SVValueReform=0;
 		this.SVValueBonus=0;*/
-		this.SVValueImmigrationReformBill=0;
+/*		this.SVValueImmigrationReformBill=0;
 		this.SVValueImmigrationReformBill2=0;
 		this.SVValueGunControlReformBill=0;
 		this.SVValueGunControlReformBill2=0;
 		this.SVValuePrivateSector=0;
-		this.SVValuePrivateSector2=0;
+		this.SVValuePrivateSector2=0;*/
 		
 /*		this.NSA_01=0;
 		this.NSA_02=0;
@@ -190,17 +190,17 @@ public class ExperimentConditions implements DoublySerializable {
 		this.NSA_04=0;
 		this.NSA_05=0;*/
 		
-		this.ageOfParticipant=0;
+/*		this.ageOfParticipant=0;
 		this.genderOfParticipant=0;
 		this.educationOfParticipant=0;
 		this.religiosityOfParticipant=0;
 		this.ethnicityOfParticipant=0;
 //		this.economicClassOfParticipant=0;
 //		this.politicalOrientationOfParticipant=0;
-		this.commentOfParticipant= "";
+		this.commentOfParticipant= "";*/
 		this.participantID="0";
 				
-		this.MFQ_01=0;
+/*		this.MFQ_01=0;
 		this.MFQ_02=0;
 		this.MFQ_03=0;
 		this.MFQ_04=0;
@@ -244,7 +244,7 @@ public class ExperimentConditions implements DoublySerializable {
 		this.VEQ_08=0;
 		this.VEQ_09=0;
 		this.VEQ_10=0;
-		this.VEQ_11=0;
+		this.VEQ_11=0;*/
 	};
 
 
@@ -280,12 +280,12 @@ public class ExperimentConditions implements DoublySerializable {
 /*		result.add("SVValueDocument");
 		result.add("SVValueReform");
 		result.add("SVValueBonus");*/
-		result.add("SVValueImmigrationReformBill");
+/*		result.add("SVValueImmigrationReformBill");
 		result.add("SVValueImmigrationReformBill2");
 		result.add("SVValueGunControlReformBill");
 		result.add("SVValueGunControlReformBill2");
 		result.add("SVValuePrivateSector");
-		result.add("SVValuePrivateSector2");
+		result.add("SVValuePrivateSector2");*/
 
 		/*
 //		result.add("importanceOfObject");
@@ -303,17 +303,17 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add("NSA_04");
 		result.add("NSA_05");*/
 		
-		result.add("ageOfParticipant");
+/*		result.add("ageOfParticipant");
 		result.add("genderOfParticipant");
 		result.add("educationOfParticipant");
 		result.add("religiosityOfParticipant");
 		result.add("ethnicityOfParticipant");
 //		result.add("economicClassOfParticipant");
 //		result.add("politicalOrientationOfParticipant");
-		result.add("commentOfParticipant");
+		result.add("commentOfParticipant");*/
 		result.add("participantID");
 				
-		result.add("MFQ_01");
+/*		result.add("MFQ_01");
 		result.add("MFQ_02");
 		result.add("MFQ_03");
 		result.add("MFQ_04");
@@ -345,7 +345,7 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add("MFQ_30");
 		result.add("MFQ_31");
 		result.add("MFQ_32");
-		result.add("MFQ_filter");
+		result.add("MFQ_filter");*/
 		
 /*		result.add("VEQ_01");
 		result.add("VEQ_02");
@@ -397,12 +397,12 @@ public class ExperimentConditions implements DoublySerializable {
 /*		result.add(Integer.toString(this.SVValueDocument));
 		result.add(Integer.toString(this.SVValueReform));
 		result.add(Integer.toString(this.SVValueBonus));*/
-		result.add(Integer.toString(this.SVValueImmigrationReformBill));
+/*		result.add(Integer.toString(this.SVValueImmigrationReformBill));
 		result.add(Integer.toString(this.SVValueImmigrationReformBill2));
 		result.add(Integer.toString(this.SVValueGunControlReformBill));
 		result.add(Integer.toString(this.SVValueGunControlReformBill2));
 		result.add(Integer.toString(this.SVValuePrivateSector));
-		result.add(Integer.toString(this.SVValuePrivateSector2));
+		result.add(Integer.toString(this.SVValuePrivateSector2));*/
 		
 		/*
 //		result.add(Integer.toString(this.negotationFair));
@@ -417,17 +417,17 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add(Integer.toString(this.NSA_04));
 		result.add(Integer.toString(this.NSA_05));*/
 
-		result.add(Integer.toString(this.ageOfParticipant));
+/*		result.add(Integer.toString(this.ageOfParticipant));
 		result.add(Integer.toString(this.genderOfParticipant));
 		result.add(Integer.toString(this.educationOfParticipant));
 		result.add(Integer.toString(this.religiosityOfParticipant));
 		result.add(Integer.toString(this.ethnicityOfParticipant));		
 //		result.add(Integer.toString(this.economicClassOfParticipant));
 //		result.add(Integer.toString(this.politicalOrientationOfParticipant));
-		result.add(this.commentOfParticipant);
+		result.add(this.commentOfParticipant);*/
 		result.add(this.participantID);
 		
-		result.add(Integer.toString(this.MFQ_01));
+/*		result.add(Integer.toString(this.MFQ_01));
 		result.add(Integer.toString(this.MFQ_02));
 		result.add(Integer.toString(this.MFQ_03));
 		result.add(Integer.toString(this.MFQ_04));
@@ -459,7 +459,7 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add(Integer.toString(this.MFQ_30));
 		result.add(Integer.toString(this.MFQ_31));
 		result.add(Integer.toString(this.MFQ_32));
-		result.add(Integer.toString(this.MFQ_filter));
+		result.add(Integer.toString(this.MFQ_filter));*/
 		
 /*		result.add(Integer.toString(this.VEQ_01));
 		result.add(Integer.toString(this.VEQ_02));

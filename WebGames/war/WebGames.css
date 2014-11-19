@@ -222,8 +222,10 @@ div.gwt-Hyperlink a {
 
 
 .ict-rapport-agentObjectValuationStyle {
-	border: 1px solid black;
-	margin: 1px;
+	border: 2px solid black;
+	margin: 5px;
+/*	border: 1px solid black;
+	margin: 1px;*/
 }
 
 
@@ -236,16 +238,16 @@ div.gwt-Hyperlink a {
 .ict-rapport-agentDealValuationDescriptionStyle {
 	border: 0;
 	background: transparent;
-	color: blue !important;
-	font-size: 14px;
+	color: black;
+	font-size: 20px !important;
 }
 
 
 .ict-rapport-agentDealValuationValueStyle {
 	border: 0;
-	padding: 2px;
+/*	padding: 2px;*/
 	color: red;
-	font-size: 30px !important;
+	font-size: 20px !important;
 }
 
 .ict-rapport-describedValueStyle {
@@ -360,6 +362,20 @@ div.gwt-Hyperlink a {
 	font-family: Arial, sans-serif;
 	font-size: 14px;
 /*	font-color: black;*/
+}
+
+.BigLabel-style {
+	font-family: Arial, sans-serif;
+	font-size: 30px;
+/*	font-color: black;*/
+}
+
+.BigButton-style{
+font-size: 25pt;
+}
+
+.MiddleButton-style{
+font-size: 15pt;
 }
 
 .splitLine {

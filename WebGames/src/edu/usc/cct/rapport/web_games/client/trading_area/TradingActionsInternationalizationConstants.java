@@ -6,6 +6,9 @@ public interface TradingActionsInternationalizationConstants extends Constants {
 
 	@DefaultStringValue("[TRANSLATION MISSING] Accept Proposal")
 	String acceptProposal();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Reject Proposal")
+	String rejectProposal();
 
 	@DefaultStringValue("[TRANSLATION MISSING] Make Initial Proposal")
 	String makeInitialProposal();

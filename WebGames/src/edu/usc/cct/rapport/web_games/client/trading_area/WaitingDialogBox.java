@@ -1,26 +1,12 @@
 package edu.usc.cct.rapport.web_games.client.trading_area;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.resources.client.ImageResource;
-import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.SimplePanel;
-import com.google.gwt.user.client.ui.IntegerBox;
-import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.TextArea;
-
-import edu.usc.cct.rapport.web_games.client.images.facial_expressions.FacialExpressionStyleEnum;
-import edu.usc.cct.rapport.web_games.client.specify_experiment_conditions.ExperimentConditions;
-import edu.usc.cct.rapport.web_games.client.support.tuple.Pair;
-
-import com.google.gwt.user.client.ui.Button;
 
 public class WaitingDialogBox extends DialogBox {
 
@@ -29,19 +15,32 @@ public class WaitingDialogBox extends DialogBox {
 	@SuppressWarnings("unused")
 	final private EventBus eventBus;
 	
-	public WaitingDialogBox(final EventBus eventBus) {
+	public WaitingDialogBox(final EventBus eventBus, final String explanation) {
 		super(false, true);
 		this.eventBus = eventBus;
-
-		setHTML(constants.waiting());
 		
+		setHTML(constants.waiting());
+				
 		FlexTable flexTable = new FlexTable();
 		setWidget(flexTable);
-		flexTable.setSize("250px", "100px");
+//		flexTable.setSize("250px", "100px");
+		flexTable.setSize("800px", "565px");
 		
-		Label lblWaiting = new Label(constants.waiting_msg());
-		lblWaiting.setStylePrimaryName("Label-style");
-		flexTable.setWidget(0, 0, lblWaiting);		
+//		Label lblWaiting = new Label(constants.waiting_msg());
+		Label lblWaiting = new Label();
+		
+		if(explanation.equals("waitAfterRejection")) {
+			lblWaiting.setText("Please wait...");
+		} else if(explanation.equals("waitAfterAcceptance")) {
+			lblWaiting.setText("You accepted the offer. Starting new game...");
+		} else {
+			lblWaiting.setText(constants.waiting_msg());			
+		}
+			
+
+		lblWaiting.setStylePrimaryName("BigLabel-style");
+		flexTable.setWidget(0, 0, lblWaiting);
+		flexTable.getFlexCellFormatter().setHorizontalAlignment(0, 0, HasHorizontalAlignment.ALIGN_CENTER);
 		
 		Image loadingImage = new Image();
 		loadingImage.setUrl("http://shiraz.usc.edu/negotiation/images/loading_small.gif");

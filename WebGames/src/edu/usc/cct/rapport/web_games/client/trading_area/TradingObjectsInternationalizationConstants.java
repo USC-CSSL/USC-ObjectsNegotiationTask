@@ -27,6 +27,48 @@ public interface TradingObjectsInternationalizationConstants extends Constants {
 
 	@DefaultStringValue("[TRANSLATION MISSING] Squiggle #8")
 	String squiggle_8_Description();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Apple")
+	String fruits_apple_Description();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Banana")
+	String fruits_banana_Description();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Orange")
+	String fruits_orange_Description();
+
+/*	@DefaultStringValue("[TRANSLATION MISSING] Lemon")
+	String fruits_lemon_Description();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Pepper")
+	String veggie_pepper_Description();*/
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Melon")
+	String fruits_melon_Description();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Pineapple")
+	String fruits_pineapple_Description();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Watermelon")
+	String fruits_watermelon_Description();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Strawberry")
+	String fruits_strawberry_Description();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Blueberry")
+	String fruits_blueberry_Description();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Cherry")
+	String fruits_cherry_Description();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Pepper")
+	String veggie_pepper_Description();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Broccoli")
+	String veggie_broccoli_Description();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Mushroom")
+	String veggie_mushroom_Description();
 
 	@DefaultStringValue("[TRANSLATION MISSING] Watter bottle")
 	String istockphoto_water_bottles_Description();

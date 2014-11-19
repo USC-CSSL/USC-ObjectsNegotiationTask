@@ -1,7 +1,5 @@
 package edu.usc.cct.rapport.web_games.client.trading_area;
 
-import java.util.EnumSet;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.ui.Image;
@@ -18,6 +16,57 @@ public enum TradingObjectEnum {
 	squiggle_6,
 	squiggle_7,
 	squiggle_8,
+	fruits1_item1_apple,
+	fruits1_item2_banana,
+	fruits1_item3_orange,
+	fruits2_item1_melon,
+	fruits2_item2_pineapple,
+	fruits2_item3_watermelon,
+	fruits3_item1_strawberry,
+	fruits3_item2_blueberry,
+	fruits3_item3_cherry,
+	fruits4_item1_apple,
+	fruits4_item2_pineapple,
+	fruits4_item3_cherry,
+	fruits5_item1_watermelon,
+	fruits5_item2_banana,
+	fruits5_item3_strawberry,
+	fruits6_item1_orange,
+	fruits6_item2_melon,
+	fruits6_item3_blueberry,
+/*	fruits1_item1,
+	fruits1_item2,
+	fruits1_item3,
+	fruits2_item1,
+	fruits2_item2,
+	fruits2_item3,
+	fruits3_item1,
+	fruits3_item2,
+	fruits3_item3,
+	fruits4_item1,
+	fruits4_item2,
+	fruits4_item3,
+	fruits5_item1,
+	fruits5_item2,
+	fruits5_item3,
+	fruits6_item1,
+	fruits6_item2,
+	fruits6_item3,*/
+	veggie_pepper,
+	veggie_broccoli,
+	veggie_mushroom,
+/*	fruits_apple,
+	fruits_banana,
+	fruits_orange,
+	fruits_melon,
+	fruits_pineapple,
+	fruits_watermelon,
+	fruits_strawberry,
+	fruits_blueberry,
+	fruits_cherry,
+//	fruits_lemon,
+//	fruits_pepper,
+//	fruits_strawberry,*/
 	istockphoto_water_bottles,
 	istockphoto_money_stack,
 	istockphoto_tin_can,
@@ -69,6 +118,84 @@ public enum TradingObjectEnum {
 			break;
 		case squiggle_8:
 			result = constants.squiggle_8_Description();
+			break;
+/*		case fruits_apple:
+			result = constants.fruits_apple_Description();
+			break;
+		case fruits_banana:
+			result = constants.fruits_banana_Description();
+			break;
+		case fruits_orange:
+			result = constants.fruits_orange_Description();
+			break;
+		case fruits_melon:
+			result = constants.fruits_melon_Description();
+			break;
+		case fruits_pineapple:
+			result = constants.fruits_pineapple_Description();
+			break;
+		case fruits_watermelon:
+			result = constants.fruits_watermelon_Description();
+			break;
+		case fruits_strawberry:
+			result = constants.fruits_strawberry_Description();
+			break;
+		case fruits_blueberry:
+			result = constants.fruits_blueberry_Description();
+			break;
+		case fruits_cherry:
+			result = constants.fruits_cherry_Description();
+			break;*/
+		case veggie_pepper:
+			result = constants.veggie_pepper_Description();
+			break;
+		case veggie_broccoli:
+			result = constants.veggie_broccoli_Description();
+			break;
+		case veggie_mushroom:
+			result = constants.veggie_mushroom_Description();
+			break;
+/*		case fruits_lemon:
+			result = constants.fruits_lemon_Description();
+			break;
+		case fruits_pepper:
+			result = constants.fruits_pepper_Description();
+			break;*/
+		case fruits1_item1_apple:
+		case fruits4_item1_apple:
+			result = constants.fruits_apple_Description();
+			break;
+		case fruits1_item2_banana:
+		case fruits5_item2_banana:
+			result = constants.fruits_banana_Description();
+			break;
+		case fruits1_item3_orange:
+		case fruits6_item1_orange:			
+			result = constants.fruits_orange_Description();
+			break;
+		case fruits2_item1_melon:
+		case fruits6_item2_melon:
+			result = constants.fruits_melon_Description();
+			break;
+		case fruits2_item2_pineapple:
+		case fruits4_item2_pineapple:
+			result = constants.fruits_pineapple_Description();
+			break;
+		case fruits2_item3_watermelon:
+		case fruits5_item1_watermelon:
+			result = constants.fruits_watermelon_Description();
+			break;
+		case fruits3_item1_strawberry:
+		case fruits5_item3_strawberry:
+			result = constants.fruits_strawberry_Description();
+			break;
+		case fruits3_item2_blueberry:
+		case fruits6_item3_blueberry:
+			result = constants.fruits_blueberry_Description();
+			break;
+		case fruits3_item3_cherry:
+		case fruits4_item3_cherry:
+			result = constants.fruits_cherry_Description();
 			break;
 		case istockphoto_water_bottles:
 			result = constants.istockphoto_water_bottles_Description();
@@ -156,6 +283,85 @@ public enum TradingObjectEnum {
 		case squiggle_8:
 			result = webGamesClientBundle.squiggle_8();
 			break;
+/*		case fruits_apple:
+			result = webGamesClientBundle.fruits_apple();
+			break;
+		case fruits_banana:
+			result = webGamesClientBundle.fruits_banana();
+			break;
+		case fruits_orange:
+			result = webGamesClientBundle.fruits_orange();
+			break;
+		case fruits_lemon:
+			result = webGamesClientBundle.fruits_lemon();
+			break;
+		case fruits_pepper:
+			result = webGamesClientBundle.fruits_pepper();
+			break;
+			
+		case fruits_melon:
+			result = webGamesClientBundle.fruits_melon();
+			break;
+		case fruits_pineapple:
+			result = webGamesClientBundle.fruits_pineapple();
+			break;
+		case fruits_watermelon:
+			result = webGamesClientBundle.fruits_watermelon();
+			break;
+		case fruits_strawberry:
+			result = webGamesClientBundle.fruits_strawberry();
+			break;	
+		case fruits_blueberry:
+			result = webGamesClientBundle.fruits_blueberry();
+			break;
+		case fruits_cherry:
+			result = webGamesClientBundle.fruits_cherry();
+			break;*/
+		case veggie_pepper:
+			result = webGamesClientBundle.veggie_pepper();
+			break;
+		case veggie_broccoli:
+			result = webGamesClientBundle.veggie_broccoli();
+			break;
+		case veggie_mushroom:
+			result = webGamesClientBundle.veggie_mushroom();
+			break;
+		case fruits1_item1_apple:
+		case fruits4_item1_apple:
+			result = webGamesClientBundle.fruits_apple();
+			break;
+		case fruits1_item2_banana:
+		case fruits5_item2_banana:
+			result = webGamesClientBundle.fruits_banana();
+			break;
+		case fruits1_item3_orange:
+		case fruits6_item1_orange:			
+			result = webGamesClientBundle.fruits_orange();
+			break;
+		case fruits2_item1_melon:
+		case fruits6_item2_melon:
+			result = webGamesClientBundle.fruits_melon();
+			break;
+		case fruits2_item2_pineapple:
+		case fruits4_item2_pineapple:
+			result = webGamesClientBundle.fruits_pineapple();
+			break;
+		case fruits2_item3_watermelon:
+		case fruits5_item1_watermelon:
+			result = webGamesClientBundle.fruits_watermelon();
+			break;
+		case fruits3_item1_strawberry:
+		case fruits5_item3_strawberry:
+			result = webGamesClientBundle.fruits_strawberry();
+			break;
+		case fruits3_item2_blueberry:
+		case fruits6_item3_blueberry:
+			result = webGamesClientBundle.fruits_blueberry();
+			break;
+		case fruits3_item3_cherry:
+		case fruits4_item3_cherry:
+			result = webGamesClientBundle.fruits_cherry();
+			break;
 		case istockphoto_water_bottles:
 			result = webGamesClientBundle.istockphoto_water_bottles();
 			break;
@@ -225,6 +431,12 @@ public enum TradingObjectEnum {
 	public Integer getPayoff(final AgentEnum agentEnum) {
 
 		final Integer result;
+		final int fruits_counterpart_payoff_item1 = 2;
+		final int fruits_counterpart_payoff_item2 = 3;
+		final int fruits_counterpart_payoff_item3 = 4;
+		final int fruits_player_payoff_item1 = 2;
+		final int fruits_player_payoff_item2 = 3;
+		final int fruits_player_payoff_item3 = 4;
 
 		switch (agentEnum) {
 			case counterpart: {
@@ -253,6 +465,58 @@ public enum TradingObjectEnum {
 					break;
 				case squiggle_8:
 					result = 4;
+					break;
+/*				case fruits_apple:
+					result = 1;
+					break;
+				case fruits_banana:
+					result = 2;
+					break;
+				case fruits_orange:
+					result = 3;
+					break;
+				case fruits_lemon:
+					result = 0;
+					break;
+				case fruits_pepper:
+					result = 1;
+					break;
+				case fruits_strawberry:
+					result = 1;
+					break;*/
+					
+				case fruits1_item1_apple:
+				case fruits2_item2_pineapple:
+				case fruits3_item3_cherry:
+				case fruits4_item1_apple:
+				case fruits5_item2_banana:
+				case fruits6_item3_blueberry:
+					result = fruits_counterpart_payoff_item1;
+					break;					
+				case fruits1_item2_banana:
+				case fruits2_item3_watermelon:
+				case fruits3_item1_strawberry:
+				case fruits4_item3_cherry:
+				case fruits5_item1_watermelon:
+				case fruits6_item2_melon:
+					result = fruits_counterpart_payoff_item2;
+					break;
+				case fruits1_item3_orange:
+				case fruits2_item1_melon:
+				case fruits3_item2_blueberry:
+				case fruits4_item2_pineapple:
+				case fruits5_item3_strawberry:
+				case fruits6_item1_orange:
+					result = fruits_counterpart_payoff_item3;
+					break;					
+				case veggie_pepper:
+					result = 1;
+					break;
+				case veggie_broccoli:
+					result = 2;
+					break;
+				case veggie_mushroom:
+					result = 3;
 					break;
 				case istockphoto_water_bottles:
 					result = 10;
@@ -332,6 +596,57 @@ public enum TradingObjectEnum {
 					break;
 				case squiggle_8:
 					result = 15;
+					break;
+/*				case fruits_apple:
+					result = 1;
+					break;
+				case fruits_banana:
+					result = 2;
+					break;
+				case fruits_orange:
+					result = 3;
+					break;
+				case fruits_lemon:
+					result = 0;
+					break;
+				case fruits_pepper:
+					result = 3;
+					break;
+				case fruits_strawberry:
+					result = 1;
+					break;	*/
+				case fruits1_item1_apple:
+				case fruits2_item2_pineapple:
+				case fruits3_item3_cherry:
+				case fruits4_item1_apple:
+				case fruits5_item2_banana:
+				case fruits6_item3_blueberry:
+					result = fruits_player_payoff_item1;
+					break;					
+				case fruits1_item2_banana:
+				case fruits2_item3_watermelon:
+				case fruits3_item1_strawberry:
+				case fruits4_item3_cherry:
+				case fruits5_item1_watermelon:
+				case fruits6_item2_melon:
+					result = fruits_player_payoff_item2;
+					break;
+				case fruits1_item3_orange:
+				case fruits2_item1_melon:
+				case fruits3_item2_blueberry:
+				case fruits4_item2_pineapple:
+				case fruits5_item3_strawberry:
+				case fruits6_item1_orange:
+					result = fruits_player_payoff_item3;
+					break;
+				case veggie_pepper:
+					result = 1;
+					break;
+				case veggie_broccoli:
+					result = 2;
+					break;
+				case veggie_mushroom:
+					result = 3;
 					break;
 				case istockphoto_water_bottles:
 					result = 5;

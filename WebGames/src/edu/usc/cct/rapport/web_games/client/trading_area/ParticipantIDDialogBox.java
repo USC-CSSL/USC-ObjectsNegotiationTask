@@ -74,8 +74,8 @@ public class ParticipantIDDialogBox extends DialogBox {
 					hide();
 					Timer timer = new Timer() {
 					      public void run() {
-					    	  final MoralFoundationsQuestionnaire1DialogBox dialogBox = new MoralFoundationsQuestionnaire1DialogBox (eventBus, experimentConditions);
-//							  final StartGameHelpWindowDialogBox dialogBox = new StartGameHelpWindowDialogBox(eventBus, 0, experimentConditions); // To ease testing
+//					    	  final MoralFoundationsQuestionnaire1DialogBox dialogBox = new MoralFoundationsQuestionnaire1DialogBox (eventBus, experimentConditions);
+							  final StartGameHelpWindowDialogBox dialogBox = new StartGameHelpWindowDialogBox(eventBus, 0, experimentConditions); // To ease testing
 //					    	  final ScenarioDialogBox dialogBox = new ScenarioDialogBox (eventBus, experimentConditions);
 					    	  dialogBox.center();
 					      }

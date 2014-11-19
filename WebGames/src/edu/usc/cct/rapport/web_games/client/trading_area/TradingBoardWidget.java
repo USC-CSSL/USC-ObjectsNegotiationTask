@@ -53,7 +53,7 @@ public class TradingBoardWidget extends Composite implements HasEnabled {
 		this.absolutePanelDragAndDropArea = new AbsolutePanel();
 		initWidget(this.absolutePanelDragAndDropArea);
 //		this.absolutePanelDragAndDropArea.setPixelSize(461, 376); // when there are 3 items each
-		this.absolutePanelDragAndDropArea.setPixelSize(461, 564);
+		this.absolutePanelDragAndDropArea.setPixelSize(461, 564); // when there are 5 items each
 
 		this.enabled = false;
 		this.tradingBoardState = tradingBoardState;
