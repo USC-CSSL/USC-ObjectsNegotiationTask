@@ -12,15 +12,15 @@ public enum TradingObjectSetEnum {
 	istockphoto,
 	sacredObjects,
 	sacredObjectsMoney*/
-	symbolicObjects_3columns,
-	politicalParty_3columns,
-	fruits1_3columns,
-	fruits2_3columns,
-	fruits3_3columns,
-	fruits4_3columns,
-	fruits5_3columns,
-	fruits6_3columns,
-	veggie_3columns;
+//	symbolicObjects_3columns,
+//	politicalParty_3columns,
+	veggie,
+	fruits1,
+	fruits2,
+	fruits3,
+	fruits4,
+	fruits5,
+	fruits6;
 
 	public EnumSet<TradingObjectEnum> getSetOfTradingObjectEnum() {
 
@@ -51,33 +51,33 @@ public enum TradingObjectSetEnum {
 		case sacredObjects:
 			result = EnumSet.of(TradingObjectEnum.sacredObjects_medication, TradingObjectEnum.sacredObjects_tin_can, TradingObjectEnum.sacredObjects_water_bottles, TradingObjectEnum.sacredObjects_hand_sanitizer);
 			break;*/
-		case fruits1_3columns:
-			result = EnumSet.of(TradingObjectEnum.fruits1_item1_apple, TradingObjectEnum.fruits1_item2_banana, TradingObjectEnum.fruits1_item3_orange);
-			break;
-		case fruits2_3columns:
-			result = EnumSet.of(TradingObjectEnum.fruits2_item1_melon, TradingObjectEnum.fruits2_item2_pineapple, TradingObjectEnum.fruits2_item3_watermelon);
-			break;
-		case fruits3_3columns:
-			result = EnumSet.of(TradingObjectEnum.fruits3_item1_strawberry, TradingObjectEnum.fruits3_item2_blueberry, TradingObjectEnum.fruits3_item3_cherry);
-			break;
-		case fruits4_3columns:
-			result = EnumSet.of(TradingObjectEnum.fruits4_item1_apple, TradingObjectEnum.fruits4_item2_pineapple, TradingObjectEnum.fruits4_item3_cherry);
-			break;
-		case fruits5_3columns:
-			result = EnumSet.of(TradingObjectEnum.fruits5_item1_watermelon, TradingObjectEnum.fruits5_item2_banana, TradingObjectEnum.fruits5_item3_strawberry);
-			break;
-		case fruits6_3columns:
-			result = EnumSet.of(TradingObjectEnum.fruits6_item1_orange, TradingObjectEnum.fruits6_item2_melon, TradingObjectEnum.fruits6_item3_blueberry);
-			break;
-		case veggie_3columns:
+		case veggie:
 			result = EnumSet.of(TradingObjectEnum.veggie_pepper, TradingObjectEnum.veggie_broccoli, TradingObjectEnum.veggie_mushroom);
 			break;
-		case symbolicObjects_3columns:
+		case fruits1:
+			result = EnumSet.of(TradingObjectEnum.fruits1_item1_apple, TradingObjectEnum.fruits1_item2_banana, TradingObjectEnum.fruits1_item3_orange);
+			break;
+		case fruits2:
+			result = EnumSet.of(TradingObjectEnum.fruits2_item1_melon, TradingObjectEnum.fruits2_item2_pineapple, TradingObjectEnum.fruits2_item3_watermelon);
+			break;
+		case fruits3:
+			result = EnumSet.of(TradingObjectEnum.fruits3_item1_strawberry, TradingObjectEnum.fruits3_item2_blueberry, TradingObjectEnum.fruits3_item3_cherry);
+			break;
+		case fruits4:
+			result = EnumSet.of(TradingObjectEnum.fruits4_item1_apple, TradingObjectEnum.fruits4_item2_pineapple, TradingObjectEnum.fruits4_item3_cherry);
+			break;
+		case fruits5:
+			result = EnumSet.of(TradingObjectEnum.fruits5_item1_watermelon, TradingObjectEnum.fruits5_item2_banana, TradingObjectEnum.fruits5_item3_strawberry);
+			break;
+		case fruits6:
+			result = EnumSet.of(TradingObjectEnum.fruits6_item1_orange, TradingObjectEnum.fruits6_item2_melon, TradingObjectEnum.fruits6_item3_blueberry);
+			break;
+/*		case symbolicObjects_3columns:
 			result = EnumSet.of(TradingObjectEnum.sacredObjects_document, TradingObjectEnum.sacredObjects_reform, TradingObjectEnum.sacredObjects_bonus);
 			break;
 		case politicalParty_3columns:
 			result = EnumSet.of(TradingObjectEnum.sacredObjects_immigration_bill, TradingObjectEnum.sacredObjects_gun_bill, TradingObjectEnum.sacredObjects_private_sector);
-			break;			
+			break;			*/
 		default:
 			throw new IllegalStateException("Unhandled TradingObjectSetEnum in TradingObjectSetEnum.getEnumSet().");			
 		};

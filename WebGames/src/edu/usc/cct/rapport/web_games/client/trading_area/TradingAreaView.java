@@ -164,9 +164,7 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 		playerEmotionSelection = new AgentEmotionSelectionWidget(eventBus, FacialExpressionStyleEnum.drama_masks, desiredImagePresentationOrder, originalSelection);
 //		dockLayoutPanelRightPeriphery.addSouth(playerEmotionSelection, 166.0+180.0);
 //		dockLayoutPanelRightPeriphery.addSouth(playerEmotionSelection, 200.0);
-		
-
-		
+				
 		final HorizontalPanel horizontalPanelButtons = new HorizontalPanel();
 		horizontalPanelButtons.setHeight("72px");
 		horizontalPanelButtons.setWidth("100%");
@@ -199,7 +197,7 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 								TradingAreaView.this.eventBus.fireEvent(new ProposalMadeEvent(newTradingAction));					        
 					        }
 					      };
-					      dialogBox.setPopupPosition(0, 0);
+					      dialogBox.setPopupPosition(105, 0);
 					      dialogBox.show(); // EK 10/27/2014: pop up the screen in the left uppermost area
 //				    	  dialogBox.center();
 					      t.schedule((int)(Math.random() * (8000 - 5000 + 1) + 5000)); 		// random delay between 5sec and 8sec
@@ -242,7 +240,7 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 //		counterpartObjectValuation = new AgentObjectValuationWidget(AgentEnum.counterpart, tradingObjectSetEnum, "100px");
 		counterpartObjectValuation = new AgentObjectValuationWidget(AgentEnum.counterpart, tradingObjectSetEnum, "98px");
 //		dockLayoutPayoffInformation.addNorth(counterpartObjectValuation, 300);
-		dockLayoutPayoffInformation.addNorth(new HTML(""), 40);
+		dockLayoutPayoffInformation.addNorth(new HTML(""), 35);
 		dockLayoutPayoffInformation.addNorth(counterpartObjectValuation, 270);
 //		playerObjectValuation = new AgentObjectValuationWidget(AgentEnum.player, tradingObjectSetEnum, "100px");
 		playerObjectValuation = new AgentObjectValuationWidget(AgentEnum.player, tradingObjectSetEnum, "98px");
@@ -359,6 +357,19 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 					makeInitialProposal.setVisible(true);
 					makeCounterproposal.setEnabled(false);
 					makeCounterproposal.setVisible(false);
+				} else if (negotiationSession.getPlyRemaining() < 5) {
+					makeInitialProposal.setEnabled(false);
+					makeInitialProposal.setVisible(false);
+					makeCounterproposal.setEnabled(false);
+					makeCounterproposal.setVisible(false);
+
+					Timer timer = new Timer() {
+					      public void run() {
+								makeCounterproposal.setEnabled(true);
+								makeCounterproposal.setVisible(true);
+					      }
+					};
+					timer.schedule(24000);
 				} else {
 					makeInitialProposal.setEnabled(false);
 					makeInitialProposal.setVisible(false);
@@ -371,7 +382,7 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 								makeCounterproposal.setVisible(true);
 					      }
 					};
-					timer.schedule(9000);
+					timer.schedule(14000);
 
 				};
 				claimBATNAScore.setEnabled(false);
@@ -451,18 +462,19 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 //		public void showNegotiationConcludedDialogBox(final ExperimentConditions experimentConditions) {
 		Timer timer = new Timer() {
 			public void run() {
-				final Button acceptProposal = tradingActionButtons.get(TradingActionEnum.acceptProposal);
+/*				final Button acceptProposal = tradingActionButtons.get(TradingActionEnum.acceptProposal);
 				final Button divideProposal = tradingActionButtons.get(TradingActionEnum.claimBATNAValue);
 				
 		    	acceptProposal.setEnabled(false);
-		    	divideProposal.setEnabled(false);
+		    	divideProposal.setEnabled(false);*/
 		    	
 //				final NegotiationConcludedDialogBox dialogBox = new NegotiationConcludedDialogBox(eventBus, experimentConditions);
 				final NegotiationConcludedDialogBox dialogBox = new NegotiationConcludedDialogBox(eventBus, experimentConditions, negotiationSession);
 				dialogBox.center();
 			}
 	    };
-	    timer.schedule(2000);
+//	    timer.schedule(2000);
+	    timer.schedule(1000);
 	};
 
 /*	@Override
@@ -532,7 +544,7 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 	public void showLastRoundHelpWindowDialogBox(final int temp) {
 		Timer timer = new Timer() {
 		      public void run() {
-		    	  final LastRoundHelpWindowDialogBox dialogBox = new LastRoundHelpWindowDialogBox(eventBus, temp);
+		    	  final LastRoundHelpWindowDialogBox dialogBox = new LastRoundHelpWindowDialogBox(eventBus);
 		    	  dialogBox.center();
 		    	  
 		    	  
@@ -553,14 +565,33 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 //		    	  dialogBox.hide();
 //		      	  final OfferAcceptanceDialogBox dialogBoxOfferAcceptance = new OfferAcceptanceDialogBox(eventBus, tradingObjectAllocations);
 		      	  final OfferAcceptanceDialogBox dialogBoxOfferAcceptance = new OfferAcceptanceDialogBox(eventBus, newTradingBoardState, negotiationSession);
-		      	  dialogBoxOfferAcceptance.setPopupPosition(0, 0);
+		      	  dialogBoxOfferAcceptance.setPopupPosition(105, 0);
 		      	  dialogBoxOfferAcceptance.show();
 		      }
 		};
 		
 //		int randomDelay =(int)(Math.random() * (8000 - 5000 + 1) + 5000);
-	    timer.schedule(5000); 		// 5 sec delay for reviewing
+		if(negotiationSession.getPlyRemaining() > 3) { 	// not the last round
+			timer.schedule(10000); 						// 10 sec delay for reviewing
+		} else {										// last round
+			timer.schedule(20000);						// 20 sec delay
+		}
 	};
+	
+	public void showLastRoundInfoDialogBox(final NegotiationSession negotiationSession) {
+		final LastRoundInfoDialogBox lastRoundDialogBox = new LastRoundInfoDialogBox(eventBus, negotiationSession);
+		
+		Timer timer = new Timer() {
+		      public void run() {
+		    	  lastRoundDialogBox.hide();
+		      }
+		};
+
+		lastRoundDialogBox.setPopupPosition(105, 0);
+		lastRoundDialogBox.show();
+		timer.schedule(10000);	// 10 sec delay for reading
+	};
+
 	
 	@Override
 	public void showProposalResultDialogBox(final String temp) {

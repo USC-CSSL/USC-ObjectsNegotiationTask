@@ -33,6 +33,10 @@ public class OfferAcceptanceDialogBox extends DialogBox {
 		flexTable.setSize("800px", "565px");
 		
 		Label lblAcceptance = new Label(constants.offerAcceptance_msg());
+		
+/*		if(negotiationSession.getPlyRemaining() < 3) {
+			lblAcceptance = new Label(constants.last_round());
+		}*/
 
 		lblAcceptance.setStylePrimaryName("BigLabel-style");
 		flexTable.getFlexCellFormatter().setColSpan(0, 0, 2);
@@ -113,6 +117,11 @@ public class OfferAcceptanceDialogBox extends DialogBox {
 		
 		// Reject button
 		Button btnReject = new Button(constants.reject());
+		if(negotiationSession.getPlyRemaining() < 3) {
+			btnReject = new Button(constants.tossCoin());
+		}
+
+		
 		btnReject.setSize("200px", "50px");
 		btnReject.setStylePrimaryName("MiddleButton-style");
 //		flexTable.setWidget(2, 1, btnReject);
@@ -120,14 +129,14 @@ public class OfferAcceptanceDialogBox extends DialogBox {
 
 		btnReject.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
-				if(negotiationSession.getPlyRemaining()>2) {
+				if(negotiationSession.getPlyRemaining() > 2) {
 					final double timestamp = Duration.currentTimeMillis();
 					final TradingAction newTradingAction = new TradingAction(AgentEnum.player, timestamp, TradingActionEnum.rejectProposal, null);
 					eventBus.fireEvent(new ProposalRejectedEvent(newTradingAction));
 	
 					hide();	
 					final WaitingDialogBox dialogBoxWait = new WaitingDialogBox(eventBus, "waitAfterRejection");
-					dialogBoxWait.setPopupPosition(0, 0);
+					dialogBoxWait.setPopupPosition(105, 0);
 					dialogBoxWait.show();
 						
 					Timer timer = new Timer() {

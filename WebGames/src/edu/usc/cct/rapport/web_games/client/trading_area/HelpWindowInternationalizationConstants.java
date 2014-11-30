@@ -545,5 +545,8 @@ public interface HelpWindowInternationalizationConstants extends Constants {
 	@DefaultStringValue("[TRANSLATION MISSING] Reject")
 	String reject();	
 
+	@DefaultStringValue("[TRANSLATION MISSING] Toss a coin")
+	String tossCoin();	
+
 	//String btnOk_html();
 };

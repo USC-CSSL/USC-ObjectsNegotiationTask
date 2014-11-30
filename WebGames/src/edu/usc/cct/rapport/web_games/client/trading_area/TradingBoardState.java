@@ -38,14 +38,14 @@ public class TradingBoardState {
 	static private int[][] getInitialTradingObjectAllocations() {
 
 		final int[][] result = new int[agentAreasOnTradingBoard][distinctTradingObjectsCount];
-/*		for (int col = 0; col != distinctTradingObjectsCount; ++col) {
+		for (int col = 0; col != distinctTradingObjectsCount; ++col) {
 			result[1][col] = itemsPerTradingObjectCategoryCount;
-		};*/
+		};
 		
-		// EK 10/27/2014: To ease the testing
+/*		// EK 10/27/2014: To ease the testing
 		result[2][0] = itemsPerTradingObjectCategoryCount;
 		result[2][1] = itemsPerTradingObjectCategoryCount;
-		result[2][2] = itemsPerTradingObjectCategoryCount;
+		result[2][2] = itemsPerTradingObjectCategoryCount;*/
 		
 		
 /*		result[0][1] = itemsPerTradingObjectCategoryCount;							// 140210: for Shasha's experiment

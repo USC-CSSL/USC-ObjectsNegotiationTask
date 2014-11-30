@@ -34,7 +34,7 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 	//static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.enhanced_squiggles, 32, 50, true, true, true, 24, AgentEnum.counterpart, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedNonconcederFirstOfferFixed, EmotionModellingStrategyEnum.chosenUniformlyAtRandom,true,true,true,1,0,0,0,0,0,0,0,0,0,0,0,0,"");
 	//static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.sacredObjects, 32, 50, false, false, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedNonconceder, EmotionModellingStrategyEnum.randomEveryOtherTurnSadOrAngryOrNeutral,true,false,false,1);
 	//static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.sacredObjects, 32, 50, false, false, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy, EmotionModellingStrategyEnum.randomAfter134SadOrAngryOrNeutral,true,false,false,1);
-	static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.veggie_3columns, 32, 50, true, true, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy, EmotionModellingStrategyEnum.randomEveryOtherTurnSadOrAngryOrNeutral,true,true,true,1);
+	static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.veggie, 32, 50, true, true, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedAgentForTrial, EmotionModellingStrategyEnum.alwaysNeutral,true,true,true,1);
 	static final private String largeFontSizeStyleName = "ict-rapport-largeFontSize";
 
 	static final private SafeHtml separatingLineFeed = SafeHtmlUtils.fromSafeConstant("<br/>");
@@ -91,7 +91,7 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 			if (TradingObjectSetEnum.placeholder_to_allow_initialization_prior_to_trading_object_set_selection.equals(tradingObjectSetEnum)) continue;
 			listBoxSelectTradingObjectSetEnum.addItem(tradingObjectSetEnum.toString(), tradingObjectSetEnum.name());
 		};
-		listBoxSelectTradingObjectSetEnum.setSelectedIndex(2);
+		listBoxSelectTradingObjectSetEnum.setSelectedIndex(1);
 		viewBasePanel.add(listBoxSelectTradingObjectSetEnum);
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
@@ -222,13 +222,14 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 		for (final EmotionModellingStrategyEnum emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart: EmotionModellingStrategyEnum.values()) {
 			listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy.addItem(emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart.toString(), emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart.name());
 		};
-		listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy.setSelectedIndex(EmotionModellingStrategyEnum.randomEveryOtherTurnSadOrAngryOrNeutral.ordinal());
+		listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy.setSelectedIndex(EmotionModellingStrategyEnum.alwaysNeutral.ordinal());
+//		listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy.setSelectedIndex(EmotionModellingStrategyEnum.randomEveryOtherTurnSadOrAngryOrNeutral.ordinal());
 //		listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy.setSelectedIndex(EmotionModellingStrategyEnum.randomAfter134SadOrAngryOrNeutral.ordinal());
 		viewBasePanel.add(listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy);
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
 		
-		final Label labelWhichScienario = new Label("Choose which experimental scenario should be chosen");
+/*		final Label labelWhichScienario = new Label("Choose which experimental scenario should be chosen");
 		labelWhichScienario.addStyleName(largeFontSizeStyleName);
 		viewBasePanel.add(labelWhichScienario);
 		final ListBox ListlabelWhichScienario = new ListBox();
@@ -236,13 +237,13 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 		ListlabelWhichScienario.addItem("Democratic scenario", Integer.toString(1));
 		ListlabelWhichScienario.addItem("Republican scenario", Integer.toString(2));
 		ListlabelWhichScienario.addItem("Random", Integer.toString(3));
-/*		ListlabelWhichScienario.addItem("Scenario 1", Integer.toString(2));
-		ListlabelWhichScienario.addItem("Scenario 2", Integer.toString(3));
-		ListlabelWhichScienario.addItem("Scenario 3", Integer.toString(4));*/
+//		ListlabelWhichScienario.addItem("Scenario 1", Integer.toString(2));
+//		ListlabelWhichScienario.addItem("Scenario 2", Integer.toString(3));
+//		ListlabelWhichScienario.addItem("Scenario 3", Integer.toString(4));
 		ListlabelWhichScienario.setSelectedIndex(3);
 		viewBasePanel.add(ListlabelWhichScienario);
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
-		viewBasePanel.add(new InlineHTML(separatingLineFeed));
+		viewBasePanel.add(new InlineHTML(separatingLineFeed));*/
 
 		final Button buttonSpecifyTheseExperimentConditions = new Button("Specify These Experiment Conditions");
 		buttonSpecifyTheseExperimentConditions.addStyleName(largeFontSizeStyleName);
@@ -268,8 +269,8 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 			    EmotionModellingStrategyEnum emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart = EmotionModellingStrategyEnum.valueOf(listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy.getValue(listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy.getSelectedIndex()));
 				experimentConditions.setEmotionalReactionDeterminationStrategyOfAlgorithmicCounterpart(emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart);
 				
-				final int expscenario = Integer.parseInt(ListlabelWhichScienario.getValue(ListlabelWhichScienario.getSelectedIndex()));
-				experimentConditions.setExpScenario(expscenario);
+//				final int expscenario = Integer.parseInt(ListlabelWhichScienario.getValue(ListlabelWhichScienario.getSelectedIndex()));
+//				experimentConditions.setExpScenario(expscenario);
 				SpecifyExperimentConditionsView.this.eventBus.fireEvent(new ExperimentConditionsSpecifiedEvent(experimentConditions));
 				
 			};

@@ -174,6 +174,7 @@ public class NegotiationSession implements Collection<TradingAction> {
 			result = null;
 		} else if (this.isEmpty()) {
 			if (0 == maximumPly % 2) {
+//			if (2 == maximumPly % 3) {
 				result = AgentEnum.getOtherAgent(this.agentWhoActsLastIfNoAgreementIsReached);
 			} else {
 				result = this.agentWhoActsLastIfNoAgreementIsReached;

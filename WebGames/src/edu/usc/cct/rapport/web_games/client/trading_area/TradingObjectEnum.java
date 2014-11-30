@@ -513,7 +513,7 @@ public enum TradingObjectEnum {
 					result = 1;
 					break;
 				case veggie_broccoli:
-					result = 2;
+					result = 1;
 					break;
 				case veggie_mushroom:
 					result = 3;
@@ -643,7 +643,7 @@ public enum TradingObjectEnum {
 					result = 1;
 					break;
 				case veggie_broccoli:
-					result = 2;
+					result = 1;
 					break;
 				case veggie_mushroom:
 					result = 3;

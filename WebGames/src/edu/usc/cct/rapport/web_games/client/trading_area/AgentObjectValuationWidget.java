@@ -5,6 +5,7 @@ import java.util.EnumMap;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
@@ -35,6 +36,7 @@ public class AgentObjectValuationWidget extends Composite {
 		this.setStyleName("ict-rapport-grid-2x2");
 		this.flexTableBasePanel.setVisible(true);
 		this.flexTableBasePanel.setWidth(width);
+//		this.flexTableBasePanel.setHeight("160px");
 
 		populateFlexTableBasePanel(this.flexTableBasePanel, this.agentEnum, this.tradingObjectSetEnum, this.width);
 	};
@@ -46,14 +48,20 @@ public class AgentObjectValuationWidget extends Composite {
 
 //		final Label header = generateHeader(agentEnum, width);
 //		flexTableBasePanel.setWidget(0, 0, header);
+		
+		int i = 1;
 
 		for (final TradingObjectEnum tradingObjectEnum: tradingObjectSetEnum.getSetOfTradingObjectEnum()) {
 			final Image image = tradingObjectEnum.getImage();
-			image.setSize("35px", "35px");
+//			image.setSize("35px", "35px");
+			image.setSize("42px", "42px");
 			final DescribedValueWidget describedValueWidget = new DescribedValueWidget(image, tradingObjectEnum.getPayoff(agentEnum));
 			this.describedValueWidgets.put(tradingObjectEnum, describedValueWidget);
 //			this.flexTableBasePanel.setWidget(1 + tradingObjectEnum.ordinal(), 0, describedValueWidget);
-			this.flexTableBasePanel.setWidget(tradingObjectEnum.ordinal(), 0, describedValueWidget);
+//			this.flexTableBasePanel.setWidget(tradingObjectEnum.ordinal(), 0, describedValueWidget);
+			this.flexTableBasePanel.setWidget(i, 0, describedValueWidget);
+			i++;
+
 		};
 	};
 

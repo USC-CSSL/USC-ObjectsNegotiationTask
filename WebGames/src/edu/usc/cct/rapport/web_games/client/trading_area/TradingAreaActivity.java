@@ -51,7 +51,7 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 				experimentConditions.setExpScenario(5);
 			}
 			
-			AlgorithmicCounterpartDecisionMakingStrategyEnum algorithmicCounterpartDecisionMakingStrategyEnum = TradingAreaActivity.this.experimentConditions.getDecisionMakingStrategyOfAlgorithmicCounterpart(); 
+/*			AlgorithmicCounterpartDecisionMakingStrategyEnum algorithmicCounterpartDecisionMakingStrategyEnum = TradingAreaActivity.this.experimentConditions.getDecisionMakingStrategyOfAlgorithmicCounterpart(); 
 			if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy2) & whichStrategy2==0){
 				algorithmicCounterpartDecisionMakingStrategyEnum = AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedConceder;
 				TradingAreaActivity.this.experimentConditions.setDecisionMakingStrategyOfAlgorithmicCounterpart(algorithmicCounterpartDecisionMakingStrategyEnum);
@@ -80,13 +80,13 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 			} else if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.SymbolicOrFinancialAgents) & whichStrategy2==1){
 				algorithmicCounterpartDecisionMakingStrategyEnum = AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedFinancialAgent;
 				TradingAreaActivity.this.experimentConditions.setDecisionMakingStrategyOfAlgorithmicCounterpart(algorithmicCounterpartDecisionMakingStrategyEnum);
-			}
+			}*/
 
 			TradingAreaActivity.this.proposalDecisionMakingStrategyOfAlgorithmicCounterpart = TradingAreaActivity.this.experimentConditions.getDecisionMakingStrategyOfAlgorithmicCounterpart().getProposalDecisionMakingStrategy(TradingAreaActivity.this.experimentConditions.getNegotiationSessionPlyCount());
 			
 			EmotionModellingStrategyEnum emotionModellingPolicyEnum = TradingAreaActivity.this.experimentConditions.getEmotionalModellingPolicyEnum();
 
-			// randomEveryOtherTurnSadOrAngryOrNeutral
+/*			// randomEveryOtherTurnSadOrAngryOrNeutral
 			if (emotionModellingPolicyEnum.equals(EmotionModellingStrategyEnum.randomEveryOtherTurnSadOrAngryOrNeutral) & whichEmotion==0){	
 				emotionModellingPolicyEnum = EmotionModellingStrategyEnum.everyOtherTurnAngry;
 				TradingAreaActivity.this.experimentConditions.setEmotionalReactionDeterminationStrategyOfAlgorithmicCounterpart(emotionModellingPolicyEnum);}
@@ -110,7 +110,7 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 
 			else if (emotionModellingPolicyEnum.equals(EmotionModellingStrategyEnum.randomAfter134SadOrAngryOrNeutral)){
 				emotionModellingPolicyEnum = EmotionModellingStrategyEnum.alwaysNeutral;
-				TradingAreaActivity.this.experimentConditions.setEmotionalReactionDeterminationStrategyOfAlgorithmicCounterpart(emotionModellingPolicyEnum);}	
+				TradingAreaActivity.this.experimentConditions.setEmotionalReactionDeterminationStrategyOfAlgorithmicCounterpart(emotionModellingPolicyEnum);}	*/
 
 			TradingAreaActivity.this.emotionalModelOfAlgorithmicCounterpart = new EmotionalModelOfAlgorithmicCounterpart(0.0, emotionModellingPolicyEnum.getEmotionModellingStrategy(), TradingAreaActivity.this.negotiationSession, TradingAreaActivity.this.experimentConditions.getPlayerBATNA(), TradingAreaActivity.this.experimentConditions.getCounterpartBATNA(),emotionModellingPolicyEnum);
 			TradingAreaActivity.this.view.setCounterpartInformationVisibilityAndBATNAValues(TradingAreaActivity.this.experimentConditions);
@@ -259,11 +259,13 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 
 
 	public void updateTradingArea(final TradingBoardState newTradingBoardState, final NegotiationSession negotiationSession) {
+//		if (negotiationSession.getPlyRemaining() ==  19 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible() ){
 		if (negotiationSession.getPlyRemaining() ==  TradingAreaActivity.this.experimentConditions.getNegotiationSessionPlyCount() & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible() ){
 			//TradingAreaActivity.this.view.showStartGameHelpWindowDialogBox(1);
 			//TradingAreaActivity.this.view.showScenarioDialogBox(TradingAreaActivity.this.experimentConditions);
 			//TradingAreaActivity.this.view.showParticipantIDBox(TradingAreaActivity.this.experimentConditions); // EK 10/23/14: commented out for fMRI experiment
-			TradingAreaActivity.this.experimentConditions.setParticipantID(Long.toString(System.currentTimeMillis()));
+			final double timestamp = Duration.currentTimeMillis();
+			TradingAreaActivity.this.experimentConditions.setParticipantID(Double.toString(timestamp));
 //		} else if (negotiationSession.getPlyRemaining() == 1 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible() & AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext())){
 //			TradingAreaActivity.this.view.showLastRoundHelpWindowDialogBox(1);
 		} else if ((negotiationSession.getPlyRemaining()%3) == 2 & AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext())){
@@ -326,6 +328,10 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 			case makeInitialProposal:
 				assert(true);
 			case makeCounterproposal:
+				if(negotiationSession.getPlyRemaining() < 5 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible()) {
+					TradingAreaActivity.this.view.showLastRoundInfoDialogBox(negotiationSession);
+				}
+
 //				if (negotiationSession.getPlyRemaining() == 1 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible() & AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext())){
 //					TradingAreaActivity.this.view.showLastRoundHelpWindowDialogBox(1);
 //				} else {

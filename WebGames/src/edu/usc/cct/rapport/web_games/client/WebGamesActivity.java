@@ -32,6 +32,7 @@ abstract public class WebGamesActivity implements IWebGamesActivity {
 
 	protected void setRootLayoutPanelSize() {
 		RootLayoutPanel.get().setPixelSize(800,600);
+		RootLayoutPanel.get().setStylePrimaryName("Fixed-Position");
 //		RootLayoutPanel.get().setPixelSize(850,600);
 	};
 

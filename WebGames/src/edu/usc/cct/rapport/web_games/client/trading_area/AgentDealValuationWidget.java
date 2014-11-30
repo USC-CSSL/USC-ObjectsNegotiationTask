@@ -22,7 +22,7 @@ public class AgentDealValuationWidget extends Composite {
 		this.flexTableBasePanel.setVisible(true);
 
 		this.setStyleName(agentDealValuationStyleName);
-
+		
 		for (final ValuationCategoryEnum valuationCategoryEnum: ValuationCategoryEnum.values()) {
 			final String description = agentEnum.getValuationDescription(valuationCategoryEnum);
 			final DescribedValueWidget describedValueWidget = new DescribedValueWidget(description, null, totalWidthHint);

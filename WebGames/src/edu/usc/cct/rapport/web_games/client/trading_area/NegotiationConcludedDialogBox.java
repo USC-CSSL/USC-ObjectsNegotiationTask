@@ -25,6 +25,7 @@ public class NegotiationConcludedDialogBox extends DialogBox {
 			String titleDiscription = constants.help_Window_Title();
 			this.setText(titleDiscription);
 			final FlowPanel flowPanelDialogBoxContents = new FlowPanel();
+//			flowPanelDialogBoxContents.setSize("300px", "200px");
 //			flowPanelDialogBoxContents.setSize("800px", "565px");
 			
 			final TextArea dialogBoxTextArea = new TextArea();

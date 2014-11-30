@@ -22,6 +22,7 @@ public interface ITradingAreaView extends IWebGamesView {
 	void showPostGameQuestionnaireDialogBox(ExperimentConditions experimentConditions);
 	void showDemographicsDialogBox(ExperimentConditions experimentConditions);
 	void showLastRoundHelpWindowDialogBox(final int temp);
+	void showLastRoundInfoDialogBox(final NegotiationSession negotiationSession);
 //	void showReviewingOfferDialogBox(final int[][] tradingObjectAllocations);
 	void showReviewingOfferDialogBox(final TradingBoardState newTradingBoardState, final NegotiationSession negotiationSession);
 	void showPreGameQuestionnaireDialogBox (final int temp, ExperimentConditions experimentConditions);

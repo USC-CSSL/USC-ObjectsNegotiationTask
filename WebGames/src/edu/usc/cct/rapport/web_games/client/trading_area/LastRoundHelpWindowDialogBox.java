@@ -17,7 +17,7 @@ public class LastRoundHelpWindowDialogBox extends DialogBox implements ClickHand
 
 	static final private HelpWindowInternationalizationConstants constants = (HelpWindowInternationalizationConstants) (GWT.isClient() ? GWT.create(HelpWindowInternationalizationConstants.class) : null);
 	
-	public LastRoundHelpWindowDialogBox(final EventBus eventBus, final int temp) {
+	public LastRoundHelpWindowDialogBox(final EventBus eventBus) {
 
 		
 		

@@ -22,7 +22,8 @@ public class FixedAngryNeutralReactionEveryOtherTurn implements IComputeFacialEx
 	
 	public Pair<FacialExpressionEnum, Double> computeFacialExpressionAndIntensity(final double emotionValue, final RelativePowerEnum relativePowerEnum) {
 		final FixedEmotionalReaction fixedEmotionalReaction;
-		if (emotionValue % 4 == 1) {
+//		if (emotionValue % 4 == 1) {
+		if (emotionValue % 6 == 1) {
 			fixedEmotionalReaction = new FixedEmotionalReaction(FacialExpressionEnum.angry_neutral);
 		}
 		else {

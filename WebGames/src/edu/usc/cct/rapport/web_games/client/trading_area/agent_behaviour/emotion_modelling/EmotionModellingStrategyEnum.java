@@ -4,20 +4,20 @@ import edu.usc.cct.rapport.web_games.client.trading_area.FacialExpressionEnum;
 //import java.util.Random;
 
 public enum EmotionModellingStrategyEnum {
-	alwaysHappy,
-	alwaysContent,
+//	alwaysHappy,
+//	alwaysContent,
 	alwaysNeutral,
-	alwaysAngry,
-	alwaysSad,
-	chosenUniformlyAtRandom,
-	chosenSimilarlyToMethodDescribedInAntosReport,
-	chosenSimilarlyToCSharpCode,
+//	alwaysAngry,
+//	alwaysSad,
+//	chosenUniformlyAtRandom,
+//	chosenSimilarlyToMethodDescribedInAntosReport,
+//	chosenSimilarlyToCSharpCode,
 	everyOtherTurnSad,
-	everyOtherTurnAngry,
-	randomEveryOtherTurnSadOrAngryOrNeutral,
-	after134Angry,
-	after134Sad,
-	randomAfter134SadOrAngryOrNeutral;
+	everyOtherTurnAngry;
+//	randomEveryOtherTurnSadOrAngryOrNeutral,
+//	after134Angry,
+//	after134Sad,
+//	randomAfter134SadOrAngryOrNeutral;
 
 	public EmotionModellingStrategy getEmotionModellingStrategy() {
 
@@ -27,7 +27,7 @@ public enum EmotionModellingStrategyEnum {
 //		boolean whichEmotion = random.nextBoolean();
 		
 		switch (this) {
-			case chosenSimilarlyToMethodDescribedInAntosReport:
+/*			case chosenSimilarlyToMethodDescribedInAntosReport:
 				computeChangeInEmotion = new ComputeChangeInEmotionAsPerAntosReport();
 				computeFacialExpressionAndIntensity = new ComputeFacialExpressionAndIntensityAsPerAntosReport();
 				break;
@@ -46,19 +46,19 @@ public enum EmotionModellingStrategyEnum {
 			case alwaysContent:
 				computeChangeInEmotion = new DoNotBotherToComputeChangeInEmotion();
 				computeFacialExpressionAndIntensity = new FixedEmotionalReaction(FacialExpressionEnum.content);
-				break;
+				break;*/
 			case alwaysNeutral:
 				computeChangeInEmotion = new DoNotBotherToComputeChangeInEmotion();
 				computeFacialExpressionAndIntensity = new FixedEmotionalReaction(FacialExpressionEnum.neutral);
 				break;
-			case alwaysAngry:
+/*			case alwaysAngry:
 				computeChangeInEmotion = new DoNotBotherToComputeChangeInEmotion();
 				computeFacialExpressionAndIntensity = new FixedEmotionalReaction(FacialExpressionEnum.angry);
 				break;
 			case alwaysSad:
 				computeChangeInEmotion = new DoNotBotherToComputeChangeInEmotion();
 				computeFacialExpressionAndIntensity = new FixedEmotionalReaction(FacialExpressionEnum.sad);
-				break;
+				break;*/
 			case everyOtherTurnAngry:
 				computeChangeInEmotion = new DoNotBotherToComputeChangeInEmotion();
 				computeFacialExpressionAndIntensity = new FixedAngryNeutralReactionEveryOtherTurn(FacialExpressionEnum.angry_neutral);
@@ -67,7 +67,7 @@ public enum EmotionModellingStrategyEnum {
 				computeChangeInEmotion = new DoNotBotherToComputeChangeInEmotion();
 				computeFacialExpressionAndIntensity = new FixedSadNeutralReactionEveryOtherTurn(FacialExpressionEnum.sad_neutral);
 				break;
-			case after134Angry:
+/*			case after134Angry:
 				computeChangeInEmotion = new DoNotBotherToComputeChangeInEmotion();
 				computeFacialExpressionAndIntensity = new FixedAngryNeutralReactionAfter134(FacialExpressionEnum.angry_neutral);
 				break;
@@ -82,7 +82,7 @@ public enum EmotionModellingStrategyEnum {
 			case randomAfter134SadOrAngryOrNeutral:
 				computeChangeInEmotion = new DoNotBotherToComputeChangeInEmotion();
 				computeFacialExpressionAndIntensity = new FixedSadNeutralReactionAfter134(FacialExpressionEnum.sad_neutral);
-				break;
+				break;*/
 			default:
 				final IllegalStateException e = new IllegalStateException("Unhandled |" + EmotionModellingStrategyEnum.class.getName() + "| in |" + EmotionModellingStrategyEnum.class.getName() + "|.getEmotionModellingPolicy().");
 				throw e;
