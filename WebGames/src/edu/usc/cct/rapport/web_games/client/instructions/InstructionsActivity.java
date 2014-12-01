@@ -38,8 +38,10 @@ public class InstructionsActivity extends WebGamesActivity {
 	final private class GoToTradingAreaPlace implements ExperimentConditionsEncodedEventHandler {
 		@Override
 		public void onExperimentConditionsEncoded(final ExperimentConditionsEncodedEvent event) {
+//		public void onExperimentConditionsEncoded(final ExperimentConditionsEncodedEvent event, final double timestamp) {
 			final String encodedExperimentConditions = event.getEncodedExperimentConditions();
 			final TradingAreaPlace newPlace = new TradingAreaPlace(resettableEventBus, encodedExperimentConditions);
+//			final TradingAreaPlace newPlace = new TradingAreaPlace(resettableEventBus, encodedExperimentConditions, timestamp);
 			goTo(newPlace);
 		};
 	};

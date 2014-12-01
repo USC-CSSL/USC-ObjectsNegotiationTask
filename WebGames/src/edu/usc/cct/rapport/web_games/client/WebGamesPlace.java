@@ -13,12 +13,14 @@ abstract public class WebGamesPlace extends Place implements IWebGamesPlace {
 	final private String placeName;
 	final private ExperimentConditionsDecoder experimentConditionsDecoder;
 	final protected EventBus eventBus;
-
+//	final private double timestamp;
 
 	@Inject
 	protected WebGamesPlace(final EventBus eventBus, @Assisted final String placeName, @Assisted final String base64EncodedObject, final boolean stripLanguageFirst) {
+//	protected WebGamesPlace(final EventBus eventBus, @Assisted final String placeName, @Assisted final String base64EncodedObject, final boolean stripLanguageFirst, final double timestamp) {
 		this.eventBus = eventBus;
 		this.placeName = placeName;
+//		this.timestamp = timestamp;
 		if (null == base64EncodedObject) {
 			this.experimentConditionsDecoder = null;
 		} else {

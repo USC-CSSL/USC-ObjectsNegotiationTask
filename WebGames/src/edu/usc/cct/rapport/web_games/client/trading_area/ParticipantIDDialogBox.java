@@ -70,7 +70,7 @@ public class ParticipantIDDialogBox extends DialogBox {
 				//if (!ParticipantIDBox.getText().isEmpty() & participantID > 0 ){
 				if (!ParticipantIDBox.getText().isEmpty()){
 					//experimentConditions.setParticipantID(participantID);
-					experimentConditions.setParticipantID(ParticipantIDBox.getText());
+//					experimentConditions.setParticipantID(ParticipantIDBox.getText());
 					hide();
 					Timer timer = new Timer() {
 					      public void run() {

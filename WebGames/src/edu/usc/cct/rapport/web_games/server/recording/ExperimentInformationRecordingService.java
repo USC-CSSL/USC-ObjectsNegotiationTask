@@ -235,9 +235,11 @@ public class ExperimentInformationRecordingService extends RemoteServiceServlet 
 		cellColumnIndexToStartWritingIn = 1 + this.populateRowWithScalarInformation(negotiationSession, rowToPopulate, cellColumnIndexToStartWritingIn, true);
 
 		final CellStyle dateCellStyle = getDateCellStyle(unisheetExcelWorkbook);
+		final CellStyle timeCellStyle = getTimeCellStyle(unisheetExcelWorkbook);
 
+		final double startTimestamp = finalExperimentInformation.getExperimentConditions().getStartTimestamp();
 		final List<TradingActionDS> tradingActions = negotiationSession.getHistory();
-		cellColumnIndexToStartWritingIn = 1 + populateRowWithTradingActionData(tradingActions, rowToPopulate, cellColumnIndexToStartWritingIn, dateCellStyle);
+		cellColumnIndexToStartWritingIn = 1 + populateRowWithTradingActionData(startTimestamp, tradingActions, rowToPopulate, cellColumnIndexToStartWritingIn, dateCellStyle, timeCellStyle);
 
 		final List<TradingExpressionDS> tradingExpressions = negotiationSession.getExpressionHistory();
 		cellColumnIndexToStartWritingIn = 1 + populateRowWithTradingExpressionData(tradingExpressions, rowToPopulate, cellColumnIndexToStartWritingIn, dateCellStyle);
@@ -254,6 +256,16 @@ public class ExperimentInformationRecordingService extends RemoteServiceServlet 
 
 		return result;
 	};
+	
+	private CellStyle getTimeCellStyle(final Workbook workbook) {
+
+		final CreationHelper creationHelper = workbook.getCreationHelper();
+		final CellStyle result = workbook.createCellStyle();
+		result.setDataFormat(creationHelper.createDataFormat().getFormat("hh:mm:ss.000"));
+
+		return result;
+	};
+
 
 
 	private void autosizeSheetColumns(final Sheet sheet, final int leftmostColumnGuaranteedToBeEmpty) {
@@ -271,7 +283,8 @@ public class ExperimentInformationRecordingService extends RemoteServiceServlet 
 	private void populateNewSheet(final ExperimentInformationDS experimentInformation, final Workbook multisheetExcelWorkbook) {
 		final Sheet newSheet = obtainNewSheet(multisheetExcelWorkbook, true);
 		final CellStyle dateCellStyle = getDateCellStyle(multisheetExcelWorkbook);
-		final Pair<Integer, Integer> firstRowAndColumnThatAreGuaranteedToBeEmpty = populateEmptySheet(experimentInformation, newSheet, dateCellStyle);
+		final CellStyle timeCellStyle = getTimeCellStyle(multisheetExcelWorkbook);		
+		final Pair<Integer, Integer> firstRowAndColumnThatAreGuaranteedToBeEmpty = populateEmptySheet(experimentInformation, newSheet, dateCellStyle, timeCellStyle);
 		multisheetExcelWorkbook.setSheetOrder(newSheet.getSheetName(), 0);
 
 		final int firstEmptyColumn = firstRowAndColumnThatAreGuaranteedToBeEmpty.getSecond();
@@ -317,7 +330,7 @@ public class ExperimentInformationRecordingService extends RemoteServiceServlet 
 	};
 
 
-	private Pair<Integer, Integer> populateEmptySheet(final ExperimentInformationDS experimentInformation, final Sheet emptySheet, final CellStyle dateCellStyle) {
+	private Pair<Integer, Integer> populateEmptySheet(final ExperimentInformationDS experimentInformation, final Sheet emptySheet, final CellStyle dateCellStyle, final CellStyle timeCellStyle) {
 
 		assert (null != experimentInformation);
 
@@ -327,6 +340,7 @@ public class ExperimentInformationRecordingService extends RemoteServiceServlet 
 
 		final Row sheetHeaderRow = emptySheet.createRow(cellRowIndex++);
 		int firstEmptyColumn = populateRowWithSheetHeaderInformation(sheetHeaderRow, 0, dateCellStyle);
+		final double startTimestamp = experimentInformation.getExperimentConditions().getStartTimestamp();
 
 		++cellRowIndex;
 
@@ -356,7 +370,7 @@ public class ExperimentInformationRecordingService extends RemoteServiceServlet 
 		final List<TradingActionDS> tradingActions = negotiationSession.getHistory();
 		for (final TradingActionDS tradingAction: tradingActions) {
 			final Row tradingActionRow = emptySheet.createRow(cellRowIndex++);
-			firstEmptyColumn = populateRowWithTradingActionData(tradingAction, tradingActionRow, 0, dateCellStyle);
+			firstEmptyColumn = populateRowWithTradingActionData(startTimestamp, tradingAction, tradingActionRow, 0, dateCellStyle, timeCellStyle);
 			if (leftmostColumnGuaranteedToBeEmpty < firstEmptyColumn) leftmostColumnGuaranteedToBeEmpty = firstEmptyColumn;
 		};
 
@@ -458,7 +472,8 @@ public class ExperimentInformationRecordingService extends RemoteServiceServlet 
 	};
 
 
-	public int populateRowWithTradingActionData(final List<TradingActionDS> tradingActions, final Row rowToPopulate, final int cellColumnIndexToStartWritingIn, final CellStyle dateCellStyle) {
+//	public int populateRowWithTradingActionData(final List<TradingActionDS> tradingActions, final Row rowToPopulate, final int cellColumnIndexToStartWritingIn, final CellStyle dateCellStyle) {
+	public int populateRowWithTradingActionData(final double startTimestamp, final List<TradingActionDS> tradingActions, final Row rowToPopulate, final int cellColumnIndexToStartWritingIn, final CellStyle dateCellStyle, final CellStyle timeCellStyle) {
 
 		assert (null != tradingActions);
 
@@ -471,7 +486,7 @@ public class ExperimentInformationRecordingService extends RemoteServiceServlet 
 		for (int j = 0; j != maxActionPlyCount; ++j) {
 			if (j < actionPlyCount) {
 				// When a proposal is not made, the proposal fields are not serialized.  We still need to advance the appropriate number of cells, regardless.
-				populateRowWithTradingActionData(tradingActions.get(j), rowToPopulate, cellColumnIndex, dateCellStyle);
+				populateRowWithTradingActionData(startTimestamp, tradingActions.get(j), rowToPopulate, cellColumnIndex, dateCellStyle, timeCellStyle);
 			};
 			//cellColumnIndex += 4 + allocationRepetitionCount * 3;
 			cellColumnIndex += 5 + allocationRepetitionCount * 3;
@@ -481,7 +496,8 @@ public class ExperimentInformationRecordingService extends RemoteServiceServlet 
 	};
 
 
-	public int populateRowWithTradingActionData(final TradingActionDS tradingAction, final Row rowToPopulate, final int cellColumnIndexToStartWritingIn, final CellStyle dateCellStyle) {
+//	public int populateRowWithTradingActionData(final TradingActionDS tradingAction, final Row rowToPopulate, final int cellColumnIndexToStartWritingIn, final CellStyle dateCellStyle) {
+	public int populateRowWithTradingActionData(final double startTimestamp, final TradingActionDS tradingAction, final Row rowToPopulate, final int cellColumnIndexToStartWritingIn, final CellStyle dateCellStyle, final CellStyle timeCellStyle) {
 
 		assert (null != tradingAction);
 		int utility = 0;
@@ -491,6 +507,11 @@ public class ExperimentInformationRecordingService extends RemoteServiceServlet 
 		timestampCell.setCellValue(tradingAction.getTimestamp());
 		final Cell timestampAsDateCell = rowToPopulate.createCell(cellColumnIndex++, Cell.CELL_TYPE_NUMERIC);
 		populateTimestampCellFormattedAsDate(timestampAsDateCell, tradingAction.getTimestamp(), dateCellStyle);
+		
+		final Cell relevantTimestampAsDateCell = rowToPopulate.createCell(cellColumnIndex++, Cell.CELL_TYPE_NUMERIC);
+		populateRelevantTimestampCellFormattedAsDate(relevantTimestampAsDateCell, tradingAction.getTimestamp() - startTimestamp - 1000*60*60*16, timeCellStyle);
+
+		
 		final Cell performingAgentCell = rowToPopulate.createCell(cellColumnIndex++, Cell.CELL_TYPE_STRING);
 //		performingAgentCell.setCellValue(tradingAction.getPerformingAgent().name());
 
@@ -633,6 +654,17 @@ public class ExperimentInformationRecordingService extends RemoteServiceServlet 
 		final double excelTimestamp = DateUtil.getExcelDate(javaDate);
 		timestampCell.setCellValue(excelTimestamp);
 		timestampCell.setCellStyle(dateCellStyle);
+	};
+	
+	public void populateRelevantTimestampCellFormattedAsDate(final Cell timestampCell, final double javaTimestamp, final CellStyle timeCellStyle) {
+
+		assert(null != timestampCell);
+		
+		final long javaTimestampRestoredToLong = (long)javaTimestamp;
+		final Date javaDate = new Date(javaTimestampRestoredToLong);
+		final double excelTimestamp = DateUtil.getExcelDate(javaDate);
+		timestampCell.setCellValue(excelTimestamp);
+		timestampCell.setCellStyle(timeCellStyle);
 	};
 
 };

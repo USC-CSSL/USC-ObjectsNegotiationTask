@@ -23,8 +23,10 @@ public class SpecifyExperimentConditionsActivity extends WebGamesActivity {
 	final private class GoToURLProvisionPlace implements ExperimentConditionsEncodedEventHandler {
 		@Override
 		public void onExperimentConditionsEncoded(final ExperimentConditionsEncodedEvent event) {
+//		public void onExperimentConditionsEncoded(final ExperimentConditionsEncodedEvent event, final double timestamp) {
 			final String encodedExperimentConditions = event.getEncodedExperimentConditions();
 			final URLProvisionPlace newPlace = new URLProvisionPlace(resettableEventBus, encodedExperimentConditions);
+//			final URLProvisionPlace newPlace = new URLProvisionPlace(resettableEventBus, encodedExperimentConditions, timestamp);
 			goTo(newPlace);
 		};
 	};

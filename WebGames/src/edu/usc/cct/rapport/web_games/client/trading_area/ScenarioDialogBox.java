@@ -49,11 +49,11 @@ public class ScenarioDialogBox extends DialogBox {
 			richTextArea.setHTML(constants.scenario_textC());*/
 //		richTextArea.setHTML(constants.scenario_symbolic());
 		
-		if(experimentConditions.getExpScenario() == 1 || experimentConditions.getExpScenario() == 4)
+/*		if(experimentConditions.getExpScenario() == 1 || experimentConditions.getExpScenario() == 4)
 			richTextArea.setHTML(constants.scenario_democratic()); // liberal
 		
 		if(experimentConditions.getExpScenario() == 2 || experimentConditions.getExpScenario() == 5)
-			richTextArea.setHTML(constants.scenario_republican()); // conservative
+			richTextArea.setHTML(constants.scenario_republican()); // conservative*/
 
 		
 		Button button = new Button(constants.ok_button());

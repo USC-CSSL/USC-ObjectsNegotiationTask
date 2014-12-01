@@ -5,4 +5,6 @@ import com.google.gwt.event.shared.EventHandler;
 public interface ExperimentConditionsEncodedEventHandler extends EventHandler {
 
 	void onExperimentConditionsEncoded(final ExperimentConditionsEncodedEvent event);
+//	void onExperimentConditionsEncoded(final ExperimentConditionsEncodedEvent event, final double timestamp);
+
 };

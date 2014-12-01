@@ -12,7 +12,9 @@ public class TradingAreaPlace extends WebGamesPlace implements ITradingAreaPlace
 
 	@Inject
 	public TradingAreaPlace(final EventBus eventBus, @Assisted final String token) {
+//	public TradingAreaPlace(final EventBus eventBus, @Assisted final String token, final double timestamp) {
 		super(eventBus, placeName, token, false);
+//		super(eventBus, placeName, token, false, timestamp);
 	};
 
 /*

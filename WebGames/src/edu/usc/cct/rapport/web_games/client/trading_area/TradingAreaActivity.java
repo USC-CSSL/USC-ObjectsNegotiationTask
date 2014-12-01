@@ -1,5 +1,7 @@
 package edu.usc.cct.rapport.web_games.client.trading_area;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 import com.google.gwt.core.client.Duration;
@@ -35,6 +37,13 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 			final int whichScenario = random.nextInt(2);
 
 			TradingAreaActivity.this.experimentConditions = event.getExperimentConditions();
+			final double startTimestamp = Duration.currentTimeMillis();
+			TradingAreaActivity.this.experimentConditions.setStartTimestamp(startTimestamp);
+
+//			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+//	        Date resultdate = new Date((long)startTimestamp);
+//	        TradingAreaActivity.this.experimentConditions.setStartTime(sdf.format(resultdate));
+			
 			TradingAreaActivity.this.negotiationSession = new NegotiationSession(TradingAreaActivity.this.experimentConditions.getTradingObjectSetEnum(), TradingAreaActivity.this.experimentConditions.getNegotiationSessionPlyCount(), TradingAreaActivity.this.experimentConditions.getAgentWhoActsLastIfNoAgreementIsReached());
 			
 /*			if(experimentConditions.getExpScenario()==1 & whichScenario==0) {
@@ -45,11 +54,11 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 				experimentConditions.setExpScenario(4);
 			}
 			experimentConditions.setExpScenario(1);*/
-			if(experimentConditions.getExpScenario()==3 & whichScenario==0) {
+/*			if(experimentConditions.getExpScenario()==3 & whichScenario==0) {
 				experimentConditions.setExpScenario(4);				
 			} else if(experimentConditions.getExpScenario()==3 &  whichScenario==1){
 				experimentConditions.setExpScenario(5);
-			}
+			}*/
 			
 /*			AlgorithmicCounterpartDecisionMakingStrategyEnum algorithmicCounterpartDecisionMakingStrategyEnum = TradingAreaActivity.this.experimentConditions.getDecisionMakingStrategyOfAlgorithmicCounterpart(); 
 			if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy2) & whichStrategy2==0){
@@ -124,7 +133,7 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 			final TradingBoardState initialTradingBoardState = new TradingBoardState(TradingAreaActivity.this.experimentConditions.getTradingObjectSetEnum());
 			TradingAreaActivity.this.updateTradingArea(initialTradingBoardState, negotiationSession);
 			TradingAreaActivity.this.executeCounterpartTurnIfNecessary(TradingAreaActivity.this.experimentConditions.getPlayerBATNA(), TradingAreaActivity.this.experimentConditions.getCounterpartBATNA(), TradingAreaActivity.this.negotiationSession);
-			TradingAreaActivity.this.view.setScenario(TradingAreaActivity.this.experimentConditions.getExpScenario());
+//			TradingAreaActivity.this.view.setScenario(TradingAreaActivity.this.experimentConditions.getExpScenario());
 		};
 	};
 
@@ -264,8 +273,8 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 			//TradingAreaActivity.this.view.showStartGameHelpWindowDialogBox(1);
 			//TradingAreaActivity.this.view.showScenarioDialogBox(TradingAreaActivity.this.experimentConditions);
 			//TradingAreaActivity.this.view.showParticipantIDBox(TradingAreaActivity.this.experimentConditions); // EK 10/23/14: commented out for fMRI experiment
-			final double timestamp = Duration.currentTimeMillis();
-			TradingAreaActivity.this.experimentConditions.setParticipantID(Double.toString(timestamp));
+//			final double timestamp = Duration.currentTimeMillis();
+//			TradingAreaActivity.this.experimentConditions.setParticipantID(Double.toString(timestamp));
 //		} else if (negotiationSession.getPlyRemaining() == 1 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible() & AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext())){
 //			TradingAreaActivity.this.view.showLastRoundHelpWindowDialogBox(1);
 		} else if ((negotiationSession.getPlyRemaining()%3) == 2 & AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext())){

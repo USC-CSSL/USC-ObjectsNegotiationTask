@@ -7,10 +7,13 @@ public class ExperimentConditionsEncodedEvent extends GwtEvent<ExperimentConditi
 
     static final public Type<ExperimentConditionsEncodedEventHandler> TYPE = new Type<ExperimentConditionsEncodedEventHandler>();
     final private String encodedExperimentConditions;
+//    final private double startTimestamp;
 
 
     public ExperimentConditionsEncodedEvent(final String encodedExperimentConditions) {
+//    public ExperimentConditionsEncodedEvent(final String encodedExperimentConditions, final double timestamp) {
         this.encodedExperimentConditions = encodedExperimentConditions;
+//        this.startTimestamp = timestamp;
     };
 
 
@@ -23,6 +26,7 @@ public class ExperimentConditionsEncodedEvent extends GwtEvent<ExperimentConditi
     @Override
     protected void dispatch(final ExperimentConditionsEncodedEventHandler handler) {
         handler.onExperimentConditionsEncoded(this);
+//        handler.onExperimentConditionsEncoded(this, this.startTimestamp);
     };
 
 

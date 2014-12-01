@@ -1,5 +1,6 @@
 package edu.usc.cct.rapport.web_games.client.obtain_consent;
 
+import com.google.gwt.core.client.Duration;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
@@ -25,6 +26,9 @@ public class ObtainConsentActivity extends WebGamesActivity {
 		@Override
 		public void onExperimentConditionsDecoded(final ExperimentConditionsDecodedEvent event) {
 			ObtainConsentActivity.this.experimentConditions = event.getExperimentConditions();
+
+//			final double timestamp = Duration.currentTimeMillis();
+//			ObtainConsentActivity.this.experimentConditions.setStartTimestamp(timestamp);
 		//	hack=ObtainConsentActivity.this.experimentConditions.getExpScenario();
 		};
 	};
@@ -33,9 +37,11 @@ public class ObtainConsentActivity extends WebGamesActivity {
 	final private class GoToInstructionsPlace implements ExperimentConditionsEncodedEventHandler {
 		@Override
 		public void onExperimentConditionsEncoded(final ExperimentConditionsEncodedEvent event) {
+//		public void onExperimentConditionsEncoded(final ExperimentConditionsEncodedEvent event, final double timestamp) {
 			final String encodedExperimentConditions = event.getEncodedExperimentConditions();
 			//final InstructionsPlace newPlace = new InstructionsPlace(resettableEventBus, encodedExperimentConditions);
 			final TradingAreaPlace newPlace = new TradingAreaPlace(resettableEventBus, encodedExperimentConditions);
+//			final TradingAreaPlace newPlace = new TradingAreaPlace(resettableEventBus, encodedExperimentConditions, timestamp);
 			goTo(newPlace);
 		};
 	};
@@ -44,7 +50,11 @@ public class ObtainConsentActivity extends WebGamesActivity {
 	final private class EncodeExperimentConditions implements UserConsentsEventHandler {
 		@Override
 		public void onUserConsenting(final UserConsentsEvent event) {
-			@SuppressWarnings("unused") final ExperimentConditionsEncoder encoder = new ExperimentConditionsEncoder(resettableEventBus, ObtainConsentActivity.this.experimentConditions);
+			@SuppressWarnings("unused") 
+//			final double timestamp = Duration.currentTimeMillis();
+//			ObtainConsentActivity.this.experimentConditions.setStartTimestamp(timestamp);
+			final ExperimentConditionsEncoder encoder = new ExperimentConditionsEncoder(resettableEventBus, ObtainConsentActivity.this.experimentConditions);
+//			final ExperimentConditionsEncoder encoder = new ExperimentConditionsEncoder(resettableEventBus, ObtainConsentActivity.this.experimentConditions, timestamp);
 		};
 	};
 

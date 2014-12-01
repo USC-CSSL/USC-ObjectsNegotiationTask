@@ -12,7 +12,9 @@ public class URLProvisionPlace extends WebGamesPlace implements IURLProvisionPla
 
 	@Inject
 	public URLProvisionPlace(final EventBus eventBus, @Assisted final String token) {
+//	public URLProvisionPlace(final EventBus eventBus, @Assisted final String token, final double timestamp) {
 		super(eventBus, placeName, token, false);
+//		super(eventBus, placeName, token, false, timestamp);
 	};
 
 
