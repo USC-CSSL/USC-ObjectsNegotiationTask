@@ -7,6 +7,10 @@ import java.util.Random;
 import com.google.gwt.core.client.Duration;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.place.shared.PlaceController;
+import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.Element;
+import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.Event.NativePreviewEvent;
 //import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
@@ -166,7 +170,7 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 		};
 	};
 	
-	final private class HandleUserActionAndUpdate implements ProposalRejectedEventHandler {
+	final private class HandleUserActionAndUpdateUponProposalRejection implements ProposalRejectedEventHandler {
 		@Override
 		public void onProposalRejection(final ProposalRejectedEvent event) {
 //			assert (negotiationSession.getWhoseTurnIsNext().equals(event.getTradingAction().getPerformingAgent()));
@@ -174,6 +178,19 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 		}
 	}
 
+	final private class HandleUserActionAndUpdateUponEndProposalReview implements EndProposalReviewEventHandler {
+		@Override
+		public void onEndProposalReview(final EndProposalReviewEvent event) {
+			TradingAreaActivity.this.negotiationSession.add(event.getTradingAction());
+		}
+	}
+
+	final private class HandleUserActionAndUpdateUponEndWaiting implements EndWaitingEventHandler {
+		@Override
+		public void onEndWaiting(final EndWaitingEvent event) {
+			TradingAreaActivity.this.negotiationSession.add(event.getTradingAction());
+		}
+	}
 
 	final private class HandleTasksUponNegotiationSessionConclusion implements ProposalAcceptedEventHandler, BATNAClaimMadeEventHandler {
 
@@ -261,7 +278,9 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 		resettableEventBus.addHandler(ProposalMadeEvent.TYPE, new HandleUserActionAndExecuteTurnOfAlgorithmicOpponent());
 		resettableEventBus.addHandler(BATNAClaimMadeEvent.TYPE, new HandleTasksUponNegotiationSessionConclusion());
 		resettableEventBus.addHandler(ProposalAcceptedEvent.TYPE, new HandleTasksUponNegotiationSessionConclusion());
-		resettableEventBus.addHandler(ProposalRejectedEvent.TYPE, new HandleUserActionAndUpdate());
+		resettableEventBus.addHandler(ProposalRejectedEvent.TYPE, new HandleUserActionAndUpdateUponProposalRejection());
+		resettableEventBus.addHandler(EndProposalReviewEvent.TYPE, new HandleUserActionAndUpdateUponEndProposalReview());
+		resettableEventBus.addHandler(EndWaitingEvent.TYPE, new HandleUserActionAndUpdateUponEndWaiting());
 		resettableEventBus.addHandler(NegotiationSessionConcludedEvent.TYPE, new PromptUserToAcknowledgeNegotiationConclusion());
 		resettableEventBus.addHandler(LogExperimentInformationEvent.TYPE, new LogExperimentInformation());
 	};
@@ -277,7 +296,9 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 //			TradingAreaActivity.this.experimentConditions.setParticipantID(Double.toString(timestamp));
 //		} else if (negotiationSession.getPlyRemaining() == 1 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible() & AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext())){
 //			TradingAreaActivity.this.view.showLastRoundHelpWindowDialogBox(1);
-		} else if ((negotiationSession.getPlyRemaining()%3) == 2 & AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext())){
+//		} else if ((negotiationSession.getPlyRemaining()%3) == 2 & AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext())){
+//		} else if ((negotiationSession.getPlyRemaining()%5) == 2 & AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext())){
+		} else if ((negotiationSession.getPlyRemaining()%5) == 4){
 //		} else if (AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext())){
 			// EK 10/08/14: added random delay
 			TradingAreaActivity.this.view.showReviewingOfferDialogBox(newTradingBoardState, negotiationSession);
@@ -296,7 +317,7 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 			this.view.updateTradingActionButtonAvailabilityWithoutRegardToTradingBoardState(negotiationSession);
 			this.view.updateTradingActionButtonEnablementBasedOnTradingBoardState(negotiationSession.getWhoseTurnIsNext(), negotiationSession.getMostRecentProposal());
 			this.view.updateTradingAreaViewAfterTradingBoardStateChange();
-			
+//			this.view.setTradingBoardEnabled(true);
 			Timer timer = new Timer() {
 				public void run() {
 					TradingAreaActivity.this.view.setTradingBoardEnabled(AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext()) && (1 < negotiationSession.getPlyRemaining()));
@@ -304,7 +325,7 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 			};
 			
 	//		int randomDelay =(int)(Math.random() * (8000 - 5000 + 1) + 5000);
-		    timer.schedule(5500); 		// 5.5sec delay
+		    timer.schedule(10500); 		// 10.5sec delay
 		    
 			this.view.setTradingBoardEnabled(false);
 		}
@@ -337,7 +358,8 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 			case makeInitialProposal:
 				assert(true);
 			case makeCounterproposal:
-				if(negotiationSession.getPlyRemaining() < 5 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible()) {
+//				if(negotiationSession.getPlyRemaining() < 5 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible()) {
+				if(negotiationSession.getPlyRemaining() < 9 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible()) {
 					TradingAreaActivity.this.view.showLastRoundInfoDialogBox(negotiationSession);
 				}
 

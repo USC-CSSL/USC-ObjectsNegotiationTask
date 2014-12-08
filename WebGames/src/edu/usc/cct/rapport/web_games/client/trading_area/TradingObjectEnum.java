@@ -431,12 +431,28 @@ public enum TradingObjectEnum {
 	public Integer getPayoff(final AgentEnum agentEnum) {
 
 		final Integer result;
-		final int fruits_counterpart_payoff_item1 = 2;
-		final int fruits_counterpart_payoff_item2 = 3;
-		final int fruits_counterpart_payoff_item3 = 4;
-		final int fruits_player_payoff_item1 = 2;
-		final int fruits_player_payoff_item2 = 3;
-		final int fruits_player_payoff_item3 = 4;
+		final int fruits_counterpart_payoff1 = 2;
+		final int fruits_counterpart_payoff2 = 3;
+		final int fruits_counterpart_payoff3 = 4;
+/*	 	// fruits negotiation: 5 items each
+ 		final int fruits_player_payoff1 = 2;
+		final int fruits_player_payoff2 = 3;
+		final int fruits_player_payoff3 = 4;
+		final int veggie_counterpart_payoff1 = 1;
+		final int veggie_counterpart_payoff2 = 1;
+		final int veggie_counterpart_payoff3 = 3;
+		final int veggie_player_payoff1 = 1;
+		final int veggie_player_payoff2 = 1;
+		final int veggie_player_payoff3 = 3;		*/
+		final int fruits_player_payoff1 = 3;
+		final int fruits_player_payoff2 = 4;
+		final int fruits_player_payoff3 = 2;
+		final int veggie_counterpart_payoff1 = 1;
+		final int veggie_counterpart_payoff2 = 3;
+		final int veggie_counterpart_payoff3 = 5;
+		final int veggie_player_payoff1 = 1;
+		final int veggie_player_payoff2 = 5;
+		final int veggie_player_payoff3 = 3;		
 
 		switch (agentEnum) {
 			case counterpart: {
@@ -491,7 +507,7 @@ public enum TradingObjectEnum {
 				case fruits4_item1_apple:
 				case fruits5_item2_banana:
 				case fruits6_item3_blueberry:
-					result = fruits_counterpart_payoff_item1;
+					result = fruits_counterpart_payoff1;
 					break;					
 				case fruits1_item2_banana:
 				case fruits2_item3_watermelon:
@@ -499,7 +515,7 @@ public enum TradingObjectEnum {
 				case fruits4_item3_cherry:
 				case fruits5_item1_watermelon:
 				case fruits6_item2_melon:
-					result = fruits_counterpart_payoff_item2;
+					result = fruits_counterpart_payoff2;
 					break;
 				case fruits1_item3_orange:
 				case fruits2_item1_melon:
@@ -507,9 +523,9 @@ public enum TradingObjectEnum {
 				case fruits4_item2_pineapple:
 				case fruits5_item3_strawberry:
 				case fruits6_item1_orange:
-					result = fruits_counterpart_payoff_item3;
+					result = fruits_counterpart_payoff3;
 					break;					
-				case veggie_pepper:
+/*				case veggie_pepper:
 					result = 1;
 					break;
 				case veggie_broccoli:
@@ -517,6 +533,15 @@ public enum TradingObjectEnum {
 					break;
 				case veggie_mushroom:
 					result = 3;
+					break;*/
+				case veggie_pepper:
+					result = veggie_counterpart_payoff1;
+					break;
+				case veggie_broccoli:
+					result = veggie_counterpart_payoff2;
+					break;
+				case veggie_mushroom:
+					result = veggie_counterpart_payoff3;
 					break;
 				case istockphoto_water_bottles:
 					result = 10;
@@ -621,7 +646,7 @@ public enum TradingObjectEnum {
 				case fruits4_item1_apple:
 				case fruits5_item2_banana:
 				case fruits6_item3_blueberry:
-					result = fruits_player_payoff_item1;
+					result = fruits_player_payoff1;
 					break;					
 				case fruits1_item2_banana:
 				case fruits2_item3_watermelon:
@@ -629,7 +654,7 @@ public enum TradingObjectEnum {
 				case fruits4_item3_cherry:
 				case fruits5_item1_watermelon:
 				case fruits6_item2_melon:
-					result = fruits_player_payoff_item2;
+					result = fruits_player_payoff2;
 					break;
 				case fruits1_item3_orange:
 				case fruits2_item1_melon:
@@ -637,16 +662,16 @@ public enum TradingObjectEnum {
 				case fruits4_item2_pineapple:
 				case fruits5_item3_strawberry:
 				case fruits6_item1_orange:
-					result = fruits_player_payoff_item3;
+					result = fruits_player_payoff3;
 					break;
 				case veggie_pepper:
-					result = 1;
+					result = veggie_player_payoff1;
 					break;
 				case veggie_broccoli:
-					result = 1;
+					result = veggie_player_payoff2;
 					break;
 				case veggie_mushroom:
-					result = 3;
+					result = veggie_player_payoff3;
 					break;
 				case istockphoto_water_bottles:
 					result = 5;

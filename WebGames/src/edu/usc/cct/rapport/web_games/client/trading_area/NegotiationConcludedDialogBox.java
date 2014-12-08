@@ -6,7 +6,10 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
+import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextArea;
 
 import edu.usc.cct.rapport.web_games.client.specify_experiment_conditions.ExperimentConditions;
@@ -24,11 +27,13 @@ public class NegotiationConcludedDialogBox extends DialogBox {
 //		if (negotiationSession.getPlyRemaining() == 0) {	
 			String titleDiscription = constants.help_Window_Title();
 			this.setText(titleDiscription);
-			final FlowPanel flowPanelDialogBoxContents = new FlowPanel();
+//			final FlowPanel flowPanelDialogBoxContents = new FlowPanel();
+			final FlexTable flexTableDialogBoxContents = new FlexTable();
+//			flexTableDialogBoxContents.setSize("750px", "500px");
+			flexTableDialogBoxContents.setSize("800px", "565px");
 //			flowPanelDialogBoxContents.setSize("300px", "200px");
-//			flowPanelDialogBoxContents.setSize("800px", "565px");
 			
-			final TextArea dialogBoxTextArea = new TextArea();
+/*			final TextArea dialogBoxTextArea = new TextArea();
 			dialogBoxTextArea.setCharacterWidth(50);
 			dialogBoxTextArea.setVisibleLines(5);
 	
@@ -39,13 +44,21 @@ public class NegotiationConcludedDialogBox extends DialogBox {
 			
 			dialogBoxTextArea.setText(result);
 			flowPanelDialogBoxContents.add(dialogBoxTextArea);//*/
+			
+			Label endOfNegotiation = new Label(constants.end_of_Negotiation_text());
+			
+			endOfNegotiation.setStylePrimaryName("BigLabel-style");
+			flexTableDialogBoxContents.getFlexCellFormatter().setHorizontalAlignment(0, 0, HasHorizontalAlignment.ALIGN_CENTER);
+			flexTableDialogBoxContents.setWidget(0, 0, endOfNegotiation);
+
 	
 			String okButtonString = constants.ok_button();
 			Button okButton = new Button(okButtonString);
+			okButton.setSize("200px", "50px");
+			okButton.setStylePrimaryName("MiddleButton-style");
 			
 			okButton.addClickHandler(new ClickHandler() {
 				public void onClick(final ClickEvent event) {
-					hide();
 	//				final ValueOfExpressionQuestionnaire1DialogBox dialogBox = new ValueOfExpressionQuestionnaire1DialogBox (eventBus, experimentConditions);
 	//				final DemographicsDialogBox dialogBox = new DemographicsDialogBox (eventBus, experimentConditions); // To ease testing
 	//				final NSAprinciplesQuestionnaire1DialogBox dialogBox = new NSAprinciplesQuestionnaire1DialogBox(eventBus, experimentConditions);
@@ -57,6 +70,7 @@ public class NegotiationConcludedDialogBox extends DialogBox {
 					
 					//timer.schedule(1000);
 					eventBus.fireEvent(new NegotiationConclusionAcknowledgedEvent());
+					hide();
 				
 				}
 /*				Timer timer = new Timer() {
@@ -72,12 +86,15 @@ public class NegotiationConcludedDialogBox extends DialogBox {
 				    timer.schedule((int)(Math.random() * (8000 - 5000 + 1) + 5000)); 		// random delay between 5sec and 8sec;
 */			});
 			
-			flowPanelDialogBoxContents.add(okButton);
+			flexTableDialogBoxContents.setWidget(1, 0, okButton);
+			flexTableDialogBoxContents.getFlexCellFormatter().setHorizontalAlignment(1, 0, HasHorizontalAlignment.ALIGN_CENTER);
+//			flowPanelDialogBoxContents.add(okButton);
 /*					Image loadingImage = new Image();
 					loadingImage.setUrl("http://shiraz.usc.edu/negotiation/images/loading_small.gif");
 					flowPanelDialogBoxContents.add(loadingImage); // image
 */
-			this.setWidget(flowPanelDialogBoxContents);
+//			this.setWidget(flowPanelDialogBoxContents);
+			this.setWidget(flexTableDialogBoxContents);
 /*		} else { // if the game didn't reach the last round
 			eventBus.fireEvent(new LogExperimentInformationEvent());
 		}*/

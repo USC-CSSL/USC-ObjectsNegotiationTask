@@ -10,8 +10,8 @@ import edu.usc.cct.rapport.web_games.client.support.tuple.Pair;
 
 public class Proposal {
 
-//	static final private int itemsPerTradingObjectCategoryCount = 3;
-	static final private int itemsPerTradingObjectCategoryCount = 5;
+	static final private int itemsPerTradingObjectCategoryCount = 3;	// when there are 3 items each
+//	static final private int itemsPerTradingObjectCategoryCount = 5;	// when there are 5 items each
 
 	final private AgentEnum agentMakingProposal;
 	final private EnumSet<TradingObjectEnum> setOfTradingObjectEnum;

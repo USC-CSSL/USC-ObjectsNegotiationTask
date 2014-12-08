@@ -12,7 +12,9 @@ public class PrespecifiedNonconceder implements PlyRemainingIndexedProposalGener
 	public Proposal getPrespecifiedPotentialCounterproposal(final EnumSet<TradingObjectEnum> setOfTradingObjectEnum, final int plyRemaining) {
 
 //		final int turnsRemaining = plyRemaining / 2;
-		final int turnsRemaining = plyRemaining / 3;
+//		final int turnsRemaining = plyRemaining / 3;
+		final int turnsRemaining = plyRemaining / 5;
+
 		if (turnsRemaining <= 0) {
 			final IllegalStateException e = new IllegalStateException("No potential counterproposal is possible without a positive number of turns remaining in the negotiation.");
 			throw e;
@@ -58,7 +60,8 @@ public class PrespecifiedNonconceder implements PlyRemainingIndexedProposalGener
 			default:
 				prespecifiedTradingObjectCounts = new int[]{5, 5, 5, 5};*/
 		
-			case 1:
+		// fruits negotiation: 5 items each
+/*			case 1:
 				prespecifiedTradingObjectCounts = new int[]{3, 3, 4};
 				break;
 			case 2:
@@ -77,7 +80,29 @@ public class PrespecifiedNonconceder implements PlyRemainingIndexedProposalGener
 				prespecifiedTradingObjectCounts = new int[]{4, 5, 5};
 				break;
 			default:
-				prespecifiedTradingObjectCounts = new int[]{5, 5, 5};
+				prespecifiedTradingObjectCounts = new int[]{5, 5, 5};*/
+		
+		// fruits negotiation: 3 items each
+			case 1:
+				prespecifiedTradingObjectCounts = new int[]{2, 2, 2};
+				break;
+			case 2:
+				prespecifiedTradingObjectCounts = new int[]{2, 2, 2};
+				break;
+			case 3:
+				prespecifiedTradingObjectCounts = new int[]{3, 1, 3};
+				break;
+			case 4:
+				prespecifiedTradingObjectCounts = new int[]{1, 3, 3};
+				break;
+			case 5:
+				prespecifiedTradingObjectCounts = new int[]{2, 3, 3};
+				break;
+			case 6:
+				prespecifiedTradingObjectCounts = new int[]{3, 3, 2};
+				break;
+			default:
+				prespecifiedTradingObjectCounts = new int[]{3, 3, 3};
 		};
 
 

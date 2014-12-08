@@ -158,43 +158,56 @@ public enum AlgorithmicCounterpartDecisionMakingStrategyEnum {
 		final ProposalDecisionMakingTactic tactic;
 		switch (this) {
 		case prespecifiedAgentForTrial:
-			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedAgentForTrial(), 24 - negotiationSessionPlyCount);
+//			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedAgentForTrial(), 24 - negotiationSessionPlyCount);
+			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedAgentForTrial(), 38 - negotiationSessionPlyCount);
 			break;
 		case prespecifiedConceder:
-			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedConceder(), 24 - negotiationSessionPlyCount);
+//			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedConceder(), 24 - negotiationSessionPlyCount);
+			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedConceder(), 38 - negotiationSessionPlyCount);
 			break;
 		case prespecifiedConcederFruits2:
-			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedConcederFruits2(), 24 - negotiationSessionPlyCount);
+//			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedConcederFruits2(), 24 - negotiationSessionPlyCount);
+			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedConcederFruits2(), 38 - negotiationSessionPlyCount);
 			break;
 		case prespecifiedConcederFruits3:
-			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedConcederFruits3(), 24 - negotiationSessionPlyCount);
+//			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedConcederFruits3(), 24 - negotiationSessionPlyCount);
+			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedConcederFruits3(), 38 - negotiationSessionPlyCount);
 			break;
 		case prespecifiedConcederFruits4:
-			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedConcederFruits4(), 24 - negotiationSessionPlyCount);
+//			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedConcederFruits4(), 24 - negotiationSessionPlyCount);
+			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedConcederFruits4(), 38 - negotiationSessionPlyCount);
 			break;
 		case prespecifiedConcederFruits5:
-			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedConcederFruits5(), 24 - negotiationSessionPlyCount);
+//			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedConcederFruits5(), 24 - negotiationSessionPlyCount);
+			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedConcederFruits5(), 38 - negotiationSessionPlyCount);
 			break;
 		case prespecifiedConcederFruits6:
-			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedConcederFruits6(), 24 - negotiationSessionPlyCount);
+//			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedConcederFruits6(), 24 - negotiationSessionPlyCount);
+			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedConcederFruits6(), 38 - negotiationSessionPlyCount);
 			break;
 		case prespecifiedNonconceder:
-			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedNonconceder(), 24 - negotiationSessionPlyCount);
+//			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedNonconceder(), 24 - negotiationSessionPlyCount);
+			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedNonconceder(), 38 - negotiationSessionPlyCount);
 			break;
 		case prespecifiedNonconcederFruits2:
-			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedNonconcederFruits2(), 24 - negotiationSessionPlyCount);
+//			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedNonconcederFruits2(), 24 - negotiationSessionPlyCount);
+			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedNonconcederFruits2(), 38 - negotiationSessionPlyCount);
 			break;
 		case prespecifiedNonconcederFruits3:
-			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedNonconcederFruits3(), 24 - negotiationSessionPlyCount);
+//			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedNonconcederFruits3(), 24 - negotiationSessionPlyCount);
+			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedNonconcederFruits3(), 38 - negotiationSessionPlyCount);
 			break;
 		case prespecifiedNonconcederFruits4:
-			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedNonconcederFruits4(), 24 - negotiationSessionPlyCount);
+//			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedNonconcederFruits4(), 24 - negotiationSessionPlyCount);
+			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedNonconcederFruits4(), 38 - negotiationSessionPlyCount);
 			break;
 		case prespecifiedNonconcederFruits5:
-			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedNonconcederFruits5(), 24 - negotiationSessionPlyCount);
+//			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedNonconcederFruits5(), 24 - negotiationSessionPlyCount);
+			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedNonconcederFruits5(), 38 - negotiationSessionPlyCount);
 			break;
 		case prespecifiedNonconcederFruits6:
-			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedNonconcederFruits6(), 24 - negotiationSessionPlyCount);
+//			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedNonconcederFruits6(), 24 - negotiationSessionPlyCount);
+			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedNonconcederFruits6(), 38 - negotiationSessionPlyCount);
 			break;
 /*		case prespecifiedConcederGentleSlope:
 			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedConcederGentleSlope(), 24 - negotiationSessionPlyCount);

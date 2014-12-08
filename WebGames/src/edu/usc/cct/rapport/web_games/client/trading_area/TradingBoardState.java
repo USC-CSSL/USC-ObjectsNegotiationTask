@@ -14,13 +14,12 @@ public class TradingBoardState {
 	static final int agentAreasOnTradingBoard = agentCount + 1;
 //	static final int distinctTradingObjectsCount = 4;
 	static final int distinctTradingObjectsCount = 3;			// 140210: for Shasha's experiment
-//	static final int itemsPerTradingObjectCategoryCount = 3;	// when there are 3 items each
-	static final int itemsPerTradingObjectCategoryCount = 5;	// when there are 5 items each
+	static final int itemsPerTradingObjectCategoryCount = 3;	// when there are 3 items each
+//	static final int itemsPerTradingObjectCategoryCount = 5;	// when there are 5 items each
 
 	static final int itemsAcrossPerTradingObjectCategoryCount = 2;
-	static final int itemsUpDownPerTradingObjectCategoryCount = itemsPerTradingObjectCategoryCount/2+1;
-//	static final int itemsUpDownPerTradingObjectCategoryCount = 3; 	// when there are 5 items each
-//	static final int itemsUpDownPerTradingObjectCategoryCount = 2;	// when there are 3 items each
+//	static final int itemsUpDownPerTradingObjectCategoryCount = itemsPerTradingObjectCategoryCount/2+1;
+	static final int itemsUpDownPerTradingObjectCategoryCount = 2; // when there are 5 items each
 	static final int outerColumnsAcross = distinctTradingObjectsCount * itemsAcrossPerTradingObjectCategoryCount;
 	static final int outerRowsUpDown = agentAreasOnTradingBoard * itemsUpDownPerTradingObjectCategoryCount;
 

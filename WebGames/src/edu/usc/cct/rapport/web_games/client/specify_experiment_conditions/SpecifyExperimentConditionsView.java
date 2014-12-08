@@ -173,7 +173,8 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 		listBoxNegotiationSessionPlyCount.addItem("5 ply (each agent has up to two chances to offer an object-allocating proposal)", Integer.toString(5));
 		listBoxNegotiationSessionPlyCount.addItem("7 ply (each agent has up to three chances to offer object-allocating proposals)", Integer.toString(7));
 //		listBoxNegotiationSessionPlyCount.addItem("13 ply (each agent has up to six chances to offer object-allocating proposals)", Integer.toString(13));
-		listBoxNegotiationSessionPlyCount.addItem("13 ply (each agent has up to six chances to offer object-allocating proposals)", Integer.toString(19));
+//		listBoxNegotiationSessionPlyCount.addItem("13 ply (each agent has up to six chances to offer object-allocating proposals)", Integer.toString(19));
+		listBoxNegotiationSessionPlyCount.addItem("13 ply (each agent has up to six chances to offer object-allocating proposals)", Integer.toString(31));
 		listBoxNegotiationSessionPlyCount.addItem("25 ply (each agent has up to twelve chances to offer object-allocating proposals)", Integer.toString(25));
 		listBoxNegotiationSessionPlyCount.setSelectedIndex(5);
 		viewBasePanel.add(listBoxNegotiationSessionPlyCount);

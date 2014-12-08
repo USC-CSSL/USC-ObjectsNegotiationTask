@@ -1,14 +1,21 @@
 package edu.usc.cct.rapport.web_games.client.trading_area;
 
+//import java.awt.Point;
+//import java.awt.Toolkit;
 import java.util.EnumMap;
 import java.util.Iterator;
 
 import com.google.gwt.core.client.Duration;
+import com.google.gwt.dom.client.Style.Cursor;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.place.shared.PlaceController;
+import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.Element;
+import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.Event.NativePreviewEvent;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
@@ -20,6 +27,7 @@ import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 
@@ -197,7 +205,7 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 								TradingAreaView.this.eventBus.fireEvent(new ProposalMadeEvent(newTradingAction));					        
 					        }
 					      };
-					      dialogBox.setPopupPosition(105, 0);
+					      dialogBox.setPopupPosition(105, 75);
 					      dialogBox.show(); // EK 10/27/2014: pop up the screen in the left uppermost area
 //				    	  dialogBox.center();
 					      t.schedule((int)(Math.random() * (8000 - 5000 + 1) + 5000)); 		// random delay between 5sec and 8sec
@@ -224,6 +232,8 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 					};
 				});
 			case rejectProposal:
+			case endProposalReview:
+			case endWaiting:				
 				break;
 			};
 			horizontalPanelButtons.add(button);
@@ -322,6 +332,24 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 	public void updateTradingActionButtonAvailabilityWithoutRegardToTradingBoardState(final NegotiationSession negotiationSession) {
 
 		if (AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext())) {
+	
+//			tradingBoardWidget.setEnabled(true);
+
+//			this.getElement().getStyle().setCursor(Cursor.POINTER);
+//			getElement().getStyle().setCursor(Cursor.AUTO);
+
+/*			// enable user interaction
+			Event.addNativePreviewHandler(new Event.NativePreviewHandler() {
+                public void onPreviewNativeEvent(NativePreviewEvent pEvent) {
+                    final Element target = pEvent.getNativeEvent().getEventTarget().cast();
+
+                    // block all events targetted at the children of the composite.
+                    if (DOM.isOrHasChild(getElement(), target)) {
+                        pEvent.consume();
+                    }
+                }
+            });*/
+			
 			
 			/* If it is the player's turn to move, we only want the buttons that are eligible to be used to be visible. */
 
@@ -330,6 +358,8 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 			final Button makeCounterproposal = tradingActionButtons.get(TradingActionEnum.makeCounterproposal);
 			final Button claimBATNAScore = tradingActionButtons.get(TradingActionEnum.claimBATNAValue);
 			final Button rejectProposal = tradingActionButtons.get(TradingActionEnum.rejectProposal);
+			final Button endProposalReview = tradingActionButtons.get(TradingActionEnum.endProposalReview);
+			final Button endWaiting = tradingActionButtons.get(TradingActionEnum.endWaiting);
 			makeInitialProposal.setStylePrimaryName("BigButton-style");
 			acceptProposal.setStylePrimaryName("BigButton-style");
 			makeCounterproposal.setStylePrimaryName("BigButton-style");
@@ -337,6 +367,10 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 			
 			rejectProposal.setEnabled(false);
 			rejectProposal.setVisible(false);
+			endProposalReview.setEnabled(false);
+			endProposalReview.setVisible(false);
+			endWaiting.setEnabled(false);
+			endWaiting.setVisible(false);
 
 			final Proposal mostRecentlyOfferedProposal = negotiationSession.getMostRecentProposal();
 //			acceptProposal.setEnabled(null != mostRecentlyOfferedProposal);
@@ -357,7 +391,8 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 					makeInitialProposal.setVisible(true);
 					makeCounterproposal.setEnabled(false);
 					makeCounterproposal.setVisible(false);
-				} else if (negotiationSession.getPlyRemaining() < 5) {
+//				} else if (negotiationSession.getPlyRemaining() < 5) {
+				} else if (negotiationSession.getPlyRemaining() < 9) {
 					makeInitialProposal.setEnabled(false);
 					makeInitialProposal.setVisible(false);
 					makeCounterproposal.setEnabled(false);
@@ -375,11 +410,27 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 					makeInitialProposal.setVisible(false);
 					makeCounterproposal.setEnabled(false);
 					makeCounterproposal.setVisible(false);
+//					tradingBoardWidget.setEnabled(false);
+					
+					final PopupPanel popup = new PopupPanel(false, true); // Create a modal dialog box that will not auto-hide
+					popup.setStylePrimaryName("PopupPanel-NoBorder");
+					popup.setGlassStyleName("PopupPanelGlass");
 
+					popup.add(new Label(""));
+					popup.setWidth("1024px");
+					popup.setHeight("768px");
+					popup.setGlassEnabled(true); // Enable the glass panel
+					popup.center(); // Center the popup and make it visible*/
+					popup.getElement().getStyle().setCursor(Cursor.WAIT);
+					
 					Timer timer = new Timer() {
 					      public void run() {
-								makeCounterproposal.setEnabled(true);
+					    	  	makeCounterproposal.setText(Integer.toString(negotiationSession.getPlyRemaining()));
+					    	  	makeCounterproposal.setEnabled(true);
 								makeCounterproposal.setVisible(true);
+//								tradingBoardWidget.setEnabled(true);
+								popup.hide();
+								
 					      }
 					};
 					timer.schedule(14000);
@@ -398,6 +449,36 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 			};
 
 			tradingBoardWidget.dropped = false;
+//			this.getElement().getStyle().setCursor(Cursor.WAIT);
+//			tradingBoardWidget.setEnabled(false);
+//			tradingBoardWidget.getElement().getStyle().setCursor(Cursor.valueOf("BUSY"));
+			
+/*			Toolkit tk = Toolkit.getDefaultToolkit();
+			tradingBoardWidget.getElement().getStyle().setCursor(tk.createCustomCursor(tk.createImage(""), new Point(0, 0), ""));
+			
+			Image loadingImage = new Image();
+			loadingImage.setUrl("http://shiraz.usc.edu/negotiation/images/loading_small.gif");
+
+			int[] pixels = new int[16 * 16];
+		    Image image = Toolkit.getDefaultToolkit().createImage(
+		        new MemoryImageSource(16, 16, pixels, 0, 16));
+		    Cursor transparentCursor = Toolkit.getDefaultToolkit().createCustomCursor(
+		    		Toolkit.getImage("http://shiraz.usc.edu/negotiation/images/loading_small.gif"), new Point(0, 0), "invisibleCursor");*/
+		    
+//			tradingBoardWidget.getElement().getStyle().setCursor(Cursor.WAIT);			
+//			getElement().getStyle().setCursor(Cursor.WAIT);
+
+/*			// disable user interaction
+			Event.addNativePreviewHandler(new Event.NativePreviewHandler() {
+                public void onPreviewNativeEvent(NativePreviewEvent pEvent) {
+                    final Element target = pEvent.getNativeEvent().getEventTarget().cast();
+
+                    // block all events targetted at the children of the composite.
+                    if (DOM.isOrHasChild(getElement(), target)) {
+                        pEvent.cancel();
+                    }                    
+                }
+            });*/
 		};
 		
 
@@ -470,7 +551,9 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 		    	
 //				final NegotiationConcludedDialogBox dialogBox = new NegotiationConcludedDialogBox(eventBus, experimentConditions);
 				final NegotiationConcludedDialogBox dialogBox = new NegotiationConcludedDialogBox(eventBus, experimentConditions, negotiationSession);
-				dialogBox.center();
+				dialogBox.setPopupPosition(105, 75);
+				dialogBox.show();
+//				dialogBox.center();
 			}
 	    };
 //	    timer.schedule(2000);
@@ -562,16 +645,21 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 
 		Timer timer = new Timer() {
 		      public void run() {
+		    	  final double timestamp = Duration.currentTimeMillis();
+		    	  final TradingAction newTradingAction = new TradingAction(AgentEnum.counterpart, timestamp, TradingActionEnum.endProposalReview, null);
+		    	  TradingAreaView.this.eventBus.fireEvent(new EndProposalReviewEvent(newTradingAction));
+
 //		    	  dialogBox.hide();
 //		      	  final OfferAcceptanceDialogBox dialogBoxOfferAcceptance = new OfferAcceptanceDialogBox(eventBus, tradingObjectAllocations);
 		      	  final OfferAcceptanceDialogBox dialogBoxOfferAcceptance = new OfferAcceptanceDialogBox(eventBus, newTradingBoardState, negotiationSession);
-		      	  dialogBoxOfferAcceptance.setPopupPosition(105, 0);
+		      	  dialogBoxOfferAcceptance.setPopupPosition(105, 75);
 		      	  dialogBoxOfferAcceptance.show();
 		      }
 		};
 		
 //		int randomDelay =(int)(Math.random() * (8000 - 5000 + 1) + 5000);
-		if(negotiationSession.getPlyRemaining() > 3) { 	// not the last round
+//		if(negotiationSession.getPlyRemaining() > 3) { 	// not the last round
+		if(negotiationSession.getPlyRemaining() > 5) { 	// not the last round
 			timer.schedule(10000); 						// 10 sec delay for reviewing
 		} else {										// last round
 			timer.schedule(20000);						// 20 sec delay
@@ -587,7 +675,7 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 		      }
 		};
 
-		lastRoundDialogBox.setPopupPosition(105, 0);
+		lastRoundDialogBox.setPopupPosition(105, 75);
 		lastRoundDialogBox.show();
 		timer.schedule(10000);	// 10 sec delay for reading
 	};

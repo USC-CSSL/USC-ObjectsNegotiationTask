@@ -31,7 +31,8 @@ public class TradingBoardWidget extends Composite implements HasEnabled {
 
 //	static final private int imageWidthInPixels = 45;
 	static final private int imageWidthInPixels = 63;
-	static final private int imageHeightInPixels = 49;
+//	static final private int imageHeightInPixels = 49;	// when there are 5 items each
+	static final private int imageHeightInPixels = 63;
 
 	final private EventBus eventBus;
 	final private AbsolutePanel absolutePanelDragAndDropArea;
@@ -129,6 +130,7 @@ public class TradingBoardWidget extends Composite implements HasEnabled {
 							gridCellPanel.add(imageForTrade);
 						};
 						grid2x2.setWidget(row, col, gridCellPanel);
+						grid2x2.setHeight("165px");
 				        final TradingBoardDropController dropController = new TradingBoardDropController(this, gridCellPanel);
 				        pickupDragController.registerDropController(dropController);
 					};

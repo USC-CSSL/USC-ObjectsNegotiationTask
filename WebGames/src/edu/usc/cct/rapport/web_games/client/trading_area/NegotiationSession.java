@@ -173,14 +173,37 @@ public class NegotiationSession implements Collection<TradingAction> {
 		if (this.maximumPly <= size) {
 			result = null;
 		} else if (this.isEmpty()) {
-			if (0 == maximumPly % 2) {
-//			if (2 == maximumPly % 3) {
+//			if (0 == maximumPly % 2) {
+			if (4 == maximumPly % 5) {
 				result = AgentEnum.getOtherAgent(this.agentWhoActsLastIfNoAgreementIsReached);
 			} else {
 				result = this.agentWhoActsLastIfNoAgreementIsReached;
 			};
 		} else {
-			result = AgentEnum.getOtherAgent(this.getMostRecentProposal().getAgentWhoMadeProposal());
+//			result = AgentEnum.getOtherAgent(this.getMostRecentProposal().getAgentWhoMadeProposal());
+/*			if (3 == (maximumPly - history.size()) % 5) {
+				result = this.getMostRecentProposal().getAgentWhoMadeProposal();
+			} else {
+				result = AgentEnum.getOtherAgent(this.getMostRecentProposal().getAgentWhoMadeProposal());			
+			};*/
+			
+/*			if ((0 == (maximumPly - history.size()) % 5) || (4 == (maximumPly - history.size()) % 5)) {
+				result = AgentEnum.getOtherAgent(this.getMostRecentProposal().getAgentWhoMadeProposal());			
+			} else {
+				result = this.getMostRecentProposal().getAgentWhoMadeProposal();
+			};*/
+			
+			if (4 == (maximumPly - history.size()) % 5) {
+					result = AgentEnum.player;
+			} else if (3 == (maximumPly - history.size()) % 5) {
+				result = AgentEnum.player;
+			} else if (2 == (maximumPly - history.size()) % 5) {
+				result = AgentEnum.player;				
+			} else if (1 == (maximumPly - history.size()) % 5) {
+				result = AgentEnum.player;				
+			} else {
+				result = AgentEnum.counterpart;				
+			}
 		};
 
 		return result;

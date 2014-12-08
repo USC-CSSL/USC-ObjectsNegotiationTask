@@ -117,7 +117,8 @@ public class OfferAcceptanceDialogBox extends DialogBox {
 		
 		// Reject button
 		Button btnReject = new Button(constants.reject());
-		if(negotiationSession.getPlyRemaining() < 3) {
+//		if(negotiationSession.getPlyRemaining() < 3) {
+		if(negotiationSession.getPlyRemaining() < 5) {
 			btnReject = new Button(constants.tossCoin());
 		}
 
@@ -129,25 +130,30 @@ public class OfferAcceptanceDialogBox extends DialogBox {
 
 		btnReject.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
-				if(negotiationSession.getPlyRemaining() > 2) {
+//				if(negotiationSession.getPlyRemaining() > 2) {
+				if(negotiationSession.getPlyRemaining() > 4) {
 					final double timestamp = Duration.currentTimeMillis();
 					final TradingAction newTradingAction = new TradingAction(AgentEnum.player, timestamp, TradingActionEnum.rejectProposal, null);
 					eventBus.fireEvent(new ProposalRejectedEvent(newTradingAction));
 	
 					hide();	
 					final WaitingDialogBox dialogBoxWait = new WaitingDialogBox(eventBus, "waitAfterRejection");
-					dialogBoxWait.setPopupPosition(105, 0);
+					dialogBoxWait.setPopupPosition(105, 75);
 					dialogBoxWait.show();
 						
 					Timer timer = new Timer() {
 						public void run() {
+							final double timestampEndWaiting = Duration.currentTimeMillis();
+							final TradingAction newTradingAction = new TradingAction(AgentEnum.counterpart, timestampEndWaiting, TradingActionEnum.endWaiting, null);
+							eventBus.fireEvent(new EndWaitingEvent(newTradingAction));
+
 							dialogBoxWait.hide();
 						}
 					};
 				    timer.schedule((int)(Math.random() * (8000 - 5000 + 1) + 5000)); 		// random delay between 5sec and 8sec   */
 				} else {
 					final double timestamp = Duration.currentTimeMillis();
-					final TradingAction newTradingAction = new TradingAction(AgentEnum.player, timestamp, TradingActionEnum.rejectProposal, null);
+					final TradingAction newTradingAction = new TradingAction(AgentEnum.player, timestamp, TradingActionEnum.claimBATNAValue, null);
 					eventBus.fireEvent(new BATNAClaimMadeEvent(newTradingAction));
 //					eventBus.fireEvent(new LogExperimentInformationEvent());
 //					eventBus.fireEvent(new NegotiationConclusionAcknowledgedEvent());

@@ -473,4 +473,20 @@ font-size: 15pt;
 
 .Fixed-Position {
 	 margin-left: 110px;
+	 margin-top: 80px;
+}
+
+.PopupPanel-NoBorder {
+  border: 0px;
+  padding: 0px;
+/*  background: white;*/
+  background-color: white;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+.PopupPanelGlass {
+  background-color: white;
+  opacity: 0;
+  filter: alpha(opacity=0);
 }
