@@ -3,6 +3,7 @@ package edu.usc.cct.rapport.web_games.client.trading_area;
 import com.allen_sauer.gwt.dnd.client.PickupDragController;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;

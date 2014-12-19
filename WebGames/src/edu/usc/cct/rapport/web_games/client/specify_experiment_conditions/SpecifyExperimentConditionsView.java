@@ -34,7 +34,7 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 	//static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.enhanced_squiggles, 32, 50, true, true, true, 24, AgentEnum.counterpart, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedNonconcederFirstOfferFixed, EmotionModellingStrategyEnum.chosenUniformlyAtRandom,true,true,true,1,0,0,0,0,0,0,0,0,0,0,0,0,"");
 	//static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.sacredObjects, 32, 50, false, false, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedNonconceder, EmotionModellingStrategyEnum.randomEveryOtherTurnSadOrAngryOrNeutral,true,false,false,1);
 	//static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.sacredObjects, 32, 50, false, false, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy, EmotionModellingStrategyEnum.randomAfter134SadOrAngryOrNeutral,true,false,false,1);
-	static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.veggie, 32, 50, true, true, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedAgentForTrial, EmotionModellingStrategyEnum.alwaysNeutral,true,true,true);
+	static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.veggie, 32, 50, true, true, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedAgentForTrial, EmotionModellingStrategyEnum.alwaysNeutral,true,true,true,"");
 	static final private String largeFontSizeStyleName = "ict-rapport-largeFontSize";
 
 	static final private SafeHtml separatingLineFeed = SafeHtmlUtils.fromSafeConstant("<br/>");
@@ -245,6 +245,18 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 		viewBasePanel.add(ListlabelWhichScienario);
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));*/
+		
+		final Label labelParticipantID = new Label("What is the participant ID?");
+		labelParticipantID.addStyleName(largeFontSizeStyleName);
+		viewBasePanel.add(labelParticipantID);
+		final TextBox textBoxParticipantID = new TextBox();
+//		textBoxParticipantID.setText("");
+		textBoxParticipantID.setVisibleLength(10);
+		viewBasePanel.add(textBoxParticipantID);
+		viewBasePanel.add(new InlineHTML(separatingLineFeed));
+		viewBasePanel.add(new InlineHTML(separatingLineFeed));
+
+		
 
 		final Button buttonSpecifyTheseExperimentConditions = new Button("Specify These Experiment Conditions");
 		buttonSpecifyTheseExperimentConditions.addStyleName(largeFontSizeStyleName);
@@ -272,6 +284,7 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 				
 //				final int expscenario = Integer.parseInt(ListlabelWhichScienario.getValue(ListlabelWhichScienario.getSelectedIndex()));
 //				experimentConditions.setExpScenario(expscenario);
+				experimentConditions.setParticipantID(textBoxParticipantID.getValue());
 				SpecifyExperimentConditionsView.this.eventBus.fireEvent(new ExperimentConditionsSpecifiedEvent(experimentConditions));
 				
 			};

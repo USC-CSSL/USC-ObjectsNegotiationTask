@@ -8,6 +8,9 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.i18n.client.HasDirection.Direction;
 import com.google.gwt.place.shared.PlaceController;
+import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
+import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
@@ -129,8 +132,10 @@ public class PartingView extends WebGamesView implements IPartingView {
 		String localName = com.google.gwt.i18n.client.LocaleInfo.getCurrentLocale().getLocaleName();
 		
 		basePanel = new SimpleLayoutPanel();
+		final FlexTable partingFlexTable = new FlexTable();
 		final Label partingLabel = new Label(constants.partingMessage());
-		partingLabel.addStyleName(largeFontSizeStyleName);
+//		partingLabel.addStyleName(largeFontSizeStyleName);
+		partingLabel.setStyleName("BigLabel-style");
 		if (localName == "en"){
 			Random random = new Random();
 //			String uuid = UUID.randomUUID().toString();
@@ -143,7 +148,11 @@ public class PartingView extends WebGamesView implements IPartingView {
 			partingLabel.setText(constants.partingMessage(),Direction.RTL);
 		}
 		
-		add(partingLabel);
+//		add(partingLabel);
+		partingFlexTable.setSize("800px", "565px");
+		partingFlexTable.setWidget(0, 0, partingLabel);
+		partingFlexTable.getCellFormatter().setAlignment(0, 0, HasHorizontalAlignment.ALIGN_CENTER, HasVerticalAlignment.ALIGN_MIDDLE);
+		add(partingFlexTable);
 		basePanel.setVisible(true);
 
 		initWidget(basePanel);

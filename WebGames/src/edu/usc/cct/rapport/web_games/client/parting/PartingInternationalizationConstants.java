@@ -11,7 +11,7 @@ import com.google.gwt.i18n.client.Constants;
  */
 public interface PartingInternationalizationConstants extends Constants {
 
-	@DefaultStringValue("[TRANSLATION MISSING] Thank you for participating in our scientific experiment.")
+	@DefaultStringValue("[TRANSLATION MISSING] Please wait for the next instruction.")
 	public String partingMessage();
 
 };

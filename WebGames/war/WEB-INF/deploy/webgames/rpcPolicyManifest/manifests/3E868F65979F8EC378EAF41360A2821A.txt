@@ -1,2 +1,0 @@
-serviceClass: edu.usc.cct.rapport.web_games.client.base64.IBase64EncodingService
-path: 1B47F3FBA8F60A7949604ADD5A6AF471.gwt.rpc

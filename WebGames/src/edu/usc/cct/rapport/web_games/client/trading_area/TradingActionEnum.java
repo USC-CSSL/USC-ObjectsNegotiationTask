@@ -6,6 +6,7 @@ public enum TradingActionEnum {
 	makeInitialProposal,
 //	reviewProposal,
 	endProposalReview,
+	endCoinTossResultReview,
 	endWaiting,
 	acceptProposal,
 	rejectProposal,
@@ -40,6 +41,9 @@ public enum TradingActionEnum {
 		case endProposalReview:
 			result = "";
 			break;
+		case endCoinTossResultReview:
+			result = "";
+			break;
 		case endWaiting:
 			result = "";
 			break;			
@@ -69,6 +73,9 @@ public enum TradingActionEnum {
 			result = constants.rejectProposal();
 			break;
 		case endProposalReview:
+			result = "";
+			break;
+		case endCoinTossResultReview:
 			result = "";
 			break;
 		case endWaiting:

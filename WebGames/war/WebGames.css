@@ -483,10 +483,16 @@ font-size: 15pt;
   background-color: white;
   opacity: 0;
   filter: alpha(opacity=0);
+  cursor: none;
+
 }
 
 .PopupPanelGlass {
   background-color: white;
   opacity: 0;
   filter: alpha(opacity=0);
+}
+
+.myCursor {
+    cursor: url(http://i696.photobucket.com/albums/vv323/RoamPT/mouse.png), auto;
 }

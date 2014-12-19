@@ -4,6 +4,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -53,7 +54,7 @@ public class NegotiationConcludedDialogBox extends DialogBox {
 
 	
 			String okButtonString = constants.ok_button();
-			Button okButton = new Button(okButtonString);
+			final Button okButton = new Button(okButtonString);
 			okButton.setSize("200px", "50px");
 			okButton.setStylePrimaryName("MiddleButton-style");
 			
@@ -66,11 +67,16 @@ public class NegotiationConcludedDialogBox extends DialogBox {
 	//				final PostGameQuestionnaireDialogBox dialogBox = new PostGameQuestionnaireDialogBox (eventBus, experimentConditions);
 	//				final CommentDialogBox dialogBox = new CommentDialogBox (eventBus, experimentConditions);
 	//				dialogBox.center();
+					okButton.setEnabled(false);
 					eventBus.fireEvent(new LogExperimentInformationEvent());
-					
-					//timer.schedule(1000);
 					eventBus.fireEvent(new NegotiationConclusionAcknowledgedEvent());
-					hide();
+					
+					Timer timer = new Timer() {
+						public void run() {
+							hide();
+					    }
+					};
+					timer.schedule(1000);
 				
 				}
 /*				Timer timer = new Timer() {

@@ -122,9 +122,10 @@ public class ExperimentConditions implements DoublySerializable {
 //	private int economicClassOfParticipant;
 //	private int politicalOrientationOfParticipant;
 	private String commentOfParticipant;
-//	private String participantID;
+	private String participantID;
 	private double startTimestamp;
 //	private String startTime;
+	private String coinTossResult;
 
 	
 
@@ -138,7 +139,7 @@ public class ExperimentConditions implements DoublySerializable {
 	public ExperimentConditions(final FacialExpressionStyleEnum facialExpressionStyleEnum, final TradingObjectSetEnum tradingObjectSetEnum, final int counterpartBATNA, final int playerBATNA, final boolean counterpartDealValueVisible, final boolean counterpartPayoffMatrixVisible, 
 			final boolean counterpartEmotionVisible, final boolean playerEmotionVisible, final int negotiationSessionPlyCount, final AgentEnum agentWhoActsLastIfNoAgreementIsReached, final AlgorithmicCounterpartDecisionMakingStrategyEnum decisionMakingStrategyOfAlgorithmicCounterpart, 
 //			final EmotionModellingStrategyEnum emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart, final boolean helpWindowsVisible, final boolean playerPayoffMatrixVisible, final boolean playerDealValueVisible, final int expScenario)
-			final EmotionModellingStrategyEnum emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart, final boolean helpWindowsVisible, final boolean playerPayoffMatrixVisible, final boolean playerDealValueVisible)
+			final EmotionModellingStrategyEnum emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart, final boolean helpWindowsVisible, final boolean playerPayoffMatrixVisible, final boolean playerDealValueVisible, final String participantID)
 			{
 			/*final int SVValue, final int importanceOfObject, final int moralIssueofObject, final int negotiationFair, 
 			final int angryWithDeal, final int otherConsideredYourNeeds, final int otherNegotationFair,final int otherAngeryWithDeal,
@@ -162,6 +163,7 @@ public class ExperimentConditions implements DoublySerializable {
 		this.helpWindowsVisible = helpWindowsVisible;
 		this.playerPayoffMatrixVisible = playerPayoffMatrixVisible;
 		this.playerDealValueVisible= playerDealValueVisible;
+		this.participantID = participantID;
 //		this.expScenario=expScenario;
 		
 		
@@ -204,6 +206,7 @@ public class ExperimentConditions implements DoublySerializable {
 //		this.participantID="0";
 		this.startTimestamp=0;
 //		this.startTime="0";
+		this.coinTossResult="Null";
 				
 /*		this.MFQ_01=0;
 		this.MFQ_02=0;
@@ -316,9 +319,10 @@ public class ExperimentConditions implements DoublySerializable {
 //		result.add("economicClassOfParticipant");
 //		result.add("politicalOrientationOfParticipant");
 		result.add("commentOfParticipant");*/
-//		result.add("participantID");
+		result.add("participantID");
 		result.add("startTimestamp");
 //		result.add("startTime");
+		result.add("coinTossResult");
 				
 /*		result.add("MFQ_01");
 		result.add("MFQ_02");
@@ -432,9 +436,10 @@ public class ExperimentConditions implements DoublySerializable {
 //		result.add(Integer.toString(this.economicClassOfParticipant));
 //		result.add(Integer.toString(this.politicalOrientationOfParticipant));
 		result.add(this.commentOfParticipant);*/
-//		result.add(this.participantID);
+		result.add(this.participantID);
 		result.add(Double.toString(this.startTimestamp));
 //		result.add(this.startTime);
+		result.add(this.coinTossResult);
 		
 /*		result.add(Integer.toString(this.MFQ_01));
 		result.add(Integer.toString(this.MFQ_02));
@@ -706,13 +711,13 @@ public class ExperimentConditions implements DoublySerializable {
 		this.expScenario = expScenario;
 	}*/
 	
-/*	public void setParticipantID(String participantID) {
+	public void setParticipantID(String participantID) {
 		this.participantID = participantID;
 	}
 
 	public String getParticipantID() {
 		return this.participantID;
-	};*/
+	};
 	
 	public void setStartTimestamp(double timestamp) {
 		this.startTimestamp = timestamp;
@@ -1196,5 +1201,8 @@ public class ExperimentConditions implements DoublySerializable {
 	public void setMFQ_32(int MFQ_32) {
 		this.MFQ_32 = MFQ_32;
 	}
-
+	
+	public void setCoinTossResult(String coinTossResult) {
+		this.coinTossResult = coinTossResult;
+	}
 };

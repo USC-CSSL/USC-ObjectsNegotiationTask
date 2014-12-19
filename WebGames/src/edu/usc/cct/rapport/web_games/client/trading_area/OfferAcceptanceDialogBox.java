@@ -14,6 +14,8 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.SimplePanel;
 
+import edu.usc.cct.rapport.web_games.client.specify_experiment_conditions.ExperimentConditions;
+
 public class OfferAcceptanceDialogBox extends DialogBox {
 
 	static final private HelpWindowInternationalizationConstants constants = (HelpWindowInternationalizationConstants) (GWT.isClient() ? GWT.create(HelpWindowInternationalizationConstants.class) : null);
@@ -22,7 +24,8 @@ public class OfferAcceptanceDialogBox extends DialogBox {
 	final private EventBus eventBus;
 	private SimplePanel[][] innerGridSimplePanels;
 	
-	public OfferAcceptanceDialogBox(final EventBus eventBus, final TradingBoardState newTradingBoardState, final NegotiationSession negotiationSession) {
+//	public OfferAcceptanceDialogBox(final EventBus eventBus, final TradingBoardState newTradingBoardState, final NegotiationSession negotiationSession) {
+	public OfferAcceptanceDialogBox(final EventBus eventBus, final TradingBoardState newTradingBoardState, final NegotiationSession negotiationSession, final ExperimentConditions experimentConditions) {
 		super(false, true);
 		this.eventBus = eventBus;
 
@@ -100,22 +103,118 @@ public class OfferAcceptanceDialogBox extends DialogBox {
 		
 
 		// Accept button
-		Button btnAccept = new Button(constants.accept());
+		final Button btnAccept = new Button(constants.accept());
 		btnAccept.setSize("200px", "50px");
 		btnAccept.setStylePrimaryName("MiddleButton-style");
 //		flexTable.setWidget(2, 0, btnAccept);
 		flexTable.setWidget(1, 0, btnAccept);
+		
+		// Reject button
+		final Button btnReject = new Button(constants.reject());
+		btnReject.setSize("200px", "50px");
+		btnReject.setStylePrimaryName("MiddleButton-style");
+
+		// TossCoin button
+		final Button btnTossCoin = new Button(constants.tossCoin());		
+		btnTossCoin.setSize("200px", "50px");
+		btnTossCoin.setStylePrimaryName("MiddleButton-style");
+
+		if(negotiationSession.getPlyRemaining() < 5) {
+			flexTable.setWidget(1, 1, btnTossCoin);
+		} else {
+			flexTable.setWidget(1, 1, btnReject);
+		}
 
 		btnAccept.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				final double timestamp = Duration.currentTimeMillis();
+				btnAccept.setEnabled(false);
+				btnReject.setEnabled(false);
+				btnTossCoin.setEnabled(false);
 				final TradingAction newTradingAction = new TradingAction(AgentEnum.player, timestamp, TradingActionEnum.acceptProposal, null);
 				eventBus.fireEvent(new ProposalAcceptedEvent(newTradingAction));
-				hide();
+				
+				Timer timer = new Timer() {
+					public void run() {
+						hide();
+					}
+				};
+			    timer.schedule(1000); 		// 1sec delay  */
+			}
+		});
+				
+		btnReject.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				final double timestamp = Duration.currentTimeMillis();
+				final TradingAction newTradingAction = new TradingAction(AgentEnum.player, timestamp, TradingActionEnum.rejectProposal, null);
+				eventBus.fireEvent(new ProposalRejectedEvent(newTradingAction));
+
+				hide();	
+				final WaitingDialogBox dialogBoxWait = new WaitingDialogBox(eventBus, "waitAfterRejection");
+				dialogBoxWait.setPopupPosition(105, 75);
+				dialogBoxWait.show();
+					
+				Timer timer = new Timer() {
+					public void run() {
+						final double timestampEndWaiting = Duration.currentTimeMillis();
+						final TradingAction newTradingAction = new TradingAction(AgentEnum.counterpart, timestampEndWaiting, TradingActionEnum.endWaiting, null);
+						eventBus.fireEvent(new EndWaitingEvent(newTradingAction));
+
+						dialogBoxWait.hide();
+					}
+				};
+			    timer.schedule((int)(Math.random() * (8000 - 5000 + 1) + 5000)); 		// random delay between 5sec and 8sec   
 			}
 		});
 		
-		// Reject button
+		btnTossCoin.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				final double timestamp = Duration.currentTimeMillis();
+				final TradingAction newTradingAction = new TradingAction(AgentEnum.player, timestamp, TradingActionEnum.claimBATNAValue, null);
+				eventBus.fireEvent(new BATNAClaimMadeEvent(newTradingAction));
+				hide();
+				
+				final WaitingDialogBox dialogBoxWait = new WaitingDialogBox(eventBus, "coinTossing");
+				dialogBoxWait.setPopupPosition(105, 75);
+				dialogBoxWait.show();
+				
+				Timer timer = new Timer() {
+					public void run() {
+						final double timestampEndWaiting = Duration.currentTimeMillis();
+						final TradingAction newTradingAction_endWaiting = new TradingAction(AgentEnum.counterpart, timestampEndWaiting, TradingActionEnum.endWaiting, null);
+						eventBus.fireEvent(new EndWaitingEvent(newTradingAction_endWaiting));
+						
+						
+//						final TossCoinResultDialogBox dialogBoxTossCoin = new TossCoinResultDialogBox(eventBus);
+						final TossCoinResultDialogBox dialogBoxTossCoin = new TossCoinResultDialogBox(eventBus, experimentConditions);
+						dialogBoxTossCoin.setPopupPosition(105, 75);
+						dialogBoxTossCoin.show();
+						dialogBoxWait.hide();
+
+						Timer timer1 = new Timer() {
+							public void run() {
+		
+								final double timestamp = Duration.currentTimeMillis();
+						    	final TradingAction newTradingAction_endCoinTossResultReview = new TradingAction(AgentEnum.counterpart, timestamp, TradingActionEnum.endCoinTossResultReview, null);
+						    	eventBus.fireEvent(new EndCoinTossResultReviewEvent(newTradingAction_endCoinTossResultReview));
+		
+								Timer timer2 = new Timer() {
+									public void run() {
+										dialogBoxTossCoin.hide();
+									}
+								};
+							    timer2.schedule(1000); 		// 1sec delay
+							}
+						};
+					    timer1.schedule(5000); 		// 5sec delay			    
+					}
+				};
+			    timer.schedule(3000); 		// 3sec delay: tossing a coin  
+
+			}
+		});
+
+/*		// Reject button
 		Button btnReject = new Button(constants.reject());
 //		if(negotiationSession.getPlyRemaining() < 3) {
 		if(negotiationSession.getPlyRemaining() < 5) {
@@ -150,17 +249,28 @@ public class OfferAcceptanceDialogBox extends DialogBox {
 							dialogBoxWait.hide();
 						}
 					};
-				    timer.schedule((int)(Math.random() * (8000 - 5000 + 1) + 5000)); 		// random delay between 5sec and 8sec   */
+				    timer.schedule((int)(Math.random() * (8000 - 5000 + 1) + 5000)); 		// random delay between 5sec and 8sec   
 				} else {
 					final double timestamp = Duration.currentTimeMillis();
 					final TradingAction newTradingAction = new TradingAction(AgentEnum.player, timestamp, TradingActionEnum.claimBATNAValue, null);
-					eventBus.fireEvent(new BATNAClaimMadeEvent(newTradingAction));
+//					eventBus.fireEvent(new BATNAClaimMadeEvent(newTradingAction));
 //					eventBus.fireEvent(new LogExperimentInformationEvent());
 //					eventBus.fireEvent(new NegotiationConclusionAcknowledgedEvent());
 					hide();	
+					final TossCoinResultDialogBox dialogBoxTossCoin = new TossCoinResultDialogBox(eventBus);
+					dialogBoxTossCoin.setPopupPosition(105, 75);
+					dialogBoxTossCoin.show();
+					
+					Timer timer = new Timer() {
+						public void run() {
+							eventBus.fireEvent(new BATNAClaimMadeEvent(newTradingAction));
+							dialogBoxTossCoin.hide();
+						}
+					};
+				    timer.schedule(5000); 		// random delay between 5sec and 8sec   
 				}
 			}
-		});
+		});*/
 		
 //		flexTable.getCellFormatter().setHorizontalAlignment(2, 0, HasHorizontalAlignment.ALIGN_RIGHT);
 //		flexTable.getCellFormatter().setHorizontalAlignment(2, 1, HasHorizontalAlignment.ALIGN_LEFT);

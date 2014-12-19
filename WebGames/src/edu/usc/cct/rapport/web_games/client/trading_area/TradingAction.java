@@ -5,7 +5,8 @@ import java.util.Date;
 
 public class TradingAction {
 
-	final private double timestamp;
+//	final private double timestamp;
+	private double timestamp;
 	final private AgentEnum performingAgent;
 	final private TradingActionEnum tradingActionEnum;
 	final private Proposal proposal;
@@ -69,5 +70,9 @@ public class TradingAction {
 		result.setProposal(this.proposal);
 		return result;
 	};
+	
+	public void setTimestamp(double timestamp) {
+		this.timestamp = timestamp;
+	}
 
 };

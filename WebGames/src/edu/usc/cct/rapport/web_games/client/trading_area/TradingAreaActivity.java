@@ -185,6 +185,20 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 		}
 	}
 
+/*	final private class HandleUserActionAndUpdateUponEndCoinTossResultReview implements EndCoinTossResultReviewEventHandler {
+		@Override
+		public void onEndCoinTossResultReview(final EndCoinTossResultReviewEvent event) {
+			TradingAreaActivity.this.negotiationSession.add(event.getTradingAction());
+		}
+	}*/
+	
+	final private class HandleUserActionAndUpdateUponBATNAClaimMade implements BATNAClaimMadeEventHandler {
+		@Override
+		public void onBATNAClaim(final BATNAClaimMadeEvent event) {
+			TradingAreaActivity.this.negotiationSession.add(event.getTradingAction());
+		}
+	}
+	
 	final private class HandleUserActionAndUpdateUponEndWaiting implements EndWaitingEventHandler {
 		@Override
 		public void onEndWaiting(final EndWaitingEvent event) {
@@ -192,16 +206,26 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 		}
 	}
 
-	final private class HandleTasksUponNegotiationSessionConclusion implements ProposalAcceptedEventHandler, BATNAClaimMadeEventHandler {
-
+//	final private class HandleTasksUponNegotiationSessionConclusion implements ProposalAcceptedEventHandler, BATNAClaimMadeEventHandler {
+	final private class HandleTasksUponNegotiationSessionConclusion implements ProposalAcceptedEventHandler, EndCoinTossResultReviewEventHandler {
+		
 		@Override
-		public void onBATNAClaim(final BATNAClaimMadeEvent event) {
+		public void onEndCoinTossResultReview(final EndCoinTossResultReviewEvent event) {
 			assert(null == TradingAreaActivity.this.finalExperimentInformation);
 			assert (negotiationSession.getWhoseTurnIsNext().equals(event.getTradingAction().getPerformingAgent()));
 			TradingAreaActivity.this.negotiationSession.add(event.getTradingAction());
 			TradingAreaActivity.this.finalExperimentInformation = new ExperimentInformation(TradingAreaActivity.this.experimentConditions, TradingAreaActivity.this.negotiationSession/*, TradingActionEnum.claimBATNAValue*/);
 			TradingAreaActivity.this.resettableEventBus.fireEvent(new NegotiationSessionConcludedEvent(TradingAreaActivity.this.finalExperimentInformation));
 		};
+
+//		@Override
+//		public void onBATNAClaim(final BATNAClaimMadeEvent event) {
+//			assert(null == TradingAreaActivity.this.finalExperimentInformation);
+//			assert (negotiationSession.getWhoseTurnIsNext().equals(event.getTradingAction().getPerformingAgent()));
+//			TradingAreaActivity.this.negotiationSession.add(event.getTradingAction());
+//			TradingAreaActivity.this.finalExperimentInformation = new ExperimentInformation(TradingAreaActivity.this.experimentConditions, TradingAreaActivity.this.negotiationSession/*, TradingActionEnum.claimBATNAValue*/);
+//			TradingAreaActivity.this.resettableEventBus.fireEvent(new NegotiationSessionConcludedEvent(TradingAreaActivity.this.finalExperimentInformation));
+//		};
 
 
 		@Override
@@ -276,11 +300,14 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 		resettableEventBus.addHandler(TradingBoardStateChangedEvent.TYPE, new UpdateViewToSyncWithBoardStateChange());
 		resettableEventBus.addHandler(FacialExpressionChosenEvent.TYPE, new TrackFacialExpressionChoice());
 		resettableEventBus.addHandler(ProposalMadeEvent.TYPE, new HandleUserActionAndExecuteTurnOfAlgorithmicOpponent());
-		resettableEventBus.addHandler(BATNAClaimMadeEvent.TYPE, new HandleTasksUponNegotiationSessionConclusion());
+//		resettableEventBus.addHandler(BATNAClaimMadeEvent.TYPE, new HandleTasksUponNegotiationSessionConclusion());
+		resettableEventBus.addHandler(BATNAClaimMadeEvent.TYPE, new HandleUserActionAndUpdateUponBATNAClaimMade());
 		resettableEventBus.addHandler(ProposalAcceptedEvent.TYPE, new HandleTasksUponNegotiationSessionConclusion());
 		resettableEventBus.addHandler(ProposalRejectedEvent.TYPE, new HandleUserActionAndUpdateUponProposalRejection());
 		resettableEventBus.addHandler(EndProposalReviewEvent.TYPE, new HandleUserActionAndUpdateUponEndProposalReview());
 		resettableEventBus.addHandler(EndWaitingEvent.TYPE, new HandleUserActionAndUpdateUponEndWaiting());
+//		resettableEventBus.addHandler(EndCoinTossResultReviewEvent.TYPE, new HandleUserActionAndUpdateUponEndCoinTossResultReview());
+		resettableEventBus.addHandler(EndCoinTossResultReviewEvent.TYPE, new HandleTasksUponNegotiationSessionConclusion());
 		resettableEventBus.addHandler(NegotiationSessionConcludedEvent.TYPE, new PromptUserToAcknowledgeNegotiationConclusion());
 		resettableEventBus.addHandler(LogExperimentInformationEvent.TYPE, new LogExperimentInformation());
 	};
@@ -301,7 +328,7 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 		} else if ((negotiationSession.getPlyRemaining()%5) == 4){
 //		} else if (AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext())){
 			// EK 10/08/14: added random delay
-			TradingAreaActivity.this.view.showReviewingOfferDialogBox(newTradingBoardState, negotiationSession);
+			TradingAreaActivity.this.view.showReviewingOfferDialogBox(newTradingBoardState, negotiationSession, TradingAreaActivity.this.experimentConditions);
 		} else {
 			
 		}
@@ -360,16 +387,19 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 			case makeCounterproposal:
 //				if(negotiationSession.getPlyRemaining() < 5 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible()) {
 				if(negotiationSession.getPlyRemaining() < 9 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible()) {
-					TradingAreaActivity.this.view.showLastRoundInfoDialogBox(negotiationSession);
+//					TradingAreaActivity.this.view.showLastRoundInfoDialogBox(negotiationSession);
+					TradingAreaActivity.this.view.showLastRoundInfoDialogBox(negotiationSession, tradingAction);
+				} else {
+					resettableEventBus.fireEvent(new ProposalMadeEvent(tradingAction));
 				}
-
+				
 //				if (negotiationSession.getPlyRemaining() == 1 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible() & AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext())){
 //					TradingAreaActivity.this.view.showLastRoundHelpWindowDialogBox(1);
 //				} else {
 //					TradingAreaActivity.this.view.showProposalResultDialogBox("rejected");
 //				}
 
-				resettableEventBus.fireEvent(new ProposalMadeEvent(tradingAction));
+///				resettableEventBus.fireEvent(new ProposalMadeEvent(tradingAction));
 /*			    Timer t = new Timer() { // EK 10/08/14: added random delay
 			        @Override
 			        public void run() {

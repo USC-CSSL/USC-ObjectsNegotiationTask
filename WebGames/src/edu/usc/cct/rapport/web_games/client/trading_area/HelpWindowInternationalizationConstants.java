@@ -547,6 +547,36 @@ public interface HelpWindowInternationalizationConstants extends Constants {
 
 	@DefaultStringValue("[TRANSLATION MISSING] Toss a coin")
 	String tossCoin();	
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Toss a coin result: Head")
+	String head();	
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Toss a coin result: Tail")
+	String tail();	
+	
+	@DefaultStringValue("[TRANSLATION MISSING] You got two of each item.")
+	String headDescription();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] You got two of each item")
+	String headDescription1();	
+	
+	@DefaultStringValue("[TRANSLATION MISSING] and the other player got none of the items.")
+	String headDescription2();	
+	
+	@DefaultStringValue("[TRANSLATION MISSING] You got two of each item.")
+	String headDescriptionHTML();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] You got none of the items.")
+	String tailDescription();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] You got none of the items")
+	String tailDescription1();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] and the other player got two of each item.")
+	String tailDescription2();	
+	
+	@DefaultStringValue("[TRANSLATION MISSING] You got none of the items.")
+	String tailDescriptionHTML();	
 
 	//String btnOk_html();
 };

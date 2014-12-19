@@ -31,8 +31,8 @@ public class WaitingDialogBox extends DialogBox {
 		
 		if(explanation.equals("waitAfterRejection")) {
 			lblWaiting.setText("Please wait...");
-		} else if(explanation.equals("waitAfterAcceptance")) {
-			lblWaiting.setText("You accepted the offer. Starting new game...");
+		} else if(explanation.equals("coinTossing")) {
+			lblWaiting.setText("Tossing a coin...");
 		} else {
 			lblWaiting.setText(constants.waiting_msg());			
 		}

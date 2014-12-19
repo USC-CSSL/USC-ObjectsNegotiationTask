@@ -77,7 +77,8 @@ public class ExperimentConditionsDecoder implements AsyncCallback<Serializable> 
 	    			EmotionModellingStrategyEnum.valueOf(split[11]),
 	    			Boolean.parseBoolean(split[13]),
 	    			Boolean.parseBoolean(split[14]),
-	    			Boolean.parseBoolean(split[15])//,
+	    			Boolean.parseBoolean(split[15]),
+	    			String.valueOf(split[16])
 //	    			Integer.parseInt(split[16])
 	    			/*
 	    			Integer.parseInt(split[16]),
