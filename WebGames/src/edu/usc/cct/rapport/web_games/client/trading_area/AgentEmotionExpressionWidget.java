@@ -23,7 +23,8 @@ public class AgentEmotionExpressionWidget extends Composite {
 	static final private String pixelHeight = inPixels(height);
 
 	static final private String agentEmotionExpressionStyleName = "ict-rapport-agentEmotionExpression";
-	static final private String agentNameStyle = "ict-rapport-agentName";
+//	static final private String agentNameStyle = "ict-rapport-agentName";
+	static final private String agentNameStyle = "ict-rapport-agentName-big";
 	static final private String verticalAlignMiddle = "ict-rapport-verticalAlignMiddle";
 
 	final private AgentEnum agentEnum;
@@ -45,24 +46,43 @@ public class AgentEmotionExpressionWidget extends Composite {
 		this.addStyleName(agentEmotionExpressionStyleName);
 		this.flexTableBasePanel.setVisible(true);
 
-		this.labelDisplayName = new Label(this.agentEnum.getDisplayName());
+		this.labelDisplayName = new Label();
+//		this.labelDisplayName = new Label(this.agentEnum.getDisplayName());
 		this.labelDisplayName.addStyleName(agentNameStyle);
 		this.labelDisplayName.addStyleName(verticalAlignMiddle);
 		this.labelDisplayName.setWidth(pixelWidth);
 		this.labelDisplayName.setHeight(pixelHeight);
 		this.labelDisplayName.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		this.labelDisplayName.setVisible(true);
-		this.flexTableBasePanel.setWidget(0, 0, this.labelDisplayName);
-
+//		this.flexTableBasePanel.setWidget(0, 0, this.labelDisplayName);
+		this.flexTableBasePanel.setWidget(0, 0, new Label(" "));
+		this.flexTableBasePanel.setWidget(1, 0, new Label(" "));
+		this.flexTableBasePanel.setWidget(2, 0, new Label(" "));
+		this.flexTableBasePanel.setWidget(3, 0, new Label(" "));
+		this.flexTableBasePanel.setWidget(4, 0, new Label(" "));
+		this.flexTableBasePanel.setWidget(5, 0, new Label(" "));
+		this.flexTableBasePanel.setWidget(6, 0, new Label(" "));
+		this.flexTableBasePanel.setWidget(7, 0, new Label(" "));
+		this.flexTableBasePanel.setWidget(8, 0, new Label(" "));
+		this.flexTableBasePanel.setWidget(9, 0, new Label(" "));
+		this.flexTableBasePanel.setWidget(10, 0, new Label(" "));
+		this.flexTableBasePanel.setWidget(11, 0, new Label(" "));
+		this.flexTableBasePanel.setWidget(12, 0, new Label(" "));
+		this.flexTableBasePanel.setWidget(13, 0, new Label(" "));
+		this.flexTableBasePanel.setWidget(14, 0, new Label(" "));
+		this.flexTableBasePanel.setWidget(15, 0, new Label(" "));
+		this.flexTableBasePanel.setWidget(16, 0, new Label(" "));
+		this.flexTableBasePanel.setWidget(17, 0, this.labelDisplayName);
+		
 		final int boundingWidthInPixels = Math.max(emoticonDiameter, width);
 		this.facialExpressionWidget = new FacialExpressionWidget(boundingWidthInPixels, emoticonDiameter, true, facialExpressionStyleEnum, facialExpressionEnum);
-		this.flexTableBasePanel.setWidget(1, 0, this.facialExpressionWidget);
+//		this.flexTableBasePanel.setWidget(1, 0, this.facialExpressionWidget);
 		
 		
 	};
 	
 	
-/*	public AgentEmotionExpressionWidget(final AgentEnum agentEnum, final FacialExpressionEnum facialExpressionEnum, final FacialExpressionStyleEnum facialExpressionStyleEnum, final Integer widthHint, final Integer expScenario) {
+/*	public AgentEmotionExpressionWidget(final AgentEnum agentEnum, final FacialExpressionEnum facialExpressionEnum, final FacialExpressionStyleEnum facialExpressionStyleEnum, final Integer widthHint, final Integer partnerLabel) {
 
 		this.agentEnum = agentEnum;
 
@@ -74,7 +94,7 @@ public class AgentEmotionExpressionWidget extends Composite {
 		this.addStyleName(agentEmotionExpressionStyleName);
 		this.flexTableBasePanel.setVisible(true);
 
-		this.labelDisplayName = new Label(this.agentEnum.getDisplayName(expScenario));
+		this.labelDisplayName = new Label(this.agentEnum.getDisplayName(partnerLabel));
 		this.labelDisplayName.addStyleName(agentNameStyle);
 		this.labelDisplayName.addStyleName(verticalAlignMiddle);
 		this.labelDisplayName.setWidth(pixelWidth);
@@ -117,4 +137,8 @@ public class AgentEmotionExpressionWidget extends Composite {
 		this.facialExpressionWidget.setFacialExpressionStyle(facialExpressionStyleEnum);
 	};
 
+	public void setDisplayName(final Integer partnerLabel) {
+		this.labelDisplayName.setText(this.agentEnum.getDisplayName(partnerLabel));
+		
+	};
 };

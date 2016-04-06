@@ -78,7 +78,9 @@ public class ExperimentConditionsDecoder implements AsyncCallback<Serializable> 
 	    			Boolean.parseBoolean(split[13]),
 	    			Boolean.parseBoolean(split[14]),
 	    			Boolean.parseBoolean(split[15]),
-	    			String.valueOf(split[16])
+	    			Integer.parseInt(split[16]),
+	    			String.valueOf(split[17])
+//	    			String.valueOf(split[16])
 //	    			Integer.parseInt(split[16])
 	    			/*
 	    			Integer.parseInt(split[16]),

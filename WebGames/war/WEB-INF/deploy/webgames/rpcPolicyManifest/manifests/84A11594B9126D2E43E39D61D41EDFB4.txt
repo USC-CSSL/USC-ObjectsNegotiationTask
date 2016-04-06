@@ -1,2 +1,0 @@
-serviceClass: edu.usc.cct.rapport.web_games.client.recording.IExperimentInformationRecordingService
-path: 53296DA375403ACEF7628D0681B8679E.gwt.rpc

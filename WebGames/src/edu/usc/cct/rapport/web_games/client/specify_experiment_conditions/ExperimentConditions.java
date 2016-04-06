@@ -33,6 +33,7 @@ public class ExperimentConditions implements DoublySerializable {
 	private boolean playerPayoffMatrixVisible;
 	private boolean playerDealValueVisible;
 //	private int expScenario;
+	private int partnerLabel;
 	
 	//pre-questions
 /*	private int SVValue;
@@ -139,7 +140,8 @@ public class ExperimentConditions implements DoublySerializable {
 	public ExperimentConditions(final FacialExpressionStyleEnum facialExpressionStyleEnum, final TradingObjectSetEnum tradingObjectSetEnum, final int counterpartBATNA, final int playerBATNA, final boolean counterpartDealValueVisible, final boolean counterpartPayoffMatrixVisible, 
 			final boolean counterpartEmotionVisible, final boolean playerEmotionVisible, final int negotiationSessionPlyCount, final AgentEnum agentWhoActsLastIfNoAgreementIsReached, final AlgorithmicCounterpartDecisionMakingStrategyEnum decisionMakingStrategyOfAlgorithmicCounterpart, 
 //			final EmotionModellingStrategyEnum emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart, final boolean helpWindowsVisible, final boolean playerPayoffMatrixVisible, final boolean playerDealValueVisible, final int expScenario)
-			final EmotionModellingStrategyEnum emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart, final boolean helpWindowsVisible, final boolean playerPayoffMatrixVisible, final boolean playerDealValueVisible, final String participantID)
+//			final EmotionModellingStrategyEnum emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart, final boolean helpWindowsVisible, final boolean playerPayoffMatrixVisible, final boolean playerDealValueVisible, final String participantID)
+			final EmotionModellingStrategyEnum emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart, final boolean helpWindowsVisible, final boolean playerPayoffMatrixVisible, final boolean playerDealValueVisible, final int partnerLabel, final String participantID)
 			{
 			/*final int SVValue, final int importanceOfObject, final int moralIssueofObject, final int negotiationFair, 
 			final int angryWithDeal, final int otherConsideredYourNeeds, final int otherNegotationFair,final int otherAngeryWithDeal,
@@ -163,9 +165,9 @@ public class ExperimentConditions implements DoublySerializable {
 		this.helpWindowsVisible = helpWindowsVisible;
 		this.playerPayoffMatrixVisible = playerPayoffMatrixVisible;
 		this.playerDealValueVisible= playerDealValueVisible;
-		this.participantID = participantID;
 //		this.expScenario=expScenario;
-		
+		this.partnerLabel=partnerLabel;
+		this.participantID = participantID;		
 		
 /*		this.SVValue=0;
 		this.SVValueFood=0;
@@ -279,6 +281,7 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add("playerPayoffMatrixVisible");
 		result.add("playerDealValueVisible");
 //		result.add("expScenario");
+		result.add("partnerLabel");
 		
 /*		result.add("SVValue");
 		result.add("SVValueFood");
@@ -397,6 +400,7 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add(Boolean.toString(this.playerPayoffMatrixVisible));
 		result.add(Boolean.toString(this.playerDealValueVisible));
 //		result.add(Integer.toString(this.expScenario));
+		result.add(Integer.toString(this.partnerLabel));
 		
 /*		result.add(Integer.toString(this.SVValue));
 		result.add(Integer.toString(this.SVValueWater));
@@ -701,6 +705,14 @@ public class ExperimentConditions implements DoublySerializable {
 		return this.language;
 	}
 
+	public int getPartnerLabel() {
+		return this.partnerLabel;
+	};
+
+
+	public void setPartnerLabel(final int partnerLabel) {
+		this.partnerLabel = partnerLabel;
+	}
 	
 /*	public int getExpScenario() {
 		return this.expScenario;

@@ -32,6 +32,7 @@ public class AgentEmotionSelectionWidget extends Composite {
 
 		this.facialExpressionStyleEnum = initialFacialExpressionStyleEnum;
 		this.playerEmotionExpressionWidget = new AgentEmotionExpressionWidget(AgentEnum.player, initiallySelectedFacialExpression, this.facialExpressionStyleEnum, panelWidthHint);
+		this.playerEmotionExpressionWidget.setDisplayName(0);
 		this.desiredImagePresentationOrder = desiredImagePresentationOrder;
 		this.playersEmotionSelection = new LinkedHashMap<FacialExpressionWidget, FacialExpressionEnum>();
 		this.playerFacialExpressionMouseInteractionHandler = new PlayerFacialExpressionMouseInteractionHandler(eventBus, playersEmotionSelection, playerEmotionExpressionWidget);

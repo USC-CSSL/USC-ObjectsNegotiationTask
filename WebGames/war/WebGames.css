@@ -282,6 +282,18 @@ div.gwt-Hyperlink a {
 	align: center;
 }
 
+.ict-rapport-agentName-big {
+	color: black;
+	font-size: 35px !important;
+	align: center;
+}
+
+.ict-rapport-roundInformation {
+	background-color: lightgray;
+	color: black;
+	font-size: 25px !important;
+	align: center;
+}
 
 .ict-rapport-entireBoardStyle {
 	background-color: blue;
@@ -361,6 +373,12 @@ div.gwt-Hyperlink a {
 .Label-style {
 	font-family: Arial, sans-serif;
 	font-size: 14px;
+/*	font-color: black;*/
+}
+
+.BiggerLabel-style {
+	font-family: Arial, sans-serif;
+	font-size: 35px;
 /*	font-color: black;*/
 }
 

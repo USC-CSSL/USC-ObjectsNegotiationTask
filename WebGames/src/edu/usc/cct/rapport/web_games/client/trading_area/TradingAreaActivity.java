@@ -129,6 +129,7 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 			TradingAreaActivity.this.view.setCounterpartInformationVisibilityAndBATNAValues(TradingAreaActivity.this.experimentConditions);
 			TradingAreaActivity.this.view.setPlayerInformationVisibilityAndBATNAValues(TradingAreaActivity.this.experimentConditions);
 			TradingAreaActivity.this.view.setFacialExpressionStyle(TradingAreaActivity.this.experimentConditions.getFacialExpressionStyleEnum());
+			TradingAreaActivity.this.view.setDisplayName(TradingAreaActivity.this.experimentConditions.getPartnerLabel()); // ek added: 2016/04/04
 			final FacialExpressionEnum initialCounterpartEmotionState = TradingAreaActivity.this.emotionalModelOfAlgorithmicCounterpart.getFacialExpressionEnum();
 			final double timestamp = Duration.currentTimeMillis();
 //			TradingAreaActivity.this.view.setCounterpartEmotionState(initialCounterpartEmotionState);
@@ -316,6 +317,7 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 	public void updateTradingArea(final TradingBoardState newTradingBoardState, final NegotiationSession negotiationSession) {
 //		if (negotiationSession.getPlyRemaining() ==  19 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible() ){
 		if (negotiationSession.getPlyRemaining() ==  TradingAreaActivity.this.experimentConditions.getNegotiationSessionPlyCount() & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible() ){
+			TradingAreaActivity.this.view.showPartnerLabelDialogBox(TradingAreaActivity.this.experimentConditions);
 			//TradingAreaActivity.this.view.showStartGameHelpWindowDialogBox(1);
 			//TradingAreaActivity.this.view.showScenarioDialogBox(TradingAreaActivity.this.experimentConditions);
 			//TradingAreaActivity.this.view.showParticipantIDBox(TradingAreaActivity.this.experimentConditions); // EK 10/23/14: commented out for fMRI experiment
@@ -339,6 +341,7 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 			this.view.updateTradingActionButtonEnablementBasedOnTradingBoardState(negotiationSession.getWhoseTurnIsNext(), negotiationSession.getMostRecentProposal());
 			this.view.updateTradingAreaViewAfterTradingBoardStateChange();
 			this.view.setTradingBoardEnabled(AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext()) && (1 < negotiationSession.getPlyRemaining()));
+			this.view.setRoundInformation(negotiationSession.getPlyRemaining());
 		} else {
 			this.view.setTradingBoardState(newTradingBoardState);
 			this.view.updateTradingActionButtonAvailabilityWithoutRegardToTradingBoardState(negotiationSession);
@@ -347,6 +350,7 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 //			this.view.setTradingBoardEnabled(true);
 			Timer timer = new Timer() {
 				public void run() {
+					TradingAreaActivity.this.view.setRoundInformation(negotiationSession.getPlyRemaining());
 					TradingAreaActivity.this.view.setTradingBoardEnabled(AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext()) && (1 < negotiationSession.getPlyRemaining()));
 				}
 			};
@@ -388,9 +392,11 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 //				if(negotiationSession.getPlyRemaining() < 5 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible()) {
 				if(negotiationSession.getPlyRemaining() < 9 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible()) {
 //					TradingAreaActivity.this.view.showLastRoundInfoDialogBox(negotiationSession);
-					TradingAreaActivity.this.view.showLastRoundInfoDialogBox(negotiationSession, tradingAction);
+//					TradingAreaActivity.this.view.showLastRoundInfoDialogBox(negotiationSession, tradingAction);
+					TradingAreaActivity.this.view.showLastRoundInfoDialogBox(negotiationSession, TradingAreaActivity.this.experimentConditions.getPartnerLabel(), tradingAction);
 				} else {
-					resettableEventBus.fireEvent(new ProposalMadeEvent(tradingAction));
+					TradingAreaActivity.this.view.showProposalResultDialogBox("rejected", TradingAreaActivity.this.experimentConditions.getPartnerLabel(), tradingAction);
+//					resettableEventBus.fireEvent(new ProposalMadeEvent(tradingAction));
 				}
 				
 //				if (negotiationSession.getPlyRemaining() == 1 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible() & AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext())){
@@ -409,8 +415,8 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 */
 				break;
 			case acceptProposal:
-//				TradingAreaActivity.this.view.showProposalResultDialogBox("accepted");
-				resettableEventBus.fireEvent(new ProposalAcceptedEvent(tradingAction));
+				TradingAreaActivity.this.view.showProposalResultDialogBox("accepted", TradingAreaActivity.this.experimentConditions.getPartnerLabel(), tradingAction);
+//				resettableEventBus.fireEvent(new ProposalAcceptedEvent(tradingAction));
 				break;
 			case claimBATNAValue:
 				resettableEventBus.fireEvent(new BATNAClaimMadeEvent(tradingAction));

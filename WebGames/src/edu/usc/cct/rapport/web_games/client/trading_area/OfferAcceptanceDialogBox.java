@@ -29,7 +29,8 @@ public class OfferAcceptanceDialogBox extends DialogBox {
 		super(false, true);
 		this.eventBus = eventBus;
 
-		setHTML(constants.reviewingOffer());
+//		setHTML(constants.reviewingOffer());
+		setHTML(constants.blank());
 		
 		FlexTable flexTable = new FlexTable();
 		setWidget(flexTable);
@@ -41,10 +42,10 @@ public class OfferAcceptanceDialogBox extends DialogBox {
 			lblAcceptance = new Label(constants.last_round());
 		}*/
 
-		lblAcceptance.setStylePrimaryName("BigLabel-style");
+/*		lblAcceptance.setStylePrimaryName("BigLabel-style");
 		flexTable.getFlexCellFormatter().setColSpan(0, 0, 2);
 		flexTable.getFlexCellFormatter().setHorizontalAlignment(0, 0, HasHorizontalAlignment.ALIGN_CENTER);
-		flexTable.setWidget(0, 0, lblAcceptance);
+		flexTable.setWidget(0, 0, lblAcceptance);*/
 		
 		
 		
@@ -114,7 +115,7 @@ public class OfferAcceptanceDialogBox extends DialogBox {
 		btnReject.setSize("200px", "50px");
 		btnReject.setStylePrimaryName("MiddleButton-style");
 
-		// TossCoin button
+/*		// TossCoin button
 		final Button btnTossCoin = new Button(constants.tossCoin());		
 		btnTossCoin.setSize("200px", "50px");
 		btnTossCoin.setStylePrimaryName("MiddleButton-style");
@@ -123,14 +124,15 @@ public class OfferAcceptanceDialogBox extends DialogBox {
 			flexTable.setWidget(1, 1, btnTossCoin);
 		} else {
 			flexTable.setWidget(1, 1, btnReject);
-		}
+		}*/
+		flexTable.setWidget(1, 1, btnReject);
 
 		btnAccept.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				final double timestamp = Duration.currentTimeMillis();
 				btnAccept.setEnabled(false);
 				btnReject.setEnabled(false);
-				btnTossCoin.setEnabled(false);
+//				btnTossCoin.setEnabled(false);
 				final TradingAction newTradingAction = new TradingAction(AgentEnum.player, timestamp, TradingActionEnum.acceptProposal, null);
 				eventBus.fireEvent(new ProposalAcceptedEvent(newTradingAction));
 				
@@ -150,7 +152,8 @@ public class OfferAcceptanceDialogBox extends DialogBox {
 				eventBus.fireEvent(new ProposalRejectedEvent(newTradingAction));
 
 				hide();	
-				final WaitingDialogBox dialogBoxWait = new WaitingDialogBox(eventBus, "waitAfterRejection");
+//				final WaitingDialogBox dialogBoxWait = new WaitingDialogBox(eventBus, "waitAfterRejection");
+				final WaitingDialogBox dialogBoxWait = new WaitingDialogBox(eventBus, "waitAfterRejection", experimentConditions.getPartnerLabel());
 				dialogBoxWait.setPopupPosition(105, 75);
 				dialogBoxWait.show();
 					
@@ -167,14 +170,15 @@ public class OfferAcceptanceDialogBox extends DialogBox {
 			}
 		});
 		
-		btnTossCoin.addClickHandler(new ClickHandler() {
+/*		btnTossCoin.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				final double timestamp = Duration.currentTimeMillis();
 				final TradingAction newTradingAction = new TradingAction(AgentEnum.player, timestamp, TradingActionEnum.claimBATNAValue, null);
 				eventBus.fireEvent(new BATNAClaimMadeEvent(newTradingAction));
 				hide();
 				
-				final WaitingDialogBox dialogBoxWait = new WaitingDialogBox(eventBus, "coinTossing");
+//				final WaitingDialogBox dialogBoxWait = new WaitingDialogBox(eventBus, "coinTossing");
+				final WaitingDialogBox dialogBoxWait = new WaitingDialogBox(eventBus, "coinTossing", experimentConditions.getPartnerLabel());
 				dialogBoxWait.setPopupPosition(105, 75);
 				dialogBoxWait.show();
 				
@@ -212,7 +216,7 @@ public class OfferAcceptanceDialogBox extends DialogBox {
 			    timer.schedule(3000); 		// 3sec delay: tossing a coin  
 
 			}
-		});
+		});*/
 
 /*		// Reject button
 		Button btnReject = new Button(constants.reject());

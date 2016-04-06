@@ -18,8 +18,6 @@ public class LastRoundHelpWindowDialogBox extends DialogBox implements ClickHand
 	static final private HelpWindowInternationalizationConstants constants = (HelpWindowInternationalizationConstants) (GWT.isClient() ? GWT.create(HelpWindowInternationalizationConstants.class) : null);
 	
 	public LastRoundHelpWindowDialogBox(final EventBus eventBus) {
-
-		
 		
 		super(false, true);
 		this.eventBus = eventBus;
@@ -34,6 +32,7 @@ public class LastRoundHelpWindowDialogBox extends DialogBox implements ClickHand
 		dialogBoxTextArea.setSize("350px", "200px");
 		
 		String lastRound = constants.last_round();
+			
 		final StringBuilder builder = new StringBuilder();
 		builder.append(lastRound);
 		final String result = builder.toString();

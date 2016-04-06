@@ -34,7 +34,8 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 	//static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.enhanced_squiggles, 32, 50, true, true, true, 24, AgentEnum.counterpart, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedNonconcederFirstOfferFixed, EmotionModellingStrategyEnum.chosenUniformlyAtRandom,true,true,true,1,0,0,0,0,0,0,0,0,0,0,0,0,"");
 	//static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.sacredObjects, 32, 50, false, false, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedNonconceder, EmotionModellingStrategyEnum.randomEveryOtherTurnSadOrAngryOrNeutral,true,false,false,1);
 	//static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.sacredObjects, 32, 50, false, false, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy, EmotionModellingStrategyEnum.randomAfter134SadOrAngryOrNeutral,true,false,false,1);
-	static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.veggie, 32, 50, true, true, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedAgentForTrial, EmotionModellingStrategyEnum.alwaysNeutral,true,true,true,"");
+	//static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.veggie, 32, 50, true, true, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedAgentForTrial, EmotionModellingStrategyEnum.alwaysNeutral,true,true,true,"");
+	static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.veggie, 32, 50, true, true, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedAgentForTrial, EmotionModellingStrategyEnum.alwaysNeutral,true,true,true,1,"");
 	static final private String largeFontSizeStyleName = "ict-rapport-largeFontSize";
 
 	static final private SafeHtml separatingLineFeed = SafeHtmlUtils.fromSafeConstant("<br/>");
@@ -229,7 +230,18 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 		viewBasePanel.add(listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy);
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
-		
+
+		final Label labelWhichPartner = new Label("What is the partner type?");
+		labelWhichPartner.addStyleName(largeFontSizeStyleName);
+		viewBasePanel.add(labelWhichPartner);
+		final ListBox ListlabelWhichPartner = new ListBox();
+		ListlabelWhichPartner.addItem("Computer Partner", Integer.toString(0));
+		ListlabelWhichPartner.addItem("Human Partner", Integer.toString(1));
+		ListlabelWhichPartner.setSelectedIndex(0);
+		viewBasePanel.add(ListlabelWhichPartner);
+		viewBasePanel.add(new InlineHTML(separatingLineFeed));
+		viewBasePanel.add(new InlineHTML(separatingLineFeed));
+
 /*		final Label labelWhichScienario = new Label("Choose which experimental scenario should be chosen");
 		labelWhichScienario.addStyleName(largeFontSizeStyleName);
 		viewBasePanel.add(labelWhichScienario);
@@ -281,7 +293,10 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 				
 			    EmotionModellingStrategyEnum emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart = EmotionModellingStrategyEnum.valueOf(listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy.getValue(listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy.getSelectedIndex()));
 				experimentConditions.setEmotionalReactionDeterminationStrategyOfAlgorithmicCounterpart(emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart);
-				
+
+				final int partnerLabel = Integer.parseInt(ListlabelWhichPartner.getValue(ListlabelWhichPartner.getSelectedIndex()));
+				experimentConditions.setPartnerLabel(partnerLabel);
+
 //				final int expscenario = Integer.parseInt(ListlabelWhichScienario.getValue(ListlabelWhichScienario.getSelectedIndex()));
 //				experimentConditions.setExpScenario(expscenario);
 				experimentConditions.setParticipantID(textBoxParticipantID.getValue());

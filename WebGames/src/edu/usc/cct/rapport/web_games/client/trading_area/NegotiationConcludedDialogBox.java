@@ -24,10 +24,11 @@ public class NegotiationConcludedDialogBox extends DialogBox {
 
 
 		super(false, true);
+		this.setHTML(constants.blank());
 		
 //		if (negotiationSession.getPlyRemaining() == 0) {	
-			String titleDiscription = constants.help_Window_Title();
-			this.setText(titleDiscription);
+//			String titleDiscription = constants.help_Window_Title();
+//			this.setText(titleDiscription);
 //			final FlowPanel flowPanelDialogBoxContents = new FlowPanel();
 			final FlexTable flexTableDialogBoxContents = new FlexTable();
 //			flexTableDialogBoxContents.setSize("750px", "500px");

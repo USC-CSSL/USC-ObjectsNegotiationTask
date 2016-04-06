@@ -131,7 +131,8 @@ public class TradingBoardWidget extends Composite implements HasEnabled {
 							gridCellPanel.add(imageForTrade);
 						};
 						grid2x2.setWidget(row, col, gridCellPanel);
-						grid2x2.setHeight("165px");
+//						grid2x2.setHeight("165px");
+						grid2x2.setHeight("126px");
 				        final TradingBoardDropController dropController = new TradingBoardDropController(this, gridCellPanel);
 				        pickupDragController.registerDropController(dropController);
 					};

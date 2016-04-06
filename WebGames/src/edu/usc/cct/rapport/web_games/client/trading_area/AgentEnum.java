@@ -19,7 +19,7 @@ public enum AgentEnum {
 	};
 
 
-	String getDisplayName() {
+/*	String getDisplayName() {
 
 		final String result;
 
@@ -37,7 +37,7 @@ public enum AgentEnum {
 		};
 
 		return result;
-	};
+	};*/
 	
 	
 /*	String getDisplayName(final Integer expScenario) {
@@ -65,6 +65,30 @@ public enum AgentEnum {
 		return result;
 	};*/
 
+	String getDisplayName(final Integer partnerLabel) {
+
+		final String result;
+
+		initializeClientInternationalizationConstantsIfNecessary();
+
+		switch (this) {
+		case counterpart:
+			if(partnerLabel == 0)
+				result = constants.counterpartDisplayName_computer();
+			else if (partnerLabel == 1)
+				result = constants.counterpartDisplayName_human();
+			else		
+				result = constants.counterpartDisplayName();
+			break;
+		case player:
+			result = constants.playerDisplayName();
+			break;
+		default:
+			throw new IllegalStateException("Unhandled AgentEnum in AgentEnum.getName()");			
+		};
+
+		return result;
+	};
 
 	String getValuationDescription(final ValuationCategoryEnum valuationCategoryEnum) {
 

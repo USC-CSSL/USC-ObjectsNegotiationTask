@@ -4,6 +4,9 @@ import com.google.gwt.i18n.client.Constants;
 
 public interface HelpWindowInternationalizationConstants extends Constants {
 
+	@DefaultStringValue("[TRANSLATION MISSING] ")
+	String blank();
+
 	@DefaultStringValue("[TRANSLATION MISSING] Help")
 	String help_Window_Title();
 
@@ -15,6 +18,12 @@ public interface HelpWindowInternationalizationConstants extends Constants {
 	
 	@DefaultStringValue("[TRANSLATION MISSING] This is your last round")
 	String last_round();
+
+	@DefaultStringValue("[TRANSLATION MISSING] This is your last round")
+	String last_round_human();
+
+	@DefaultStringValue("[TRANSLATION MISSING] This is your last round")
+	String last_round_computer();
 	
 	@DefaultStringValue("[TRANSLATION MISSING] help blah blah")
 	String help_start_of_game();
@@ -434,20 +443,56 @@ public interface HelpWindowInternationalizationConstants extends Constants {
 	@DefaultStringValue("[TRANSLATION MISSING] Please wait until the other participant makes a decision.")
 	String waiting_msg();	
 	
+	@DefaultStringValue("[TRANSLATION MISSING] You rejected the human partner's offer. Please be ready to make a counteroffer.")
+	String waiting_msg_after_rejecting_humans_offer();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] You rejected the computer partner's offer. Please be ready to make a counteroffer.")
+	String waiting_msg_after_rejecting_computers_offer();	
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Please wait until the computer partner decides whether to accept or reject your offer.")
+	String waiting_msg_computer();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] Please wait until the human partner decides whether to accept or reject your offer.")
+	String waiting_msg_human();	
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Please decide whether you will accept or reject the offer.")
+	String waiting_msg_beforeOfferAcceptance();
+
 	@DefaultStringValue("[TRANSLATION MISSING] Review")
 	String reviewingOffer();
 	
 	@DefaultStringValue("[TRANSLATION MISSING] Please review the offer you got.")
 	String reviewingOffer_msg();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] The computer partner made a counteroffer. Please press OK to start 5-second offer review.")
+	String offer_review_start_computer();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] The human partner made a counteroffer. Please press OK to start 5-second offer review.")
+	String offer_review_start_human();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Your partner made a counteroffer. Please press OK to start 5-second offer review.")
+	String offer_review_start();
 	
 	@DefaultStringValue("[TRANSLATION MISSING] Accept?")
 	String offerAcceptance_msg();	
 
 	@DefaultStringValue("[TRANSLATION MISSING] The other participant accepted your offer.")
 	String proposal_accepted();	
+	
+	@DefaultStringValue("[TRANSLATION MISSING] The computer partner accepted your offer.")
+	String proposal_accepted_by_computer();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] The human partner accepted your offer.")
+	String proposal_accepted_by_human();	
 
 	@DefaultStringValue("[TRANSLATION MISSING] The other participant rejected your offer and made a counteroffer.")
 	String proposal_rejected();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] The human partner rejected your offer. Please wait until it makes a counteroffer.")
+	String proposal_rejected_by_computer();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] The other participant rejected your offer and made a counteroffer.")
+	String proposal_rejected_by_human();	
 
 	@DefaultStringValue("[TRANSLATION MISSING] How much have you heard about Edward Snowden, a government contractor who leaked information about National Security Agency (NSA) surveillance programs?")
 	String NSA_Question1();	
@@ -577,6 +622,15 @@ public interface HelpWindowInternationalizationConstants extends Constants {
 	
 	@DefaultStringValue("[TRANSLATION MISSING] You got none of the items.")
 	String tailDescriptionHTML();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] In this task, you will be negotiating with a computer partner.")
+	String partner_computer();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] In this task, you will be negotiating with a human partner.")
+	String partner_human();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] In this task, you will be interacting with a negotiation partner.")
+	String partner();
 
 	//String btnOk_html();
 };
