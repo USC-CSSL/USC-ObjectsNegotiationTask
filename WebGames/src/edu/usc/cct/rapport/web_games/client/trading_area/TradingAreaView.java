@@ -171,7 +171,7 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 		counterpartEmotionExpressionWidget = new AgentEmotionExpressionWidget(AgentEnum.counterpart, FacialExpressionEnum.neutral, this.facialExpressionStyleEnum, 215);
 //		counterpartEmotionExpressionWidget = new AgentEmotionExpressionWidget(AgentEnum.counterpart, FacialExpressionEnum.neutral, this.facialExpressionStyleEnum, 215, this.expScenario);
 //		dockLayoutPanelRightPeriphery.addNorth(counterpartEmotionExpressionWidget, 180);
-		dockLayoutPanelRightPeriphery.addNorth(counterpartEmotionExpressionWidget, 260);
+		dockLayoutPanelRightPeriphery.addNorth(counterpartEmotionExpressionWidget, 230);
 
 		final FacialExpressionEnum[] desiredImagePresentationOrder = new FacialExpressionEnum[]{}; // EK 10/08/14: no emotion change is allowed for participants.
 //		final FacialExpressionEnum[] desiredImagePresentationOrder = new FacialExpressionEnum[]{FacialExpressionEnum.happy, FacialExpressionEnum.content, FacialExpressionEnum.neutral, FacialExpressionEnum.angry, FacialExpressionEnum.sad};
@@ -179,7 +179,7 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 		final FacialExpressionEnum originalSelection = FacialExpressionEnum.neutral;
 		playerEmotionSelection = new AgentEmotionSelectionWidget(eventBus, FacialExpressionStyleEnum.drama_masks, desiredImagePresentationOrder, originalSelection);
 //		dockLayoutPanelRightPeriphery.addSouth(playerEmotionSelection, 166.0+180.0);
-		dockLayoutPanelRightPeriphery.addSouth(playerEmotionSelection, 200.0);
+		dockLayoutPanelRightPeriphery.addSouth(playerEmotionSelection, 230.0);
 				
 		final HorizontalPanel horizontalPanelButtons = new HorizontalPanel();
 		horizontalPanelButtons.setHeight("72px");
@@ -195,7 +195,7 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 			button.setWidth("100%");
 			button.setVisible(true);
 			button.setEnabled(true);
-			final WaitingDialogBox dialogBox = new WaitingDialogBox (eventBus, "waitForCounterpart", partnerLabel);
+//			final WaitingDialogBox dialogBox = new WaitingDialogBox (eventBus, "waitForCounterpart", partnerLabel);
 
 			switch (tradingActionEnum) {
 			case makeInitialProposal:
@@ -205,7 +205,10 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 					@Override
 					public void onClick(final ClickEvent event) {						
 						final double timestamp = Duration.currentTimeMillis();
-					    Timer t = new Timer() { // ek: added waiting msg
+						final Proposal newProposal = new Proposal(AgentEnum.player, tradingBoardWidget.getState().getTradingObjectsRetainedByAgent(AgentEnum.player));
+						final TradingAction newTradingAction = new TradingAction(AgentEnum.player, timestamp, tradingActionEnum, newProposal);
+						TradingAreaView.this.eventBus.fireEvent(new ProposalMadeEvent(newTradingAction));					        
+/*					    Timer t = new Timer() { // ek: added waiting msg
 					        @Override
 					        public void run() {
 					        	dialogBox.hide();
@@ -217,7 +220,7 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 					      dialogBox.setPopupPosition(105, 75);
 					      dialogBox.show(); // EK 10/27/2014: pop up the screen in the left uppermost area
 //				    	  dialogBox.center();
-					      t.schedule((int)(Math.random() * (8000 - 5000 + 1) + 5000)); 		// random delay between 5sec and 8sec
+					      t.schedule((int)(Math.random() * (8000 - 5000 + 1) + 5000)); 		// random delay between 5sec and 8sec*/
 					};
 				});
 				break;
@@ -250,8 +253,8 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 			tradingActionButtons.put(tradingActionEnum, button);
 		};
 
-//		dockLayoutPanelRightPeriphery.add(horizontalPanelButtons);
-		dockLayoutPanelRightPeriphery.addSouth(horizontalPanelButtons, 170.0);
+		dockLayoutPanelRightPeriphery.add(horizontalPanelButtons);
+//		dockLayoutPanelRightPeriphery.addSouth(horizontalPanelButtons, 170.0);
 
 		final DockLayoutPanel dockLayoutPayoffInformation = new DockLayoutPanel(Unit.PX);
 		dockLayoutPayoffInformation.addStyleName(debuggingBorderStyle);
@@ -492,7 +495,8 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 					    	  	makeCounterproposal.setEnabled(true);
 								makeCounterproposal.setVisible(true);
 //								tradingBoardWidget.setEnabled(true);
-								popup.hide();								
+								popup.hide();	
+								setRoundInformation(negotiationSession.getPlyRemaining());
 					      }
 					};
 					timer.schedule(14000);
@@ -788,32 +792,42 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 	
 	@Override
 	public void showProposalResultDialogBox(final String temp, final int partnerLabel, final TradingAction tradingAction) {
-		final ProposalResultDialogBox dialogBox = new ProposalResultDialogBox(temp, partnerLabel);
-		
-		Timer timer = new Timer() {
-		      public void run() {
-		    	  final double timestamp = Duration.currentTimeMillis();
-		    	  tradingAction.setTimestamp(timestamp);
+		final WaitingDialogBox waitingDialogBox = new WaitingDialogBox (eventBus, "waitForCounterpart", partnerLabel);
+		final ProposalResultDialogBox resultDialogBox = new ProposalResultDialogBox(temp, partnerLabel);
 
-		    	  String acceptedStr = "accepted";
-		    	  String rejectedStr = "rejected";
+		Timer timer1 = new Timer() { // ek: added waiting msg
+//        @Override
+			public void run() {				
+				Timer timer2 = new Timer() {
+				      public void run() {
+				    	  final double timestamp = Duration.currentTimeMillis();
+				    	  tradingAction.setTimestamp(timestamp);
 
-		    	  if(temp.equals(acceptedStr))
-		    		  TradingAreaView.this.eventBus.fireEvent(new ProposalAcceptedEvent(tradingAction));
-		    	  else if(temp.equals(rejectedStr))
-		    		  showOfferReviewStartDialogBox(partnerLabel, tradingAction);
-//		    		  TradingAreaView.this.eventBus.fireEvent(new ProposalMadeEvent(tradingAction));
-		    	  dialogBox.hide();
-		      }
+				    	  String acceptedStr = "accepted";
+				    	  String rejectedStr = "rejected";
+
+				    	  if(temp.equals(acceptedStr))
+				    		  TradingAreaView.this.eventBus.fireEvent(new ProposalAcceptedEvent(tradingAction));
+				    	  else if(temp.equals(rejectedStr))
+				    		  showOfferReviewStartDialogBox(partnerLabel, tradingAction);
+//				    		  TradingAreaView.this.eventBus.fireEvent(new ProposalMadeEvent(tradingAction));
+				    	  resultDialogBox.hide();
+				      }
+				};
+
+				resultDialogBox.setPopupPosition(105, 75);
+				resultDialogBox.show();
+				timer2.schedule(5000);	// 5 sec delay for reading
+				waitingDialogBox.hide();
+			}
 		};
-
-		dialogBox.setPopupPosition(105, 75);
-		dialogBox.show();
-		timer.schedule(5000);	// 5 sec delay for reading
+		waitingDialogBox.setPopupPosition(105, 75);
+		waitingDialogBox.show(); // EK 10/27/2014: pop up the screen in the left uppermost area
+		timer1.schedule((int)(Math.random() * (8000 - 5000 + 1) + 5000)); 		// random delay between 5sec and 8sec*/		
 	};
 	
 	public void showOfferReviewStartDialogBox(final int partnerLabel, final TradingAction tradingAction) {
-		final OfferReviewStartDialogBox dialogBox = new OfferReviewStartDialogBox(eventBus, partnerLabel);
+		final OfferReviewStartDialogBox dialogBox = new OfferReviewStartDialogBox(eventBus, partnerLabel, tradingAction);
 		
 		dialogBox.setPopupPosition(105, 75);
 		dialogBox.show();		

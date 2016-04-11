@@ -21,34 +21,37 @@ public class LastRoundInfoDialogBox extends DialogBox {
 		super(false, true);
 		this.eventBus = eventBus;
 
-		setHTML(constants.reviewingOffer());
-		
+//		setHTML(constants.reviewingOffer());
+		setHTML(constants.blank());
+	
 		FlexTable flexTable = new FlexTable();
 		setWidget(flexTable);
 		flexTable.setSize("800px", "565px");
 		
 //		Label lblAcceptance = new HTML(constants.last_round());
-		String lastRound = "";
+//		String lastRound = "";
+		HTML lastRound = new HTML("");
 		
 		if(partnerLabel == 0)
-			lastRound = constants.last_round_computer();
+			lastRound.setHTML(constants.last_round_computer());
 		else if(partnerLabel == 1)
-			lastRound = constants.last_round_human();
+			lastRound.setHTML(constants.last_round_human());
 		else
-			lastRound = constants.last_round();	
+			lastRound.setHTML(constants.last_round());	
 		
-		final StringBuilder builder = new StringBuilder();
-		builder.append(lastRound);
-		final String result = builder.toString();
+//		final StringBuilder builder = new StringBuilder();
+//		builder.append(lastRound);
+//		final String result = builder.toString();
 		
-		final RichTextArea dialogBoxTextArea = new RichTextArea();
-		dialogBoxTextArea.setSize("780px", "550px");
-		dialogBoxTextArea.setHTML(result);
+//		final RichTextArea dialogBoxTextArea = new RichTextArea();
+//		dialogBoxTextArea.setSize("780px", "550px");
+//		dialogBoxTextArea.setHTML(result);
 //		flowPanelDialogBoxContents.add(dialogBoxTextArea);		
 
 		flexTable.getFlexCellFormatter().setHorizontalAlignment(0, 0, HasHorizontalAlignment.ALIGN_CENTER);
+		flexTable.setWidget(0, 0, lastRound);
 //		flexTable.setWidget(0, 0, lblAcceptance);
-		flexTable.setWidget(0, 0, dialogBoxTextArea);
+//		flexTable.setWidget(0, 0, dialogBoxTextArea);
 	}
 }
 	

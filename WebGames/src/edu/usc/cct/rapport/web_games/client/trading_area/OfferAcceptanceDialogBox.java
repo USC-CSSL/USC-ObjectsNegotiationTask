@@ -148,25 +148,31 @@ public class OfferAcceptanceDialogBox extends DialogBox {
 		btnReject.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				final double timestamp = Duration.currentTimeMillis();
-				final TradingAction newTradingAction = new TradingAction(AgentEnum.player, timestamp, TradingActionEnum.rejectProposal, null);
-				eventBus.fireEvent(new ProposalRejectedEvent(newTradingAction));
+				if(negotiationSession.getPlyRemaining() < 6) {
+					final TradingAction newTradingAction = new TradingAction(AgentEnum.player, timestamp, TradingActionEnum.claimBATNAValue, null);
+					eventBus.fireEvent(new BATNAClaimMadeEvent(newTradingAction));							
 
-				hide();	
-//				final WaitingDialogBox dialogBoxWait = new WaitingDialogBox(eventBus, "waitAfterRejection");
-				final WaitingDialogBox dialogBoxWait = new WaitingDialogBox(eventBus, "waitAfterRejection", experimentConditions.getPartnerLabel());
-				dialogBoxWait.setPopupPosition(105, 75);
-				dialogBoxWait.show();
-					
-				Timer timer = new Timer() {
-					public void run() {
-						final double timestampEndWaiting = Duration.currentTimeMillis();
-						final TradingAction newTradingAction = new TradingAction(AgentEnum.counterpart, timestampEndWaiting, TradingActionEnum.endWaiting, null);
-						eventBus.fireEvent(new EndWaitingEvent(newTradingAction));
-
-						dialogBoxWait.hide();
-					}
-				};
-			    timer.schedule((int)(Math.random() * (8000 - 5000 + 1) + 5000)); 		// random delay between 5sec and 8sec   
+					hide();	
+				} else {
+					final TradingAction newTradingAction = new TradingAction(AgentEnum.player, timestamp, TradingActionEnum.rejectProposal, null);
+					eventBus.fireEvent(new ProposalRejectedEvent(newTradingAction));
+	
+					hide();	
+	//				final WaitingDialogBox dialogBoxWait = new WaitingDialogBox(eventBus, "waitAfterRejection");
+					final WaitingDialogBox dialogBoxWait = new WaitingDialogBox(eventBus, "waitAfterRejection", experimentConditions.getPartnerLabel());
+					dialogBoxWait.setPopupPosition(105, 75);
+					dialogBoxWait.show();
+						
+					Timer timer = new Timer() {
+						public void run() {
+							final double timestampEndWaiting = Duration.currentTimeMillis();
+							final TradingAction newTradingAction = new TradingAction(AgentEnum.counterpart, timestampEndWaiting, TradingActionEnum.endWaiting, null);
+							eventBus.fireEvent(new EndWaitingEvent(newTradingAction));
+							dialogBoxWait.hide();
+						}
+					};
+				    timer.schedule((int)(Math.random() * (8000 - 5000 + 1) + 5000)); 		// random delay between 5sec and 8sec   
+				}
 			}
 		});
 		

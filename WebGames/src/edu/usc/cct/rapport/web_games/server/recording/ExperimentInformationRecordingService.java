@@ -303,7 +303,8 @@ public class ExperimentInformationRecordingService extends RemoteServiceServlet 
 			final SimpleDateFormat dateTimeFormatter = new SimpleDateFormat("yyyy-MM-dd_HHmm");
 			final String dateTime = dateTimeFormatter.format(new Date());
 			
-			if(ipAddress.equals("0:0:0:0:0:0:0:1%0"))		// when testing on the local machine using IPv6
+//			if(ipAddress.equals("0:0:0:0:0:0:0:1%0"))		// when testing on the local machine using IPv6
+			if(ipAddress.equals("0:0:0:0:0:0:0:1%0") || ipAddress.equals("0:0:0:0:0:0:0:1"))		// when testing on the local machine using IPv6
 				sheetName = dateTime + ' ' + "127.0.0.1";	// set ipAddress = 127.0.0.1
 			else
 				sheetName = dateTime + ' ' + ipAddress;

@@ -431,9 +431,6 @@ public enum TradingObjectEnum {
 	public Integer getPayoff(final AgentEnum agentEnum) {
 
 		final Integer result;
-		final int fruits_counterpart_payoff1 = 2;
-		final int fruits_counterpart_payoff2 = 3;
-		final int fruits_counterpart_payoff3 = 4;
 /*	 	// fruits negotiation: 5 items each
  		final int fruits_player_payoff1 = 2;
 		final int fruits_player_payoff2 = 3;
@@ -444,9 +441,18 @@ public enum TradingObjectEnum {
 		final int veggie_player_payoff1 = 1;
 		final int veggie_player_payoff2 = 1;
 		final int veggie_player_payoff3 = 3;		*/
+/*		final int fruits_counterpart_payoff1 = 2;
+		final int fruits_counterpart_payoff2 = 3;
+		final int fruits_counterpart_payoff3 = 4;
 		final int fruits_player_payoff1 = 3;
 		final int fruits_player_payoff2 = 4;
-		final int fruits_player_payoff3 = 2;
+		final int fruits_player_payoff3 = 2; // fMRI experiment 1 */
+		final int fruits_counterpart_payoff1 = 3;
+		final int fruits_counterpart_payoff2 = 4;
+		final int fruits_counterpart_payoff3 = 5;
+		final int fruits_player_payoff1 = 4;
+		final int fruits_player_payoff2 = 5;
+		final int fruits_player_payoff3 = 3;
 		final int veggie_counterpart_payoff1 = 1;
 		final int veggie_counterpart_payoff2 = 3;
 		final int veggie_counterpart_payoff3 = 5;

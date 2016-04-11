@@ -464,13 +464,13 @@ public interface HelpWindowInternationalizationConstants extends Constants {
 	@DefaultStringValue("[TRANSLATION MISSING] Please review the offer you got.")
 	String reviewingOffer_msg();	
 
-	@DefaultStringValue("[TRANSLATION MISSING] The computer partner made a counteroffer. Please press OK to start 5-second offer review.")
+	@DefaultStringValue("[TRANSLATION MISSING] The computer partner made a counteroffer. Please press OK to start 10-second offer review.")
 	String offer_review_start_computer();
 	
-	@DefaultStringValue("[TRANSLATION MISSING] The human partner made a counteroffer. Please press OK to start 5-second offer review.")
+	@DefaultStringValue("[TRANSLATION MISSING] The human partner made a counteroffer. Please press OK to start 10-second offer review.")
 	String offer_review_start_human();
 
-	@DefaultStringValue("[TRANSLATION MISSING] Your partner made a counteroffer. Please press OK to start 5-second offer review.")
+	@DefaultStringValue("[TRANSLATION MISSING] Your partner made a counteroffer. Please press OK to start 10-second offer review.")
 	String offer_review_start();
 	
 	@DefaultStringValue("[TRANSLATION MISSING] Accept?")

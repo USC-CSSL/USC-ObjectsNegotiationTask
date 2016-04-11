@@ -19,8 +19,9 @@ public class PartnerLabelDialogBox extends DialogBox {
 		
 		super(false, true);
 		
-		String titleDiscription = constants.help_Window_Title();
-		this.setText(titleDiscription);
+//		String titleDiscription = constants.help_Window_Title();
+//		this.setText(titleDiscription);
+		setHTML(constants.blank());
 		AbsolutePanel absolutePanel = new AbsolutePanel();
 		setWidget(absolutePanel);
 		absolutePanel.setSize("800px", "565px");
