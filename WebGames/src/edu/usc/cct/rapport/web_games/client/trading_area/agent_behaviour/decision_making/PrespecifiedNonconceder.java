@@ -82,7 +82,7 @@ public class PrespecifiedNonconceder implements PlyRemainingIndexedProposalGener
 			default:
 				prespecifiedTradingObjectCounts = new int[]{5, 5, 5};*/
 		
-		// fruits negotiation: 3 items each
+		// fruits negotiation: 3 items each 
 			case 1:
 				prespecifiedTradingObjectCounts = new int[]{2, 2, 2};
 				break;
