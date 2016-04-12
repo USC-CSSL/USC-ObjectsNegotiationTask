@@ -212,7 +212,8 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 		for (final AlgorithmicCounterpartDecisionMakingStrategyEnum decisionMakingStrategyOfAlgorithmicCounterpart: AlgorithmicCounterpartDecisionMakingStrategyEnum.values()) {
 			listBoxSelectAlgorithmicCounterpartDecisionMakingStrategy.addItem(decisionMakingStrategyOfAlgorithmicCounterpart.toString(), decisionMakingStrategyOfAlgorithmicCounterpart.name());
 		};
-		listBoxSelectAlgorithmicCounterpartDecisionMakingStrategy.setSelectedIndex(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedNonconceder.ordinal());
+//		listBoxSelectAlgorithmicCounterpartDecisionMakingStrategy.setSelectedIndex(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedNonconceder.ordinal());
+		listBoxSelectAlgorithmicCounterpartDecisionMakingStrategy.setSelectedIndex(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedSoftGentleSlopeStrategyFruits1.ordinal());
 		viewBasePanel.add(listBoxSelectAlgorithmicCounterpartDecisionMakingStrategy);
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));

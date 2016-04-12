@@ -27,7 +27,7 @@ public class PrespecifiedPotentialCounterproposalTactic implements ProposalDecis
 		final Proposal potentialCounterproposal = proposalGenerator.getPrespecifiedPotentialCounterproposal(setOfTradingObjectEnum, negotiationSession.getPlyRemaining() + plyAdjustmentOffset);
 		final int valueOfPotentialCounterproposal = potentialCounterproposal.getProposalValueFromAgentPerspective(AgentEnum.counterpart);
 		final Proposal mostRecentlyOfferedProposal = negotiationSession.getMostRecentProposal();
-		final int valueOfMostRecentlyOfferedProposal;
+/*		final int valueOfMostRecentlyOfferedProposal;
 		if (null == mostRecentlyOfferedProposal) {
 			valueOfMostRecentlyOfferedProposal = Integer.MIN_VALUE;
 		} else {
@@ -36,6 +36,24 @@ public class PrespecifiedPotentialCounterproposalTactic implements ProposalDecis
 
 		final Pair<TradingActionEnum, Proposal> result;
 		if (valueOfMostRecentlyOfferedProposal >= valueOfPotentialCounterproposal) {
+			result = new Pair<TradingActionEnum, Proposal>(TradingActionEnum.acceptProposal, null);
+		} else {
+			result = new Pair<TradingActionEnum, Proposal>(TradingActionEnum.makeCounterproposal, potentialCounterproposal);
+		};*/
+		
+		final int valueOfMostRecentlyOfferedProposalForAgent;
+		final int valueOfMostRecentlyOfferedProposalForPlayer;
+		
+		if (null == mostRecentlyOfferedProposal) {
+			valueOfMostRecentlyOfferedProposalForAgent = Integer.MIN_VALUE;
+			valueOfMostRecentlyOfferedProposalForPlayer = 0;
+		} else {
+			valueOfMostRecentlyOfferedProposalForAgent  = mostRecentlyOfferedProposal.getProposalValueFromAgentPerspective(AgentEnum.counterpart);
+			valueOfMostRecentlyOfferedProposalForPlayer = mostRecentlyOfferedProposal.getProposalValueFromAgentPerspective(AgentEnum.player);
+		};
+
+		final Pair<TradingActionEnum, Proposal> result;
+		if ((valueOfMostRecentlyOfferedProposalForAgent - valueOfMostRecentlyOfferedProposalForPlayer) > 15) {
 			result = new Pair<TradingActionEnum, Proposal>(TradingActionEnum.acceptProposal, null);
 		} else {
 			result = new Pair<TradingActionEnum, Proposal>(TradingActionEnum.makeCounterproposal, potentialCounterproposal);

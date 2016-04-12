@@ -34,6 +34,12 @@ public enum TradingObjectEnum {
 	fruits6_item1_orange,
 	fruits6_item2_melon,
 	fruits6_item3_blueberry,
+	fruits7_item1_apple,
+	fruits7_item2_blueberry,
+	fruits7_item3_watermelon,
+	fruits8_item1_cherry,
+	fruits8_item2_banana,
+	fruits8_item3_melon,
 /*	fruits1_item1,
 	fruits1_item2,
 	fruits1_item3,
@@ -163,10 +169,12 @@ public enum TradingObjectEnum {
 			break;*/
 		case fruits1_item1_apple:
 		case fruits4_item1_apple:
+		case fruits7_item1_apple:
 			result = constants.fruits_apple_Description();
 			break;
 		case fruits1_item2_banana:
 		case fruits5_item2_banana:
+		case fruits8_item2_banana:
 			result = constants.fruits_banana_Description();
 			break;
 		case fruits1_item3_orange:
@@ -175,6 +183,7 @@ public enum TradingObjectEnum {
 			break;
 		case fruits2_item1_melon:
 		case fruits6_item2_melon:
+		case fruits8_item3_melon:
 			result = constants.fruits_melon_Description();
 			break;
 		case fruits2_item2_pineapple:
@@ -183,6 +192,7 @@ public enum TradingObjectEnum {
 			break;
 		case fruits2_item3_watermelon:
 		case fruits5_item1_watermelon:
+		case fruits7_item3_watermelon:
 			result = constants.fruits_watermelon_Description();
 			break;
 		case fruits3_item1_strawberry:
@@ -191,10 +201,12 @@ public enum TradingObjectEnum {
 			break;
 		case fruits3_item2_blueberry:
 		case fruits6_item3_blueberry:
+		case fruits7_item2_blueberry:
 			result = constants.fruits_blueberry_Description();
 			break;
 		case fruits3_item3_cherry:
 		case fruits4_item3_cherry:
+		case fruits8_item1_cherry:
 			result = constants.fruits_cherry_Description();
 			break;
 		case istockphoto_water_bottles:
@@ -328,10 +340,12 @@ public enum TradingObjectEnum {
 			break;
 		case fruits1_item1_apple:
 		case fruits4_item1_apple:
+		case fruits7_item1_apple:
 			result = webGamesClientBundle.fruits_apple();
 			break;
 		case fruits1_item2_banana:
 		case fruits5_item2_banana:
+		case fruits8_item2_banana:
 			result = webGamesClientBundle.fruits_banana();
 			break;
 		case fruits1_item3_orange:
@@ -340,6 +354,7 @@ public enum TradingObjectEnum {
 			break;
 		case fruits2_item1_melon:
 		case fruits6_item2_melon:
+		case fruits8_item3_melon:
 			result = webGamesClientBundle.fruits_melon();
 			break;
 		case fruits2_item2_pineapple:
@@ -348,6 +363,7 @@ public enum TradingObjectEnum {
 			break;
 		case fruits2_item3_watermelon:
 		case fruits5_item1_watermelon:
+		case fruits7_item3_watermelon:
 			result = webGamesClientBundle.fruits_watermelon();
 			break;
 		case fruits3_item1_strawberry:
@@ -356,10 +372,12 @@ public enum TradingObjectEnum {
 			break;
 		case fruits3_item2_blueberry:
 		case fruits6_item3_blueberry:
+		case fruits7_item2_blueberry:
 			result = webGamesClientBundle.fruits_blueberry();
 			break;
 		case fruits3_item3_cherry:
 		case fruits4_item3_cherry:
+		case fruits8_item1_cherry:
 			result = webGamesClientBundle.fruits_cherry();
 			break;
 		case istockphoto_water_bottles:
@@ -513,6 +531,8 @@ public enum TradingObjectEnum {
 				case fruits4_item1_apple:
 				case fruits5_item2_banana:
 				case fruits6_item3_blueberry:
+				case fruits7_item3_watermelon:
+				case fruits8_item2_banana:
 					result = fruits_counterpart_payoff1;
 					break;					
 				case fruits1_item2_banana:
@@ -521,6 +541,8 @@ public enum TradingObjectEnum {
 				case fruits4_item3_cherry:
 				case fruits5_item1_watermelon:
 				case fruits6_item2_melon:
+				case fruits7_item1_apple:
+				case fruits8_item1_cherry:
 					result = fruits_counterpart_payoff2;
 					break;
 				case fruits1_item3_orange:
@@ -529,6 +551,8 @@ public enum TradingObjectEnum {
 				case fruits4_item2_pineapple:
 				case fruits5_item3_strawberry:
 				case fruits6_item1_orange:
+				case fruits7_item2_blueberry:
+				case fruits8_item3_melon:
 					result = fruits_counterpart_payoff3;
 					break;					
 /*				case veggie_pepper:
@@ -652,6 +676,8 @@ public enum TradingObjectEnum {
 				case fruits4_item1_apple:
 				case fruits5_item2_banana:
 				case fruits6_item3_blueberry:
+				case fruits7_item3_watermelon:
+				case fruits8_item2_banana:
 					result = fruits_player_payoff1;
 					break;					
 				case fruits1_item2_banana:
@@ -660,6 +686,8 @@ public enum TradingObjectEnum {
 				case fruits4_item3_cherry:
 				case fruits5_item1_watermelon:
 				case fruits6_item2_melon:
+				case fruits7_item1_apple:
+				case fruits8_item1_cherry:
 					result = fruits_player_payoff2;
 					break;
 				case fruits1_item3_orange:
@@ -668,6 +696,8 @@ public enum TradingObjectEnum {
 				case fruits4_item2_pineapple:
 				case fruits5_item3_strawberry:
 				case fruits6_item1_orange:
+				case fruits7_item2_blueberry:
+				case fruits8_item3_melon:
 					result = fruits_player_payoff3;
 					break;
 				case veggie_pepper:

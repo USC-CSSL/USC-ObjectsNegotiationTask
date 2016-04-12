@@ -20,7 +20,9 @@ public enum TradingObjectSetEnum {
 	fruits3,
 	fruits4,
 	fruits5,
-	fruits6;
+	fruits6,
+	fruits7,
+	fruits8;
 
 	public EnumSet<TradingObjectEnum> getSetOfTradingObjectEnum() {
 
@@ -71,6 +73,12 @@ public enum TradingObjectSetEnum {
 			break;
 		case fruits6:
 			result = EnumSet.of(TradingObjectEnum.fruits6_item1_orange, TradingObjectEnum.fruits6_item2_melon, TradingObjectEnum.fruits6_item3_blueberry);
+			break;
+		case fruits7:
+			result = EnumSet.of(TradingObjectEnum.fruits7_item1_apple, TradingObjectEnum.fruits7_item2_blueberry, TradingObjectEnum.fruits7_item3_watermelon);
+			break;
+		case fruits8:
+			result = EnumSet.of(TradingObjectEnum.fruits8_item1_cherry, TradingObjectEnum.fruits8_item2_banana, TradingObjectEnum.fruits8_item3_melon);
 			break;
 /*		case symbolicObjects_3columns:
 			result = EnumSet.of(TradingObjectEnum.sacredObjects_document, TradingObjectEnum.sacredObjects_reform, TradingObjectEnum.sacredObjects_bonus);
