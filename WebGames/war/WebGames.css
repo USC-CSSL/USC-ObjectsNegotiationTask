@@ -461,17 +461,40 @@ font-size: 15pt;
 	background-color: #ffffff;
 }
 
+.FlexTable-OddRowWithBorder {
+	background-color: #ffffff;
+	border-width: 0 0 1px 0;
+	border-style: solid;
+	border-color: #ffffff;
+}
+
 .FlexTable-OddRow {
 	background-color: #ffffff;
 }
 
 .FlexTable-EvenRow {
+/*	background-color: #ffffe0; // for example */
 	background-color: #eaeaea;
+}
+
+.FlexTable-EvenRowWithBorder {
+	background-color: #eaeaea;
+	border-width: 0 0 1px 0;
+	border-style: solid;
+	border-color: #eaeaea;
 }
 
 .FlexTable-SelectedCell {
 	background-color: #fce6f1;
 }
+
+.FlexTable-SelectedCellWithBorder {
+	background-color: #fce6f1;
+	border-width: 0 0 1px 0;
+	border-style: solid;
+	border-color: #fce6f1;
+}
+
 
 .FlexTable-ColumnLabelCell {
 	border-width: 0 0 1px 0;

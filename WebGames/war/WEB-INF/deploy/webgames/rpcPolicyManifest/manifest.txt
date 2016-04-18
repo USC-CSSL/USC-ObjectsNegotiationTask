@@ -1,6 +1,6 @@
 # Module webgames
 # RPC service class, partial path of RPC policy file
-edu.usc.cct.rapport.web_games.client.base64.IBase64DecodingService, 4A1E1F8F7C27D1ECBEFA018B5BA2438D.gwt.rpc
 com.google.gwt.logging.shared.RemoteLoggingService, 8ED5302173126DD7DBEFC7A815A6BC70.gwt.rpc
-edu.usc.cct.rapport.web_games.client.recording.IExperimentInformationRecordingService, E70654D1E64E8D9190C444CFAA7771BA.gwt.rpc
-edu.usc.cct.rapport.web_games.client.base64.IBase64EncodingService, 5803A8ADACAAE32EA02109A1757447F8.gwt.rpc
+edu.usc.cct.rapport.web_games.client.recording.IExperimentInformationRecordingService, 9EE2EFE0444F941231CFDF8AA9D7A6B2.gwt.rpc
+edu.usc.cct.rapport.web_games.client.base64.IBase64EncodingService, 89F5D525786BE5D8F68EA02E2F53FAF0.gwt.rpc
+edu.usc.cct.rapport.web_games.client.base64.IBase64DecodingService, FDBCBF9E3C5734F3406CC3A00EB40BFB.gwt.rpc

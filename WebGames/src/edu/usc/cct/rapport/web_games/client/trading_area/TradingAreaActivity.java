@@ -317,10 +317,10 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 	public void updateTradingArea(final TradingBoardState newTradingBoardState, final NegotiationSession negotiationSession) {
 //		if (negotiationSession.getPlyRemaining() ==  19 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible() ){
 		if (negotiationSession.getPlyRemaining() ==  TradingAreaActivity.this.experimentConditions.getNegotiationSessionPlyCount() & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible() ){
-			TradingAreaActivity.this.view.showPartnerLabelDialogBox(TradingAreaActivity.this.experimentConditions);
+			//TradingAreaActivity.this.view.showPartnerLabelDialogBox(TradingAreaActivity.this.experimentConditions); // for fMRI
 			//TradingAreaActivity.this.view.showStartGameHelpWindowDialogBox(1);
 			//TradingAreaActivity.this.view.showScenarioDialogBox(TradingAreaActivity.this.experimentConditions);
-			//TradingAreaActivity.this.view.showParticipantIDBox(TradingAreaActivity.this.experimentConditions); // EK 10/23/14: commented out for fMRI experiment
+			TradingAreaActivity.this.view.showParticipantIDBox(TradingAreaActivity.this.experimentConditions); // EK 10/23/14: commented out for fMRI experiment
 //			final double timestamp = Duration.currentTimeMillis();
 //			TradingAreaActivity.this.experimentConditions.setParticipantID(Double.toString(timestamp));
 //		} else if (negotiationSession.getPlyRemaining() == 1 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible() & AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext())){

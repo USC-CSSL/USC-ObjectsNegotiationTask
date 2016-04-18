@@ -295,7 +295,193 @@ public interface HelpWindowInternationalizationConstants extends Constants {
 
 	@DefaultStringValue("[TRANSLATION MISSING] My opinions and preferences tell who I really am.")
 	String veq11();
+
+	@DefaultStringValue("[TRANSLATION MISSING] In this task, imagine that you have been randomly paired with another person, whom we will refer to as the other. This other person is someone you do not know and will remain mutually anonymous. All of your choices would be completely confidential. You will be making a series of decisions about allocating resources between you and this other person. For each of the following questions, please indicate the distribution you prefer most by selecting the button below the payoff allocations. You can only make one selection for each question. Your decisions will yield money for both yourself and the other person. In the example below, a person has chosen to distribute the payoff so that he/she receives 50 dollars, while the anonymous other person receives 40 dollars.")
+	String svo_explanation_part1();
+
+	@DefaultStringValue("[TRANSLATION MISSING] There are no right or wrong answers, this is all about personal preferences. After you have made your decision, select the resulting distribution of money by clicking on button below your choice. As you can see, your choices will influence both the amount of money you receive as well as the amount of money the other receives.")
+	String svo_explanation_part2();
 	
+	@DefaultStringValue("[TRANSLATION MISSING] You Receive/Other Receives")
+	String svo1();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 85/85")
+	String svo1_1();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 85/76")
+	String svo1_2();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 85/68")
+	String svo1_3();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 85/59")
+	String svo1_4();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 85/50")
+	String svo1_5();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 85/41")
+	String svo1_6();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 85/33")
+	String svo1_7();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 85/24")
+	String svo1_8();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 85/15")
+	String svo1_9();
+
+	@DefaultStringValue("[TRANSLATION MISSING] You Receive/Other Receives")
+	String svo2();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] 85/15")
+	String svo2_1();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 87/19")
+	String svo2_2();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 89/24")
+	String svo2_3();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 91/28")
+	String svo2_4();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 93/33")
+	String svo2_5();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 94/37")
+	String svo2_6();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 96/41")
+	String svo2_7();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 98/46")
+	String svo2_8();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 100/50")
+	String svo2_9();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] You Receive/Other Receives")
+	String svo3();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] 50/100")
+	String svo3_1();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 54/98")
+	String svo3_2();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 59/96")
+	String svo3_3();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 63/94")
+	String svo3_4();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 68/93")
+	String svo3_5();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 72/91")
+	String svo3_6();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 76/89")
+	String svo3_7();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 81/87")
+	String svo3_8();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 85/85")
+	String svo3_9();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] You Receive/Other Receives")
+	String svo4();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] 50/100")
+	String svo4_1();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 54/89")
+	String svo4_2();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 54/79")
+	String svo4_3();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 63/68")
+	String svo4_4();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 68/58")
+	String svo4_5();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 72/47")
+	String svo4_6();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 76/36")
+	String svo4_7();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 81/26")
+	String svo4_8();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 85/15")
+	String svo4_9();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] You Receive/Other Receives")
+	String svo5();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] 100/50")
+	String svo5_1();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 94/56")
+	String svo5_2();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 88/63")
+	String svo5_3();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 81/69")
+	String svo5_4();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 75/75")
+	String svo5_5();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 69/81")
+	String svo5_6();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 63/88")
+	String svo5_7();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 56/94")
+	String svo5_8();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 50/100")
+	String svo5_9();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] You Receive/Other Receives")
+	String svo6();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] 100/50")
+	String svo6_1();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 98/54")
+	String svo6_2();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 96/59")
+	String svo6_3();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 94/63")
+	String svo6_4();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 93/68")
+	String svo6_5();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 91/72")
+	String svo6_6();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 89/76")
+	String svo6_7();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 87/81")
+	String svo6_8();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 85/85")
+	String svo6_9();
+
 	@DefaultStringValue("[TRANSLATION MISSING] When you decide whether something is right or wrong, to what extent are the following considerations relevant to your thinking? Please rate each statement using this scale:")
 	String mfq_explanation_part1();
 	

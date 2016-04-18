@@ -74,10 +74,13 @@ public class ParticipantIDDialogBox extends DialogBox {
 					hide();
 					Timer timer = new Timer() {
 					      public void run() {
+					    	  final SocialValueOrientationQuestionnaire1DialogBox dialogBox = new SocialValueOrientationQuestionnaire1DialogBox(eventBus, experimentConditions);
+					    	  dialogBox.setPopupPosition(105, 75);
+					    	  dialogBox.show();
 //					    	  final MoralFoundationsQuestionnaire1DialogBox dialogBox = new MoralFoundationsQuestionnaire1DialogBox (eventBus, experimentConditions);
-							  final StartGameHelpWindowDialogBox dialogBox = new StartGameHelpWindowDialogBox(eventBus, 0, experimentConditions); // To ease testing
+//							  final StartGameHelpWindowDialogBox dialogBox = new StartGameHelpWindowDialogBox(eventBus, 0, experimentConditions); // To ease testing
 //					    	  final ScenarioDialogBox dialogBox = new ScenarioDialogBox (eventBus, experimentConditions);
-					    	  dialogBox.center();
+//					    	  dialogBox.center();
 					      }
 					    };
 					    timer.schedule(1000);

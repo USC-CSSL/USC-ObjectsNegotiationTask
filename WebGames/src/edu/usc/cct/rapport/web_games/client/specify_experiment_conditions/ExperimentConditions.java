@@ -102,6 +102,20 @@ public class ExperimentConditions implements DoublySerializable {
 	private int MFQ_32;
 	private int MFQ_filter;
 	
+	// Social Value Orientation Questions
+	private int SVO_1_you;
+	private int SVO_1_other;
+	private int SVO_2_you;
+	private int SVO_2_other;
+	private int SVO_3_you;
+	private int SVO_3_other;
+	private int SVO_4_you;
+	private int SVO_4_other;
+	private int SVO_5_you;
+	private int SVO_5_other;
+	private int SVO_6_you;
+	private int SVO_6_other;	
+	
 	// Value of Expression Questions
 	private int VEQ_01;
 	private int VEQ_02;
@@ -242,9 +256,22 @@ public class ExperimentConditions implements DoublySerializable {
 		this.MFQ_30=0;
 		this.MFQ_31=0;
 		this.MFQ_32=0;
-		this.MFQ_filter=0;
+		this.MFQ_filter=0;*/
 		
-		this.VEQ_01=0;
+		this.SVO_1_you=0;
+		this.SVO_1_other=0;
+		this.SVO_2_you=0;
+		this.SVO_2_other=0;
+		this.SVO_3_you=0;
+		this.SVO_3_other=0;
+		this.SVO_4_you=0;
+		this.SVO_4_other=0;
+		this.SVO_5_you=0;
+		this.SVO_5_other=0;
+		this.SVO_6_you=0;
+		this.SVO_6_other=0;
+
+/*		this.VEQ_01=0;
 		this.VEQ_02=0;
 		this.VEQ_03=0;
 		this.VEQ_04=0;
@@ -360,6 +387,19 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add("MFQ_31");
 		result.add("MFQ_32");
 		result.add("MFQ_filter");*/
+		
+		result.add("SVO_1_you");
+		result.add("SVO_1_other");
+		result.add("SVO_2_you");
+		result.add("SVO_2_other");
+		result.add("SVO_3_you");
+		result.add("SVO_3_other");
+		result.add("SVO_4_you");
+		result.add("SVO_4_other");
+		result.add("SVO_5_you");
+		result.add("SVO_5_other");
+		result.add("SVO_6_you");
+		result.add("SVO_6_other");
 		
 /*		result.add("VEQ_01");
 		result.add("VEQ_02");
@@ -478,6 +518,19 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add(Integer.toString(this.MFQ_31));
 		result.add(Integer.toString(this.MFQ_32));
 		result.add(Integer.toString(this.MFQ_filter));*/
+		
+		result.add(Integer.toString(this.SVO_1_you));
+		result.add(Integer.toString(this.SVO_1_other));
+		result.add(Integer.toString(this.SVO_2_you));
+		result.add(Integer.toString(this.SVO_2_other));
+		result.add(Integer.toString(this.SVO_3_you));
+		result.add(Integer.toString(this.SVO_3_other));
+		result.add(Integer.toString(this.SVO_4_you));
+		result.add(Integer.toString(this.SVO_4_other));
+		result.add(Integer.toString(this.SVO_5_you));
+		result.add(Integer.toString(this.SVO_5_other));
+		result.add(Integer.toString(this.SVO_6_you));
+		result.add(Integer.toString(this.SVO_6_other));
 		
 /*		result.add(Integer.toString(this.VEQ_01));
 		result.add(Integer.toString(this.VEQ_02));
@@ -1082,7 +1135,186 @@ public class ExperimentConditions implements DoublySerializable {
 	public void setVEQ_11(int VEQ_11) {
 		this.VEQ_11 = VEQ_11;
 	}
+
+	public void setSVO_1(int SVO_1) {
+		this.SVO_1_you = 85;
+
+		if(SVO_1 == 0) {
+			this.SVO_1_other = 85;
+		} else if(SVO_1 == 1) {
+			this.SVO_1_other = 76;
+		} else if(SVO_1 == 2) {
+			this.SVO_1_other = 68;
+		} else if(SVO_1 == 3) {
+			this.SVO_1_other = 59;
+		} else if(SVO_1 == 4) {
+			this.SVO_1_other = 50;
+		} else if(SVO_1 == 5) {
+			this.SVO_1_other = 41;
+		} else if(SVO_1 == 6) {
+			this.SVO_1_other = 33;
+		} else if(SVO_1 == 7) {
+			this.SVO_1_other = 24;
+		} else if(SVO_1 == 8) {
+			this.SVO_1_other = 15;
+		}	
+	}
 	
+	public void setSVO_2(int SVO_2) {
+		if(SVO_2 == 0) {
+			this.SVO_2_you   = 85;
+			this.SVO_2_other = 15;
+		} else if(SVO_2 == 1) {
+			this.SVO_2_you   = 87;
+			this.SVO_2_other = 19;
+		} else if(SVO_2 == 2) {
+			this.SVO_2_you   = 89;
+			this.SVO_2_other = 24;
+		} else if(SVO_2 == 3) {
+			this.SVO_2_you   = 91;
+			this.SVO_2_other = 28;
+		} else if(SVO_2 == 4) {
+			this.SVO_2_you   = 93;
+			this.SVO_2_other = 33;
+		} else if(SVO_2 == 5) {
+			this.SVO_2_you   = 94;
+			this.SVO_2_other = 37;
+		} else if(SVO_2 == 6) {
+			this.SVO_2_you   = 96;
+			this.SVO_2_other = 41;
+		} else if(SVO_2 == 7) {
+			this.SVO_2_you   = 98;
+			this.SVO_2_other = 46;
+		} else if(SVO_2 == 8) {
+			this.SVO_2_you   = 100;
+			this.SVO_2_other = 50;
+		}	
+	}
+	
+	public void setSVO_3(int SVO_3) {
+		if(SVO_3 == 0) {
+			this.SVO_3_you   = 50;
+			this.SVO_3_other = 100;
+		} else if(SVO_3 == 1) {
+			this.SVO_3_you   = 54;
+			this.SVO_3_other = 98;
+		} else if(SVO_3 == 2) {
+			this.SVO_3_you   = 59;
+			this.SVO_3_other = 96;
+		} else if(SVO_3 == 3) {
+			this.SVO_3_you   = 63;
+			this.SVO_3_other = 94;
+		} else if(SVO_3 == 4) {
+			this.SVO_3_you   = 68;
+			this.SVO_3_other = 93;
+		} else if(SVO_3 == 5) {
+			this.SVO_3_you   = 72;
+			this.SVO_3_other = 91;
+		} else if(SVO_3 == 6) {
+			this.SVO_3_you   = 76;
+			this.SVO_3_other = 89;
+		} else if(SVO_3 == 7) {
+			this.SVO_3_you   = 81;
+			this.SVO_3_other = 87;
+		} else if(SVO_3 == 8) {
+			this.SVO_3_you   = 85;
+			this.SVO_3_other = 85;
+		}	
+	}
+
+	public void setSVO_4(int SVO_4) {
+		if(SVO_4 == 0) {
+			this.SVO_4_you   = 50;
+			this.SVO_4_other = 100;
+		} else if(SVO_4 == 1) {
+			this.SVO_4_you   = 54;
+			this.SVO_4_other = 89;
+		} else if(SVO_4 == 2) {
+			this.SVO_4_you   = 59;
+			this.SVO_4_other = 79;
+		} else if(SVO_4 == 3) {
+			this.SVO_4_you   = 63;
+			this.SVO_4_other = 68;
+		} else if(SVO_4 == 4) {
+			this.SVO_4_you   = 68;
+			this.SVO_4_other = 58;
+		} else if(SVO_4 == 5) {
+			this.SVO_4_you   = 72;
+			this.SVO_4_other = 47;
+		} else if(SVO_4 == 6) {
+			this.SVO_4_you   = 76;
+			this.SVO_4_other = 36;
+		} else if(SVO_4 == 7) {
+			this.SVO_4_you   = 81;
+			this.SVO_4_other = 26;
+		} else if(SVO_4 == 8) {
+			this.SVO_4_you   = 85;
+			this.SVO_4_other = 15;
+		}	
+	}
+	
+	public void setSVO_5(int SVO_5) {
+		if(SVO_5 == 0) {
+			this.SVO_5_you   = 100;
+			this.SVO_5_other = 50;
+		} else if(SVO_5 == 1) {
+			this.SVO_5_you   = 94;
+			this.SVO_5_other = 56;
+		} else if(SVO_5 == 2) {
+			this.SVO_5_you   = 88;
+			this.SVO_5_other = 63;
+		} else if(SVO_5 == 3) {
+			this.SVO_5_you   = 81;
+			this.SVO_5_other = 69;
+		} else if(SVO_5 == 4) {
+			this.SVO_5_you   = 75;
+			this.SVO_5_other = 75;
+		} else if(SVO_5 == 5) {
+			this.SVO_5_you   = 69;
+			this.SVO_5_other = 81;
+		} else if(SVO_5 == 6) {
+			this.SVO_5_you   = 63;
+			this.SVO_5_other = 88;
+		} else if(SVO_5 == 7) {
+			this.SVO_5_you   = 56;
+			this.SVO_5_other = 94;
+		} else if(SVO_5 == 8) {
+			this.SVO_5_you   = 50;
+			this.SVO_5_other = 100;
+		}	
+	}
+	
+	public void setSVO_6(int SVO_6) {
+		if(SVO_6 == 0) {
+			this.SVO_6_you   = 100;
+			this.SVO_6_other = 50;
+		} else if(SVO_6 == 1) {
+			this.SVO_6_you   = 98;
+			this.SVO_6_other = 54;
+		} else if(SVO_6 == 2) {
+			this.SVO_6_you   = 96;
+			this.SVO_6_other = 59;
+		} else if(SVO_6 == 3) {
+			this.SVO_6_you   = 94;
+			this.SVO_6_other = 63;
+		} else if(SVO_6 == 4) {
+			this.SVO_6_you   = 93;
+			this.SVO_6_other = 68;
+		} else if(SVO_6 == 5) {
+			this.SVO_6_you   = 91;
+			this.SVO_6_other = 72;
+		} else if(SVO_6 == 6) {
+			this.SVO_6_you   = 89;
+			this.SVO_6_other = 76;
+		} else if(SVO_6 == 7) {
+			this.SVO_6_you   = 87;
+			this.SVO_6_other = 81;
+		} else if(SVO_6 == 8) {
+			this.SVO_6_you   = 85;
+			this.SVO_6_other = 85;
+		}	
+	}
+
 	public void setMFQ_01(int MFQ_01) {
 		this.MFQ_01 = MFQ_01;
 	}
