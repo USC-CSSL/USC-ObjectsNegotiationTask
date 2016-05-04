@@ -61,6 +61,9 @@ public class NegotiationConcludedDialogBox extends DialogBox {
 			
 			okButton.addClickHandler(new ClickHandler() {
 				public void onClick(final ClickEvent event) {
+					final PartnerLabelCheckQuestionnaireDialogBox dialogBox = new PartnerLabelCheckQuestionnaireDialogBox(eventBus, experimentConditions, negotiationSession.getPlyRemaining());
+					dialogBox.setPopupPosition(105, 75);
+					dialogBox.show();
 	//				final ValueOfExpressionQuestionnaire1DialogBox dialogBox = new ValueOfExpressionQuestionnaire1DialogBox (eventBus, experimentConditions);
 	//				final DemographicsDialogBox dialogBox = new DemographicsDialogBox (eventBus, experimentConditions); // To ease testing
 	//				final NSAprinciplesQuestionnaire1DialogBox dialogBox = new NSAprinciplesQuestionnaire1DialogBox(eventBus, experimentConditions);
@@ -69,7 +72,8 @@ public class NegotiationConcludedDialogBox extends DialogBox {
 	//				final CommentDialogBox dialogBox = new CommentDialogBox (eventBus, experimentConditions);
 	//				dialogBox.center();
 					okButton.setEnabled(false);
-					eventBus.fireEvent(new LogExperimentInformationEvent());
+					hide();
+/*					eventBus.fireEvent(new LogExperimentInformationEvent());
 					eventBus.fireEvent(new NegotiationConclusionAcknowledgedEvent());
 					
 					Timer timer = new Timer() {
@@ -77,7 +81,7 @@ public class NegotiationConcludedDialogBox extends DialogBox {
 							hide();
 					    }
 					};
-					timer.schedule(1000);
+					timer.schedule(1000);*/
 				
 				}
 /*				Timer timer = new Timer() {

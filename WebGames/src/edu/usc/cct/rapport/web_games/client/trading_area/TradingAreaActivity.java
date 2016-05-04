@@ -35,10 +35,13 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 			Random random = new Random();
 			Random otherRandom= new Random ();
 //			final int whichEmotion = random.nextInt(2);
-			final int whichStrategy2 = otherRandom.nextInt(2);
-			final int whichEmotion = random.nextInt(3);
+//			final int whichStrategy2 = otherRandom.nextInt(2);
+//			final int whichEmotion = random.nextInt(3);
+//			final int whichStrategy4 = otherRandom.nextInt(4);
+//			final int whichScenario = random.nextInt(2);
+			final int whichPartner = random.nextInt(2);
+//			final int whichStrategy8 = otherRandom.nextInt(8);
 			final int whichStrategy4 = otherRandom.nextInt(4);
-			final int whichScenario = random.nextInt(2);
 
 			TradingAreaActivity.this.experimentConditions = event.getExperimentConditions();
 			final double startTimestamp = Duration.currentTimeMillis();
@@ -50,6 +53,12 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 			
 			TradingAreaActivity.this.negotiationSession = new NegotiationSession(TradingAreaActivity.this.experimentConditions.getTradingObjectSetEnum(), TradingAreaActivity.this.experimentConditions.getNegotiationSessionPlyCount(), TradingAreaActivity.this.experimentConditions.getAgentWhoActsLastIfNoAgreementIsReached());
 			
+			if(experimentConditions.getPartnerLabel()==2 & whichPartner==0) {
+				experimentConditions.setPartnerLabel(0);
+			} else if (experimentConditions.getPartnerLabel()==2 & whichPartner==1) {
+				experimentConditions.setPartnerLabel(1);				
+			}
+				
 /*			if(experimentConditions.getExpScenario()==1 & whichScenario==0) {
 				experimentConditions.setExpScenario(2);
 			} else if(experimentConditions.getExpScenario()==1 &  whichScenario==1){
@@ -63,6 +72,36 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 			} else if(experimentConditions.getExpScenario()==3 &  whichScenario==1){
 				experimentConditions.setExpScenario(5);
 			}*/
+			
+			AlgorithmicCounterpartDecisionMakingStrategyEnum algorithmicCounterpartDecisionMakingStrategyEnum = TradingAreaActivity.this.experimentConditions.getDecisionMakingStrategyOfAlgorithmicCounterpart(); 
+			if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy) & whichStrategy4==0) {
+				TradingAreaActivity.this.experimentConditions.setDecisionMakingStrategyOfAlgorithmicCounterpart(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedSoftGentleSlopeStrategyFruits1);
+			} else if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy) & whichStrategy4==1) {
+				TradingAreaActivity.this.experimentConditions.setDecisionMakingStrategyOfAlgorithmicCounterpart(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedSoftSteepSlopeStrategyFruits3);
+			} else if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy) & whichStrategy4==2) {
+				TradingAreaActivity.this.experimentConditions.setDecisionMakingStrategyOfAlgorithmicCounterpart(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedToughGentleSlopeStrategyFruits5);
+			} else if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy) & whichStrategy4==3) {
+				TradingAreaActivity.this.experimentConditions.setDecisionMakingStrategyOfAlgorithmicCounterpart(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedToughSteepSlopeStrategyFruits7);
+			} 
+			
+/*			AlgorithmicCounterpartDecisionMakingStrategyEnum algorithmicCounterpartDecisionMakingStrategyEnum = TradingAreaActivity.this.experimentConditions.getDecisionMakingStrategyOfAlgorithmicCounterpart(); 
+			if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy) & whichStrategy8==0) {
+				TradingAreaActivity.this.experimentConditions.setDecisionMakingStrategyOfAlgorithmicCounterpart(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedSoftGentleSlopeStrategyFruits1);
+			} else if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy) & whichStrategy8==1) {
+				TradingAreaActivity.this.experimentConditions.setDecisionMakingStrategyOfAlgorithmicCounterpart(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedSoftGentleSlopeStrategyFruits2);
+			} else if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy) & whichStrategy8==2) {
+				TradingAreaActivity.this.experimentConditions.setDecisionMakingStrategyOfAlgorithmicCounterpart(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedSoftSteepSlopeStrategyFruits3);
+			} else if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy) & whichStrategy8==3) {
+				TradingAreaActivity.this.experimentConditions.setDecisionMakingStrategyOfAlgorithmicCounterpart(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedSoftSteepSlopeStrategyFruits4);
+			} else if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy) & whichStrategy8==4) {
+				TradingAreaActivity.this.experimentConditions.setDecisionMakingStrategyOfAlgorithmicCounterpart(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedToughGentleSlopeStrategyFruits5);
+			} else if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy) & whichStrategy8==5) {
+				TradingAreaActivity.this.experimentConditions.setDecisionMakingStrategyOfAlgorithmicCounterpart(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedToughGentleSlopeStrategyFruits6);
+			} else if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy) & whichStrategy8==6) {
+				TradingAreaActivity.this.experimentConditions.setDecisionMakingStrategyOfAlgorithmicCounterpart(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedToughSteepSlopeStrategyFruits7);
+			} else if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy) & whichStrategy8==7) {
+				TradingAreaActivity.this.experimentConditions.setDecisionMakingStrategyOfAlgorithmicCounterpart(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedToughSteepSlopeStrategyFruits8);
+			} */
 			
 /*			AlgorithmicCounterpartDecisionMakingStrategyEnum algorithmicCounterpartDecisionMakingStrategyEnum = TradingAreaActivity.this.experimentConditions.getDecisionMakingStrategyOfAlgorithmicCounterpart(); 
 			if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy2) & whichStrategy2==0){
@@ -317,10 +356,10 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 	public void updateTradingArea(final TradingBoardState newTradingBoardState, final NegotiationSession negotiationSession) {
 //		if (negotiationSession.getPlyRemaining() ==  19 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible() ){
 		if (negotiationSession.getPlyRemaining() ==  TradingAreaActivity.this.experimentConditions.getNegotiationSessionPlyCount() & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible() ){
+			TradingAreaActivity.this.view.showParticipantIDBox(TradingAreaActivity.this.experimentConditions); // EK 10/23/14: commented out for fMRI experiment
 			//TradingAreaActivity.this.view.showPartnerLabelDialogBox(TradingAreaActivity.this.experimentConditions); // for fMRI
 			//TradingAreaActivity.this.view.showStartGameHelpWindowDialogBox(1);
 			//TradingAreaActivity.this.view.showScenarioDialogBox(TradingAreaActivity.this.experimentConditions);
-			TradingAreaActivity.this.view.showParticipantIDBox(TradingAreaActivity.this.experimentConditions); // EK 10/23/14: commented out for fMRI experiment
 //			final double timestamp = Duration.currentTimeMillis();
 //			TradingAreaActivity.this.experimentConditions.setParticipantID(Double.toString(timestamp));
 //		} else if (negotiationSession.getPlyRemaining() == 1 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible() & AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext())){
@@ -389,7 +428,9 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 			case makeInitialProposal:
 				assert(true);
 			case makeCounterproposal:
-//				if(negotiationSession.getPlyRemaining() < 5 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible()) {
+				TradingAreaActivity.this.view.showProposalResultDialogBox("rejected", TradingAreaActivity.this.experimentConditions.getPartnerLabel(), tradingAction, negotiationSession.getPlyRemaining());
+
+/*//				if(negotiationSession.getPlyRemaining() < 5 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible()) {
 				if(negotiationSession.getPlyRemaining() < 9 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible()) {
 //					TradingAreaActivity.this.view.showLastRoundInfoDialogBox(negotiationSession);
 //					TradingAreaActivity.this.view.showLastRoundInfoDialogBox(negotiationSession, tradingAction);
@@ -415,7 +456,7 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 */
 				break;
 			case acceptProposal:
-				TradingAreaActivity.this.view.showProposalResultDialogBox("accepted", TradingAreaActivity.this.experimentConditions.getPartnerLabel(), tradingAction);
+				TradingAreaActivity.this.view.showProposalResultDialogBox("accepted", TradingAreaActivity.this.experimentConditions.getPartnerLabel(), tradingAction, negotiationSession.getPlyRemaining());
 //				resettableEventBus.fireEvent(new ProposalAcceptedEvent(tradingAction));
 				break;
 			case claimBATNAValue:

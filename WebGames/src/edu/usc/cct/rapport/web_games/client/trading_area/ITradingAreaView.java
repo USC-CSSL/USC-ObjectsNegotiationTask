@@ -25,7 +25,7 @@ public interface ITradingAreaView extends IWebGamesView {
 	void showLastRoundHelpWindowDialogBox(final int temp);
 //	void showLastRoundInfoDialogBox(final NegotiationSession negotiationSession);
 //	void showLastRoundInfoDialogBox(final NegotiationSession negotiationSession, final TradingAction tradingAction);
-	void showLastRoundInfoDialogBox(final NegotiationSession negotiationSession, final int partnerLabel, final TradingAction tradingAction);
+//	void showLastRoundInfoDialogBox(final NegotiationSession negotiationSession, final int partnerLabel, final TradingAction tradingAction);
 //	void showReviewingOfferDialogBox(final int[][] tradingObjectAllocations);
 //	void showReviewingOfferDialogBox(final TradingBoardState newTradingBoardState, final NegotiationSession negotiationSession);
 	void showReviewingOfferDialogBox(final TradingBoardState newTradingBoardState, final NegotiationSession negotiationSession, final ExperimentConditions experimentConditions);
@@ -35,8 +35,10 @@ public interface ITradingAreaView extends IWebGamesView {
 	void showScenarioDialogBox (ExperimentConditions experimentConditions);
 	void setPlayerInformationVisibilityAndBATNAValues(final ExperimentConditions experimentConditions);
 //	void showProposalResultDialogBox(final String temp);
-	void showProposalResultDialogBox(final String temp, final int partnerLabel, final TradingAction tradingAction);
-	void showOfferReviewStartDialogBox(final int partnerLabel, final TradingAction tradingAction);
+//	void showProposalResultDialogBox(final String temp, final int partnerLabel, final TradingAction tradingAction);
+	void showProposalResultDialogBox(final String temp, final int partnerLabel, final TradingAction tradingAction, final int plyRemaining);
+//	void showOfferReviewStartDialogBox(final int partnerLabel, final TradingAction tradingAction);
+	void showOfferReviewStartDialogBox(final int partnerLabel, final TradingAction tradingAction, final int plyRemaining);
 	void setScenario(final int expScenario);
 	void setPartnerLabel(final int partnerLabel);
 	void setRoundInformation(final int roundInfo);

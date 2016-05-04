@@ -27,7 +27,13 @@ public interface HelpWindowInternationalizationConstants extends Constants {
 	
 	@DefaultStringValue("[TRANSLATION MISSING] help blah blah")
 	String help_start_of_game();
-	
+
+	@DefaultStringValue("[TRANSLATION MISSING] help blah blah")
+	String help_start_of_game_computer_partner();
+
+	@DefaultStringValue("[TRANSLATION MISSING] help blah blah")
+	String help_start_of_game_human_partner();
+
 	@DefaultStringValue("[TRANSLATION MISSING] How do you feel about giving up the medicine?")
 	String SV_Question();
 
@@ -295,6 +301,117 @@ public interface HelpWindowInternationalizationConstants extends Constants {
 
 	@DefaultStringValue("[TRANSLATION MISSING] My opinions and preferences tell who I really am.")
 	String veq11();
+
+	@DefaultStringValue("[TRANSLATION MISSING] What was your partner type?")
+	String partnerLabel_question();
+
+	@DefaultStringValue("[TRANSLATION MISSING] A computer partner")
+	String partnerLabel_computer();
+
+	@DefaultStringValue("[TRANSLATION MISSING] A human partner")
+	String partnerLabel_human();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Other")
+	String partnerLabel_other();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Please explain:")
+	String partnerLabel_other2();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] Following was the computer partner’s first offer.")
+	String fairness_explanation_offer1_part1_computer_partner();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Following was the human partner’s first offer.")
+	String fairness_explanation_offer1_part1_human_partner();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] How unfair or fair do you think the computer partner’s first offer? Please rate each offer using this scale:")
+	String fairness_explanation_offer1_part2_computer_partner();
+
+	@DefaultStringValue("[TRANSLATION MISSING] How unfair or fair do you think the human partner’s first offer? Please rate each offer using this scale:")
+	String fairness_explanation_offer1_part2_human_partner();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Following was the computer partner’s second offer.")
+	String fairness_explanation_offer2_part1_computer_partner();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Following was the human partner’s second offer.")
+	String fairness_explanation_offer2_part1_human_partner();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] How unfair or fair do you think the computer partner’s second offer? Please rate each offer using this scale:")
+	String fairness_explanation_offer2_part2_computer_partner();
+
+	@DefaultStringValue("[TRANSLATION MISSING] How unfair or fair do you think the human partner’s second offer? Please rate each offer using this scale:")
+	String fairness_explanation_offer2_part2_human_partner();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Following was the computer partner’s third offer.")
+	String fairness_explanation_offer3_part1_computer_partner();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Following was the human partner’s third offer.")
+	String fairness_explanation_offer3_part1_human_partner();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] How unfair or fair do you think the computer partner’s third offer? Please rate each offer using this scale:")
+	String fairness_explanation_offer3_part2_computer_partner();
+
+	@DefaultStringValue("[TRANSLATION MISSING] How unfair or fair do you think the human partner’s third offer? Please rate each offer using this scale:")
+	String fairness_explanation_offer3_part2_human_partner();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Following was the computer partner’s fourth offer.")
+	String fairness_explanation_offer4_part1_computer_partner();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Following was the human partner’s fourth offer.")
+	String fairness_explanation_offer4_part1_human_partner();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] How unfair or fair do you think the computer partner’s fourth offer? Please rate each offer using this scale:")
+	String fairness_explanation_offer4_part2_computer_partner();
+
+	@DefaultStringValue("[TRANSLATION MISSING] How unfair or fair do you think the human partner’s fourth offer? Please rate each offer using this scale:")
+	String fairness_explanation_offer4_part2_human_partner();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Following was the computer partner’s fifth offer.")
+	String fairness_explanation_offer5_part1_computer_partner();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Following was the human partner’s fifth offer.")
+	String fairness_explanation_offer5_part1_human_partner();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] How unfair or fair do you think the computer partner’s fifth offer? Please rate each offer using this scale:")
+	String fairness_explanation_offer5_part2_computer_partner();
+
+	@DefaultStringValue("[TRANSLATION MISSING] How unfair or fair do you think the human partner’s fifth offer? Please rate each offer using this scale:")
+	String fairness_explanation_offer5_part2_human_partner();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Following was the computer partner’s sixth offer.")
+	String fairness_explanation_offer6_part1_computer_partner();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Following was the human partner’s sixth offer.")
+	String fairness_explanation_offer6_part1_human_partner();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] How unfair or fair do you think the computer partner’s sixth offer? Please rate each offer using this scale:")
+	String fairness_explanation_offer6_part2_computer_partner();
+
+	@DefaultStringValue("[TRANSLATION MISSING] How unfair or fair do you think the human partner’s sixth offer? Please rate each offer using this scale:")
+	String fairness_explanation_offer6_part2_human_partner();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Extremely unfair")
+	String fairness_explanation_zero();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Very unfair")
+	String fairness_explanation_one();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Moderately unfair")
+	String fairness_explanation_two();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Slightly unfair")
+	String fairness_explanation_three();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Slightly fair")
+	String fairness_explanation_four();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Moderately fair")
+	String fairness_explanation_five();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Very fair")
+	String fairness_explanation_six();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Extremely fair")
+	String fairness_explanation_seven();
 
 	@DefaultStringValue("[TRANSLATION MISSING] In this task, imagine that you have been randomly paired with another person, whom we will refer to as the other. This other person is someone you do not know and will remain mutually anonymous. All of your choices would be completely confidential. You will be making a series of decisions about allocating resources between you and this other person. For each of the following questions, please indicate the distribution you prefer most by selecting the button below the payoff allocations. You can only make one selection for each question. Your decisions will yield money for both yourself and the other person. In the example below, a person has chosen to distribute the payoff so that he/she receives 50 dollars, while the anonymous other person receives 40 dollars.")
 	String svo_explanation_part1();
@@ -643,6 +760,9 @@ public interface HelpWindowInternationalizationConstants extends Constants {
 	
 	@DefaultStringValue("[TRANSLATION MISSING] Please decide whether you will accept or reject the offer.")
 	String waiting_msg_beforeOfferAcceptance();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Saving data...")
+	String waiting_msg_savingData();
 
 	@DefaultStringValue("[TRANSLATION MISSING] Review")
 	String reviewingOffer();
@@ -658,6 +778,15 @@ public interface HelpWindowInternationalizationConstants extends Constants {
 
 	@DefaultStringValue("[TRANSLATION MISSING] Your partner made a counteroffer. Please press OK to start 10-second offer review.")
 	String offer_review_start();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] The computer partner made a counteroffer. Please press OK to start 10-second offer review.")
+	String last_offer_review_start_computer();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] The human partner made a counteroffer. Please press OK to start 10-second offer review.")
+	String last_offer_review_start_human();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Your partner made a counteroffer. Please press OK to start 10-second offer review.")
+	String last_offer_review_start();
 	
 	@DefaultStringValue("[TRANSLATION MISSING] Accept?")
 	String offerAcceptance_msg();	
@@ -817,6 +946,15 @@ public interface HelpWindowInternationalizationConstants extends Constants {
 	
 	@DefaultStringValue("[TRANSLATION MISSING] In this task, you will be interacting with a negotiation partner.")
 	String partner();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Waiting for another player…")
+	String partnerAssignment_computer();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Configuring the agent setting…")
+	String partnerAssignment_human();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Assigning your partner…")
+	String partnerAssignment();
 
 	//String btnOk_html();
 };

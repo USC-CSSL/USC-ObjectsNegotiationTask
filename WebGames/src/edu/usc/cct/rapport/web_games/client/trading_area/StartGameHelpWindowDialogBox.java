@@ -4,17 +4,19 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RichTextArea;
 import com.google.gwt.user.client.ui.TextArea;
 
 import edu.usc.cct.rapport.web_games.client.specify_experiment_conditions.ExperimentConditions;
 
-public class StartGameHelpWindowDialogBox extends DialogBox implements ClickHandler {
-//public class StartGameHelpWindowDialogBox extends DialogBox {
+//public class StartGameHelpWindowDialogBox extends DialogBox implements ClickHandler {
+public class StartGameHelpWindowDialogBox extends DialogBox {
 
 	@SuppressWarnings("unused")
 	final private EventBus eventBus;
@@ -28,13 +30,15 @@ public class StartGameHelpWindowDialogBox extends DialogBox implements ClickHand
 		super(false, true);
 		this.eventBus = eventBus;
 
-		String titleDiscription = constants.help_Window_Title();
-		this.setText(titleDiscription);
+//		String titleDiscription = constants.help_Window_Title();
+//		this.setText(titleDiscription);
+		this.setText("Task Instructions");
 //		final FlowPanel flowPanelDialogBoxContents = new FlowPanel();
 		AbsolutePanel absolutePanel = new AbsolutePanel();
-		absolutePanel.setSize("650px", "435px");
+//		absolutePanel.setSize("650px", "435px");
+		absolutePanel.setSize("800px", "565px");
 		
-	//	final TextArea dialogBoxTextArea = new TextArea();
+/*	//	final TextArea dialogBoxTextArea = new TextArea();
 		RichTextArea dialogBoxTextArea = new RichTextArea();
 //		dialogBoxTextArea.setSize("450px", "500px");
 		dialogBoxTextArea.setSize("640px", "390px");
@@ -48,22 +52,73 @@ public class StartGameHelpWindowDialogBox extends DialogBox implements ClickHand
 		
 		dialogBoxTextArea.setHTML(result);
 //		flowPanelDialogBoxContents.add(dialogBoxTextArea);
-		absolutePanel.add(dialogBoxTextArea , 0, 0);
+		absolutePanel.add(dialogBoxTextArea , 0, 0);*/
+		
+		Integer partnerLabel = experimentConditions.getPartnerLabel();
+		HTML help_start_of_game = new HTML("");
+
+		if (partnerLabel == 0) {
+			help_start_of_game.setHTML(constants.help_start_of_game_computer_partner());
+		} else if(partnerLabel == 1) {			
+			help_start_of_game.setHTML(constants.help_start_of_game_human_partner());
+		} else {
+			help_start_of_game.setHTML(constants.help_start_of_game());
+		}
+		
+		absolutePanel.add(help_start_of_game , 10, 10);
+
 
 		String okButtonString = constants.ok_button();
-		final Button button = new Button(okButtonString, this);
+		final Button button = new Button(okButtonString);
+//		final Button button = new Button(okButtonString, this);
+		button.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				final PartnerLabelDialogBox dialogBox = new PartnerLabelDialogBox(eventBus, experimentConditions);
+				
+				Timer timer = new Timer() {
+					@Override
+					public void run() {
+						final PartnerAssignmentDialogBox dialogBox1 = new PartnerAssignmentDialogBox(eventBus, experimentConditions);
+
+						Timer timer1 = new Timer() {
+							@Override
+							public void run() {
+								dialogBox1.hide();
+							}
+						};
+						dialogBox1.setPopupPosition(105, 75);
+						dialogBox1.show();
+					    timer1.schedule((int)(Math.random() * (13000 - 10000 + 1) + 10000)); 		// random delay between 5sec and 8sec;						
+						dialogBox.hide();
+					}
+				};
+				dialogBox.setPopupPosition(105, 75);
+				dialogBox.show();
+			    timer.schedule(5000); 		// 5sec delay
+				hide();
+			}
+		});
+		
 //		flowPanelDialogBoxContents.add(okButton);
 //		this.setWidget(flowPanelDialogBoxContents);
 						
-		absolutePanel.add(button, 540, 400);
-		button.setSize("101px", "26px");
+//		absolutePanel.add(button, 540, 400);
+//		button.setSize("101px", "26px");
 		this.setWidget(absolutePanel);
+		button.setSize("250px", "33px");
+//		absolutePanel.add(button, 307, 510);
+		absolutePanel.add(button, 275, 510);
 
 	};
+};
 
-	@Override
+/*	@Override
 	public void onClick(final ClickEvent event) {
+		final PartnerLabelDialogBox dialogBox = new PartnerLabelDialogBox(eventBus, experimentConditions);
+		
+		dialogBox.setPopupPosition(105, 75);
+		dialogBox.show();
 		hide();
 	//	eventBus.fireEvent(new NegotiationConclusionAcknowledgedEvent());
 	};
-};
+};*/

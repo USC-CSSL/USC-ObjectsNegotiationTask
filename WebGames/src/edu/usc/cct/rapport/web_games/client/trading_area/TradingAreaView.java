@@ -635,7 +635,9 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 	@Override
 	public void showStartGameHelpWindowDialogBox(final int temp, final ExperimentConditions experimentConditions) {
 		final StartGameHelpWindowDialogBox dialogBox = new StartGameHelpWindowDialogBox(eventBus, temp, experimentConditions);
-		dialogBox.center();
+//		dialogBox.center();
+		dialogBox.setPopupPosition(105, 75);
+		dialogBox.show();
 	};
 	
 	@Override
@@ -700,7 +702,9 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 	@Override
 	public void showDemographicsDialogBox(ExperimentConditions experimentConditions) {
 		final DemographicsDialogBox dialogBox = new DemographicsDialogBox(eventBus, experimentConditions);
-		dialogBox.center();
+//		dialogBox.center();
+		dialogBox.setPopupPosition(105, 75);
+		dialogBox.show();
 	};
 	
 	@Override
@@ -765,15 +769,17 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 		timer.schedule(10000); 						// 10 sec delay for reviewing
 	};
 
-//	public void showLastRoundInfoDialogBox(final NegotiationSession negotiationSession) {
+/*//	public void showLastRoundInfoDialogBox(final NegotiationSession negotiationSession) {
 	public void showLastRoundInfoDialogBox(final NegotiationSession negotiationSession, final int partnerLabel, final TradingAction tradingAction) {
 		final LastRoundInfoDialogBox lastRoundDialogBox = new LastRoundInfoDialogBox(eventBus, partnerLabel, negotiationSession);
 		
 		Timer timer = new Timer() {
 		      public void run() {
-		    	  final double timestamp = Duration.currentTimeMillis();
-		    	  tradingAction.setTimestamp(timestamp);
-		    	  TradingAreaView.this.eventBus.fireEvent(new ProposalMadeEvent(tradingAction));
+		    	  showProposalResultDialogBox("rejected", partnerLabel, tradingAction);
+		    	  
+//		    	  final double timestamp = Duration.currentTimeMillis();
+//		    	  tradingAction.setTimestamp(timestamp);
+//		    	  TradingAreaView.this.eventBus.fireEvent(new ProposalMadeEvent(tradingAction));
 		    	  lastRoundDialogBox.hide();
 		      }
 		};
@@ -781,7 +787,7 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 		lastRoundDialogBox.setPopupPosition(105, 75);
 		lastRoundDialogBox.show();
 		timer.schedule(10000);	// 10 sec delay for reading
-	};
+	};*/
 
 	
 //	@Override
@@ -791,7 +797,8 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 //};
 	
 	@Override
-	public void showProposalResultDialogBox(final String temp, final int partnerLabel, final TradingAction tradingAction) {
+	public void showProposalResultDialogBox(final String temp, final int partnerLabel, final TradingAction tradingAction, final int plyRemaining) {
+//	public void showProposalResultDialogBox(final String temp, final int partnerLabel, final TradingAction tradingAction) {
 		final WaitingDialogBox waitingDialogBox = new WaitingDialogBox (eventBus, "waitForCounterpart", partnerLabel);
 		final ProposalResultDialogBox resultDialogBox = new ProposalResultDialogBox(temp, partnerLabel);
 
@@ -809,7 +816,8 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 				    	  if(temp.equals(acceptedStr))
 				    		  TradingAreaView.this.eventBus.fireEvent(new ProposalAcceptedEvent(tradingAction));
 				    	  else if(temp.equals(rejectedStr))
-				    		  showOfferReviewStartDialogBox(partnerLabel, tradingAction);
+				    		  showOfferReviewStartDialogBox(partnerLabel, tradingAction, plyRemaining);
+//				    		  showOfferReviewStartDialogBox(partnerLabel, tradingAction);
 //				    		  TradingAreaView.this.eventBus.fireEvent(new ProposalMadeEvent(tradingAction));
 				    	  resultDialogBox.hide();
 				      }
@@ -826,8 +834,9 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 		timer1.schedule((int)(Math.random() * (8000 - 5000 + 1) + 5000)); 		// random delay between 5sec and 8sec*/		
 	};
 	
-	public void showOfferReviewStartDialogBox(final int partnerLabel, final TradingAction tradingAction) {
-		final OfferReviewStartDialogBox dialogBox = new OfferReviewStartDialogBox(eventBus, partnerLabel, tradingAction);
+//	public void showOfferReviewStartDialogBox(final int partnerLabel, final TradingAction tradingAction) {
+	public void showOfferReviewStartDialogBox(final int partnerLabel, final TradingAction tradingAction, final int plyRemaining) {
+		final OfferReviewStartDialogBox dialogBox = new OfferReviewStartDialogBox(eventBus, partnerLabel, tradingAction, plyRemaining);
 		
 		dialogBox.setPopupPosition(105, 75);
 		dialogBox.show();		
@@ -871,14 +880,20 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 
 	@Override
 	public void showParticipantIDBox(final ExperimentConditions experimentConditions) {
-		Timer timer = new Timer() {
+  	  final ParticipantIDDialogBox dialogBox = new ParticipantIDDialogBox (eventBus, experimentConditions);
+	  dialogBox.setPopupPosition(105, 75);
+	  dialogBox.show();
+
+/*		Timer timer = new Timer() {
 		      public void run() {
 		    	  final ParticipantIDDialogBox dialogBox = new ParticipantIDDialogBox (eventBus, experimentConditions);
 		    	 // final ScenarioDialogBox dialogBox = new ScenarioDialogBox (eventBus, experimentConditions);
-		    	  dialogBox.center();
+//		    	  dialogBox.center();
+		    	  dialogBox.setPopupPosition(105, 75);
+		    	  dialogBox.show();
 		      }
 		    };
-		    timer.schedule(1000);
+		    timer.schedule(1000);*/
 		
 	};
 };

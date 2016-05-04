@@ -35,7 +35,8 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 	//static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.sacredObjects, 32, 50, false, false, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedNonconceder, EmotionModellingStrategyEnum.randomEveryOtherTurnSadOrAngryOrNeutral,true,false,false,1);
 	//static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.sacredObjects, 32, 50, false, false, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy, EmotionModellingStrategyEnum.randomAfter134SadOrAngryOrNeutral,true,false,false,1);
 	//static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.veggie, 32, 50, true, true, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedAgentForTrial, EmotionModellingStrategyEnum.alwaysNeutral,true,true,true,"");
-	static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.veggie, 32, 50, true, true, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedAgentForTrial, EmotionModellingStrategyEnum.alwaysNeutral,true,true,true,1,"");
+	//static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.veggie, 32, 50, true, true, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedAgentForTrial, EmotionModellingStrategyEnum.alwaysNeutral,true,true,true,1,"");
+	static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.fruits1, 32, 50, true, true, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedSoftGentleSlopeStrategyFruits1, EmotionModellingStrategyEnum.alwaysNeutral,true,true,true,1,"");
 	static final private String largeFontSizeStyleName = "ict-rapport-largeFontSize";
 
 	static final private SafeHtml separatingLineFeed = SafeHtmlUtils.fromSafeConstant("<br/>");
@@ -92,7 +93,8 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 			if (TradingObjectSetEnum.placeholder_to_allow_initialization_prior_to_trading_object_set_selection.equals(tradingObjectSetEnum)) continue;
 			listBoxSelectTradingObjectSetEnum.addItem(tradingObjectSetEnum.toString(), tradingObjectSetEnum.name());
 		};
-		listBoxSelectTradingObjectSetEnum.setSelectedIndex(1);
+//		listBoxSelectTradingObjectSetEnum.setSelectedIndex(1);
+		listBoxSelectTradingObjectSetEnum.setSelectedIndex(0);
 		viewBasePanel.add(listBoxSelectTradingObjectSetEnum);
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
@@ -168,16 +170,17 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 		labelQueryNegotiationSessionPlyCount.addStyleName(largeFontSizeStyleName);
 		viewBasePanel.add(labelQueryNegotiationSessionPlyCount);
 		final ListBox listBoxNegotiationSessionPlyCount = new ListBox();
-		listBoxNegotiationSessionPlyCount.addItem("1 ply (only option is to claim BATNA -- useful for debugging)", Integer.toString(1));
-		listBoxNegotiationSessionPlyCount.addItem("2 ply (one offer by one agent, the other can accept or claim BATNA)", Integer.toString(2));
-		listBoxNegotiationSessionPlyCount.addItem("3 ply (each agent has a chance to offer an object-allocating proposal)", Integer.toString(3));
-		listBoxNegotiationSessionPlyCount.addItem("5 ply (each agent has up to two chances to offer an object-allocating proposal)", Integer.toString(5));
-		listBoxNegotiationSessionPlyCount.addItem("7 ply (each agent has up to three chances to offer object-allocating proposals)", Integer.toString(7));
+//		listBoxNegotiationSessionPlyCount.addItem("1 ply (only option is to claim BATNA -- useful for debugging)", Integer.toString(1));
+//		listBoxNegotiationSessionPlyCount.addItem("2 ply (one offer by one agent, the other can accept or claim BATNA)", Integer.toString(2));
+//		listBoxNegotiationSessionPlyCount.addItem("3 ply (each agent has a chance to offer an object-allocating proposal)", Integer.toString(3));
+//		listBoxNegotiationSessionPlyCount.addItem("5 ply (each agent has up to two chances to offer an object-allocating proposal)", Integer.toString(5));
+//		listBoxNegotiationSessionPlyCount.addItem("7 ply (each agent has up to three chances to offer object-allocating proposals)", Integer.toString(7));
 //		listBoxNegotiationSessionPlyCount.addItem("13 ply (each agent has up to six chances to offer object-allocating proposals)", Integer.toString(13));
 //		listBoxNegotiationSessionPlyCount.addItem("13 ply (each agent has up to six chances to offer object-allocating proposals)", Integer.toString(19));
 		listBoxNegotiationSessionPlyCount.addItem("13 ply (each agent has up to six chances to offer object-allocating proposals)", Integer.toString(31));
-		listBoxNegotiationSessionPlyCount.addItem("25 ply (each agent has up to twelve chances to offer object-allocating proposals)", Integer.toString(25));
-		listBoxNegotiationSessionPlyCount.setSelectedIndex(5);
+//		listBoxNegotiationSessionPlyCount.addItem("25 ply (each agent has up to twelve chances to offer object-allocating proposals)", Integer.toString(25));
+//		listBoxNegotiationSessionPlyCount.setSelectedIndex(5);
+		listBoxNegotiationSessionPlyCount.setSelectedIndex(0);
 		viewBasePanel.add(listBoxNegotiationSessionPlyCount);
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
@@ -212,13 +215,13 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 		for (final AlgorithmicCounterpartDecisionMakingStrategyEnum decisionMakingStrategyOfAlgorithmicCounterpart: AlgorithmicCounterpartDecisionMakingStrategyEnum.values()) {
 			listBoxSelectAlgorithmicCounterpartDecisionMakingStrategy.addItem(decisionMakingStrategyOfAlgorithmicCounterpart.toString(), decisionMakingStrategyOfAlgorithmicCounterpart.name());
 		};
-//		listBoxSelectAlgorithmicCounterpartDecisionMakingStrategy.setSelectedIndex(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedNonconceder.ordinal());
-		listBoxSelectAlgorithmicCounterpartDecisionMakingStrategy.setSelectedIndex(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedSoftGentleSlopeStrategyFruits1.ordinal());
+//		listBoxSelectAlgorithmicCounterpartDecisionMakingStrategy.setSelectedIndex(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedSoftGentleSlopeStrategyFruits1.ordinal());
+		listBoxSelectAlgorithmicCounterpartDecisionMakingStrategy.setSelectedIndex(AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy.ordinal());
 		viewBasePanel.add(listBoxSelectAlgorithmicCounterpartDecisionMakingStrategy);
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
 
-		final Label labelSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy = new Label("Which emotional reaction determination strategy will the algorithmic counterpart follow?");
+/*		final Label labelSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy = new Label("Which emotional reaction determination strategy will the algorithmic counterpart follow?");
 		labelSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy.addStyleName(largeFontSizeStyleName);
 		viewBasePanel.add(labelSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy);
 		final ListBox listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy = new ListBox();
@@ -230,7 +233,7 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 //		listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy.setSelectedIndex(EmotionModellingStrategyEnum.randomAfter134SadOrAngryOrNeutral.ordinal());
 		viewBasePanel.add(listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy);
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
-		viewBasePanel.add(new InlineHTML(separatingLineFeed));
+		viewBasePanel.add(new InlineHTML(separatingLineFeed));*/
 
 		final Label labelWhichPartner = new Label("What is the partner type?");
 		labelWhichPartner.addStyleName(largeFontSizeStyleName);
@@ -238,7 +241,8 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 		final ListBox ListlabelWhichPartner = new ListBox();
 		ListlabelWhichPartner.addItem("Computer Partner", Integer.toString(0));
 		ListlabelWhichPartner.addItem("Human Partner", Integer.toString(1));
-		ListlabelWhichPartner.setSelectedIndex(0);
+		ListlabelWhichPartner.addItem("Random Partner", Integer.toString(2));
+		ListlabelWhichPartner.setSelectedIndex(2);
 		viewBasePanel.add(ListlabelWhichPartner);
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
 		viewBasePanel.add(new InlineHTML(separatingLineFeed));
@@ -292,8 +296,9 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 				final AlgorithmicCounterpartDecisionMakingStrategyEnum decisionMakingStrategyOfAlgorithmicCounterpart = AlgorithmicCounterpartDecisionMakingStrategyEnum.valueOf(listBoxSelectAlgorithmicCounterpartDecisionMakingStrategy.getValue(listBoxSelectAlgorithmicCounterpartDecisionMakingStrategy.getSelectedIndex()));
 				experimentConditions.setDecisionMakingStrategyOfAlgorithmicCounterpart(decisionMakingStrategyOfAlgorithmicCounterpart);
 				
-			    EmotionModellingStrategyEnum emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart = EmotionModellingStrategyEnum.valueOf(listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy.getValue(listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy.getSelectedIndex()));
-				experimentConditions.setEmotionalReactionDeterminationStrategyOfAlgorithmicCounterpart(emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart);
+//			    EmotionModellingStrategyEnum emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart = EmotionModellingStrategyEnum.valueOf(listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy.getValue(listBoxSelectAlgorithmicCounterpartEmotionalReactionDeterminationStrategy.getSelectedIndex()));
+//				experimentConditions.setEmotionalReactionDeterminationStrategyOfAlgorithmicCounterpart(emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart);
+				experimentConditions.setEmotionalReactionDeterminationStrategyOfAlgorithmicCounterpart(EmotionModellingStrategyEnum.alwaysNeutral);
 
 				final int partnerLabel = Integer.parseInt(ListlabelWhichPartner.getValue(ListlabelWhichPartner.getSelectedIndex()));
 				experimentConditions.setPartnerLabel(partnerLabel);

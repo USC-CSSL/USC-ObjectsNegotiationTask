@@ -2,6 +2,7 @@ package edu.usc.cct.rapport.web_games.client.trading_area;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
@@ -24,9 +25,11 @@ public class WaitingDialogBox extends DialogBox {
 		setHTML(constants.blank());
 			
 		FlexTable flexTable = new FlexTable();
-		setWidget(flexTable);
-//		flexTable.setSize("250px", "100px");
-		flexTable.setSize("800px", "565px");
+		flexTable.setSize("780px", "380px");
+//		setWidget(flexTable);
+		AbsolutePanel absolutePanel = new AbsolutePanel();
+		setWidget(absolutePanel);
+		absolutePanel.setSize("800px", "565px");
 		
 		/*
 //		Label lblWaiting = new Label(constants.waiting_msg());
@@ -79,6 +82,8 @@ public class WaitingDialogBox extends DialogBox {
 			}
 		} else if(explanation.equals("waitBeforeOfferAcceptance")) {
 			waiting.setHTML(constants.waiting_msg_beforeOfferAcceptance());
+		} else if(explanation.equals("savingData")) {
+			waiting.setHTML(constants.waiting_msg_savingData());
 		} else {
 			if(partnerLabel==0) {
 				waiting.setHTML(constants.waiting_msg_computer());
@@ -91,11 +96,13 @@ public class WaitingDialogBox extends DialogBox {
 		
 		flexTable.setWidget(0, 0, waiting);
 		flexTable.getFlexCellFormatter().setHorizontalAlignment(0, 0, HasHorizontalAlignment.ALIGN_CENTER);
+		absolutePanel.add(flexTable, 10, 10);
 		
 		Image loadingImage = new Image();
 		loadingImage.setUrl("http://shiraz.usc.edu/negotiation/images/loading_small.gif");
-		flexTable.setWidget(1, 0, loadingImage); // image
-		flexTable.getCellFormatter().setHorizontalAlignment(1, 0, HasHorizontalAlignment.ALIGN_CENTER);
+		absolutePanel.add(loadingImage, 390, 400);
+//		flexTable.setWidget(1, 0, loadingImage); // image
+//		flexTable.getCellFormatter().setHorizontalAlignment(1, 0, HasHorizontalAlignment.ALIGN_CENTER);
 	}
 }
 	

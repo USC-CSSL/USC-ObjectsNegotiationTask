@@ -376,6 +376,12 @@ div.gwt-Hyperlink a {
 /*	font-color: black;*/
 }
 
+.MediumLabel-style {
+	font-family: Arial, sans-serif;
+	font-size: 20px;
+/*	font-color: black;*/
+}
+
 .BiggerLabel-style {
 	font-family: Arial, sans-serif;
 	font-size: 35px;

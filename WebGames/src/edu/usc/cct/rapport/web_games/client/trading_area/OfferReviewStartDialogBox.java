@@ -6,6 +6,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -22,7 +23,8 @@ public class OfferReviewStartDialogBox extends DialogBox {
 
 	static final private HelpWindowInternationalizationConstants constants = (HelpWindowInternationalizationConstants) (GWT.isClient() ? GWT.create(HelpWindowInternationalizationConstants.class) : null);
 
-	public OfferReviewStartDialogBox(final EventBus eventBus, final int partnerLabel, final TradingAction tradingAction) {
+//	public OfferReviewStartDialogBox(final EventBus eventBus, final int partnerLabel, final TradingAction tradingAction) {
+	public OfferReviewStartDialogBox(final EventBus eventBus, final int partnerLabel, final TradingAction tradingAction, final int plyRemaining) {
 		super(false, true);
 		this.eventBus = eventBus;
 		
@@ -59,25 +61,39 @@ public class OfferReviewStartDialogBox extends DialogBox {
 			lblOfferReviewStart = new Label(constants.offer_review_start());*/
 		
 		HTML offerReviewStart = new HTML("");
-		if(partnerLabel==0)
-			offerReviewStart.setHTML(constants.offer_review_start_computer());
-		else if(partnerLabel==1)
-			offerReviewStart.setHTML(constants.offer_review_start_human());
-		else
-			offerReviewStart.setHTML(constants.offer_review_start());
-
+		if(plyRemaining < 9) {
+			if(partnerLabel==0)
+				offerReviewStart.setHTML(constants.last_offer_review_start_computer());
+			else if(partnerLabel==1)
+				offerReviewStart.setHTML(constants.last_offer_review_start_human());
+			else
+				offerReviewStart.setHTML(constants.last_offer_review_start());			
+		} else {
+			if(partnerLabel==0)
+				offerReviewStart.setHTML(constants.offer_review_start_computer());
+			else if(partnerLabel==1)
+				offerReviewStart.setHTML(constants.offer_review_start_human());
+			else
+				offerReviewStart.setHTML(constants.offer_review_start());
+		}
 
 		FlexTable flexTable = new FlexTable();
-		setWidget(flexTable);
+		AbsolutePanel absolutePanel = new AbsolutePanel();
+		setWidget(absolutePanel);
+		absolutePanel.setSize("800px", "565px");
+//		setWidget(flexTable);
 //		flexTable.setSize("250px", "100px");
-		flexTable.setSize("800px", "565px");
+//		flexTable.setSize("800px", "565px");
+		flexTable.setSize("770px", "430px");
 				
 //		lblOfferReviewStart.setStylePrimaryName("BiggerLabel-style");
 //		flexTable.setWidget(0, 0, lblOfferReviewStart);
 		flexTable.setWidget(0, 0, offerReviewStart);
 		flexTable.getFlexCellFormatter().setHorizontalAlignment(0, 0, HasHorizontalAlignment.ALIGN_CENTER);
-		flexTable.setWidget(1, 0, okButton);
-		flexTable.getFlexCellFormatter().setHorizontalAlignment(1, 0, HasHorizontalAlignment.ALIGN_CENTER);
+//		flexTable.setWidget(1, 0, okButton);
+//		flexTable.getFlexCellFormatter().setHorizontalAlignment(1, 0, HasHorizontalAlignment.ALIGN_CENTER);
+		absolutePanel.add(flexTable, 10, 10);
+		absolutePanel.add(okButton, 290, 430);
 		
 	};
 	

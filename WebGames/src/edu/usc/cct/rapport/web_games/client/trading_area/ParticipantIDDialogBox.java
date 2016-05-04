@@ -30,7 +30,6 @@ public class ParticipantIDDialogBox extends DialogBox {
 		this.eventBus = eventBus;
 
 		String localName = com.google.gwt.i18n.client.LocaleInfo.getCurrentLocale().getLocaleName();
-		
 				
 	//	if (localName == "en"){
 		setHTML(constants.participant_ID());
@@ -38,25 +37,31 @@ public class ParticipantIDDialogBox extends DialogBox {
 		SimplePanel simplePanel = new SimplePanel();
 		setWidget(simplePanel);
 //		simplePanel.setSize("294px", "99px");
-		simplePanel.setSize("250px", "100px");
+//		simplePanel.setSize("250px", "100px");
+		simplePanel.setSize("800px", "565px");
 		
 		AbsolutePanel absolutePanel = new AbsolutePanel();
 		simplePanel.setWidget(absolutePanel);
 		absolutePanel.setSize("100%", "100%");
 		
 		Label lblPleaseEnterYou = new Label(constants.get_participant_ID());
-		lblPleaseEnterYou.setStylePrimaryName("Label-style");
-		absolutePanel.add(lblPleaseEnterYou, 10, 10);
+//		lblPleaseEnterYou.setStylePrimaryName("Label-style");
+		lblPleaseEnterYou.setStylePrimaryName("MediumLabel-style");
+//		absolutePanel.add(lblPleaseEnterYou, 10, 10);
+		absolutePanel.add(lblPleaseEnterYou, 285, 220);
 		
 		final TextArea ParticipantIDBox = new TextArea();
 		ParticipantIDBox.setSize("220px", "20px");
 //		absolutePanel.add(ParticipantIDBox, 10, 31);
-		absolutePanel.add(ParticipantIDBox, 10, 35);
+		absolutePanel.add(ParticipantIDBox, 300, 255);
 		
 		Button button = new Button(constants.ok_button());
-//		absolutePanel.add(button, 197, 66);
-		absolutePanel.add(button, 75, 70);
-		button.setSize("100px", "25px");
+//		absolutePanel.add(button, 75, 70);
+//		absolutePanel.add(button, 365, 300);
+//		button.setSize("100px", "25px");
+//		button.setStylePrimaryName("MiddleButton-style");
+		button.setSize("225px", "33px");
+		absolutePanel.add(button, 300, 300);
 
 		button.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
@@ -70,17 +75,23 @@ public class ParticipantIDDialogBox extends DialogBox {
 				//if (!ParticipantIDBox.getText().isEmpty() & participantID > 0 ){
 				if (!ParticipantIDBox.getText().isEmpty()){
 					//experimentConditions.setParticipantID(participantID);
-//					experimentConditions.setParticipantID(ParticipantIDBox.getText());
-					hide();
+					experimentConditions.setParticipantID(ParticipantIDBox.getText());
 					Timer timer = new Timer() {
 					      public void run() {
-					    	  final SocialValueOrientationQuestionnaire1DialogBox dialogBox = new SocialValueOrientationQuestionnaire1DialogBox(eventBus, experimentConditions);
+//					    	  final PartnerLabelCheckQuestionnaireDialogBox dialogBox = new PartnerLabelCheckQuestionnaireDialogBox(eventBus, experimentConditions, 25);
+//					    	  final FairnessQuestionnaire1DialogBox dialogBox = new FairnessQuestionnaire1DialogBox(eventBus, experimentConditions, 25);
+//					    	  final SocialValueOrientationQuestionnaire1DialogBox dialogBox = new SocialValueOrientationQuestionnaire1DialogBox(eventBus, experimentConditions);
+					    	  final ScenarioDialogBox dialogBox = new ScenarioDialogBox (eventBus, experimentConditions);
+//					    	  final DemographicsDialogBox dialogBox = new DemographicsDialogBox (eventBus, experimentConditions);
+
 					    	  dialogBox.setPopupPosition(105, 75);
 					    	  dialogBox.show();
 //					    	  final MoralFoundationsQuestionnaire1DialogBox dialogBox = new MoralFoundationsQuestionnaire1DialogBox (eventBus, experimentConditions);
 //							  final StartGameHelpWindowDialogBox dialogBox = new StartGameHelpWindowDialogBox(eventBus, 0, experimentConditions); // To ease testing
 //					    	  final ScenarioDialogBox dialogBox = new ScenarioDialogBox (eventBus, experimentConditions);
 //					    	  dialogBox.center();
+					    	  hide();
+
 					      }
 					    };
 					    timer.schedule(1000);

@@ -34,6 +34,9 @@ public class ExperimentConditions implements DoublySerializable {
 	private boolean playerDealValueVisible;
 //	private int expScenario;
 	private int partnerLabel;
+	private int partnerLabelCheck;
+	private String partnerLabelCheckComment;
+
 	
 	//pre-questions
 /*	private int SVValue;
@@ -102,6 +105,14 @@ public class ExperimentConditions implements DoublySerializable {
 	private int MFQ_32;
 	private int MFQ_filter;
 	
+	// Fairness of the agent's offer Questions
+	private int FairnessOfTheAgentOffer_1;
+	private int FairnessOfTheAgentOffer_2;
+	private int FairnessOfTheAgentOffer_3;
+	private int FairnessOfTheAgentOffer_4;
+	private int FairnessOfTheAgentOffer_5;
+	private int FairnessOfTheAgentOffer_6;
+	
 	// Social Value Orientation Questions
 	private int SVO_1_you;
 	private int SVO_1_other;
@@ -134,8 +145,8 @@ public class ExperimentConditions implements DoublySerializable {
 	private int educationOfParticipant;
 	private int religiosityOfParticipant;
 	private int ethnicityOfParticipant;
-//	private int economicClassOfParticipant;
-//	private int politicalOrientationOfParticipant;
+	private int economicClassOfParticipant;
+	private int politicalOrientationOfParticipant;
 	private String commentOfParticipant;
 	private String participantID;
 	private double startTimestamp;
@@ -181,6 +192,8 @@ public class ExperimentConditions implements DoublySerializable {
 		this.playerDealValueVisible= playerDealValueVisible;
 //		this.expScenario=expScenario;
 		this.partnerLabel=partnerLabel;
+		this.partnerLabelCheck=-1;
+		this.partnerLabelCheckComment="";
 		this.participantID = participantID;		
 		
 /*		this.SVValue=0;
@@ -211,14 +224,14 @@ public class ExperimentConditions implements DoublySerializable {
 		this.NSA_04=0;
 		this.NSA_05=0;*/
 		
-/*		this.ageOfParticipant=0;
+		this.ageOfParticipant=0;
 		this.genderOfParticipant=0;
 		this.educationOfParticipant=0;
 		this.religiosityOfParticipant=0;
 		this.ethnicityOfParticipant=0;
-//		this.economicClassOfParticipant=0;
-//		this.politicalOrientationOfParticipant=0;
-		this.commentOfParticipant= "";*/
+		this.economicClassOfParticipant=0;
+		this.politicalOrientationOfParticipant=0;
+		this.commentOfParticipant= "";
 //		this.participantID="0";
 		this.startTimestamp=0;
 //		this.startTime="0";
@@ -257,6 +270,15 @@ public class ExperimentConditions implements DoublySerializable {
 		this.MFQ_31=0;
 		this.MFQ_32=0;
 		this.MFQ_filter=0;*/
+		
+
+		this.FairnessOfTheAgentOffer_1=-1;
+		this.FairnessOfTheAgentOffer_2=-1;
+		this.FairnessOfTheAgentOffer_3=-1;
+		this.FairnessOfTheAgentOffer_4=-1;
+		this.FairnessOfTheAgentOffer_5=-1;
+		this.FairnessOfTheAgentOffer_6=-1;
+
 		
 		this.SVO_1_you=0;
 		this.SVO_1_other=0;
@@ -309,6 +331,8 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add("playerDealValueVisible");
 //		result.add("expScenario");
 		result.add("partnerLabel");
+		result.add("partnerLabelCheck");
+		result.add("partnerLabelCheckComment");
 		
 /*		result.add("SVValue");
 		result.add("SVValueFood");
@@ -341,14 +365,14 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add("NSA_04");
 		result.add("NSA_05");*/
 		
-/*		result.add("ageOfParticipant");
+		result.add("ageOfParticipant");
 		result.add("genderOfParticipant");
 		result.add("educationOfParticipant");
 		result.add("religiosityOfParticipant");
 		result.add("ethnicityOfParticipant");
-//		result.add("economicClassOfParticipant");
-//		result.add("politicalOrientationOfParticipant");
-		result.add("commentOfParticipant");*/
+		result.add("economicClassOfParticipant");
+		result.add("politicalOrientationOfParticipant");
+		result.add("commentOfParticipant");
 		result.add("participantID");
 		result.add("startTimestamp");
 //		result.add("startTime");
@@ -387,6 +411,13 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add("MFQ_31");
 		result.add("MFQ_32");
 		result.add("MFQ_filter");*/
+		
+		result.add("FairnessOfTheAgentOffer_1");
+		result.add("FairnessOfTheAgentOffer_2");
+		result.add("FairnessOfTheAgentOffer_3");
+		result.add("FairnessOfTheAgentOffer_4");
+		result.add("FairnessOfTheAgentOffer_5");
+		result.add("FairnessOfTheAgentOffer_6");
 		
 		result.add("SVO_1_you");
 		result.add("SVO_1_other");
@@ -441,6 +472,8 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add(Boolean.toString(this.playerDealValueVisible));
 //		result.add(Integer.toString(this.expScenario));
 		result.add(Integer.toString(this.partnerLabel));
+		result.add(Integer.toString(this.partnerLabelCheck));
+		result.add(this.partnerLabelCheckComment);
 		
 /*		result.add(Integer.toString(this.SVValue));
 		result.add(Integer.toString(this.SVValueWater));
@@ -472,14 +505,14 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add(Integer.toString(this.NSA_04));
 		result.add(Integer.toString(this.NSA_05));*/
 
-/*		result.add(Integer.toString(this.ageOfParticipant));
+		result.add(Integer.toString(this.ageOfParticipant));
 		result.add(Integer.toString(this.genderOfParticipant));
 		result.add(Integer.toString(this.educationOfParticipant));
 		result.add(Integer.toString(this.religiosityOfParticipant));
 		result.add(Integer.toString(this.ethnicityOfParticipant));		
-//		result.add(Integer.toString(this.economicClassOfParticipant));
-//		result.add(Integer.toString(this.politicalOrientationOfParticipant));
-		result.add(this.commentOfParticipant);*/
+		result.add(Integer.toString(this.economicClassOfParticipant));
+		result.add(Integer.toString(this.politicalOrientationOfParticipant));
+		result.add(this.commentOfParticipant);
 		result.add(this.participantID);
 		result.add(Double.toString(this.startTimestamp));
 //		result.add(this.startTime);
@@ -518,6 +551,13 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add(Integer.toString(this.MFQ_31));
 		result.add(Integer.toString(this.MFQ_32));
 		result.add(Integer.toString(this.MFQ_filter));*/
+		
+		result.add(Integer.toString(this.FairnessOfTheAgentOffer_1));
+		result.add(Integer.toString(this.FairnessOfTheAgentOffer_2));
+		result.add(Integer.toString(this.FairnessOfTheAgentOffer_3));
+		result.add(Integer.toString(this.FairnessOfTheAgentOffer_4));
+		result.add(Integer.toString(this.FairnessOfTheAgentOffer_5));
+		result.add(Integer.toString(this.FairnessOfTheAgentOffer_6));
 		
 		result.add(Integer.toString(this.SVO_1_you));
 		result.add(Integer.toString(this.SVO_1_other));
@@ -606,7 +646,8 @@ public class ExperimentConditions implements DoublySerializable {
 	};
 
 
-	void setTradingObjectSetEnum(final TradingObjectSetEnum tradingObjectSetEnum) {
+//	void setTradingObjectSetEnum(final TradingObjectSetEnum tradingObjectSetEnum) {
+	public void setTradingObjectSetEnum(final TradingObjectSetEnum tradingObjectSetEnum) {
 		this.tradingObjectSetEnum = TradingObjectSetEnum.valueOf(tradingObjectSetEnum.name());
 	};
 
@@ -1047,21 +1088,21 @@ public class ExperimentConditions implements DoublySerializable {
 		return this.ethnicityOfParticipant;
 	};	
 	
-/*	public void setEconomicClassOfParticipant(int economicClassOfParticipant) {
+	public void setEconomicClassOfParticipant(int economicClassOfParticipant) {
 		this.economicClassOfParticipant = economicClassOfParticipant;
 	}
 	
 	public int getEconomicClassOfParticipant() {
 		return this.economicClassOfParticipant;
-	}*/
+	}
 
-/*	public void setPoliticalOrientationOfParticipant(int politicalOrientationOfParticipant) {
+	public void setPoliticalOrientationOfParticipant(int politicalOrientationOfParticipant) {
 		this.politicalOrientationOfParticipant = politicalOrientationOfParticipant;
 	}
 	
 	public int getPoliticalOrientationOfParticipant() {
 		return this.politicalOrientationOfParticipant;
-	}*/
+	}
 
 	public void setCommentOfParticipant(String commentOfParticipant) {
 		this.commentOfParticipant = commentOfParticipant;
@@ -1134,6 +1175,43 @@ public class ExperimentConditions implements DoublySerializable {
 
 	public void setVEQ_11(int VEQ_11) {
 		this.VEQ_11 = VEQ_11;
+	}
+	
+	public void setPartnerLabelCheck(int partnerLabelChcekAnswer) {
+		this.partnerLabelCheck = partnerLabelChcekAnswer;
+	}
+	
+	public void setPartnerLabelCheckComment(String partnerLabelCheckComment) {
+		this.partnerLabelCheckComment = partnerLabelCheckComment;
+	}
+
+	public String getPartnerLabelCheckComment() {
+		return this.partnerLabelCheckComment;
+	};
+
+	
+	public void setFairnessOfTheAgentOffer_1(int Fairness_1) {
+		this.FairnessOfTheAgentOffer_1 = Fairness_1;
+	}
+
+	public void setFairnessOfTheAgentOffer_2(int Fairness_2) {
+		this.FairnessOfTheAgentOffer_2 = Fairness_2;
+	}
+
+	public void setFairnessOfTheAgentOffer_3(int Fairness_3) {
+		this.FairnessOfTheAgentOffer_3 = Fairness_3;
+	}
+
+	public void setFairnessOfTheAgentOffer_4(int Fairness_4) {
+		this.FairnessOfTheAgentOffer_4 = Fairness_4;
+	}
+
+	public void setFairnessOfTheAgentOffer_5(int Fairness_5) {
+		this.FairnessOfTheAgentOffer_5 = Fairness_5;
+	}
+
+	public void setFairnessOfTheAgentOffer_6(int Fairness_6) {
+		this.FairnessOfTheAgentOffer_6 = Fairness_6;
 	}
 
 	public void setSVO_1(int SVO_1) {

@@ -6,6 +6,15 @@ public interface ScenarioInternationalizationConstants extends Constants {
 
 	@DefaultStringValue("[TRANSLATION MISSING] Scenario")
 	String scenario_Window_Title();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] scenario missing")
+	String scenario_fruits_computer_partner();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] scenario missing")
+	String scenario_fruits_human_partner();
+
+	@DefaultStringValue("[TRANSLATION MISSING] scenario missing")
+	String scenario_fruits();
 
 	@DefaultStringValue("[TRANSLATION MISSING] scenario missing")
 	String scenario_textA();
@@ -28,11 +37,57 @@ public interface ScenarioInternationalizationConstants extends Constants {
 	@DefaultStringValue("[TRANSLATION MISSING] Continue")
 	String ok_button();
 	
-	@DefaultStringValue("[TRANSLATION MISSING] Quiz")
+//	@DefaultStringValue("[TRANSLATION MISSING] Quiz")
+	@DefaultStringValue("[TRANSLATION MISSING] Scenario Quiz")
 	String scenario_quiz_Window_Title();
 
 	@DefaultStringValue("[TRANSLATION MISSING] Please select the correct answer.")
 	String scenario_quiz_part1();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] 1. How many offers will you have a chance to make in this negotiation?")
+	String scenario_quiz_forFruits_no1();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] 3 offers")
+	String scenario_quiz_forFruits_no1_ans1();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 6 offers")
+	String scenario_quiz_forFruits_no1_ans2();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 12 offers")
+	String scenario_quiz_forFruits_no1_ans3();
+
+//	@DefaultStringValue("[TRANSLATION MISSING] Hand sanitizer")
+//	String scenario_quiz_no1_ans4();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 2")
+	String scenario_quiz_forFruits_no1_ans();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 2. If you reject the computer partner's offer in the last round of the negotaition, how many items will you get?")
+	String scenario_quiz_forFruits_no2_computer();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] 2. If you reject the human partner's offer in the last round of the negotaition, how many items will you get?")
+	String scenario_quiz_forFruits_no2_human();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] 2. If you reject the partner's offer in the last round of the negotaition, how many items will you get?")
+	String scenario_quiz_forFruits_no2();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 2 items each")
+	String scenario_quiz_forFruits_no2_ans1();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 1 item each")
+	String scenario_quiz_forFruits_no2_ans2();
+
+	@DefaultStringValue("[TRANSLATION MISSING] no items")
+	String scenario_quiz_forFruits_no2_ans3();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 3")
+	String scenario_quiz_forFruits_no2_ans();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] 3. You and the other owner value each fruit differently.")
+	String scenario_quiz_forFruits_no3();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 1")
+	String scenario_quiz_forFruits_no3_ans();
 
 	@DefaultStringValue("[TRANSLATION MISSING] What is the only way to control the spread of infection in your baby?")
 	String scenario_quiz_no1();

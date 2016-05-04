@@ -195,7 +195,10 @@ public class SocialValueOrientationQuestionnaire2DialogBox extends DialogBox {
 				experimentConditions.setSVO_4(userAnswer[2]);
 				experimentConditions.setSVO_5(userAnswer[3]);
 				experimentConditions.setSVO_6(userAnswer[4]);
-				
+
+				final DemographicsDialogBox dialogBox = new DemographicsDialogBox(eventBus, experimentConditions);
+				dialogBox.setPopupPosition(105, 75);
+				dialogBox.show();
 //				final SocialValueOrientationQuestionnaire2DialogBox dialogBox = new SocialValueOrientationQuestionnaire2DialogBox (eventBus, experimentConditions);
 //				dialogBox.center();
 				hide();

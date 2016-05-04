@@ -65,15 +65,15 @@ public class ObtainConsentView extends WebGamesView implements IObtainConsentVie
 	
 	public void populate(final EventBus eventBus, final PlaceController placeController) {
 		
-/*		final RichTextArea textAreaConsentInquiryText = new RichTextArea();
+		final RichTextArea textAreaConsentInquiryText = new RichTextArea();
 		textAreaConsentInquiryText.setHTML(constants.textAreaConsentInquiry());
 //		textAreaConsentInquiryText.setHTML("Please click the enter button below to proceed");
 		textAreaConsentInquiryText.setHeight("460px");
 		textAreaConsentInquiryText.setWidth("600px");
 	
-		viewBasePanel.add(textAreaConsentInquiryText);*/
+		viewBasePanel.add(textAreaConsentInquiryText);
 		
-/*		Button openWindow = new Button(constants.openInformationSheet());
+		Button openWindow = new Button(constants.openInformationSheet());
 		
 		
 		openWindow.addClickHandler(new ClickHandler() {
@@ -81,7 +81,7 @@ public class ObtainConsentView extends WebGamesView implements IObtainConsentVie
 	        public void onClick(final ClickEvent clickEvent) {
 	        	String localName = com.google.gwt.i18n.client.LocaleInfo.getCurrentLocale().getLocaleName();
 	        	if (localName == "en")
-	        		Window.open("http://shiraz.usc.edu/negotiation/forms/InformationSheetEnglish.pdf", "_blank", null);
+	        		Window.open("http://shiraz.usc.edu/negotiation/forms/InformationSheetEnglish2016.pdf", "_blank", null);
 	        	if (localName == "fa")
 	        		Window.open("http://shiraz.usc.edu/negotiation/forms/InformationSheetFarsi.pdf", "_blank", null);
 	        	if (localName == "ko")
@@ -92,11 +92,11 @@ public class ObtainConsentView extends WebGamesView implements IObtainConsentVie
 		if(localName== "fa")
 			viewBasePanel.add(openWindow,250,470);
 		else
-			viewBasePanel.add(openWindow,190,470);*/
+			viewBasePanel.add(openWindow,190,470);
 	    
 	    
-//		final Button buttonUserConsents = new Button(constants.userConsents());
-/*		final Button buttonUserConsents = new Button("START");
+		final Button buttonUserConsents = new Button(constants.userConsents());
+//		final Button buttonUserConsents = new Button("START");
 		buttonUserConsents.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(final ClickEvent event) {
@@ -106,92 +106,28 @@ public class ObtainConsentView extends WebGamesView implements IObtainConsentVie
 		});
 		
 		
-//		viewBasePanel.add(buttonUserConsents,128,520);
-		buttonUserConsents.setSize("500px", "100px");
-		buttonUserConsents.setStylePrimaryName("BigLabel-style");
-		viewBasePanel.add(buttonUserConsents, 100, 300);*/
-
-//		viewBasePanel.
+		viewBasePanel.add(buttonUserConsents,128,520);
+//		buttonUserConsents.setSize("500px", "100px");
+//		buttonUserConsents.setStylePrimaryName("BigLabel-style");
+//		viewBasePanel.add(buttonUserConsents, 100, 300);
 		
 //		FocusPanel focus = new FocusPanel();
 		
 //		viewBasePanel.addDomHandler(handler, KeyDownEvent.getType());
 	//	focus.addDomHandler(new KeyDownHandler() {
 //		anchorPanel.addDomHandler(new KeyDownHandler() {
-		Event.addNativePreviewHandler(new Event.NativePreviewHandler() {
+/*		Event.addNativePreviewHandler(new Event.NativePreviewHandler() { // for fMRI recording
 			
 			@Override
 			public void onPreviewNativeEvent(NativePreviewEvent event) {
 				// TODO Auto-generated method stub
 				System.out.println("key: " + Integer.toString(event.getNativeEvent().getKeyCode()));
 				if(event.getNativeEvent().getKeyCode() == 53)	
-					ObtainConsentView.this.eventBus.fireEvent(new UserConsentsEvent());
-//					Window.alert("Hello");
-				
-//				String Str = Integer.toString(event.getNativeEvent().getKeyCode());
-//		        System.out.println("key: " + Str);
-
-//				if(event.getNativeEvent().getKeyCode() == 60)
-//					Window.alert("Hello");
-//				Window.alert(Integer.toString(event.getNativeEvent().getKeyCode()));
-				
+					ObtainConsentView.this.eventBus.fireEvent(new UserConsentsEvent());				
 			}
-		});
+		});*/		
 
-/*		@Override
-			public void onKeyDown(KeyDownEvent event) {
-///*				if((int)event.getNativeKeyCode() == 5) {
-//					ObtainConsentView.this.eventBus.fireEvent(new UserDoesNotConsentEvent());
-				}
-				String Str = Integer.toString(event.getNativeKeyCode());
-				Window.alert(Str);
-		        System.out.println("key: " + Str);
-		        System.out.println("keypressed :"+ event.getNativeKeyCode());
-			}
-			
-		}, KeyDownEvent.getType());
-		
-		
-		
-		public static void enableEnterSubmit(final FormPanel form){
-			  Event.addNativePreviewHandler(new NativePreviewHandler(){
-			    public void onPreviewNativeEvent(    NativePreviewEvent event){
-			      if (!event.isCanceled() && event.getTypeInt() == Event.ONKEYDOWN) {
-			        int keyCode=event.getNativeEvent().getKeyCode();
-			        if (keyCode == KeyCodes.KEY_ENTER) {
-			          form.submit();
-			          event.cancel();
-			        }
-			      }
-			    }
-			  }
-			);
-			}*/
-		
-//		viewBasePanel.add(focus);
-/*		viewBasePanel.addKeyDownHandler(new KeyDownHandler() {
-		     @Override
-		     public void onKeyDown(KeyDownEvent event) {
-		        int code = event.getNativeKeyCode();
-		        if (KeyCodes.KEY_UP == code) {
-		           GWT.log("Bed goes up");
-		        } else if (KeyCodes.KEY_DOWN == code) {
-		           GWT.log("Bed goes down");
-		        }
-		     }
-		  });*/
-/*		nameField.addKeyDownHandler(new KeyDownHandler() {
 
-		    @Override
-		    public void onKeyDown(KeyDownEvent event) {
-		        if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
-		            Window.alert("hello");
-		        }
-
-		    }
-
-		});*/
-/*
 		final Button buttonUserDoesNotConsent = new Button(constants.userDoesNotConsent());
 		buttonUserDoesNotConsent.addClickHandler(new ClickHandler() {				
 			@Override
@@ -199,10 +135,11 @@ public class ObtainConsentView extends WebGamesView implements IObtainConsentVie
 						ObtainConsentView.this.eventBus.fireEvent(new UserDoesNotConsentEvent());
 			};
 		});
-		viewBasePanel.add(buttonUserDoesNotConsent,318,520);*/
-		Label lbl = new Label("We will start shortly.");
+		viewBasePanel.add(buttonUserDoesNotConsent,318,520);
+		
+/*		Label lbl = new Label("We will start shortly.");	// for fMRI recording
 		lbl.setStyleName("BigLabel-style");
-		viewBasePanel.add(lbl, 250, 300);;
+		viewBasePanel.add(lbl, 250, 300);*/
 
 //		viewBasePanel.setVisible(true);
 //		initWidget(viewBasePanel);
