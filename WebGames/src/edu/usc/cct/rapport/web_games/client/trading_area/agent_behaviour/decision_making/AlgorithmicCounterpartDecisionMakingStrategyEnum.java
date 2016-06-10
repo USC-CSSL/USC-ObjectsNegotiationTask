@@ -106,7 +106,7 @@ public enum AlgorithmicCounterpartDecisionMakingStrategyEnum {
 			result = "Tough (gentle slope) strategy for fruits1 set";
 			break;*/
 		case prespecifiedToughSteepSlopeStrategyFruits7:
-			result = "Tough (steep slope) strategy for fruits7 set";
+			result = "Tough (steep slope) strategy for fruits1 set";
 			break;
 /*		case prespecifiedToughSteepSlopeStrategyFruits8:
 			result = "Tough (steep slope) strategy for fruits8 set";

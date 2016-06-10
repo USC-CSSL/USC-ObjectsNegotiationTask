@@ -51,7 +51,8 @@ public class ExperimentInformationRecordingService extends RemoteServiceServlet 
 	private String csvforUnisheetFilename = excelFilePath + WebGames.class.getSimpleName() + "-unisheet.csv";
 	private String csvforMultisheetFilename = excelFilePath + WebGames.class.getSimpleName() + "-multisheet.csv";
 	//static final 
-	static final private int maxActionPlyCount = 25;
+//	static final private int maxActionPlyCount = 25;
+	static final private int maxActionPlyCount = 35;
 	static final private int agentEnumCount = AgentEnum.values().length;
 //	static final private int tradingObjectEnumCount = 4;
 	static final private int tradingObjectEnumCount = 3; // Sasha's experiment
@@ -451,6 +452,8 @@ public class ExperimentInformationRecordingService extends RemoteServiceServlet 
 			timestampCell.setCellValue(fieldPrefix + "timestampAsNumber");
 			final Cell timestampAsDateCell = rowToPopulate.createCell(cellColumnIndex++, Cell.CELL_TYPE_STRING);
 			timestampAsDateCell.setCellValue(fieldPrefix + "timestampAsDate");
+			final Cell relevantTimestampAsDateCell = rowToPopulate.createCell(cellColumnIndex++, Cell.CELL_TYPE_STRING);
+			relevantTimestampAsDateCell.setCellValue(fieldPrefix + "relevantTimestampAsDate");
 			final Cell performingAgentCell = rowToPopulate.createCell(cellColumnIndex++, Cell.CELL_TYPE_STRING);
 			performingAgentCell.setCellValue(fieldPrefix + "performingAgent");
 			final Cell tradingActionEnumCell = rowToPopulate.createCell(cellColumnIndex++, Cell.CELL_TYPE_STRING);
@@ -464,9 +467,9 @@ public class ExperimentInformationRecordingService extends RemoteServiceServlet 
 				final Cell valueCell = rowToPopulate.createCell(cellColumnIndex++, Cell.CELL_TYPE_STRING);
 				valueCell.setCellValue(fieldPrefix + "tradingAllocationCount");
 			};
-			//added
+/*			//added
 			final Cell utilCell = rowToPopulate.createCell(cellColumnIndex++, Cell.CELL_TYPE_STRING);
-			utilCell.setCellValue(fieldPrefix + "util");
+			utilCell.setCellValue(fieldPrefix + "util");*/
 		};
 
 		return cellColumnIndex;

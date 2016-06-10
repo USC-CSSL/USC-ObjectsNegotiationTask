@@ -105,6 +105,17 @@ public class ExperimentConditions implements DoublySerializable {
 	private int MFQ_32;
 	private int MFQ_filter;
 	
+	// Anthropomorphism
+	private int Anthropomorphism_1;
+	private int Anthropomorphism_2;
+	private int Anthropomorphism_3;
+	private int Anthropomorphism_4;
+	private int Anthropomorphism_5;
+	private int Anthropomorphism_6;
+	private int Anthropomorphism_7;
+	private int Anthropomorphism_8;
+	private int Anthropomorphism_9;
+
 	// Fairness of the agent's offer Questions
 	private int FairnessOfTheAgentOffer_1;
 	private int FairnessOfTheAgentOffer_2;
@@ -271,6 +282,15 @@ public class ExperimentConditions implements DoublySerializable {
 		this.MFQ_32=0;
 		this.MFQ_filter=0;*/
 		
+		this.Anthropomorphism_1=-1;
+		this.Anthropomorphism_2=-1;
+		this.Anthropomorphism_3=-1;
+		this.Anthropomorphism_4=-1;
+		this.Anthropomorphism_5=-1;
+		this.Anthropomorphism_6=-1;
+		this.Anthropomorphism_7=-1;
+		this.Anthropomorphism_8=-1;
+		this.Anthropomorphism_9=-1;
 
 		this.FairnessOfTheAgentOffer_1=-1;
 		this.FairnessOfTheAgentOffer_2=-1;
@@ -412,6 +432,16 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add("MFQ_32");
 		result.add("MFQ_filter");*/
 		
+		result.add("Anthropomorphism_1");
+		result.add("Anthropomorphism_2");
+		result.add("Anthropomorphism_3");
+		result.add("Anthropomorphism_4");
+		result.add("Anthropomorphism_5");
+		result.add("Anthropomorphism_6");
+		result.add("Anthropomorphism_7");
+		result.add("Anthropomorphism_8");
+		result.add("Anthropomorphism_9");
+		
 		result.add("FairnessOfTheAgentOffer_1");
 		result.add("FairnessOfTheAgentOffer_2");
 		result.add("FairnessOfTheAgentOffer_3");
@@ -552,6 +582,16 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add(Integer.toString(this.MFQ_32));
 		result.add(Integer.toString(this.MFQ_filter));*/
 		
+		result.add(Integer.toString(this.Anthropomorphism_1));
+		result.add(Integer.toString(this.Anthropomorphism_2));
+		result.add(Integer.toString(this.Anthropomorphism_3));
+		result.add(Integer.toString(this.Anthropomorphism_4));
+		result.add(Integer.toString(this.Anthropomorphism_5));
+		result.add(Integer.toString(this.Anthropomorphism_6));
+		result.add(Integer.toString(this.Anthropomorphism_7));
+		result.add(Integer.toString(this.Anthropomorphism_8));
+		result.add(Integer.toString(this.Anthropomorphism_9));
+
 		result.add(Integer.toString(this.FairnessOfTheAgentOffer_1));
 		result.add(Integer.toString(this.FairnessOfTheAgentOffer_2));
 		result.add(Integer.toString(this.FairnessOfTheAgentOffer_3));
@@ -1526,5 +1566,41 @@ public class ExperimentConditions implements DoublySerializable {
 	
 	public void setCoinTossResult(String coinTossResult) {
 		this.coinTossResult = coinTossResult;
+	}
+	
+	public void setAnthropomorphism_1(int Anthropomorphism_1) {
+		this.Anthropomorphism_1 = Anthropomorphism_1;
+	}
+
+	public void setAnthropomorphism_2(int Anthropomorphism_2) {
+		this.Anthropomorphism_2 = Anthropomorphism_2;
+	}
+
+	public void setAnthropomorphism_3(int Anthropomorphism_3) {
+		this.Anthropomorphism_3 = Anthropomorphism_3;
+	}
+
+	public void setAnthropomorphism_4(int Anthropomorphism_4) {
+		this.Anthropomorphism_4 = Anthropomorphism_4;
+	}
+
+	public void setAnthropomorphism_5(int Anthropomorphism_5) {
+		this.Anthropomorphism_5 = Anthropomorphism_5;
+	}
+
+	public void setAnthropomorphism_6(int Anthropomorphism_6) {
+		this.Anthropomorphism_6 = Anthropomorphism_6;
+	}
+
+	public void setAnthropomorphism_7(int Anthropomorphism_7) {
+		this.Anthropomorphism_7 = Anthropomorphism_7;
+	}
+
+	public void setAnthropomorphism_8(int Anthropomorphism_8) {
+		this.Anthropomorphism_8 = Anthropomorphism_8;
+	}
+
+	public void setAnthropomorphism_9(int Anthropomorphism_9) {
+		this.Anthropomorphism_9 = Anthropomorphism_9;
 	}
 };

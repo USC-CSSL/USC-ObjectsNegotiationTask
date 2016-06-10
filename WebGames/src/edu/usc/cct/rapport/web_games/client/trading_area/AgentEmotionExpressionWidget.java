@@ -2,6 +2,7 @@ package edu.usc.cct.rapport.web_games.client.trading_area;
 
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.Label;
 
@@ -28,7 +29,8 @@ public class AgentEmotionExpressionWidget extends Composite {
 	static final private String verticalAlignMiddle = "ict-rapport-verticalAlignMiddle";
 
 	final private AgentEnum agentEnum;
-	final private Label labelDisplayName;
+//	final private Label labelDisplayName;
+	final private HTML HTMLDisplayName;
 	final private FacialExpressionWidget facialExpressionWidget;
 
 	final private FlexTable flexTableBasePanel;
@@ -46,7 +48,7 @@ public class AgentEmotionExpressionWidget extends Composite {
 		this.addStyleName(agentEmotionExpressionStyleName);
 		this.flexTableBasePanel.setVisible(true);
 
-		this.labelDisplayName = new Label();
+/*		this.labelDisplayName = new Label();
 //		this.labelDisplayName = new Label(this.agentEnum.getDisplayName());
 		this.labelDisplayName.addStyleName(agentNameStyle);
 		this.labelDisplayName.addStyleName(verticalAlignMiddle);
@@ -72,7 +74,14 @@ public class AgentEmotionExpressionWidget extends Composite {
 		this.flexTableBasePanel.setWidget(14, 0, new Label(" "));
 		this.flexTableBasePanel.setWidget(15, 0, new Label(" "));
 		this.flexTableBasePanel.setWidget(16, 0, new Label(" "));
-		this.flexTableBasePanel.setWidget(17, 0, this.labelDisplayName);
+//		this.flexTableBasePanel.setWidget(17, 0, this.labelDisplayName);*/
+		this.HTMLDisplayName = new HTML("");
+		this.HTMLDisplayName.setWidth(pixelWidth);
+		this.HTMLDisplayName.setHeight(pixelHeight);
+		this.HTMLDisplayName.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+		this.HTMLDisplayName.setVisible(true);
+		this.flexTableBasePanel.setWidget(0, 0, this.HTMLDisplayName);
+//		this.flexTableBasePanel.setWidget(17, 0, this.HTMLDisplayName);
 		
 		final int boundingWidthInPixels = Math.max(emoticonDiameter, width);
 		this.facialExpressionWidget = new FacialExpressionWidget(boundingWidthInPixels, emoticonDiameter, true, facialExpressionStyleEnum, facialExpressionEnum);
@@ -138,7 +147,8 @@ public class AgentEmotionExpressionWidget extends Composite {
 	};
 
 	public void setDisplayName(final Integer partnerLabel) {
-		this.labelDisplayName.setText(this.agentEnum.getDisplayName(partnerLabel));
+//		this.labelDisplayName.setText(this.agentEnum.getDisplayName(partnerLabel));
+		this.HTMLDisplayName.setHTML(this.agentEnum.getDisplayName(partnerLabel));
 		
 	};
 };

@@ -28,11 +28,11 @@ public interface HelpWindowInternationalizationConstants extends Constants {
 	@DefaultStringValue("[TRANSLATION MISSING] help blah blah")
 	String help_start_of_game();
 
-	@DefaultStringValue("[TRANSLATION MISSING] help blah blah")
+/*	@DefaultStringValue("[TRANSLATION MISSING] help blah blah")
 	String help_start_of_game_computer_partner();
 
 	@DefaultStringValue("[TRANSLATION MISSING] help blah blah")
-	String help_start_of_game_human_partner();
+	String help_start_of_game_human_partner();*/
 
 	@DefaultStringValue("[TRANSLATION MISSING] How do you feel about giving up the medicine?")
 	String SV_Question();
@@ -97,6 +97,33 @@ public interface HelpWindowInternationalizationConstants extends Constants {
 
 	@DefaultStringValue("[TRANSLATION MISSING] 8")
 	String eight();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] 0")
+	String zero_HTML();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 1")
+	String one_HTML();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] 2")
+	String two_HTML();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] 3")
+	String three_HTML();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] 4")
+	String four_HTML();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] 5")
+	String five_HTML();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] 6")
+	String six_HTML();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 7")
+	String seven_HTML();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 8")
+	String eight_HTML();
 
 	@DefaultStringValue("[TRANSLATION MISSING] Not important at all")
 	String not_important_at_all();
@@ -947,14 +974,83 @@ public interface HelpWindowInternationalizationConstants extends Constants {
 	@DefaultStringValue("[TRANSLATION MISSING] In this task, you will be interacting with a negotiation partner.")
 	String partner();
 	
-	@DefaultStringValue("[TRANSLATION MISSING] Waiting for another player…")
+	@DefaultStringValue("[TRANSLATION MISSING] Configuring the agent setting…")
 	String partnerAssignment_computer();
 	
-	@DefaultStringValue("[TRANSLATION MISSING] Configuring the agent setting…")
+//	@DefaultStringValue("[TRANSLATION MISSING] Waiting for another player…")
+	@DefaultStringValue("[TRANSLATION MISSING] Waiting for another Amazon Mechanical Turk worker…")
 	String partnerAssignment_human();
 
 	@DefaultStringValue("[TRANSLATION MISSING] Assigning your partner…")
 	String partnerAssignment();
 
+	@DefaultStringValue("[TRANSLATION MISSING] Agent configuration is completed. The negotiation will start shortly.")
+	String partnerAssignmentResult_computer();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] You will be negotiating with Amazon MTurk worker A2VL8OO4TGC7Q5. The negotiation will start shortly.")
+	String partnerAssignmentResult_human();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Your partner has been assigned. The negotiation will start shortly.")
+	String partnerAssignmentResult();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Looks like it takes a long time for the MTurk worker A2VL8OO4TGC7Q5 to make a counteroffer. Thank you for your patience.")
+	String proposal_delay();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Please rate your impresion of your partner on these scales:")
+	String anthropomorphism();
+		
+	@DefaultStringValue("[TRANSLATION MISSING] Robot like")
+	String anthropomorphism1_left();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Human like")
+	String anthropomorphism1_right();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Fake")
+	String anthropomorphism2_left();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Natural")
+	String anthropomorphism2_right();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Unconscious")
+	String anthropomorphism3_left();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Conscious")
+	String anthropomorphism3_right();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Artificial")
+	String anthropomorphism4_left();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Lifelike")
+	String anthropomorphism4_right();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Stagnant")
+	String anthropomorphism5_left();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Lively")
+	String anthropomorphism5_right();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Mechanical")
+	String anthropomorphism6_left();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Organic")
+	String anthropomorphism6_right();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Inert")
+	String anthropomorphism7_left();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Interactive")
+	String anthropomorphism7_right();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Apathetic")
+	String anthropomorphism8_left();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Responsive")
+	String anthropomorphism8_right();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Computer")
+	String anthropomorphism9_left();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Human")
+	String anthropomorphism9_right();
 	//String btnOk_html();
 };

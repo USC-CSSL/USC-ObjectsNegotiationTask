@@ -1,6 +1,7 @@
 package edu.usc.cct.rapport.web_games.client.trading_area;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.ui.HTML;
 
 public enum AgentEnum {
 //	system,
@@ -73,15 +74,19 @@ public enum AgentEnum {
 
 		switch (this) {
 		case counterpart:
-			if(partnerLabel == 0)
-				result = constants.counterpartDisplayName_computer();
-			else if (partnerLabel == 1)
-				result = constants.counterpartDisplayName_human();
-			else		
+			if(partnerLabel == 0) {
+				result = constants.counterpartDisplayName_computerHTML();
+//				result = constants.counterpartDisplayName_computer();
+			} else if (partnerLabel == 1) {
+				result = constants.counterpartDisplayName_humanHTML();
+//				result = constants.counterpartDisplayName_human();
+			} else {	
 				result = constants.counterpartDisplayName();
+			}
 			break;
 		case player:
-			result = constants.playerDisplayName();
+			result = constants.playerDisplayNameHTML();
+//			result = constants.playerDisplayName();
 			break;
 		default:
 			throw new IllegalStateException("Unhandled AgentEnum in AgentEnum.getName()");			

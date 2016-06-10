@@ -9,6 +9,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.i18n.client.HasDirection.Direction;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 
@@ -542,8 +543,8 @@ public class DemographicsDialogBox extends DialogBox {
 				if(textArea.getText().isEmpty()) textArea.setText("");
 
 				if(!getAnswers(genderQuestion).equals("0") & !getAnswers(educationQuestion).equals("0") & !getAnswers(religiosityQuestion).equals("0") & !getAnswers(ethnicityQuestion).equals("0")
-						//& !getAnswers(economicClassQuestion).equals("0") 
-						//& !getAnswers(politicalOrientationQuestion).equals("0")
+						& !getAnswers(economicClassQuestion).equals("0") 
+						& !getAnswers(politicalOrientationQuestion).equals("0")
 						& integerBox.getValue() != null) {
 					
 					final Button source = (Button) event.getSource();
@@ -588,6 +589,20 @@ public class DemographicsDialogBox extends DialogBox {
 					timer.schedule(2000); // 2sec delay
 					
 					hide();
+				} else if(integerBox.getValue() == null) {
+					Window.alert("Please input your age.");					
+				} else if(getAnswers(genderQuestion).equals("0")) {
+					Window.alert("Please select your gender.");
+				} else if(getAnswers(educationQuestion).equals("0")) {
+					Window.alert("Please select your education.");
+				} else if(getAnswers(religiosityQuestion).equals("0")) {					
+					Window.alert("Please select your religiosity.");
+				} else if(getAnswers(ethnicityQuestion).equals("0")) {
+					Window.alert("Please select your ethnicity.");
+				} else if(getAnswers(economicClassQuestion).equals("0") ) {
+					Window.alert("Please select your economic class.");
+				} else if(getAnswers(politicalOrientationQuestion).equals("0")) {
+					Window.alert("Please select your political party.");
 				}
 			}
 		

@@ -81,9 +81,9 @@ public class ParticipantIDDialogBox extends DialogBox {
 //					    	  final PartnerLabelCheckQuestionnaireDialogBox dialogBox = new PartnerLabelCheckQuestionnaireDialogBox(eventBus, experimentConditions, 25);
 //					    	  final FairnessQuestionnaire1DialogBox dialogBox = new FairnessQuestionnaire1DialogBox(eventBus, experimentConditions, 25);
 //					    	  final SocialValueOrientationQuestionnaire1DialogBox dialogBox = new SocialValueOrientationQuestionnaire1DialogBox(eventBus, experimentConditions);
-					    	  final ScenarioDialogBox dialogBox = new ScenarioDialogBox (eventBus, experimentConditions);
 //					    	  final DemographicsDialogBox dialogBox = new DemographicsDialogBox (eventBus, experimentConditions);
 
+					    	  final ScenarioDialogBox dialogBox = new ScenarioDialogBox (eventBus, experimentConditions);
 					    	  dialogBox.setPopupPosition(105, 75);
 					    	  dialogBox.show();
 //					    	  final MoralFoundationsQuestionnaire1DialogBox dialogBox = new MoralFoundationsQuestionnaire1DialogBox (eventBus, experimentConditions);

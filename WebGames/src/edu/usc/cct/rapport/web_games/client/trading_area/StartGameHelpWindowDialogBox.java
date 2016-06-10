@@ -57,13 +57,14 @@ public class StartGameHelpWindowDialogBox extends DialogBox {
 		Integer partnerLabel = experimentConditions.getPartnerLabel();
 		HTML help_start_of_game = new HTML("");
 
-		if (partnerLabel == 0) {
+/*		if (partnerLabel == 0) {
 			help_start_of_game.setHTML(constants.help_start_of_game_computer_partner());
 		} else if(partnerLabel == 1) {			
 			help_start_of_game.setHTML(constants.help_start_of_game_human_partner());
 		} else {
 			help_start_of_game.setHTML(constants.help_start_of_game());
-		}
+		}*/
+		help_start_of_game.setHTML(constants.help_start_of_game());
 		
 		absolutePanel.add(help_start_of_game , 10, 10);
 
@@ -83,12 +84,22 @@ public class StartGameHelpWindowDialogBox extends DialogBox {
 						Timer timer1 = new Timer() {
 							@Override
 							public void run() {
+								final PartnerAssignmentResultDialogBox dialogBox2 = new PartnerAssignmentResultDialogBox(eventBus, experimentConditions);
+								Timer timer2 = new Timer() {
+									@Override
+									public void run() {
+										dialogBox2.hide();										
+									}
+								};
+								dialogBox2.setPopupPosition(105, 75);
+								dialogBox2.show();
+							    timer2.schedule(5000);				
 								dialogBox1.hide();
 							}
 						};
 						dialogBox1.setPopupPosition(105, 75);
 						dialogBox1.show();
-					    timer1.schedule((int)(Math.random() * (13000 - 10000 + 1) + 10000)); 		// random delay between 5sec and 8sec;						
+						timer1.schedule((int)(Math.random() * (17000 - 15000 + 1) + 15000)); 		// random delay between 15sec and 17sec;
 						dialogBox.hide();
 					}
 				};

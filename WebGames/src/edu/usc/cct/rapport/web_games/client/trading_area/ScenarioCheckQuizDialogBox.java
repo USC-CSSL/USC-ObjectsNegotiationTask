@@ -47,53 +47,34 @@ public class ScenarioCheckQuizDialogBox extends DialogBox {
 	
 		if (localName == "en"){
 			HTML part1 = new HTML(constants.scenario_quiz_part1());
-//			HTML quiz1 = new HTML(constants.scenario_quiz_no1()); 
 			HTML quiz1 = new HTML(constants.scenario_quiz_forFruits_no1()); 
-//			absolutePanel.add(part1, 10, 10);			
-//			absolutePanel.add(quiz1, 10, 35);			
 			absolutePanel.add(part1, 35, 20);			
 			absolutePanel.add(quiz1, 35, 45);
 			
 			RadioButton radioButtonQuestions1_1  = new RadioButton("Quiz1");
-//			radioButtonQuestions1_1.setHTML(constants.scenario_quiz_no1_ans1());
 			radioButtonQuestions1_1.setHTML(constants.scenario_quiz_forFruits_no1_ans1());
 			radioButtonQuestions1_1.setFormValue("1");
-//			absolutePanel.add(radioButtonQuestions1_1, 20, 60);
 			absolutePanel.add(radioButtonQuestions1_1, 45, 70);
 			radioButtonQuestions1_1.setSize("266px", "19px");
 			Quiz1.add(radioButtonQuestions1_1);
 		
 			RadioButton radioButtonQuestions1_2 = new RadioButton("Quiz1");
-//			radioButtonQuestions1_2.setHTML(constants.scenario_quiz_no1_ans2());
 			radioButtonQuestions1_2.setHTML(constants.scenario_quiz_forFruits_no1_ans2());
 			radioButtonQuestions1_2.setFormValue("2");
-//			absolutePanel.add(radioButtonQuestions1_2, 320, 60);
 			absolutePanel.add(radioButtonQuestions1_2, 245, 70);
 			radioButtonQuestions1_2.setSize("196px", "19px");
 			Quiz1.add(radioButtonQuestions1_2);
 		
 			RadioButton radioButtonQuestions1_3 = new RadioButton("Quiz1");
-//			radioButtonQuestions1_3.setHTML(constants.scenario_quiz_no1_ans3());
 			radioButtonQuestions1_3.setHTML(constants.scenario_quiz_forFruits_no1_ans3());
 			radioButtonQuestions1_3.setFormValue("3");
-//			absolutePanel.add(radioButtonQuestions1_3, 20, 85);
 			absolutePanel.add(radioButtonQuestions1_3, 445, 70);
 			Quiz1.add(radioButtonQuestions1_3);
 		
-/*			RadioButton radioButtonQuestions1_4 = new RadioButton("Quiz1");
-			radioButtonQuestions1_4.setHTML(constants.scenario_quiz_no1_ans4());
-			radioButtonQuestions1_4.setFormValue("4");
-			absolutePanel.add(radioButtonQuestions1_4, 320, 85);
-			Quiz1.add(radioButtonQuestions1_4);
-			
-	    	VerticalSplitPanel verticalSplitPanel = new VerticalSplitPanel();
-			absolutePanel.add(verticalSplitPanel, 109, 105);
-			verticalSplitPanel.setSize("446px", "32px");*/
-			
 			////////////////////////////////////////////////////////////////////////////////////		
-			
-			Integer partnerLabel = experimentConditions.getPartnerLabel();
+
 			HTML quiz2 = new HTML("");
+/*			Integer partnerLabel = experimentConditions.getPartnerLabel();
 
 			if (partnerLabel == 0) {
 				quiz2.setHTML(constants.scenario_quiz_forFruits_no2_computer());
@@ -101,116 +82,108 @@ public class ScenarioCheckQuizDialogBox extends DialogBox {
 				quiz2.setHTML(constants.scenario_quiz_forFruits_no2_human());
 			} else {
 				quiz2.setHTML(constants.scenario_quiz_forFruits_no2());
-			}
+			}*/
+			quiz2.setHTML(constants.scenario_quiz_forFruits_no2());
 
-//			HTML quiz2 = new HTML(constants.scenario_quiz_no2()); 
-//			absolutePanel.add(quiz2, 10, 145);			
-			absolutePanel.add(quiz2, 35, 185);			
+//			absolutePanel.add(quiz2, 35, 185);
+			absolutePanel.add(quiz2, 35, 125);
 			
 			RadioButton radioButtonQuestions2_1  = new RadioButton("Quiz2");
-//			radioButtonQuestions2_1.setHTML(constants.scenario_quiz_no2_ans1());
 			radioButtonQuestions2_1.setHTML(constants.scenario_quiz_forFruits_no2_ans1());
 			radioButtonQuestions2_1.setFormValue("1");
-//			absolutePanel.add(radioButtonQuestions2_1, 20, 170);
-			absolutePanel.add(radioButtonQuestions2_1, 35, 210);
+//			absolutePanel.add(radioButtonQuestions2_1, 35, 210);
+			absolutePanel.add(radioButtonQuestions2_1, 35, 150);
 			radioButtonQuestions2_1.setSize("266px", "19px");
 			Quiz2.add(radioButtonQuestions2_1);
 		
 			RadioButton radioButtonQuestions2_2 = new RadioButton("Quiz2");
-//			radioButtonQuestions2_2.setHTML(constants.scenario_quiz_no2_ans2());
 			radioButtonQuestions2_2.setHTML(constants.scenario_quiz_forFruits_no2_ans2());
 			radioButtonQuestions2_2.setFormValue("2");
-//			absolutePanel.add(radioButtonQuestions2_2, 320, 170);
-			absolutePanel.add(radioButtonQuestions2_2, 235, 210);
+//			absolutePanel.add(radioButtonQuestions2_2, 235, 210);
+			absolutePanel.add(radioButtonQuestions2_2, 245, 150);
 			radioButtonQuestions2_2.setSize("196px", "19px");
 			Quiz2.add(radioButtonQuestions2_2);
 		
 			RadioButton radioButtonQuestions2_3 = new RadioButton("Quiz2");
-//			radioButtonQuestions2_3.setHTML(constants.scenario_quiz_no2_ans3());
 			radioButtonQuestions2_3.setHTML(constants.scenario_quiz_forFruits_no2_ans3());
 			radioButtonQuestions2_3.setFormValue("3");
-//			absolutePanel.add(radioButtonQuestions2_3, 20, 195);
-			absolutePanel.add(radioButtonQuestions2_3, 435, 210);
+//			absolutePanel.add(radioButtonQuestions2_3, 435, 210);
+			absolutePanel.add(radioButtonQuestions2_3, 445, 150);
 			Quiz2.add(radioButtonQuestions2_3);
-		
-/*			RadioButton radioButtonQuestions2_4 = new RadioButton("Quiz2");
-			radioButtonQuestions2_4.setHTML(constants.scenario_quiz_no2_ans4());
-			radioButtonQuestions2_4.setFormValue("4");
-			absolutePanel.add(radioButtonQuestions2_4, 320, 195);
-			Quiz2.add(radioButtonQuestions2_4);
-			
-	    	VerticalSplitPanel verticalSplitPanel2 = new VerticalSplitPanel();
-			absolutePanel.add(verticalSplitPanel2, 109, 215);
-			verticalSplitPanel2.setSize("446px", "32px");*/
-			
-			////////////////////////////////////////////////////////////////////////////////////		
-			
-/*			HTML quiz3 = new HTML(constants.scenario_quiz_no3()); 
-			absolutePanel.add(quiz3, 10, 255);			
-			
-			RadioButton radioButtonQuestions3_1  = new RadioButton("Quiz3");
-			radioButtonQuestions3_1.setHTML(constants.scenario_quiz_no3_ans1());
-			radioButtonQuestions3_1.setFormValue("1");
-			absolutePanel.add(radioButtonQuestions3_1, 20, 280);
-			radioButtonQuestions3_1.setSize("266px", "19px");
-			Quiz3.add(radioButtonQuestions3_1);
-		
-			RadioButton radioButtonQuestions3_2 = new RadioButton("Quiz3");
-			radioButtonQuestions3_2.setHTML(constants.scenario_quiz_no3_ans2());
-			radioButtonQuestions3_2.setFormValue("2");
-			absolutePanel.add(radioButtonQuestions3_2, 320, 280);
-			radioButtonQuestions3_2.setSize("196px", "19px");
-			Quiz3.add(radioButtonQuestions3_2);
-		
-			RadioButton radioButtonQuestions3_3 = new RadioButton("Quiz3");
-			radioButtonQuestions3_3.setHTML(constants.scenario_quiz_no3_ans3());
-			radioButtonQuestions3_3.setFormValue("3");
-			absolutePanel.add(radioButtonQuestions3_3, 20, 305);
-			Quiz3.add(radioButtonQuestions3_3);
-		
-			RadioButton radioButtonQuestions3_4 = new RadioButton("Quiz3");
-			radioButtonQuestions3_4.setHTML(constants.scenario_quiz_no3_ans4());
-			radioButtonQuestions3_4.setFormValue("4");
-			absolutePanel.add(radioButtonQuestions3_4, 320, 305);
-			Quiz3.add(radioButtonQuestions3_4);
-			
-	    	VerticalSplitPanel verticalSplitPanel3 = new VerticalSplitPanel();
-			absolutePanel.add(verticalSplitPanel3, 109, 325);
-			verticalSplitPanel3.setSize("446px", "32px");*/
 			
 			////////////////////////////////////////////////////////////////////////////////////		
 	
 			HTML part2 = new HTML(constants.scenario_quiz_part2());
-//			HTML quiz4 = new HTML(constants.scenario_quiz_no4()); 
-			HTML quiz4 = new HTML(constants.scenario_quiz_forFruits_no3()); 
-//			absolutePanel.add(part2, 10, 365);			
-//			absolutePanel.add(quiz4, 10, 385);
-			absolutePanel.add(part2, 35, 335);
-			absolutePanel.add(quiz4, 35, 355);
+			HTML quiz3 = new HTML(constants.scenario_quiz_forFruits_no3()); 
+//			absolutePanel.add(part2, 35, 335);
+			absolutePanel.add(part2, 35, 205);
+//			absolutePanel.add(quiz3, 35, 355);
+			absolutePanel.add(quiz3, 35, 230);
+			
+			RadioButton radioButtonQuestions3_1  = new RadioButton("Quiz3");
+			radioButtonQuestions3_1.setHTML(constants.scenario_quiz_true());
+			radioButtonQuestions3_1.setFormValue("1");
+//			absolutePanel.add(radioButtonQuestions3_1, 45, 380);
+			absolutePanel.add(radioButtonQuestions3_1, 45, 255);
+			radioButtonQuestions3_1.setSize("266px", "19px");
+			Quiz3.add(radioButtonQuestions3_1);
+		
+			RadioButton radioButtonQuestions3_2 = new RadioButton("Quiz3");
+			radioButtonQuestions3_2.setHTML(constants.scenario_quiz_false());
+			radioButtonQuestions3_2.setFormValue("2");
+//			absolutePanel.add(radioButtonQuestions3_2, 245, 380);
+			absolutePanel.add(radioButtonQuestions3_2, 245, 255);
+			radioButtonQuestions3_2.setSize("196px", "19px");
+			Quiz3.add(radioButtonQuestions3_2);
+
+			
+			////////////////////////////////////////////////////////////////////////////////////		
+			
+			HTML quiz4 = new HTML(constants.scenario_quiz_forFruits_no4()); 
+//			absolutePanel.add(quiz4, 35, 355);
+			absolutePanel.add(quiz4, 35, 315);
 			
 			RadioButton radioButtonQuestions4_1  = new RadioButton("Quiz4");
 			radioButtonQuestions4_1.setHTML(constants.scenario_quiz_true());
 			radioButtonQuestions4_1.setFormValue("1");
-//			absolutePanel.add(radioButtonQuestions4_1, 20, 410);
-			absolutePanel.add(radioButtonQuestions4_1, 45, 380);
+//			absolutePanel.add(radioButtonQuestions4_1, 45, 380);
+			absolutePanel.add(radioButtonQuestions4_1, 45, 340);
 			radioButtonQuestions4_1.setSize("266px", "19px");
 			Quiz4.add(radioButtonQuestions4_1);
 		
 			RadioButton radioButtonQuestions4_2 = new RadioButton("Quiz4");
 			radioButtonQuestions4_2.setHTML(constants.scenario_quiz_false());
 			radioButtonQuestions4_2.setFormValue("2");
-//			absolutePanel.add(radioButtonQuestions4_2, 320, 410);
-			absolutePanel.add(radioButtonQuestions4_2, 245, 380);
+//			absolutePanel.add(radioButtonQuestions4_2, 245, 380);
+			absolutePanel.add(radioButtonQuestions4_2, 245, 340);
 			radioButtonQuestions4_2.setSize("196px", "19px");
 			Quiz4.add(radioButtonQuestions4_2);
 
-/*	    	VerticalSplitPanel verticalSplitPanel4 = new VerticalSplitPanel();
-			absolutePanel.add(verticalSplitPanel4, 109, 430);
-			verticalSplitPanel4.setSize("446px", "32px");
 			
 			////////////////////////////////////////////////////////////////////////////////////		
 			
-			HTML quiz5 = new HTML(constants.scenario_quiz_no5()); 
+			HTML quiz5 = new HTML(constants.scenario_quiz_forFruits_no5()); 
+//			absolutePanel.add(quiz5, 35, 355);
+			absolutePanel.add(quiz5, 35, 395);
+			
+			RadioButton radioButtonQuestions5_1  = new RadioButton("Quiz5");
+			radioButtonQuestions5_1.setHTML(constants.scenario_quiz_true());
+			radioButtonQuestions5_1.setFormValue("1");
+//			absolutePanel.add(radioButtonQuestions5_1, 45, 380);
+			absolutePanel.add(radioButtonQuestions5_1, 45, 420);
+			radioButtonQuestions5_1.setSize("266px", "19px");
+			Quiz5.add(radioButtonQuestions5_1);
+		
+			RadioButton radioButtonQuestions5_2 = new RadioButton("Quiz5");
+			radioButtonQuestions5_2.setHTML(constants.scenario_quiz_false());
+			radioButtonQuestions5_2.setFormValue("2");
+//			absolutePanel.add(radioButtonQuestions5_2, 245, 380);
+			absolutePanel.add(radioButtonQuestions5_2, 245, 420);
+			radioButtonQuestions5_2.setSize("196px", "19px");
+			Quiz5.add(radioButtonQuestions5_2);
+			
+			
+/*			HTML quiz5 = new HTML(constants.scenario_quiz_no5()); 
 			absolutePanel.add(quiz5, 10, 470);			
 			
 			RadioButton radioButtonQuestions5_1  = new RadioButton("Quiz5");
@@ -233,7 +206,7 @@ public class ScenarioCheckQuizDialogBox extends DialogBox {
 //		button.setSize("101px", "26px");
 		button.setSize("250px", "33px");
 //		absolutePanel.add(button, 307, 510);
-		absolutePanel.add(button, 275, 470);
+		absolutePanel.add(button, 275, 490);
 
 		
 		button.addClickHandler(new ClickHandler() {
@@ -245,12 +218,13 @@ public class ScenarioCheckQuizDialogBox extends DialogBox {
 //				final PreGameQuestionnaireDialogBox dialogBox  = new PreGameQuestionnaireDialogBox(eventBus, 1, experimentConditions);
 //				dialogBox.center();
 				
-				if(!getAnswers(Quiz1).equals("0") & !getAnswers(Quiz2).equals("0") & !getAnswers(Quiz4).equals("0")) {
-//				if(!getAnswers(Quiz1).equals("0") & !getAnswers(Quiz2).equals("0") & !getAnswers(Quiz3).equals("0") & !getAnswers(Quiz4).equals("0") 
-//						& !getAnswers(Quiz5).equals("0")) {
+//				if(!getAnswers(Quiz1).equals("0") & !getAnswers(Quiz2).equals("0") & !getAnswers(Quiz4).equals("0")) {
+				if(!getAnswers(Quiz1).equals("0") & !getAnswers(Quiz2).equals("0") & !getAnswers(Quiz3).equals("0") & !getAnswers(Quiz4).equals("0") 
+						& !getAnswers(Quiz5).equals("0")) {
 					
 					if(getAnswers(Quiz1).equals(constants.scenario_quiz_forFruits_no1_ans()) 			& getAnswers(Quiz2).equals(constants.scenario_quiz_forFruits_no2_ans()) 
-							& getAnswers(Quiz4).equals(constants.scenario_quiz_forFruits_no3_ans())) {
+							& getAnswers(Quiz3).equals(constants.scenario_quiz_forFruits_no3_ans())		& getAnswers(Quiz4).equals(constants.scenario_quiz_forFruits_no4_ans())
+							& getAnswers(Quiz5).equals(constants.scenario_quiz_forFruits_no5_ans())) {
 //					if(getAnswers(Quiz1).equals(constants.scenario_quiz_forNSA_no1_ans()) 			& getAnswers(Quiz2).equals(constants.scenario_quiz_forNSA_no2_ans()) 
 //							& getAnswers(Quiz3).equals(constants.scenario_quiz_forNSA_no3_ans()) 	& getAnswers(Quiz4).equals(constants.scenario_quiz_no4_ans()) 
 //							& getAnswers(Quiz5).equals(constants.scenario_quiz_no5_ans())) {

@@ -7,6 +7,7 @@ import java.util.Map;
 import com.allen_sauer.gwt.dnd.client.DragContext;
 import com.allen_sauer.gwt.dnd.client.VetoDragException;
 import com.allen_sauer.gwt.dnd.client.drop.SimpleDropController;
+import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -69,10 +70,20 @@ public class TradingBoardDropController extends SimpleDropController {
 			throw new VetoDragException();
 		};
 
+		// 5/4/2016: EK working on it
+/*		final SimplePanel dropTarget = (SimplePanel)getDropTarget();
+		final FlexTable dropTargetParent = (FlexTable)getDropTarget().getParent();
+		
+		if (dropTarget.getWidget() != null) {
+			if (dropTargetParent.getStyleName() != "ict-rapport-grid-2x2") {
+				throw new VetoDragException();
+			}
+		};*/
+		
 		super.onPreviewDrop(context);
 	};
-
-
+	
+	
 	public Map<Image, Pair<AgentEnum, TradingObjectEnum>> getSourcesOfDraggedObjects(final List<Widget> selectedWidgets) {
 
 		final HashMap<Image, Pair<AgentEnum, TradingObjectEnum>> result = new HashMap<Image, Pair<AgentEnum, TradingObjectEnum>>();

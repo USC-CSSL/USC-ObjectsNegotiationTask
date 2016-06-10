@@ -4,6 +4,7 @@ package edu.usc.cct.rapport.web_games.client.trading_area;
 //import java.awt.Toolkit;
 import java.util.EnumMap;
 import java.util.Iterator;
+import java.util.Random;
 
 import com.google.gwt.core.client.Duration;
 import com.google.gwt.dom.client.Style.Cursor;
@@ -801,37 +802,78 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 //	public void showProposalResultDialogBox(final String temp, final int partnerLabel, final TradingAction tradingAction) {
 		final WaitingDialogBox waitingDialogBox = new WaitingDialogBox (eventBus, "waitForCounterpart", partnerLabel);
 		final ProposalResultDialogBox resultDialogBox = new ProposalResultDialogBox(temp, partnerLabel);
+		final ProposalResultDelayDialogBox resultDelayDialogBox = new ProposalResultDelayDialogBox(temp, partnerLabel);
+		
+		Random random = new Random();
+		final int rand = random.nextInt(5);
+//		final int rand = 0; // for testing
+
 
 		Timer timer1 = new Timer() { // ek: added waiting msg
 //        @Override
-			public void run() {				
+			public void run() {
 				Timer timer2 = new Timer() {
 				      public void run() {
 				    	  final double timestamp = Duration.currentTimeMillis();
 				    	  tradingAction.setTimestamp(timestamp);
 
 				    	  String acceptedStr = "accepted";
-				    	  String rejectedStr = "rejected";
+//				    	  String rejectedStr = "rejected";
 
 				    	  if(temp.equals(acceptedStr))
 				    		  TradingAreaView.this.eventBus.fireEvent(new ProposalAcceptedEvent(tradingAction));
-				    	  else if(temp.equals(rejectedStr))
-				    		  showOfferReviewStartDialogBox(partnerLabel, tradingAction, plyRemaining);
-//				    		  showOfferReviewStartDialogBox(partnerLabel, tradingAction);
-//				    		  TradingAreaView.this.eventBus.fireEvent(new ProposalMadeEvent(tradingAction));
-				    	  resultDialogBox.hide();
+
+							Timer timer3 = new Timer() {
+							      public void run() {
+							    	  final double timestamp = Duration.currentTimeMillis();
+							    	  tradingAction.setTimestamp(timestamp);
+			
+//							    	  String acceptedStr = "accepted";
+							    	  String rejectedStr = "rejected";
+			
+//							    	  if(temp.equals(acceptedStr))
+//							    		  TradingAreaView.this.eventBus.fireEvent(new ProposalAcceptedEvent(tradingAction));
+//							    	  else if(temp.equals(rejectedStr))
+							    	  if(temp.equals(rejectedStr))
+							    		  showOfferReviewStartDialogBox(partnerLabel, tradingAction, plyRemaining);
+			//				    		  showOfferReviewStartDialogBox(partnerLabel, tradingAction);
+			//				    		  TradingAreaView.this.eventBus.fireEvent(new ProposalMadeEvent(tradingAction));
+							    	  
+								      if(partnerLabel == 1 && rand == 0 && temp.equals(rejectedStr)) {
+								    	  resultDelayDialogBox.hide();
+								      }
+
+								      resultDialogBox.hide();
+							    	  }
+							      };
+							      
+						    	  String rejectedStr = "rejected";
+							      if(partnerLabel == 1 && rand == 0 && temp.equals(rejectedStr)) {
+							    	  resultDelayDialogBox.setPopupPosition(105, 75);
+							    	  resultDelayDialogBox.show();
+							    	  timer3.schedule((int)(Math.random() * (18000 - 15000 + 1) + 15000)); 		// random delay between 15sec and 18sec*/
+							      } else {
+							    	  timer3.schedule(1);
+							      }
 				      }
 				};
 
 				resultDialogBox.setPopupPosition(105, 75);
 				resultDialogBox.show();
-				timer2.schedule(5000);	// 5 sec delay for reading
+				
+				String acceptedStr = "accepted";
+				if(temp.equals(acceptedStr))
+					timer2.schedule(5000);	// 5 sec delay for reading
+				else 
+					timer2.schedule((int)(Math.random() * (18000 - 15000 + 1) + 15000)); 		// random delay between 15sec and 18sec*/
 				waitingDialogBox.hide();
 			}
 		};
 		waitingDialogBox.setPopupPosition(105, 75);
 		waitingDialogBox.show(); // EK 10/27/2014: pop up the screen in the left uppermost area
-		timer1.schedule((int)(Math.random() * (8000 - 5000 + 1) + 5000)); 		// random delay between 5sec and 8sec*/		
+		
+		timer1.schedule((int)(Math.random() * (18000 - 15000 + 1) + 15000)); 		// random delay between 15sec and 18sec*/
+		
 	};
 	
 //	public void showOfferReviewStartDialogBox(final int partnerLabel, final TradingAction tradingAction) {

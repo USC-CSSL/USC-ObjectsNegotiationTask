@@ -59,19 +59,19 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 				experimentConditions.setPartnerLabel(1);				
 			}
 				
-/*			if(experimentConditions.getExpScenario()==1 & whichScenario==0) {
-				experimentConditions.setExpScenario(2);
-			} else if(experimentConditions.getExpScenario()==1 &  whichScenario==1){
-				experimentConditions.setExpScenario(3);
-			} else if(experimentConditions.getExpScenario()==1 &  whichScenario==2){
-				experimentConditions.setExpScenario(4);
-			}
-			experimentConditions.setExpScenario(1);*/
-/*			if(experimentConditions.getExpScenario()==3 & whichScenario==0) {
-				experimentConditions.setExpScenario(4);				
-			} else if(experimentConditions.getExpScenario()==3 &  whichScenario==1){
-				experimentConditions.setExpScenario(5);
-			}*/
+//			if(experimentConditions.getExpScenario()==1 & whichScenario==0) {
+//				experimentConditions.setExpScenario(2);
+//			} else if(experimentConditions.getExpScenario()==1 &  whichScenario==1){
+//				experimentConditions.setExpScenario(3);
+//			} else if(experimentConditions.getExpScenario()==1 &  whichScenario==2){
+//				experimentConditions.setExpScenario(4);
+//			}
+//			experimentConditions.setExpScenario(1);
+//			if(experimentConditions.getExpScenario()==3 & whichScenario==0) {
+//				experimentConditions.setExpScenario(4);				
+//			} else if(experimentConditions.getExpScenario()==3 &  whichScenario==1){
+//				experimentConditions.setExpScenario(5);
+//			}
 			
 			AlgorithmicCounterpartDecisionMakingStrategyEnum algorithmicCounterpartDecisionMakingStrategyEnum = TradingAreaActivity.this.experimentConditions.getDecisionMakingStrategyOfAlgorithmicCounterpart(); 
 			if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy) & whichStrategy4==0) {
@@ -82,7 +82,22 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 				TradingAreaActivity.this.experimentConditions.setDecisionMakingStrategyOfAlgorithmicCounterpart(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedToughGentleSlopeStrategyFruits5);
 			} else if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy) & whichStrategy4==3) {
 				TradingAreaActivity.this.experimentConditions.setDecisionMakingStrategyOfAlgorithmicCounterpart(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedToughSteepSlopeStrategyFruits7);
-			} 
+			}
+			
+/*			AlgorithmicCounterpartDecisionMakingStrategyEnum algorithmicCounterpartDecisionMakingStrategyEnum = TradingAreaActivity.this.experimentConditions.getDecisionMakingStrategyOfAlgorithmicCounterpart(); 
+			if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy) & whichStrategy4==0) {
+				TradingAreaActivity.this.experimentConditions.setDecisionMakingStrategyOfAlgorithmicCounterpart(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedSoftGentleSlopeStrategyFruits1);
+				experimentConditions.setPartnerLabel(1);
+			} else if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy) & whichStrategy4==1) {
+				TradingAreaActivity.this.experimentConditions.setDecisionMakingStrategyOfAlgorithmicCounterpart(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedSoftSteepSlopeStrategyFruits3);
+				experimentConditions.setPartnerLabel(1);
+			} else if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy) & whichStrategy4==2) {
+				TradingAreaActivity.this.experimentConditions.setDecisionMakingStrategyOfAlgorithmicCounterpart(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedToughGentleSlopeStrategyFruits5);
+				experimentConditions.setPartnerLabel(0);
+			} else if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy) & whichStrategy4==3) {
+				TradingAreaActivity.this.experimentConditions.setDecisionMakingStrategyOfAlgorithmicCounterpart(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedToughSteepSlopeStrategyFruits7);
+				experimentConditions.setPartnerLabel(0);
+			}*/
 			
 /*			AlgorithmicCounterpartDecisionMakingStrategyEnum algorithmicCounterpartDecisionMakingStrategyEnum = TradingAreaActivity.this.experimentConditions.getDecisionMakingStrategyOfAlgorithmicCounterpart(); 
 			if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy) & whichStrategy8==0) {

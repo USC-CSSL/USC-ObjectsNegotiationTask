@@ -7,11 +7,11 @@ public interface ScenarioInternationalizationConstants extends Constants {
 	@DefaultStringValue("[TRANSLATION MISSING] Scenario")
 	String scenario_Window_Title();
 	
-	@DefaultStringValue("[TRANSLATION MISSING] scenario missing")
+/*	@DefaultStringValue("[TRANSLATION MISSING] scenario missing")
 	String scenario_fruits_computer_partner();
 	
 	@DefaultStringValue("[TRANSLATION MISSING] scenario missing")
-	String scenario_fruits_human_partner();
+	String scenario_fruits_human_partner();*/
 
 	@DefaultStringValue("[TRANSLATION MISSING] scenario missing")
 	String scenario_fruits();
@@ -83,11 +83,23 @@ public interface ScenarioInternationalizationConstants extends Constants {
 	@DefaultStringValue("[TRANSLATION MISSING] 3")
 	String scenario_quiz_forFruits_no2_ans();
 	
-	@DefaultStringValue("[TRANSLATION MISSING] 3. You and the other owner value each fruit differently.")
+	@DefaultStringValue("[TRANSLATION MISSING] 3. You and the other owner value each fruit equally.")
 	String scenario_quiz_forFruits_no3();
 
-	@DefaultStringValue("[TRANSLATION MISSING] 1")
+	@DefaultStringValue("[TRANSLATION MISSING] 2")
 	String scenario_quiz_forFruits_no3_ans();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 4. You should try to maximize your total payoff.")
+	String scenario_quiz_forFruits_no4();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 1")
+	String scenario_quiz_forFruits_no4_ans();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 5. Your negotiation partner will be either another Amazon MTurk worker or a computer agent.")
+	String scenario_quiz_forFruits_no5();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 1")
+	String scenario_quiz_forFruits_no5_ans();
 
 	@DefaultStringValue("[TRANSLATION MISSING] What is the only way to control the spread of infection in your baby?")
 	String scenario_quiz_no1();

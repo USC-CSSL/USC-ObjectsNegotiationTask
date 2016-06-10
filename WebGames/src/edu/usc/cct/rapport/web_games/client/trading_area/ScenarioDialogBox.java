@@ -40,13 +40,14 @@ public class ScenarioDialogBox extends DialogBox {
 		Integer partnerLabel = experimentConditions.getPartnerLabel();
 		HTML scenario = new HTML("");
 
-		if (partnerLabel == 0) {
+/*		if (partnerLabel == 0) {
 			scenario.setHTML(constants.scenario_fruits_computer_partner());
 		} else if(partnerLabel == 1) {			
 			scenario.setHTML(constants.scenario_fruits_human_partner());
 		} else {
 			scenario.setHTML(constants.scenario_fruits());
-		}
+		}*/
+		scenario.setHTML(constants.scenario_fruits());
 		
 		scenario.setSize("750px", "500px");
 		

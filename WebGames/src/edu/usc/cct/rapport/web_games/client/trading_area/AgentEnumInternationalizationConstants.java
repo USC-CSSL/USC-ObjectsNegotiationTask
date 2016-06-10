@@ -16,11 +16,20 @@ public interface AgentEnumInternationalizationConstants extends Constants {
 	@DefaultStringValue("[TRANSLATION MISSING] Computer Partner")
 	String counterpartDisplayName_computer();
 
-	@DefaultStringValue("[TRANSLATION MISSING] Human Partner")
+	@DefaultStringValue("[TRANSLATION MISSING] MTurk worker A2VL8OO4TGC7Q5")
 	String counterpartDisplayName_human();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Computer Partner")
+	String counterpartDisplayName_computerHTML();
+
+	@DefaultStringValue("[TRANSLATION MISSING] MTurk worker A2VL8OO4TGC7Q5")
+	String counterpartDisplayName_humanHTML();
 
 	@DefaultStringValue("[TRANSLATION MISSING] Player's Name")
 	String playerDisplayName();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Player's Name")
+	String playerDisplayNameHTML();
 
 	@DefaultStringValue("[TRANSLATION MISSING] If no agreement is reached, then your counterpart will earn")
 	String counterpartBATNAValuationDescription();
