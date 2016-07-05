@@ -16,6 +16,7 @@ public class AgentEmotionExpressionWidget extends Composite {
 	};
 
 	static final private int emoticonDiameter = 129;
+//	static final private int emoticonDiameter = 110; // 06/14/2016 Eunkyung: smaller facial expression with 5 choices
 	static final private ImageDimensionCalculator desiredEmotionExpressionImageDimensionCalculator = new ImageDimensionCalculator(emoticonDiameter, emoticonDiameter);
 
 	static final private int height = 34;
@@ -77,7 +78,8 @@ public class AgentEmotionExpressionWidget extends Composite {
 //		this.flexTableBasePanel.setWidget(17, 0, this.labelDisplayName);*/
 		this.HTMLDisplayName = new HTML("");
 		this.HTMLDisplayName.setWidth(pixelWidth);
-		this.HTMLDisplayName.setHeight(pixelHeight);
+		//this.HTMLDisplayName.setHeight(pixelHeight);
+		this.HTMLDisplayName.setHeight(inPixels(70));	// to include facial expression
 		this.HTMLDisplayName.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		this.HTMLDisplayName.setVisible(true);
 		this.flexTableBasePanel.setWidget(0, 0, this.HTMLDisplayName);

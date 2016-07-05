@@ -3,6 +3,7 @@ package edu.usc.cct.rapport.web_games.client.trading_area;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -72,9 +73,12 @@ public class ProposalResultDialogBox extends DialogBox implements ClickHandler {
 
 
 		FlexTable flexTable = new FlexTable();
-		setWidget(flexTable);
-//		flexTable.setSize("250px", "100px");
-		flexTable.setSize("800px", "565px");
+//		setWidget(flexTable);
+//		flexTable.setSize("800px", "565px");
+		flexTable.setSize("780px", "380px");
+		AbsolutePanel absolutePanel = new AbsolutePanel();
+		setWidget(absolutePanel);
+		absolutePanel.setSize("800px", "565px");
 				
 //		lblProposalResult.setStylePrimaryName("Label-style");
 //		lblProposalResult.setStylePrimaryName("BiggerLabel-style");
@@ -83,11 +87,15 @@ public class ProposalResultDialogBox extends DialogBox implements ClickHandler {
 //		flexTable.setWidget(1, 0, okButton);
 		
 		flexTable.setWidget(0, 0, proposalResult);
+		absolutePanel.add(flexTable, 10, 10);
+
 		Image loadingImage = new Image();
 		loadingImage.setUrl("http://shiraz.usc.edu/negotiation/images/loading_small.gif");
-		flexTable.setWidget(1, 0, loadingImage); // image
-
-		flexTable.getCellFormatter().setAlignment(1, 0, HasHorizontalAlignment.ALIGN_CENTER, HasVerticalAlignment.ALIGN_MIDDLE);
+		absolutePanel.add(loadingImage, 390, 400);
+//		Image loadingImage = new Image();
+//		loadingImage.setUrl("http://shiraz.usc.edu/negotiation/images/loading_small.gif");
+//		flexTable.setWidget(1, 0, loadingImage); // image
+//		flexTable.getCellFormatter().setAlignment(1, 0, HasHorizontalAlignment.ALIGN_CENTER, HasVerticalAlignment.ALIGN_MIDDLE);
 	};
 	
 	@Override

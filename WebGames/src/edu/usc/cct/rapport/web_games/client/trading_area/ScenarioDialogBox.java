@@ -82,7 +82,9 @@ public class ScenarioDialogBox extends DialogBox {
 //		button.setSize("101px", "26px");
 		button.setSize("250px", "33px");
 //		absolutePanel.add(button, 307, 510);
-		absolutePanel.add(button, 275, 470);
+//		absolutePanel.add(button, 275, 470);
+		absolutePanel.add(button, 275, 515);
+
 		
 		button.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {

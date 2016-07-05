@@ -139,15 +139,15 @@ public class SocialValueOrientationQuestionnaire1DialogBox extends DialogBox {
 		
 	}
 	
-/*	public void applyDataRowStylesAgain(int row) {
+	public void applyDataRowStylesAgain(int row) {
 		for(int col=1; col<=maxAnswerNo; col++) {
 //			if(row%2 != 0)
 			if(row%4 == 0 || row%4 == 1)			
-				flexTable.getCellFormatter().setStyleName(row, col, "FlexTable-OddRow");
-			else
 				flexTable.getCellFormatter().setStyleName(row, col, "FlexTable-EvenRow");
+			else
+				flexTable.getCellFormatter().setStyleName(row, col, "FlexTable-OddRow");
 		}
-	}*/
+	}
 	
 	public void setQuestion(final int currentQuestionNo, final ExperimentConditions experimentConditions) {
 //		flexTable.setWidget(2+currentQuestionNo, 0, questions_label.get(currentQuestionNo));
@@ -168,8 +168,8 @@ public class SocialValueOrientationQuestionnaire1DialogBox extends DialogBox {
 				public void onClick(ClickEvent event) {
 					userAnswer[currentQuestionNo] = radioButton.getTabIndex();
 //					applyDataRowStylesAgain(2+currentQuestionNo);
-//					applyDataRowStylesAgain(currentQuestionNo*2);
-//					applyDataRowStylesAgain(currentQuestionNo*2+1);
+					applyDataRowStylesAgain(currentQuestionNo*2);
+					applyDataRowStylesAgain(currentQuestionNo*2+1);
 //					flexTable.getCellFormatter().setStyleName(2+currentQuestionNo, radioButton.getTabIndex()+1, "FlexTable-SelectedCell");
 					flexTable.getCellFormatter().setStyleName(currentQuestionNo*2, radioButton.getTabIndex()+1, "FlexTable-SelectedCell");
 					flexTable.getCellFormatter().setStyleName(currentQuestionNo*2+1, radioButton.getTabIndex()+1, "FlexTable-SelectedCell");

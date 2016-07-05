@@ -36,7 +36,8 @@ public interface ITradingAreaView extends IWebGamesView {
 	void setPlayerInformationVisibilityAndBATNAValues(final ExperimentConditions experimentConditions);
 //	void showProposalResultDialogBox(final String temp);
 //	void showProposalResultDialogBox(final String temp, final int partnerLabel, final TradingAction tradingAction);
-	void showProposalResultDialogBox(final String temp, final int partnerLabel, final TradingAction tradingAction, final int plyRemaining);
+//	void showProposalResultDialogBox(final String temp, final int partnerLabel, final TradingAction tradingAction, final int plyRemaining);
+	void showProposalResultDialogBox(final String temp, final ExperimentConditions experimentConditions, final TradingAction tradingAction, final int plyRemaining);
 //	void showOfferReviewStartDialogBox(final int partnerLabel, final TradingAction tradingAction);
 	void showOfferReviewStartDialogBox(final int partnerLabel, final TradingAction tradingAction, final int plyRemaining);
 	void setScenario(final int expScenario);

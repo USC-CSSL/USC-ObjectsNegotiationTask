@@ -53,7 +53,17 @@ public class PrespecifiedPotentialCounterproposalTactic implements ProposalDecis
 		};
 
 		final Pair<TradingActionEnum, Proposal> result;
-		if ((valueOfMostRecentlyOfferedProposalForAgent - valueOfMostRecentlyOfferedProposalForPlayer) > 15) {
+/*		if ((valueOfMostRecentlyOfferedProposalForAgent - valueOfMostRecentlyOfferedProposalForPlayer) > 15) {	// Agent accepts the participant's offer
+			result = new Pair<TradingActionEnum, Proposal>(TradingActionEnum.acceptProposal, null);				// when (agent's payoffs - participant's payoffs) > 15
+		} else {
+			result = new Pair<TradingActionEnum, Proposal>(TradingActionEnum.makeCounterproposal, potentialCounterproposal);
+		};*/
+		
+		final int valueOfPotentialCounterproposalForAgent = potentialCounterproposal.getProposalValueFromAgentPerspective(AgentEnum.counterpart);
+		final int valueOfPotentialCounterproposalForPlayer = potentialCounterproposal.getProposalValueFromAgentPerspective(AgentEnum.player);
+		
+		if ((valueOfMostRecentlyOfferedProposalForAgent >= valueOfPotentialCounterproposalForAgent)
+				&& (valueOfMostRecentlyOfferedProposalForPlayer <= valueOfPotentialCounterproposalForPlayer)) {
 			result = new Pair<TradingActionEnum, Proposal>(TradingActionEnum.acceptProposal, null);
 		} else {
 			result = new Pair<TradingActionEnum, Proposal>(TradingActionEnum.makeCounterproposal, potentialCounterproposal);

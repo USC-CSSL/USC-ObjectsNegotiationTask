@@ -149,9 +149,17 @@ public class SocialValueOrientationQuestionnaire2DialogBox extends DialogBox {
 					flexTable.getCellFormatter().setStyleName(row, col, "FlexTable-OddRow");
 			}
 		}
-
-		
 	}
+	
+	public void applyDataRowStylesAgain(int row) {
+		for(int col=1; col<=maxAnswerNo; col++) {
+			if(row%4 == 0 || row%4 == 1)			
+				flexTable.getCellFormatter().setStyleName(row, col, "FlexTable-EvenRow");
+			else
+				flexTable.getCellFormatter().setStyleName(row, col, "FlexTable-OddRow");
+		}
+	}
+
 	
 	public void setQuestion(final int currentQuestionNo, final ExperimentConditions experimentConditions) {
 		flexTable.setWidget(currentQuestionNo*2, 0, questions.get(currentQuestionNo));
@@ -170,6 +178,8 @@ public class SocialValueOrientationQuestionnaire2DialogBox extends DialogBox {
 			radioButton.addClickHandler(new ClickHandler(){
 				public void onClick(ClickEvent event) {
 					userAnswer[currentQuestionNo] = radioButton.getTabIndex();
+					applyDataRowStylesAgain(currentQuestionNo*2);
+					applyDataRowStylesAgain(currentQuestionNo*2+1);
 					flexTable.getCellFormatter().setStyleName(currentQuestionNo*2, radioButton.getTabIndex()+1, "FlexTable-SelectedCell");
 					flexTable.getCellFormatter().setStyleName(currentQuestionNo*2+1, radioButton.getTabIndex()+1, "FlexTable-SelectedCell");
 

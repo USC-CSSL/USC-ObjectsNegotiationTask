@@ -84,7 +84,15 @@ public class WaitingDialogBox extends DialogBox {
 			waiting.setHTML(constants.waiting_msg_beforeOfferAcceptance());
 		} else if(explanation.equals("savingData")) {
 			waiting.setHTML(constants.waiting_msg_savingData());
-		} else {
+		} else if(explanation.equals("waitForOfferReview")) {
+			if(partnerLabel==0) {
+				waiting.setHTML(constants.waiting_msg_beforeComputerPantersOfferReview());
+			} else if(partnerLabel==1) {
+				waiting.setHTML(constants.waiting_msg_beforeHumanPantersOfferReview());				
+			} else {
+				waiting.setHTML(constants.waiting_msg_beforeOfferReview());
+			}
+		} else {	// explanation.equals("waitForCounterpart")
 			if(partnerLabel==0) {
 				waiting.setHTML(constants.waiting_msg_computer());
 			} else if(partnerLabel==1) {

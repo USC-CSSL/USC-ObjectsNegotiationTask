@@ -443,7 +443,8 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 			case makeInitialProposal:
 				assert(true);
 			case makeCounterproposal:
-				TradingAreaActivity.this.view.showProposalResultDialogBox("rejected", TradingAreaActivity.this.experimentConditions.getPartnerLabel(), tradingAction, negotiationSession.getPlyRemaining());
+				TradingAreaActivity.this.view.showProposalResultDialogBox("rejected", TradingAreaActivity.this.experimentConditions, tradingAction, negotiationSession.getPlyRemaining());
+//				TradingAreaActivity.this.view.showProposalResultDialogBox("rejected", TradingAreaActivity.this.experimentConditions.getPartnerLabel(), tradingAction, negotiationSession.getPlyRemaining());
 
 /*//				if(negotiationSession.getPlyRemaining() < 5 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible()) {
 				if(negotiationSession.getPlyRemaining() < 9 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible()) {
@@ -471,7 +472,8 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 */
 				break;
 			case acceptProposal:
-				TradingAreaActivity.this.view.showProposalResultDialogBox("accepted", TradingAreaActivity.this.experimentConditions.getPartnerLabel(), tradingAction, negotiationSession.getPlyRemaining());
+				TradingAreaActivity.this.view.showProposalResultDialogBox("accepted", TradingAreaActivity.this.experimentConditions, tradingAction, negotiationSession.getPlyRemaining());
+//				TradingAreaActivity.this.view.showProposalResultDialogBox("accepted", TradingAreaActivity.this.experimentConditions.getPartnerLabel(), tradingAction, negotiationSession.getPlyRemaining());
 //				resettableEventBus.fireEvent(new ProposalAcceptedEvent(tradingAction));
 				break;
 			case claimBATNAValue:

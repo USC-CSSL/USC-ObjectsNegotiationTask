@@ -4,6 +4,7 @@ import edu.usc.cct.rapport.web_games.client.trading_area.FacialExpressionEnum;
 //import java.util.Random;
 
 public enum EmotionModellingStrategyEnum {
+	notUsed,
 //	alwaysHappy,
 //	alwaysContent,
 	alwaysNeutral,
@@ -47,6 +48,7 @@ public enum EmotionModellingStrategyEnum {
 				computeChangeInEmotion = new DoNotBotherToComputeChangeInEmotion();
 				computeFacialExpressionAndIntensity = new FixedEmotionalReaction(FacialExpressionEnum.content);
 				break;*/
+			case notUsed:
 			case alwaysNeutral:
 				computeChangeInEmotion = new DoNotBotherToComputeChangeInEmotion();
 				computeFacialExpressionAndIntensity = new FixedEmotionalReaction(FacialExpressionEnum.neutral);

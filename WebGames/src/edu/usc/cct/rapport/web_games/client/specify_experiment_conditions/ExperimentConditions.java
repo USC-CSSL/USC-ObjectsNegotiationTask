@@ -33,6 +33,7 @@ public class ExperimentConditions implements DoublySerializable {
 	private boolean playerPayoffMatrixVisible;
 	private boolean playerDealValueVisible;
 //	private int expScenario;
+	private String agentSelfReportedEmotion;
 	private int partnerLabel;
 	private int partnerLabelCheck;
 	private String partnerLabelCheckComment;
@@ -115,6 +116,14 @@ public class ExperimentConditions implements DoublySerializable {
 	private int Anthropomorphism_7;
 	private int Anthropomorphism_8;
 	private int Anthropomorphism_9;
+	
+	// SelfReportedEmotion
+	private String SelfReportedEmotion_1;
+	private String SelfReportedEmotion_2;
+	private String SelfReportedEmotion_3;
+	private String SelfReportedEmotion_4;
+	private String SelfReportedEmotion_5;
+	private String SelfReportedEmotion_6;
 
 	// Fairness of the agent's offer Questions
 	private int FairnessOfTheAgentOffer_1;
@@ -177,7 +186,8 @@ public class ExperimentConditions implements DoublySerializable {
 			final boolean counterpartEmotionVisible, final boolean playerEmotionVisible, final int negotiationSessionPlyCount, final AgentEnum agentWhoActsLastIfNoAgreementIsReached, final AlgorithmicCounterpartDecisionMakingStrategyEnum decisionMakingStrategyOfAlgorithmicCounterpart, 
 //			final EmotionModellingStrategyEnum emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart, final boolean helpWindowsVisible, final boolean playerPayoffMatrixVisible, final boolean playerDealValueVisible, final int expScenario)
 //			final EmotionModellingStrategyEnum emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart, final boolean helpWindowsVisible, final boolean playerPayoffMatrixVisible, final boolean playerDealValueVisible, final String participantID)
-			final EmotionModellingStrategyEnum emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart, final boolean helpWindowsVisible, final boolean playerPayoffMatrixVisible, final boolean playerDealValueVisible, final int partnerLabel, final String participantID)
+//			final EmotionModellingStrategyEnum emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart, final boolean helpWindowsVisible, final boolean playerPayoffMatrixVisible, final boolean playerDealValueVisible, final int partnerLabel, final String participantID)
+			final EmotionModellingStrategyEnum emotionalReactionDeterminationStrategyOfAlgorithmicCounterpart, final boolean helpWindowsVisible, final boolean playerPayoffMatrixVisible, final boolean playerDealValueVisible, final String agentSelfReportedEmotion, final int partnerLabel, final String participantID)
 			{
 			/*final int SVValue, final int importanceOfObject, final int moralIssueofObject, final int negotiationFair, 
 			final int angryWithDeal, final int otherConsideredYourNeeds, final int otherNegotationFair,final int otherAngeryWithDeal,
@@ -202,10 +212,11 @@ public class ExperimentConditions implements DoublySerializable {
 		this.playerPayoffMatrixVisible = playerPayoffMatrixVisible;
 		this.playerDealValueVisible= playerDealValueVisible;
 //		this.expScenario=expScenario;
+		this.agentSelfReportedEmotion = agentSelfReportedEmotion;
 		this.partnerLabel=partnerLabel;
 		this.partnerLabelCheck=-1;
 		this.partnerLabelCheckComment="";
-		this.participantID = participantID;		
+		this.participantID = participantID;
 		
 /*		this.SVValue=0;
 		this.SVValueFood=0;
@@ -291,6 +302,13 @@ public class ExperimentConditions implements DoublySerializable {
 		this.Anthropomorphism_7=-1;
 		this.Anthropomorphism_8=-1;
 		this.Anthropomorphism_9=-1;
+		
+		this.SelfReportedEmotion_1="";
+		this.SelfReportedEmotion_2="";
+		this.SelfReportedEmotion_3="";
+		this.SelfReportedEmotion_4="";
+		this.SelfReportedEmotion_5="";
+		this.SelfReportedEmotion_6="";
 
 		this.FairnessOfTheAgentOffer_1=-1;
 		this.FairnessOfTheAgentOffer_2=-1;
@@ -350,6 +368,7 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add("playerPayoffMatrixVisible");
 		result.add("playerDealValueVisible");
 //		result.add("expScenario");
+		result.add("agentSelfReportedEmotion");
 		result.add("partnerLabel");
 		result.add("partnerLabelCheck");
 		result.add("partnerLabelCheckComment");
@@ -442,6 +461,13 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add("Anthropomorphism_8");
 		result.add("Anthropomorphism_9");
 		
+		result.add("SelfReportedEmotion_1");
+		result.add("SelfReportedEmotion_2");
+		result.add("SelfReportedEmotion_3");
+		result.add("SelfReportedEmotion_4");
+		result.add("SelfReportedEmotion_5");
+		result.add("SelfReportedEmotion_6");
+		
 		result.add("FairnessOfTheAgentOffer_1");
 		result.add("FairnessOfTheAgentOffer_2");
 		result.add("FairnessOfTheAgentOffer_3");
@@ -501,6 +527,7 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add(Boolean.toString(this.playerPayoffMatrixVisible));
 		result.add(Boolean.toString(this.playerDealValueVisible));
 //		result.add(Integer.toString(this.expScenario));
+		result.add(this.agentSelfReportedEmotion);
 		result.add(Integer.toString(this.partnerLabel));
 		result.add(Integer.toString(this.partnerLabelCheck));
 		result.add(this.partnerLabelCheckComment);
@@ -591,6 +618,13 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add(Integer.toString(this.Anthropomorphism_7));
 		result.add(Integer.toString(this.Anthropomorphism_8));
 		result.add(Integer.toString(this.Anthropomorphism_9));
+		
+		result.add(this.SelfReportedEmotion_1);
+		result.add(this.SelfReportedEmotion_2);
+		result.add(this.SelfReportedEmotion_3);
+		result.add(this.SelfReportedEmotion_4);
+		result.add(this.SelfReportedEmotion_5);
+		result.add(this.SelfReportedEmotion_6);
 
 		result.add(Integer.toString(this.FairnessOfTheAgentOffer_1));
 		result.add(Integer.toString(this.FairnessOfTheAgentOffer_2));
@@ -1603,4 +1637,37 @@ public class ExperimentConditions implements DoublySerializable {
 	public void setAnthropomorphism_9(int Anthropomorphism_9) {
 		this.Anthropomorphism_9 = Anthropomorphism_9;
 	}
+
+	public void setSelfReportedEmotion_1(String SelfReportedEmotion_1) {
+		this.SelfReportedEmotion_1 = SelfReportedEmotion_1;
+	}
+	
+	public void setSelfReportedEmotion_2(String SelfReportedEmotion_2) {
+		this.SelfReportedEmotion_2 = SelfReportedEmotion_2;
+	}
+	
+	public void setSelfReportedEmotion_3(String SelfReportedEmotion_3) {
+		this.SelfReportedEmotion_3 = SelfReportedEmotion_3;
+	}
+
+	public void setSelfReportedEmotion_4(String SelfReportedEmotion_4) {
+		this.SelfReportedEmotion_4 = SelfReportedEmotion_4;
+	}
+
+	public void setSelfReportedEmotion_5(String SelfReportedEmotion_5) {
+		this.SelfReportedEmotion_5 = SelfReportedEmotion_5;
+	}
+
+	public void setSelfReportedEmotion_6(String SelfReportedEmotion_6) {
+		this.SelfReportedEmotion_6 = SelfReportedEmotion_6;
+	}
+	
+	public String getAgentSelfReportedEmotion() {
+		return this.agentSelfReportedEmotion;
+	};
+	
+	public void setAgentSelfReportedEmotion(String agentSelfReportedEmotion) {
+		this.agentSelfReportedEmotion = agentSelfReportedEmotion;
+	}
+
 };

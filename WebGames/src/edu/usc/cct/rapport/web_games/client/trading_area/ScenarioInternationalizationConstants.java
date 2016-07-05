@@ -101,6 +101,12 @@ public interface ScenarioInternationalizationConstants extends Constants {
 	@DefaultStringValue("[TRANSLATION MISSING] 1")
 	String scenario_quiz_forFruits_no5_ans();
 
+	@DefaultStringValue("[TRANSLATION MISSING] 6. The negotiation partner cannot express emotion about your offer.")
+	String scenario_quiz_forFruits_no6();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 2")
+	String scenario_quiz_forFruits_no6_ans();
+
 	@DefaultStringValue("[TRANSLATION MISSING] What is the only way to control the spread of infection in your baby?")
 	String scenario_quiz_no1();
 

@@ -770,6 +770,24 @@ public interface HelpWindowInternationalizationConstants extends Constants {
 	@DefaultStringValue("[TRANSLATION MISSING] Waiting...")
 	String waiting();	
 
+	@DefaultStringValue("[TRANSLATION MISSING] Please wait while the computer program reviews your offer.")
+	String waiting_msg_beforeComputerPantersOfferReview();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] Please wait while the MTurk worker A2VL8OO4TGC7Q5 reviews your offer.")
+	String waiting_msg_beforeHumanPantersOfferReview();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] Please wait while the negotiation partner reviews your offer.")
+	String waiting_msg_beforeOfferReview();	
+
+	@DefaultStringValue("[TRANSLATION MISSING] The computer program showed its feeling about your offer:")
+	String reportComputerPartnersFacialExpressionHTML();	
+	
+	@DefaultStringValue("[TRANSLATION MISSING] The MTurk worker A2VL8OO4TGC7Q5 showed his/her feeling about your offer:")
+	String reportHumanPartnersFacialExpressionHTML();	
+	
+	@DefaultStringValue("[TRANSLATION MISSING] The negotiation partner showed his/her feeling about your offer:")
+	String reportPartnersFacialExpressionHTML();
+
 	@DefaultStringValue("[TRANSLATION MISSING] Please wait until the other participant makes a decision.")
 	String waiting_msg();	
 	
@@ -1053,4 +1071,25 @@ public interface HelpWindowInternationalizationConstants extends Constants {
 	@DefaultStringValue("[TRANSLATION MISSING] Human")
 	String anthropomorphism9_right();
 	//String btnOk_html();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] How do you feel about this offer?")
+	String reportFacialExpressionHTML();
+
+	@DefaultStringValue("[TRANSLATION MISSING] You")
+	String playerNameHTML();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Happy")
+	String happyHTML();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Content")
+	String contentHTML();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Neutral")
+	String neutralHTML();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Angry")
+	String angryHTML();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Sad")
+	String sadHTML();
 };

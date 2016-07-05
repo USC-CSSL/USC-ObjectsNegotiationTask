@@ -14,7 +14,8 @@ public class AgentEmotionSelectionWidget extends Composite {
 
 	static final private String playerEmoticonGridCSSStyleName = "ict-rapport-playerEmoticonGridStyle";
 	static final private String playerEmoticonSelectedCSSStyleName = "ict-rapport-playerEmoticonSelected";
-	static final private int panelWidthHint = 215;
+	static final private int panelWidthHint = 215; // 2 rows * 3 columns OR (small) 1 row * 5 columns
+//	static final private int panelWidthHint = 345; // 1 row  * 5 columns
 
 	final private AgentEmotionExpressionWidget playerEmotionExpressionWidget;
 	final private FacialExpressionEnum[] desiredImagePresentationOrder;
@@ -39,6 +40,7 @@ public class AgentEmotionSelectionWidget extends Composite {
 
 		for (final FacialExpressionEnum agentFacialExpressionEnum: this.desiredImagePresentationOrder) {
 			final FacialExpressionWidget facialExpressionWidget = new FacialExpressionWidget(65, 65, true, facialExpressionStyleEnum, agentFacialExpressionEnum);
+//			final FacialExpressionWidget facialExpressionWidget = new FacialExpressionWidget(39, 39, true, facialExpressionStyleEnum, agentFacialExpressionEnum);
 			facialExpressionWidget.addMouseDownHandler(playerFacialExpressionMouseInteractionHandler);
 			facialExpressionWidget.addMouseOverHandler(playerFacialExpressionMouseInteractionHandler);
 			facialExpressionWidget.addMouseOutHandler(playerFacialExpressionMouseInteractionHandler);
@@ -49,8 +51,10 @@ public class AgentEmotionSelectionWidget extends Composite {
 			playersEmotionSelection.put(facialExpressionWidget, agentFacialExpressionEnum);
 		};
 
-		final int gridRowCount = 2;
-		final int gridColCount = 3;
+//		final int gridRowCount = 2;
+//		final int gridColCount = 3;
+		final int gridRowCount = 1;
+		final int gridColCount = 5;
 		this.gridPlayerFacialExpressionPalette = new Grid(gridRowCount, gridColCount);
 		this.gridPlayerFacialExpressionPalette.setStyleName(playerEmoticonGridCSSStyleName);
 		int i = 0;
