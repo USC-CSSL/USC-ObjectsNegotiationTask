@@ -645,7 +645,7 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 	
 	@Override
 	public void showPartnerLabelDialogBox(final ExperimentConditions experimentConditions) {
-		final PartnerLabelDialogBox dialogBox = new PartnerLabelDialogBox(eventBus, experimentConditions);
+/*		final PartnerLabelDialogBox dialogBox = new PartnerLabelDialogBox(eventBus, experimentConditions);
 		dialogBox.setPopupPosition(105, 75);
 		dialogBox.show();
 		Timer timer = new Timer() {
@@ -654,6 +654,39 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 			}
 		};
 		
+	    timer.schedule(5000); 		// 5sec delay */
+	    
+		final PartnerLabelDialogBox dialogBox = new PartnerLabelDialogBox(eventBus, experimentConditions);
+		
+		Timer timer = new Timer() {
+			@Override
+			public void run() {
+				final PartnerAssignmentDialogBox dialogBox1 = new PartnerAssignmentDialogBox(eventBus, experimentConditions);
+
+				Timer timer1 = new Timer() {
+					@Override
+					public void run() {
+						final PartnerAssignmentResultDialogBox dialogBox2 = new PartnerAssignmentResultDialogBox(eventBus, experimentConditions);
+						Timer timer2 = new Timer() {
+							@Override
+							public void run() {
+								dialogBox2.hide();										
+							}
+						};
+						dialogBox2.setPopupPosition(105, 75);
+						dialogBox2.show();
+					    timer2.schedule(5000);				
+						dialogBox1.hide();
+					}
+				};
+				dialogBox1.setPopupPosition(105, 75);
+				dialogBox1.show();
+				timer1.schedule((int)(Math.random() * (17000 - 15000 + 1) + 15000)); 		// random delay between 15sec and 17sec;
+				dialogBox.hide();
+			}
+		};
+		dialogBox.setPopupPosition(105, 75);
+		dialogBox.show();
 	    timer.schedule(5000); 		// 5sec delay
 	}
 	

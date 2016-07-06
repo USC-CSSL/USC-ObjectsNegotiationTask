@@ -24,25 +24,32 @@ public class PrespecifiedToughSteepSlopeStrategyFruits7 implements PlyRemainingI
 		switch (turnsRemaining) {
 		// fruits negotiation: 3 items each 
 			case 1:
-				prespecifiedTradingObjectCounts = new int[]{2, 1, 2};	// item1(3), item2(4), item3(5) >> 2 1 2	(fruits1 set)
+//				prespecifiedTradingObjectCounts = new int[]{2, 1, 2};	// item1(3), item2(4), item3(5) >> 1 2 3	(fruits1 set)
+				prespecifiedTradingObjectCounts = new int[]{1, 2, 2};	// item1(4), item2(5), item3(3) >> 2 3 1	(fruits7 set = fruits3 set)
 				break;
 			case 2:
-				prespecifiedTradingObjectCounts = new int[]{2, 1, 2};
+//				prespecifiedTradingObjectCounts = new int[]{2, 1, 2};
+				prespecifiedTradingObjectCounts = new int[]{1, 2, 2};
 				break;
 			case 3:
-				prespecifiedTradingObjectCounts = new int[]{0, 3, 2};
+//				prespecifiedTradingObjectCounts = new int[]{0, 3, 2};
+				prespecifiedTradingObjectCounts = new int[]{3, 2, 0};
 				break;
 			case 4:
-				prespecifiedTradingObjectCounts = new int[]{2, 1, 3};
+//				prespecifiedTradingObjectCounts = new int[]{2, 1, 3};
+				prespecifiedTradingObjectCounts = new int[]{1, 3, 2};
 				break;
 			case 5:
-				prespecifiedTradingObjectCounts = new int[]{0, 3, 3};
+//				prespecifiedTradingObjectCounts = new int[]{0, 3, 3};
+				prespecifiedTradingObjectCounts = new int[]{3, 3, 0};
 				break;
 			case 6:
-				prespecifiedTradingObjectCounts = new int[]{3, 1, 3};
+//				prespecifiedTradingObjectCounts = new int[]{3, 1, 3};
+				prespecifiedTradingObjectCounts = new int[]{1, 3, 3};
 				break;
 			default:
-				prespecifiedTradingObjectCounts = new int[]{2, 2, 3};
+//				prespecifiedTradingObjectCounts = new int[]{2, 2, 3};
+				prespecifiedTradingObjectCounts = new int[]{2, 3, 2};
 		};
 
 		int tradingObjectCountIndex = 0;

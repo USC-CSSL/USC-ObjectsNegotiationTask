@@ -4,6 +4,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -213,9 +214,25 @@ public class AnthropomorphismQuestionnaireDialogBox extends DialogBox {
 				experimentConditions.setAnthropomorphism_8(userAnswer[7]);
 				experimentConditions.setAnthropomorphism_9(userAnswer[8]);
 
-				final PartnerLabelCheckQuestionnaireDialogBox dialogBox = new PartnerLabelCheckQuestionnaireDialogBox(eventBus, experimentConditions, plyRemaining);
+				eventBus.fireEvent(new LogExperimentInformationEvent());
+				eventBus.fireEvent(new NegotiationConclusionAcknowledgedEvent());
+				
+				final WaitingDialogBox dialogBox = new WaitingDialogBox (eventBus, "savingData", 0);
+				dialogBox.center();
 				dialogBox.setPopupPosition(105, 75);
 				dialogBox.show();
+				
+				Timer timer = new Timer() {
+				      public void run() {
+				    	  dialogBox.hide();
+				      }
+				};				
+				timer.schedule(2000); // 2sec delay
+
+// 07/05/2016: commented out for fMRI experiment				
+//				final PartnerLabelCheckQuestionnaireDialogBox dialogBox = new PartnerLabelCheckQuestionnaireDialogBox(eventBus, experimentConditions, plyRemaining);
+//				dialogBox.setPopupPosition(105, 75);
+//				dialogBox.show();
 			}
 		});
 

@@ -24,7 +24,7 @@ public class PrespecifiedSoftGentleSlopeStrategyFruits1 implements PlyRemainingI
 		switch (turnsRemaining) {
 		// fruits negotiation: 3 items each 
 			case 1:
-				prespecifiedTradingObjectCounts = new int[]{1, 1, 2};	// item1, item2, item3
+				prespecifiedTradingObjectCounts = new int[]{1, 1, 2};	// item1(3), item2(4), item3(5) >> 1 2 3	(fruits1 set)
 				break;
 			case 2:
 				prespecifiedTradingObjectCounts = new int[]{1, 1, 2};

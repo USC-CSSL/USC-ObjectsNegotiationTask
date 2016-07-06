@@ -73,7 +73,7 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 //				experimentConditions.setExpScenario(5);
 //			}
 			
-			AlgorithmicCounterpartDecisionMakingStrategyEnum algorithmicCounterpartDecisionMakingStrategyEnum = TradingAreaActivity.this.experimentConditions.getDecisionMakingStrategyOfAlgorithmicCounterpart(); 
+/*			AlgorithmicCounterpartDecisionMakingStrategyEnum algorithmicCounterpartDecisionMakingStrategyEnum = TradingAreaActivity.this.experimentConditions.getDecisionMakingStrategyOfAlgorithmicCounterpart(); 
 			if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy) & whichStrategy4==0) {
 				TradingAreaActivity.this.experimentConditions.setDecisionMakingStrategyOfAlgorithmicCounterpart(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedSoftGentleSlopeStrategyFruits1);
 			} else if(algorithmicCounterpartDecisionMakingStrategyEnum.equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.randomStrategy) & whichStrategy4==1) {
@@ -371,8 +371,8 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 	public void updateTradingArea(final TradingBoardState newTradingBoardState, final NegotiationSession negotiationSession) {
 //		if (negotiationSession.getPlyRemaining() ==  19 & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible() ){
 		if (negotiationSession.getPlyRemaining() ==  TradingAreaActivity.this.experimentConditions.getNegotiationSessionPlyCount() & TradingAreaActivity.this.experimentConditions.getHelpWindowsVisible() ){
-			TradingAreaActivity.this.view.showParticipantIDBox(TradingAreaActivity.this.experimentConditions); // EK 10/23/14: commented out for fMRI experiment
-			//TradingAreaActivity.this.view.showPartnerLabelDialogBox(TradingAreaActivity.this.experimentConditions); // for fMRI
+//			TradingAreaActivity.this.view.showParticipantIDBox(TradingAreaActivity.this.experimentConditions); // EK 10/23/14: commented out for fMRI experiment
+			TradingAreaActivity.this.view.showPartnerLabelDialogBox(TradingAreaActivity.this.experimentConditions); // for fMRI
 			//TradingAreaActivity.this.view.showStartGameHelpWindowDialogBox(1);
 			//TradingAreaActivity.this.view.showScenarioDialogBox(TradingAreaActivity.this.experimentConditions);
 //			final double timestamp = Duration.currentTimeMillis();

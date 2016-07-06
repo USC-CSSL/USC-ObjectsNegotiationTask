@@ -136,13 +136,13 @@ public class PartingView extends WebGamesView implements IPartingView {
 		final Label partingLabel = new Label(constants.partingMessage());
 //		partingLabel.addStyleName(largeFontSizeStyleName);
 		partingLabel.setStyleName("BigLabel-style");
-		if (localName == "en"){
+/*		if (localName == "en"){
 			Random random = new Random();
 //			String uuid = UUID.randomUUID().toString();
 			String uuid = new BigInteger(130, random).toString(32);
 			partingLabel.setText(constants.partingMessage() + "\n\nPlease make sure to copy and paste the following completion code in the box provided on the Mechanical Turk HIT page:\n" + uuid);
 			//random.toString();
-		}
+		}*/ // 07/05/2016: Commented out. This is for MTurk experiment
 		
 		if (localName == "fa"){
 			partingLabel.setText(constants.partingMessage(),Direction.RTL);

@@ -7,7 +7,7 @@ import edu.usc.cct.rapport.web_games.client.trading_area.AgentEnum;
 import edu.usc.cct.rapport.web_games.client.trading_area.Proposal;
 import edu.usc.cct.rapport.web_games.client.trading_area.TradingObjectEnum;
 
-public class PrespecifiedSoftGentleSlopeStrategyFruits2 implements PlyRemainingIndexedProposalGenerator {
+public class PrespecifiedToughSteepSlopeStrategyFruits5 implements PlyRemainingIndexedProposalGenerator {
 
 	public Proposal getPrespecifiedPotentialCounterproposal(final EnumSet<TradingObjectEnum> setOfTradingObjectEnum, final int plyRemaining) {
 
@@ -24,32 +24,32 @@ public class PrespecifiedSoftGentleSlopeStrategyFruits2 implements PlyRemainingI
 		switch (turnsRemaining) {
 		// fruits negotiation: 3 items each 
 			case 1:
-//				prespecifiedTradingObjectCounts = new int[]{1, 1, 2};	// item1(3), item2(4), item3(5) >> 1 2 3	(fruits1 set)
-				prespecifiedTradingObjectCounts = new int[]{2, 1, 1};	// item1(5), item2(3), item3(4) >> 3 1 2	(fruits2 set)
+//				prespecifiedTradingObjectCounts = new int[]{2, 1, 2};	// item1(3), item2(4), item3(5) >> 1 2 3	(fruits1 set)
+				prespecifiedTradingObjectCounts = new int[]{1, 2, 2};	// item1(4), item2(3), item3(5) >> 2 1 3	(fruits5 set)
 				break;
 			case 2:
-//				prespecifiedTradingObjectCounts = new int[]{1, 1, 2};
-				prespecifiedTradingObjectCounts = new int[]{2, 1, 1};
+//				prespecifiedTradingObjectCounts = new int[]{2, 1, 2};
+				prespecifiedTradingObjectCounts = new int[]{1, 2, 2};
 				break;
 			case 3:
-//				prespecifiedTradingObjectCounts = new int[]{0, 2, 2};
-				prespecifiedTradingObjectCounts = new int[]{2, 0, 2};
+//				prespecifiedTradingObjectCounts = new int[]{0, 3, 2};
+				prespecifiedTradingObjectCounts = new int[]{3, 0, 2};
 				break;
 			case 4:
-//				prespecifiedTradingObjectCounts = new int[]{2, 0, 3};
-				prespecifiedTradingObjectCounts = new int[]{3, 2, 0};
+//				prespecifiedTradingObjectCounts = new int[]{2, 1, 3};
+				prespecifiedTradingObjectCounts = new int[]{1, 2, 3};
 				break;
 			case 5:
-//				prespecifiedTradingObjectCounts = new int[]{1, 1, 3};
-				prespecifiedTradingObjectCounts = new int[]{3, 1, 1};
+//				prespecifiedTradingObjectCounts = new int[]{0, 3, 3};
+				prespecifiedTradingObjectCounts = new int[]{3, 0, 3};
 				break;
 			case 6:
-//				prespecifiedTradingObjectCounts = new int[]{3, 0, 3};
-				prespecifiedTradingObjectCounts = new int[]{3, 3, 0};
+//				prespecifiedTradingObjectCounts = new int[]{3, 1, 3};
+				prespecifiedTradingObjectCounts = new int[]{1, 3, 3};
 				break;
 			default:
-//				prespecifiedTradingObjectCounts = new int[]{1, 2, 3};
-				prespecifiedTradingObjectCounts = new int[]{3, 1, 2};
+//				prespecifiedTradingObjectCounts = new int[]{2, 2, 3};
+				prespecifiedTradingObjectCounts = new int[]{2, 2, 3};
 		};
 
 		int tradingObjectCountIndex = 0;

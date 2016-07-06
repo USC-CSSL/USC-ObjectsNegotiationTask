@@ -65,7 +65,7 @@ public class ObtainConsentView extends WebGamesView implements IObtainConsentVie
 	
 	public void populate(final EventBus eventBus, final PlaceController placeController) {
 		
-		final RichTextArea textAreaConsentInquiryText = new RichTextArea();
+/*		final RichTextArea textAreaConsentInquiryText = new RichTextArea();
 		textAreaConsentInquiryText.setHTML(constants.textAreaConsentInquiry());
 //		textAreaConsentInquiryText.setHTML("Please click the enter button below to proceed");
 		textAreaConsentInquiryText.setHeight("460px");
@@ -115,8 +115,8 @@ public class ObtainConsentView extends WebGamesView implements IObtainConsentVie
 		
 //		viewBasePanel.addDomHandler(handler, KeyDownEvent.getType());
 	//	focus.addDomHandler(new KeyDownHandler() {
-//		anchorPanel.addDomHandler(new KeyDownHandler() {
-/*		Event.addNativePreviewHandler(new Event.NativePreviewHandler() { // for fMRI recording
+//		anchorPanel.addDomHandler(new KeyDownHandler() {*/ // 07/05/2016: Commented out. This is for MTurk experiment.
+		Event.addNativePreviewHandler(new Event.NativePreviewHandler() { // for fMRI recording
 			
 			@Override
 			public void onPreviewNativeEvent(NativePreviewEvent event) {
@@ -125,21 +125,21 @@ public class ObtainConsentView extends WebGamesView implements IObtainConsentVie
 				if(event.getNativeEvent().getKeyCode() == 53)	
 					ObtainConsentView.this.eventBus.fireEvent(new UserConsentsEvent());				
 			}
-		});*/		
+		});	
 
 
-		final Button buttonUserDoesNotConsent = new Button(constants.userDoesNotConsent());
+/*		final Button buttonUserDoesNotConsent = new Button(constants.userDoesNotConsent());
 		buttonUserDoesNotConsent.addClickHandler(new ClickHandler() {				
 			@Override
 			public void onClick(final ClickEvent event) {
 						ObtainConsentView.this.eventBus.fireEvent(new UserDoesNotConsentEvent());
 			};
 		});
-		viewBasePanel.add(buttonUserDoesNotConsent,318,520);
+		viewBasePanel.add(buttonUserDoesNotConsent,318,520);*/
 		
-/*		Label lbl = new Label("We will start shortly.");	// for fMRI recording
+		Label lbl = new Label("We will start shortly.");	// for fMRI recording
 		lbl.setStyleName("BigLabel-style");
-		viewBasePanel.add(lbl, 250, 300);*/
+		viewBasePanel.add(lbl, 250, 300);
 
 //		viewBasePanel.setVisible(true);
 //		initWidget(viewBasePanel);

@@ -52,20 +52,20 @@ public class FairnessQuestionnaire6DialogBox extends DialogBox {
 		if(experimentConditions.getPartnerLabel()==0) {	
 			if(experimentConditions.getDecisionMakingStrategyOfAlgorithmicCounterpart().equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedSoftGentleSlopeStrategyFruits1)) {
 				offer.setUrl("http://shiraz.usc.edu/negotiation/images/fruits1_offer6_cc.png");
-			} else if(experimentConditions.getDecisionMakingStrategyOfAlgorithmicCounterpart().equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedSoftSteepSlopeStrategyFruits3)) {
+/*			} else if(experimentConditions.getDecisionMakingStrategyOfAlgorithmicCounterpart().equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedSoftSteepSlopeStrategyFruits3)) {
 				offer.setUrl("http://shiraz.usc.edu/negotiation/images/fruits3_offer6_cc.png");
 			} else if(experimentConditions.getDecisionMakingStrategyOfAlgorithmicCounterpart().equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedToughGentleSlopeStrategyFruits5)) {
-				offer.setUrl("http://shiraz.usc.edu/negotiation/images/fruits5_offer6_cc.png");
+				offer.setUrl("http://shiraz.usc.edu/negotiation/images/fruits5_offer6_cc.png");*/
 			} else if(experimentConditions.getDecisionMakingStrategyOfAlgorithmicCounterpart().equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedToughSteepSlopeStrategyFruits7)) {
 				offer.setUrl("http://shiraz.usc.edu/negotiation/images/fruits7_offer6_cc.png");
 			}			
 		} else if (experimentConditions.getPartnerLabel()==1) {
 			if(experimentConditions.getDecisionMakingStrategyOfAlgorithmicCounterpart().equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedSoftGentleSlopeStrategyFruits1)) {
 				offer.setUrl("http://shiraz.usc.edu/negotiation/images/fruits1_offer6_a.png");
-			} else if(experimentConditions.getDecisionMakingStrategyOfAlgorithmicCounterpart().equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedSoftSteepSlopeStrategyFruits3)) {
+/*			} else if(experimentConditions.getDecisionMakingStrategyOfAlgorithmicCounterpart().equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedSoftSteepSlopeStrategyFruits3)) {
 				offer.setUrl("http://shiraz.usc.edu/negotiation/images/fruits3_offer6_a.png");
 			} else if(experimentConditions.getDecisionMakingStrategyOfAlgorithmicCounterpart().equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedToughGentleSlopeStrategyFruits5)) {
-				offer.setUrl("http://shiraz.usc.edu/negotiation/images/fruits5_offer6_a.png");
+				offer.setUrl("http://shiraz.usc.edu/negotiation/images/fruits5_offer6_a.png");*/
 			} else if(experimentConditions.getDecisionMakingStrategyOfAlgorithmicCounterpart().equals(AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedToughSteepSlopeStrategyFruits7)) {
 				offer.setUrl("http://shiraz.usc.edu/negotiation/images/fruits7_offer6_a.png");
 			}
