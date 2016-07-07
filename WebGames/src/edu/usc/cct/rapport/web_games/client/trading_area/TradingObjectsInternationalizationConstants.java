@@ -61,6 +61,15 @@ public interface TradingObjectsInternationalizationConstants extends Constants {
 	@DefaultStringValue("[TRANSLATION MISSING] Cherry")
 	String fruits_cherry_Description();
 
+	@DefaultStringValue("[TRANSLATION MISSING] Kiwi")
+	String fruits_kiwi_Description();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Peach")
+	String fruits_peach_Description();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Grape")
+	String fruits_grape_Description();
+
 	@DefaultStringValue("[TRANSLATION MISSING] Pepper")
 	String veggie_pepper_Description();
 

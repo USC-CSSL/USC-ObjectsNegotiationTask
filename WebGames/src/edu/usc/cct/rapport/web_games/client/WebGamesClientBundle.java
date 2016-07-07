@@ -140,6 +140,15 @@ public interface WebGamesClientBundle extends ClientBundle {
 	@Source(fruitsPath + "cherry.png")
 	ImageResource fruits_cherry();
 
+	@Source(fruitsPath + "kiwi.png")
+	ImageResource fruits_kiwi();
+
+	@Source(fruitsPath + "peach.png")
+	ImageResource fruits_peach();
+
+	@Source(fruitsPath + "grape.png")
+	ImageResource fruits_grape();
+
 	@Source(fruitsPath + "pepper.png")
 	ImageResource veggie_pepper();
 

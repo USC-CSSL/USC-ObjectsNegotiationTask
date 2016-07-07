@@ -66,19 +66,19 @@ public enum TradingObjectSetEnum {
 			result = EnumSet.of(TradingObjectEnum.fruits3_item1_strawberry, TradingObjectEnum.fruits3_item2_blueberry, TradingObjectEnum.fruits3_item3_cherry);
 			break;
 		case fruits4:
-			result = EnumSet.of(TradingObjectEnum.fruits4_item1_apple, TradingObjectEnum.fruits4_item2_pineapple, TradingObjectEnum.fruits4_item3_cherry);
+			result = EnumSet.of(TradingObjectEnum.fruits4_item1_kiwi, TradingObjectEnum.fruits4_item2_peach, TradingObjectEnum.fruits4_item3_grape);
 			break;
 		case fruits5:
-			result = EnumSet.of(TradingObjectEnum.fruits5_item1_watermelon, TradingObjectEnum.fruits5_item2_banana, TradingObjectEnum.fruits5_item3_strawberry);
+			result = EnumSet.of(TradingObjectEnum.fruits5_item1_blueberry, TradingObjectEnum.fruits5_item2_watermelon, TradingObjectEnum.fruits5_item3_banana);
 			break;
 		case fruits6:
-			result = EnumSet.of(TradingObjectEnum.fruits6_item1_orange, TradingObjectEnum.fruits6_item2_melon, TradingObjectEnum.fruits6_item3_blueberry);
+			result = EnumSet.of(TradingObjectEnum.fruits6_item1_strawberry, TradingObjectEnum.fruits6_item2_kiwi, TradingObjectEnum.fruits6_item3_orange);
 			break;
 		case fruits7:
-			result = EnumSet.of(TradingObjectEnum.fruits7_item1_apple, TradingObjectEnum.fruits7_item2_blueberry, TradingObjectEnum.fruits7_item3_watermelon);
+			result = EnumSet.of(TradingObjectEnum.fruits7_item1_cherry, TradingObjectEnum.fruits7_item2_apple, TradingObjectEnum.fruits7_item3_grape);
 			break;
 		case fruits8:
-			result = EnumSet.of(TradingObjectEnum.fruits8_item1_cherry, TradingObjectEnum.fruits8_item2_banana, TradingObjectEnum.fruits8_item3_melon);
+			result = EnumSet.of(TradingObjectEnum.fruits8_item1_melon, TradingObjectEnum.fruits8_item2_pineapple, TradingObjectEnum.fruits8_item3_peach);
 			break;
 /*		case symbolicObjects_3columns:
 			result = EnumSet.of(TradingObjectEnum.sacredObjects_document, TradingObjectEnum.sacredObjects_reform, TradingObjectEnum.sacredObjects_bonus);
