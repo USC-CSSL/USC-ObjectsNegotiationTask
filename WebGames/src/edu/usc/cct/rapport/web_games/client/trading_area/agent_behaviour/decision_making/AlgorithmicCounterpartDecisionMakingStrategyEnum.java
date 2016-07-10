@@ -262,16 +262,16 @@ public enum AlgorithmicCounterpartDecisionMakingStrategyEnum {
 			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedNonconcederFruits6(), 38 - negotiationSessionPlyCount);
 			break;*/
 		case prespecifiedSoftGentleSlopeStrategyFruits1:
-			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedSoftGentleSlopeStrategyFruits1(), 38 - negotiationSessionPlyCount);
+			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedSoftGentleSlopeStrategyFruits1(), 86 - negotiationSessionPlyCount);
 			break;
 		case prespecifiedSoftGentleSlopeStrategyFruits2:
-			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedSoftGentleSlopeStrategyFruits2(), 38 - negotiationSessionPlyCount);
+			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedSoftGentleSlopeStrategyFruits2(), 86 - negotiationSessionPlyCount);
 			break;
 		case prespecifiedSoftGentleSlopeStrategyFruits3:
-			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedSoftGentleSlopeStrategyFruits3(), 38 - negotiationSessionPlyCount);
+			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedSoftGentleSlopeStrategyFruits3(), 86 - negotiationSessionPlyCount);
 			break;
 		case prespecifiedSoftGentleSlopeStrategyFruits4:
-			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedSoftGentleSlopeStrategyFruits4(), 38 - negotiationSessionPlyCount);
+			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedSoftGentleSlopeStrategyFruits4(), 86 - negotiationSessionPlyCount);
 			break;
 /*		case prespecifiedSoftSteepSlopeStrategyFruits3:
 			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedSoftSteepSlopeStrategyFruits3(), 38 - negotiationSessionPlyCount);
@@ -286,16 +286,16 @@ public enum AlgorithmicCounterpartDecisionMakingStrategyEnum {
 			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedToughGentleSlopeStrategyFruits6(), 38 - negotiationSessionPlyCount);
 			break;*/
 		case prespecifiedToughSteepSlopeStrategyFruits5:
-			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedToughSteepSlopeStrategyFruits5(), 38 - negotiationSessionPlyCount);
+			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedToughSteepSlopeStrategyFruits5(), 86 - negotiationSessionPlyCount);
 			break;
 		case prespecifiedToughSteepSlopeStrategyFruits6:
-			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedToughSteepSlopeStrategyFruits6(), 38 - negotiationSessionPlyCount);
+			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedToughSteepSlopeStrategyFruits6(), 86 - negotiationSessionPlyCount);
 			break;
 		case prespecifiedToughSteepSlopeStrategyFruits7:
-			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedToughSteepSlopeStrategyFruits7(), 38 - negotiationSessionPlyCount);
+			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedToughSteepSlopeStrategyFruits7(), 86 - negotiationSessionPlyCount);
 			break;
 		case prespecifiedToughSteepSlopeStrategyFruits8:
-			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedToughSteepSlopeStrategyFruits8(), 38 - negotiationSessionPlyCount);
+			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedToughSteepSlopeStrategyFruits8(), 86 - negotiationSessionPlyCount);
 			break;
 /*		case prespecifiedConcederGentleSlope:
 			tactic = new PrespecifiedPotentialCounterproposalTactic(new PrespecifiedConcederGentleSlope(), 24 - negotiationSessionPlyCount);

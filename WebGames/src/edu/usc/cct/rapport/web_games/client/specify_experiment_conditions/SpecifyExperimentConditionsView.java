@@ -37,7 +37,8 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 	//static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.veggie, 32, 50, true, true, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedAgentForTrial, EmotionModellingStrategyEnum.alwaysNeutral,true,true,true,"");
 	//static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.veggie, 32, 50, true, true, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedAgentForTrial, EmotionModellingStrategyEnum.alwaysNeutral,true,true,true,1,"");
 	//static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.fruits1, 32, 50, true, true, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedSoftGentleSlopeStrategyFruits1, EmotionModellingStrategyEnum.alwaysNeutral,true,true,true,1,"");
-	static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.fruits1, 32, 50, true, true, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedSoftGentleSlopeStrategyFruits1, EmotionModellingStrategyEnum.notUsed,true,true,true,"",1,"");
+	//static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.fruits1, 32, 50, true, true, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedSoftGentleSlopeStrategyFruits1, EmotionModellingStrategyEnum.notUsed,true,true,true,"",1,"");
+	static final private ExperimentConditions defaultExperimentConditions = new ExperimentConditions(FacialExpressionStyleEnum.drama_masks, TradingObjectSetEnum.fruits1, 70, 50, true, true, true, true, 24, AgentEnum.player, AlgorithmicCounterpartDecisionMakingStrategyEnum.prespecifiedSoftGentleSlopeStrategyFruits1, EmotionModellingStrategyEnum.notUsed,true,true,true,"",1,"");
 	static final private String largeFontSizeStyleName = "ict-rapport-largeFontSize";
 
 	static final private SafeHtml separatingLineFeed = SafeHtmlUtils.fromSafeConstant("<br/>");
@@ -192,7 +193,8 @@ public class SpecifyExperimentConditionsView extends WebGamesView implements ISp
 //		listBoxNegotiationSessionPlyCount.addItem("7 ply (each agent has up to three chances to offer object-allocating proposals)", Integer.toString(7));
 //		listBoxNegotiationSessionPlyCount.addItem("13 ply (each agent has up to six chances to offer object-allocating proposals)", Integer.toString(13));
 //		listBoxNegotiationSessionPlyCount.addItem("13 ply (each agent has up to six chances to offer object-allocating proposals)", Integer.toString(19));
-		listBoxNegotiationSessionPlyCount.addItem("13 ply (each agent has up to six chances to offer object-allocating proposals)", Integer.toString(31));
+//		listBoxNegotiationSessionPlyCount.addItem("13 ply (each agent has up to six chances to offer object-allocating proposals)", Integer.toString(31));
+		listBoxNegotiationSessionPlyCount.addItem("13 ply (each agent has up to six chances to offer object-allocating proposals)", Integer.toString(69));
 //		listBoxNegotiationSessionPlyCount.addItem("25 ply (each agent has up to twelve chances to offer object-allocating proposals)", Integer.toString(25));
 //		listBoxNegotiationSessionPlyCount.setSelectedIndex(5);
 		listBoxNegotiationSessionPlyCount.setSelectedIndex(0);

@@ -2,6 +2,7 @@ package edu.usc.cct.rapport.web_games.client.trading_area;
 
 import java.util.ArrayList;
 
+import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -134,6 +135,11 @@ public class ReportFacialExpressionDialogBox extends DialogBox {
 			  		
 					btnSubmit.addClickHandler(new ClickHandler() {
 						public void onClick(ClickEvent event) {
+							// EK0707: should be reportSelfEmotion
+							final double timestampEndWaitingForAgentsOfferReview = Duration.currentTimeMillis();
+							final TradingAction newTradingAction = new TradingAction(AgentEnum.counterpart, timestampEndWaitingForAgentsOfferReview, TradingActionEnum.endWaitingForAgentsOfferReview, null);
+							eventBus.fireEvent(new EndWaitingForAgentsOfferReviewEvent(newTradingAction));
+							
 							String userAnswerEmotion = "";
 							if(userAnswer == 0)
 								userAnswerEmotion = "Happy";
@@ -147,17 +153,17 @@ public class ReportFacialExpressionDialogBox extends DialogBox {
 								userAnswerEmotion = "Sad";
 							
 							int plyRemaining = negotiationSession.getPlyRemaining();
-							if(plyRemaining == 28)
+							if(plyRemaining == 59) //28)
 								experimentConditions.setSelfReportedEmotion_1(userAnswerEmotion);
-							else if(plyRemaining == 23)
+							else if(plyRemaining == 48) //23)
 								experimentConditions.setSelfReportedEmotion_2(userAnswerEmotion);
-							else if(plyRemaining == 18)
+							else if(plyRemaining == 37) //18)
 								experimentConditions.setSelfReportedEmotion_3(userAnswerEmotion);
-							else if(plyRemaining == 13)
+							else if(plyRemaining == 26) //13)
 								experimentConditions.setSelfReportedEmotion_4(userAnswerEmotion);
-							else if(plyRemaining == 8)
+							else if(plyRemaining == 15) //8)
 								experimentConditions.setSelfReportedEmotion_5(userAnswerEmotion);
-							else if(plyRemaining == 3)
+							else if(plyRemaining == 4) //3)
 								experimentConditions.setSelfReportedEmotion_6(userAnswerEmotion);
 							
 							final OfferAcceptanceStartDialogBox dialogBoxOfferAcceptanceStart = new OfferAcceptanceStartDialogBox(eventBus, partnerLabel);
@@ -166,6 +172,11 @@ public class ReportFacialExpressionDialogBox extends DialogBox {
 					    	  
 					    	  Timer timer1 = new Timer() {
 					    		  public void run() {
+									  // EK0707: should be decidingOfferAcceptance
+									  final double timestampEndWaitingForAgentsOfferReview = Duration.currentTimeMillis();
+									  final TradingAction newTradingAction = new TradingAction(AgentEnum.counterpart, timestampEndWaitingForAgentsOfferReview, TradingActionEnum.endWaitingForAgentsOfferReview, null);
+									  eventBus.fireEvent(new EndWaitingForAgentsOfferReviewEvent(newTradingAction));
+					    			  
 							      	  final OfferAcceptanceDialogBox dialogBoxOfferAcceptance = new OfferAcceptanceDialogBox(eventBus, newTradingBoardState, negotiationSession, experimentConditions);
 							      	  dialogBoxOfferAcceptance.setPopupPosition(105, 75);
 							      	  dialogBoxOfferAcceptanceStart.hide();

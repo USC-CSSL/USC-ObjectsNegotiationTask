@@ -174,7 +174,17 @@ public class NegotiationSession implements Collection<TradingAction> {
 			result = null;
 		} else if (this.isEmpty()) {
 //			if (0 == maximumPly % 2) {
-			if (4 == maximumPly % 5) {
+/*			if (4 == maximumPly % 5) {
+				result = AgentEnum.getOtherAgent(this.agentWhoActsLastIfNoAgreementIsReached);
+			} else {
+				result = this.agentWhoActsLastIfNoAgreementIsReached;
+			};*/
+/*			if (4 == maximumPly % 6) {
+				result = AgentEnum.getOtherAgent(this.agentWhoActsLastIfNoAgreementIsReached);
+			} else {
+				result = this.agentWhoActsLastIfNoAgreementIsReached;
+			};*/
+			if (6 == (maximumPly-2) % 11) {
 				result = AgentEnum.getOtherAgent(this.agentWhoActsLastIfNoAgreementIsReached);
 			} else {
 				result = this.agentWhoActsLastIfNoAgreementIsReached;
@@ -193,17 +203,40 @@ public class NegotiationSession implements Collection<TradingAction> {
 				result = this.getMostRecentProposal().getAgentWhoMadeProposal();
 			};*/
 			
-			if (4 == (maximumPly - history.size()) % 5) {
+/*			if (4 == (maximumPly - history.size()+2) % 5) {
 					result = AgentEnum.player;
-			} else if (3 == (maximumPly - history.size()) % 5) {
+			} else if (3 == (maximumPly - history.size()+2) % 5) {
 				result = AgentEnum.player;
-			} else if (2 == (maximumPly - history.size()) % 5) {
+			} else if (2 == (maximumPly - history.size()+2) % 5) {
 				result = AgentEnum.player;				
-			} else if (1 == (maximumPly - history.size()) % 5) {
+			} else if (1 == (maximumPly - history.size()+2) % 5) {
 				result = AgentEnum.player;				
 			} else {
 				result = AgentEnum.counterpart;				
+			}*/
+			
+/*			if (5 == (maximumPly - history.size()+2) % 6) {
+				result = AgentEnum.player;
+			} else if (4 == (maximumPly - history.size()+2) % 6) {
+				result = AgentEnum.player;
+			} else if (3 == (maximumPly - history.size()+2) % 6) {
+				result = AgentEnum.player;
+			} else if (2 == (maximumPly - history.size()+2) % 6) {
+				result = AgentEnum.player;				
+			} else if (1 == (maximumPly - history.size()+2) % 6) {
+				result = AgentEnum.player;				
+			} else {
+				result = AgentEnum.counterpart;				
+			}*/
+			
+			int currentSize = (maximumPly - history.size()) % 11;
+			if (10 == currentSize || 9 == currentSize || 8 == currentSize || 7 == currentSize || 6 == currentSize ||
+					5 == currentSize || 4 == currentSize || 3 == currentSize || 2 == currentSize || 1 == currentSize) {
+				result = AgentEnum.player;
+			} else {
+				result = AgentEnum.counterpart;				
 			}
+
 		};
 
 		return result;

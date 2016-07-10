@@ -11,7 +11,8 @@ public class PrespecifiedToughSteepSlopeStrategyFruits8 implements PlyRemainingI
 
 	public Proposal getPrespecifiedPotentialCounterproposal(final EnumSet<TradingObjectEnum> setOfTradingObjectEnum, final int plyRemaining) {
 
-		final int turnsRemaining = plyRemaining / 5;
+//		final int turnsRemaining = plyRemaining / 5;
+		final int turnsRemaining = plyRemaining / 11;
 
 		if (turnsRemaining <= 0) {
 			final IllegalStateException e = new IllegalStateException("No potential counterproposal is possible without a positive number of turns remaining in the negotiation.");

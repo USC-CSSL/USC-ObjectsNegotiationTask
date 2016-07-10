@@ -109,6 +109,12 @@ public class ReviewReportedFacialExpressionDialogBox extends DialogBox {
 		  		
 				btnSubmit.addClickHandler(new ClickHandler() {
 					public void onClick(ClickEvent event) {
+						
+						// EK0707: should be checkAgentsReportedEmotion
+						final double timestampEndWaitingForAgentsOfferReview = Duration.currentTimeMillis();
+						final TradingAction newTradingAction = new TradingAction(AgentEnum.counterpart, timestampEndWaitingForAgentsOfferReview, TradingActionEnum.endWaitingForAgentsOfferReview, null);
+						eventBus.fireEvent(new EndWaitingForAgentsOfferReviewEvent(newTradingAction));
+						
 						final WaitingDialogBox waitingDialogBox = new WaitingDialogBox (eventBus, "waitForCounterpart", partnerLabel);
 						final ProposalResultDialogBox resultDialogBox = new ProposalResultDialogBox(temp, partnerLabel);
 						final ProposalResultDelayDialogBox resultDelayDialogBox = new ProposalResultDelayDialogBox(temp, partnerLabel);
@@ -135,8 +141,13 @@ public class ReviewReportedFacialExpressionDialogBox extends DialogBox {
 				
 											Timer timer3 = new Timer() {
 											      public void run() {
-											    	  final double timestamp = Duration.currentTimeMillis();
-											    	  tradingAction.setTimestamp(timestamp);
+//											    	  final double timestamp = Duration.currentTimeMillis();
+//											    	  tradingAction.setTimestamp(timestamp);
+											    	  
+													// EK0707: should be showAgentsOfferAcceptanceResult
+													final double timestampEndWaitingForAgentsOfferReview = Duration.currentTimeMillis();
+													final TradingAction newTradingAction = new TradingAction(AgentEnum.counterpart, timestampEndWaitingForAgentsOfferReview, TradingActionEnum.endWaitingForAgentsOfferReview, null);
+													eventBus.fireEvent(new EndWaitingForAgentsOfferReviewEvent(newTradingAction));
 							
 				//							    	  String acceptedStr = "accepted";
 											    	  String rejectedStr = "rejected";
@@ -163,19 +174,24 @@ public class ReviewReportedFacialExpressionDialogBox extends DialogBox {
 											    	  }
 											      };
 											      
-										    	  String rejectedStr = "rejected";
-											      if(partnerLabel == 1 && rand == 0 && temp.equals(rejectedStr)) {
-											    	  resultDelayDialogBox.setPopupPosition(105, 75);
-											    	  resultDelayDialogBox.show();
-											    	  timer3.schedule((int)(Math.random() * (18000 - 15000 + 1) + 15000)); 		// random delay between 15sec and 18sec
-											      } else {
-											    	  timer3.schedule(1);
-											      }
+										      String rejectedStr = "rejected";
+										      if(partnerLabel == 1 && rand == 0 && temp.equals(rejectedStr)) {
+										    	  resultDelayDialogBox.setPopupPosition(105, 75);
+										    	  resultDelayDialogBox.show();
+										    	  timer3.schedule((int)(Math.random() * (18000 - 15000 + 1) + 15000)); 		// random delay between 15sec and 18sec
+										      } else {
+										    	  timer3.schedule(1);
+										      }
 								      }
 								};
 				
 								resultDialogBox.setPopupPosition(105, 75);
 								resultDialogBox.show();
+								
+								// EK0707: should be endWaitingForAgentsOfferAcceptance
+								final double timestampEndWaitingForAgentsOfferReview = Duration.currentTimeMillis();
+								final TradingAction newTradingAction = new TradingAction(AgentEnum.counterpart, timestampEndWaitingForAgentsOfferReview, TradingActionEnum.endWaitingForAgentsOfferReview, null);
+								eventBus.fireEvent(new EndWaitingForAgentsOfferReviewEvent(newTradingAction));
 								
 								String acceptedStr = "accepted";
 								if(temp.equals(acceptedStr))

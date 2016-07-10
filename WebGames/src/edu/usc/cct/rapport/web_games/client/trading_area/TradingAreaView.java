@@ -387,6 +387,9 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 			final Button endProposalReview = tradingActionButtons.get(TradingActionEnum.endProposalReview);
 			final Button endCoinTossResultReview = tradingActionButtons.get(TradingActionEnum.endCoinTossResultReview);
 			final Button endWaiting = tradingActionButtons.get(TradingActionEnum.endWaiting);
+			final Button partnerTypeNotification = tradingActionButtons.get(TradingActionEnum.partnerTypeNotification);
+			final Button connectionEstablished = tradingActionButtons.get(TradingActionEnum.connectionEstablished);
+			final Button endWaitingForAgentsOfferReview = tradingActionButtons.get(TradingActionEnum.endWaitingForAgentsOfferReview);
 			makeInitialProposal.setStylePrimaryName("BigButton-style");
 			acceptProposal.setStylePrimaryName("BigButton-style");
 			makeCounterproposal.setStylePrimaryName("BigButton-style");
@@ -400,6 +403,12 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 			endCoinTossResultReview.setVisible(false);
 			endWaiting.setEnabled(false);
 			endWaiting.setVisible(false);
+			partnerTypeNotification.setEnabled(false);
+			partnerTypeNotification.setVisible(false);
+			connectionEstablished.setEnabled(false);
+			connectionEstablished.setVisible(false);
+			endWaitingForAgentsOfferReview.setEnabled(false);
+			endWaitingForAgentsOfferReview.setVisible(false);
 
 			final Proposal mostRecentlyOfferedProposal = negotiationSession.getMostRecentProposal();
 //			acceptProposal.setEnabled(null != mostRecentlyOfferedProposal);
@@ -661,6 +670,10 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 		Timer timer = new Timer() {
 			@Override
 			public void run() {
+				final double timestampPartnerTypeNotification = Duration.currentTimeMillis();
+				final TradingAction newTradingAction = new TradingAction(AgentEnum.counterpart, timestampPartnerTypeNotification, TradingActionEnum.partnerTypeNotification, null);
+				eventBus.fireEvent(new PartnerTypeNotificationEvent(newTradingAction));
+				
 				final PartnerAssignmentDialogBox dialogBox1 = new PartnerAssignmentDialogBox(eventBus, experimentConditions);
 
 				Timer timer1 = new Timer() {
@@ -670,6 +683,10 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 						Timer timer2 = new Timer() {
 							@Override
 							public void run() {
+								final double timestampConnectionEstablished = Duration.currentTimeMillis();
+								final TradingAction newTradingAction = new TradingAction(AgentEnum.counterpart, timestampConnectionEstablished, TradingActionEnum.connectionEstablished, null);
+								eventBus.fireEvent(new ConnectionEstablishedEvent(newTradingAction));
+
 								dialogBox2.hide();										
 							}
 						};
@@ -845,6 +862,10 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 		
 		Timer timer = new Timer() {
 			public void run() {
+				final double timestampEndWaitingForAgentsOfferReview = Duration.currentTimeMillis();
+				final TradingAction newTradingAction = new TradingAction(AgentEnum.counterpart, timestampEndWaitingForAgentsOfferReview, TradingActionEnum.endWaitingForAgentsOfferReview, null);
+				TradingAreaView.this.eventBus.fireEvent(new EndWaitingForAgentsOfferReviewEvent(newTradingAction));
+				
 				final ReviewReportedFacialExpressionDialogBox emotionDialogBox = new ReviewReportedFacialExpressionDialogBox(eventBus, temp, experimentConditions, tradingAction, plyRemaining);
 //				final ReviewReportedFacialExpressionDialogBox emotionDialogBox = new ReviewReportedFacialExpressionDialogBox(eventBus, temp, partnerLabel, tradingAction, plyRemaining);
 				

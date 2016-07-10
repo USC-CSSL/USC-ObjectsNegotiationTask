@@ -260,6 +260,27 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 			TradingAreaActivity.this.negotiationSession.add(event.getTradingAction());
 		}
 	}
+	
+	final private class HandleUserActionAndUpdateUponEndWaitingForAgentsOfferReview implements EndWaitingForAgentsOfferReviewEventHandler {
+		@Override
+		public void onEndWaitingForAgentsOfferReview(final EndWaitingForAgentsOfferReviewEvent event) {
+			TradingAreaActivity.this.negotiationSession.add(event.getTradingAction());
+		}
+	}
+	
+	final private class HandleUserActionAndUpdateUponPartnerTypeNotification implements PartnerTypeNotificationEventHandler {
+		@Override
+		public void onPartnerTypeNotification(final PartnerTypeNotificationEvent event) {
+			TradingAreaActivity.this.negotiationSession.add(event.getTradingAction());
+		}
+	}
+	
+	final private class HandleUserActionAndUpdateUponConnectionEstablished implements ConnectionEstablishedEventHandler {
+		@Override
+		public void onConnectionEstablished(final ConnectionEstablishedEvent event) {
+			TradingAreaActivity.this.negotiationSession.add(event.getTradingAction());
+		}
+	}
 
 	final private class HandleTasksUponNegotiationSessionConclusion implements ProposalAcceptedEventHandler, BATNAClaimMadeEventHandler {
 //	final private class HandleTasksUponNegotiationSessionConclusion implements ProposalAcceptedEventHandler, EndCoinTossResultReviewEventHandler {
@@ -361,6 +382,9 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 		resettableEventBus.addHandler(ProposalRejectedEvent.TYPE, new HandleUserActionAndUpdateUponProposalRejection());
 		resettableEventBus.addHandler(EndProposalReviewEvent.TYPE, new HandleUserActionAndUpdateUponEndProposalReview());
 		resettableEventBus.addHandler(EndWaitingEvent.TYPE, new HandleUserActionAndUpdateUponEndWaiting());
+		resettableEventBus.addHandler(PartnerTypeNotificationEvent.TYPE, new HandleUserActionAndUpdateUponPartnerTypeNotification());
+		resettableEventBus.addHandler(ConnectionEstablishedEvent.TYPE, new HandleUserActionAndUpdateUponConnectionEstablished());
+		resettableEventBus.addHandler(EndWaitingForAgentsOfferReviewEvent.TYPE, new HandleUserActionAndUpdateUponEndWaitingForAgentsOfferReview());
 //		resettableEventBus.addHandler(EndCoinTossResultReviewEvent.TYPE, new HandleUserActionAndUpdateUponEndCoinTossResultReview());
 //		resettableEventBus.addHandler(EndCoinTossResultReviewEvent.TYPE, new HandleTasksUponNegotiationSessionConclusion());
 		resettableEventBus.addHandler(NegotiationSessionConcludedEvent.TYPE, new PromptUserToAcknowledgeNegotiationConclusion());
@@ -381,7 +405,9 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 //			TradingAreaActivity.this.view.showLastRoundHelpWindowDialogBox(1);
 //		} else if ((negotiationSession.getPlyRemaining()%3) == 2 & AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext())){
 //		} else if ((negotiationSession.getPlyRemaining()%5) == 2 & AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext())){
-		} else if ((negotiationSession.getPlyRemaining()%5) == 4){
+//		} else if (((negotiationSession.getPlyRemaining()+2)%5) == 4){
+//		} else if (((negotiationSession.getPlyRemaining()+2)%6) == 4){
+		} else if (((negotiationSession.getPlyRemaining())%11) == 6){
 //		} else if (AgentEnum.player.equals(negotiationSession.getWhoseTurnIsNext())){
 			// EK 10/08/14: added random delay
 			TradingAreaActivity.this.view.showReviewingOfferDialogBox(newTradingBoardState, negotiationSession, TradingAreaActivity.this.experimentConditions);

@@ -52,7 +52,7 @@ public class ExperimentInformationRecordingService extends RemoteServiceServlet 
 	private String csvforMultisheetFilename = excelFilePath + WebGames.class.getSimpleName() + "-multisheet.csv";
 	//static final 
 //	static final private int maxActionPlyCount = 25;
-	static final private int maxActionPlyCount = 35;
+	static final private int maxActionPlyCount = 75;
 	static final private int agentEnumCount = AgentEnum.values().length;
 //	static final private int tradingObjectEnumCount = 4;
 	static final private int tradingObjectEnumCount = 3; // Sasha's experiment
@@ -305,7 +305,7 @@ public class ExperimentInformationRecordingService extends RemoteServiceServlet 
 			final String dateTime = dateTimeFormatter.format(new Date());
 			
 //			if(ipAddress.equals("0:0:0:0:0:0:0:1%0"))		// when testing on the local machine using IPv6
-			if(ipAddress.equals("0:0:0:0:0:0:0:1%0") || ipAddress.equals("0:0:0:0:0:0:0:1"))		// when testing on the local machine using IPv6
+			if(ipAddress.equals("0:0:0:0:0:0:0:1%0") || ipAddress.equals("0:0:0:0:0:0:0:1") || ipAddress.equals("fe80:0:0:0:0:0:0:1%1"))		// when testing on the local machine using IPv6
 				sheetName = dateTime + ' ' + "127.0.0.1";	// set ipAddress = 127.0.0.1
 			else
 				sheetName = dateTime + ' ' + ipAddress;

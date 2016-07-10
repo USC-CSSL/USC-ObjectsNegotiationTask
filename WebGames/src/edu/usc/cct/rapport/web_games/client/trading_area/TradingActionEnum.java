@@ -3,7 +3,10 @@ package edu.usc.cct.rapport.web_games.client.trading_area;
 import com.google.gwt.core.client.GWT;
 
 public enum TradingActionEnum {
+	partnerTypeNotification,
+	connectionEstablished,
 	makeInitialProposal,
+	endWaitingForAgentsOfferReview,
 //	reviewProposal,
 	endProposalReview,
 	endCoinTossResultReview,
@@ -23,6 +26,10 @@ public enum TradingActionEnum {
 		String result;
 
 		switch (this) {
+		case partnerTypeNotification:
+		case connectionEstablished:
+			result = "";
+			break;
 		case makeInitialProposal:
 			result = constants.makeInitialProposal();
 			break;
@@ -45,6 +52,7 @@ public enum TradingActionEnum {
 			result = "";
 			break;
 		case endWaiting:
+		case endWaitingForAgentsOfferReview:
 			result = "";
 			break;			
 //		case reviewScenario:
@@ -63,6 +71,10 @@ public enum TradingActionEnum {
 		String result;
 
 		switch (this) {
+		case partnerTypeNotification:
+		case connectionEstablished:
+			result = "";
+			break;
 		case acceptProposal:
 			result = constants.agreementReached();
 			break;
@@ -79,6 +91,7 @@ public enum TradingActionEnum {
 			result = "";
 			break;
 		case endWaiting:
+		case endWaitingForAgentsOfferReview:
 			result = "";
 			break;			
 //		case reviewScenario:

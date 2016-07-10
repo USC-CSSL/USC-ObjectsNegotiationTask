@@ -61,7 +61,7 @@ public class OfferReviewStartDialogBox extends DialogBox {
 			lblOfferReviewStart = new Label(constants.offer_review_start());*/
 		
 		HTML offerReviewStart = new HTML("");
-		if(plyRemaining < 9) {
+		if(plyRemaining <= 11) {
 			if(partnerLabel==0)
 				offerReviewStart.setHTML(constants.last_offer_review_start_computer());
 			else if(partnerLabel==1)

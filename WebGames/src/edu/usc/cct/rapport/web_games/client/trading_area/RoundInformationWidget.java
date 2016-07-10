@@ -30,7 +30,8 @@ public class RoundInformationWidget extends Composite {
 	};
 
 	public void setRoundInformation(final Integer roundInfo) {
-		this.labelDisplayName.setText("Round "+Integer.toString(7-roundInfo/5)+" of 6");
+//		this.labelDisplayName.setText("Round "+Integer.toString(7-roundInfo/5)+" of 6");
+		this.labelDisplayName.setText("Round "+Integer.toString(7-(roundInfo-3)/11)+" of 6");
 		
 	};
 };
