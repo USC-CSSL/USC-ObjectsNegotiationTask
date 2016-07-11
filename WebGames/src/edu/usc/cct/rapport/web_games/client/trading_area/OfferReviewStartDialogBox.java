@@ -4,6 +4,7 @@ import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.AbsolutePanel;
@@ -115,4 +116,10 @@ public class OfferReviewStartDialogBox extends DialogBox {
 	    timer.schedule(1000); 		// 1sec delay  
 
 	};*/
+	
+	protected void beginDragging(MouseDownEvent e)
+	{
+		e.preventDefault();
+	}
+
 }

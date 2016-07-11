@@ -268,6 +268,41 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 		}
 	}
 	
+	final private class HandleUserActionAndUpdateUponCheckAgentsReportedEmotion implements CheckAgentsReportedEmotionEventHandler {
+		@Override
+		public void onCheckAgentsReportedEmotion(final CheckAgentsReportedEmotionEvent event) {
+			TradingAreaActivity.this.negotiationSession.add(event.getTradingAction());
+		}
+	}
+
+	final private class HandleUserActionAndUpdateUponEndWaitingForAgentsOfferAcceptance implements EndWaitingForAgentsOfferAcceptanceEventHandler {
+		@Override
+		public void onEndWaitingForAgentsOfferAcceptance(final EndWaitingForAgentsOfferAcceptanceEvent event) {
+			TradingAreaActivity.this.negotiationSession.add(event.getTradingAction());
+		}
+	}
+
+	final private class HandleUserActionAndUpdateUponShowAgentsOfferAcceptanceResult implements ShowAgentsOfferAcceptanceResultEventHandler {
+		@Override
+		public void onShowAgentsOfferAcceptanceResult(final ShowAgentsOfferAcceptanceResultEvent event) {
+			TradingAreaActivity.this.negotiationSession.add(event.getTradingAction());
+		}
+	}
+
+	final private class HandleUserActionAndUpdateUponReportSelfEmotion implements ReportSelfEmotionEventHandler {
+		@Override
+		public void onReportSelfEmotion(final ReportSelfEmotionEvent event) {
+			TradingAreaActivity.this.negotiationSession.add(event.getTradingAction());
+		}
+	}
+
+	final private class HandleUserActionAndUpdateUponDecidingOfferAcceptance implements DecidingOfferAcceptanceEventHandler {
+		@Override
+		public void onDecidingOfferAcceptance(final DecidingOfferAcceptanceEvent event) {
+			TradingAreaActivity.this.negotiationSession.add(event.getTradingAction());
+		}
+	}
+	
 	final private class HandleUserActionAndUpdateUponPartnerTypeNotification implements PartnerTypeNotificationEventHandler {
 		@Override
 		public void onPartnerTypeNotification(final PartnerTypeNotificationEvent event) {
@@ -384,7 +419,12 @@ public class TradingAreaActivity extends WebGamesActivity implements ITradingAre
 		resettableEventBus.addHandler(EndWaitingEvent.TYPE, new HandleUserActionAndUpdateUponEndWaiting());
 		resettableEventBus.addHandler(PartnerTypeNotificationEvent.TYPE, new HandleUserActionAndUpdateUponPartnerTypeNotification());
 		resettableEventBus.addHandler(ConnectionEstablishedEvent.TYPE, new HandleUserActionAndUpdateUponConnectionEstablished());
-		resettableEventBus.addHandler(EndWaitingForAgentsOfferReviewEvent.TYPE, new HandleUserActionAndUpdateUponEndWaitingForAgentsOfferReview());
+		resettableEventBus.addHandler(EndWaitingForAgentsOfferReviewEvent.TYPE, new HandleUserActionAndUpdateUponEndWaitingForAgentsOfferReview());		
+		resettableEventBus.addHandler(CheckAgentsReportedEmotionEvent.TYPE, new HandleUserActionAndUpdateUponCheckAgentsReportedEmotion());
+		resettableEventBus.addHandler(EndWaitingForAgentsOfferAcceptanceEvent.TYPE, new HandleUserActionAndUpdateUponEndWaitingForAgentsOfferAcceptance());
+		resettableEventBus.addHandler(ShowAgentsOfferAcceptanceResultEvent.TYPE, new HandleUserActionAndUpdateUponShowAgentsOfferAcceptanceResult());
+		resettableEventBus.addHandler(ReportSelfEmotionEvent.TYPE, new HandleUserActionAndUpdateUponReportSelfEmotion());
+		resettableEventBus.addHandler(DecidingOfferAcceptanceEvent.TYPE, new HandleUserActionAndUpdateUponDecidingOfferAcceptance());
 //		resettableEventBus.addHandler(EndCoinTossResultReviewEvent.TYPE, new HandleUserActionAndUpdateUponEndCoinTossResultReview());
 //		resettableEventBus.addHandler(EndCoinTossResultReviewEvent.TYPE, new HandleTasksUponNegotiationSessionConclusion());
 		resettableEventBus.addHandler(NegotiationSessionConcludedEvent.TYPE, new PromptUserToAcknowledgeNegotiationConclusion());

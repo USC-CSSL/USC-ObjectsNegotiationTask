@@ -552,14 +552,14 @@ public class DemographicsDialogBox extends DialogBox {
 				      
 					String localName = com.google.gwt.i18n.client.LocaleInfo.getCurrentLocale().getLocaleName();
 					
-					experimentConditions.setGenderOfParticipant(Integer.parseInt(getAnswers (genderQuestion)));
+/*					experimentConditions.setGenderOfParticipant(Integer.parseInt(getAnswers (genderQuestion)));
 					experimentConditions.setEducationOfParticipant(Integer.parseInt(getAnswers (educationQuestion)));
 					experimentConditions.setReligiosityOfParticipant(Integer.parseInt(getAnswers (religiosityQuestion)));
 					if (localName == "en") experimentConditions.setEthnicityOfParticipant(Integer.parseInt(getAnswers (ethnicityQuestion)));
 					experimentConditions.setEconomicClassOfParticipant(Integer.parseInt(getAnswers (economicClassQuestion)));
 					experimentConditions.setPoliticalOrientationOfParticipant(Integer.parseInt(getAnswers (politicalOrientationQuestion)));
 					experimentConditions.setCommentOfParticipant(textArea.getText());
-					experimentConditions.setAgeOfParticipant(integerBox.getValue());
+					experimentConditions.setAgeOfParticipant(integerBox.getValue());*/
 					
 /*					if(Integer.parseInt(getAnswers (politicalOrientationQuestion)) == 3) {
 						Random random = new Random();

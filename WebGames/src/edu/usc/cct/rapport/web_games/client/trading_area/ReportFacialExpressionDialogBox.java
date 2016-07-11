@@ -6,6 +6,7 @@ import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.AbsolutePanel;
@@ -136,9 +137,9 @@ public class ReportFacialExpressionDialogBox extends DialogBox {
 					btnSubmit.addClickHandler(new ClickHandler() {
 						public void onClick(ClickEvent event) {
 							// EK0707: should be reportSelfEmotion
-							final double timestampEndWaitingForAgentsOfferReview = Duration.currentTimeMillis();
-							final TradingAction newTradingAction = new TradingAction(AgentEnum.counterpart, timestampEndWaitingForAgentsOfferReview, TradingActionEnum.endWaitingForAgentsOfferReview, null);
-							eventBus.fireEvent(new EndWaitingForAgentsOfferReviewEvent(newTradingAction));
+							final double timestampReportSelfEmotion = Duration.currentTimeMillis();
+							final TradingAction newTradingAction = new TradingAction(AgentEnum.counterpart, timestampReportSelfEmotion, TradingActionEnum.reportSelfEmotion, null);
+							eventBus.fireEvent(new ReportSelfEmotionEvent(newTradingAction));
 							
 							String userAnswerEmotion = "";
 							if(userAnswer == 0)
@@ -173,9 +174,9 @@ public class ReportFacialExpressionDialogBox extends DialogBox {
 					    	  Timer timer1 = new Timer() {
 					    		  public void run() {
 									  // EK0707: should be decidingOfferAcceptance
-									  final double timestampEndWaitingForAgentsOfferReview = Duration.currentTimeMillis();
-									  final TradingAction newTradingAction = new TradingAction(AgentEnum.counterpart, timestampEndWaitingForAgentsOfferReview, TradingActionEnum.endWaitingForAgentsOfferReview, null);
-									  eventBus.fireEvent(new EndWaitingForAgentsOfferReviewEvent(newTradingAction));
+									  final double timestampDecidingOfferAcceptance = Duration.currentTimeMillis();
+									  final TradingAction newTradingAction = new TradingAction(AgentEnum.counterpart, timestampDecidingOfferAcceptance, TradingActionEnum.decidingOfferAcceptance, null);
+									  eventBus.fireEvent(new DecidingOfferAcceptanceEvent(newTradingAction));
 					    			  
 							      	  final OfferAcceptanceDialogBox dialogBoxOfferAcceptance = new OfferAcceptanceDialogBox(eventBus, newTradingBoardState, negotiationSession, experimentConditions);
 							      	  dialogBoxOfferAcceptance.setPopupPosition(105, 75);
@@ -259,6 +260,12 @@ public class ReportFacialExpressionDialogBox extends DialogBox {
 		
 		timer.schedule(5000);*/
 	}
+	
+	protected void beginDragging(MouseDownEvent e)
+	{
+		e.preventDefault();
+	}
+
 }
 	
 

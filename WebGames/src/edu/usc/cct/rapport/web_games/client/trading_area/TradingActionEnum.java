@@ -7,8 +7,13 @@ public enum TradingActionEnum {
 	connectionEstablished,
 	makeInitialProposal,
 	endWaitingForAgentsOfferReview,
+	checkAgentsReportedEmotion,
+	endWaitingForAgentsOfferAcceptance,
+	showAgentsOfferAcceptanceResult,
 //	reviewProposal,
 	endProposalReview,
+	reportSelfEmotion,
+	decidingOfferAcceptance,
 	endCoinTossResultReview,
 	endWaiting,
 	acceptProposal,
@@ -53,6 +58,11 @@ public enum TradingActionEnum {
 			break;
 		case endWaiting:
 		case endWaitingForAgentsOfferReview:
+		case checkAgentsReportedEmotion:
+		case endWaitingForAgentsOfferAcceptance:
+		case showAgentsOfferAcceptanceResult:
+		case reportSelfEmotion:
+		case decidingOfferAcceptance:
 			result = "";
 			break;			
 //		case reviewScenario:
@@ -92,6 +102,11 @@ public enum TradingActionEnum {
 			break;
 		case endWaiting:
 		case endWaitingForAgentsOfferReview:
+		case checkAgentsReportedEmotion:
+		case endWaitingForAgentsOfferAcceptance:
+		case showAgentsOfferAcceptanceResult:
+		case reportSelfEmotion:
+		case decidingOfferAcceptance:
 			result = "";
 			break;			
 //		case reviewScenario:

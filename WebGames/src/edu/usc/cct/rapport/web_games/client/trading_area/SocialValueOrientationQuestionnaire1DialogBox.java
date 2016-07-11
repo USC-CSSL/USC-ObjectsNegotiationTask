@@ -192,7 +192,7 @@ public class SocialValueOrientationQuestionnaire1DialogBox extends DialogBox {
 		btnSubmit.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				hide();
-				experimentConditions.setSVO_1(userAnswer[0]);
+//				experimentConditions.setSVO_1(userAnswer[0]);
 				
 				final SocialValueOrientationQuestionnaire2DialogBox dialogBox = new SocialValueOrientationQuestionnaire2DialogBox (eventBus, experimentConditions);
 //				dialogBox.center();

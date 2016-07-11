@@ -40,14 +40,14 @@ public class TossCoinResultDialogBox extends DialogBox {
 		final int tossCoinResult = random.nextInt(2);
 		
 		if(tossCoinResult == 0) {
-			experimentConditions.setCoinTossResult("tail");
+//			experimentConditions.setCoinTossResult("tail");
 			lblCoinTossResult.setText(constants.tail());
 //			lblCoinTossDescription.setText(constants.tailDescription());
 //			lblCoinTossDescription1.setText(constants.tailDescription1());
 //			lblCoinTossDescription2.setText(constants.tailDescription2());
 			flexTable.setHTML(3, 0, constants.tailDescriptionHTML());
 		} else {
-			experimentConditions.setCoinTossResult("head");
+//			experimentConditions.setCoinTossResult("head");
 			lblCoinTossResult.setText(constants.head());			
 //			lblCoinTossDescription.setText(constants.headDescription());
 //			lblCoinTossDescription1.setText(constants.headDescription1());

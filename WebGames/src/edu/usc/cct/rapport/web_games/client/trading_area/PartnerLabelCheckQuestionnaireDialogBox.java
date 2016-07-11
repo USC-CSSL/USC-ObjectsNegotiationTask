@@ -145,8 +145,8 @@ public class PartnerLabelCheckQuestionnaireDialogBox extends DialogBox {
 				}
 
 				hide();
-				experimentConditions.setPartnerLabelCheck(userAnswer[0]);
-				experimentConditions.setPartnerLabelCheckComment(textArea.getText());
+//				experimentConditions.setPartnerLabelCheck(userAnswer[0]);
+//				experimentConditions.setPartnerLabelCheckComment(textArea.getText());
 			}
 		});
 

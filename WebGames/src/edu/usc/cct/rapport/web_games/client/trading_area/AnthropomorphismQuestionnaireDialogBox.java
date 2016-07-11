@@ -3,6 +3,7 @@ package edu.usc.cct.rapport.web_games.client.trading_area;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Button;
@@ -23,7 +24,8 @@ import edu.usc.cct.rapport.web_games.client.specify_experiment_conditions.Experi
 
 public class AnthropomorphismQuestionnaireDialogBox extends DialogBox {
 
-	final int maxQuestionNo = 9;
+	final int maxQuestionNo = 2;
+//	final int maxQuestionNo = 9; // for MTurk experiment
 	final int maxAnswerNo 	= 7;
 	private int currentMaxQuestionNo	= 2;
 	private FlexTable flexTable = new FlexTable();
@@ -49,9 +51,14 @@ public class AnthropomorphismQuestionnaireDialogBox extends DialogBox {
 	    
 		if (localName == "en" || localName == "ko"){			
 			explanation = new Label(constants.anthropomorphism());
-			explanation.setStylePrimaryName("Explanation-style");
+			explanation.setStylePrimaryName("Explanation-style-big");
 
-			questions_label.add(new Label(constants.anthropomorphism1_left()));
+			questions_label.add(new Label(constants.anthropomorphism1_left_fMRI()));
+			questions_label.add(new Label(constants.anthropomorphism2_left_fMRI()));
+			questions_label_right.add(new Label(constants.anthropomorphism1_right_fMRI()));
+			questions_label_right.add(new Label(constants.anthropomorphism2_right_fMRI()));
+
+/*			questions_label.add(new Label(constants.anthropomorphism1_left()));
 			questions_label.add(new Label(constants.anthropomorphism2_left()));
 			questions_label.add(new Label(constants.anthropomorphism3_left()));
 			questions_label.add(new Label(constants.anthropomorphism4_left()));
@@ -69,33 +76,18 @@ public class AnthropomorphismQuestionnaireDialogBox extends DialogBox {
 			questions_label_right.add(new Label(constants.anthropomorphism6_right()));
 			questions_label_right.add(new Label(constants.anthropomorphism7_right()));
 			questions_label_right.add(new Label(constants.anthropomorphism8_right()));
-			questions_label_right.add(new Label(constants.anthropomorphism9_right()));
+			questions_label_right.add(new Label(constants.anthropomorphism9_right()));*/
 
 
 			for(int i=0; i<questions_label.size(); i++) {
-				questions_label.get(i).setStylePrimaryName("Label-style");
-				questions_label_right.get(i).setStylePrimaryName("Label-style");
+//				questions_label.get(i).setStylePrimaryName("Label-style");
+//				questions_label_right.get(i).setStylePrimaryName("Label-style");
+				questions_label.get(i).setStylePrimaryName("MediumLabel-style");
+				questions_label_right.get(i).setStylePrimaryName("MediumLabel-style");
 			}
-
-/*			// initialize
-			flexTable.setText(0, 1, constants.mfq_explanation_part1_zero());
-			flexTable.setText(0, 2, constants.mfq_explanation_part1_one());
-			flexTable.setText(0, 3, constants.mfq_explanation_part1_two());
-			flexTable.setText(0, 4, constants.mfq_explanation_part1_three());
-			flexTable.setText(0, 5, constants.mfq_explanation_part1_four());
-			flexTable.setText(0, 6, constants.mfq_explanation_part1_five());
-			flexTable.getFlexCellFormatter().setRowSpan(0, 0, 2);
-			flexTable.setText(1, 0, constants.zero());
-			flexTable.setText(1, 1, constants.one());
-			flexTable.setText(1, 2, constants.two());
-			flexTable.setText(1, 3, constants.three());
-			flexTable.setText(1, 4, constants.four());
-			flexTable.setText(1, 5, constants.five()); */
 
 			for(int i=0; i<maxQuestionNo; i++) {
 				for(int j=0; j<maxAnswerNo; j++) {
-//					flexTable.setText(i, j, " ");
-//					flexTable.setText(i, j, "("+i+","+j+")");
 					flexTable.getCellFormatter().setWidth(i*2+1, j, "60px");
 					flexTable.getCellFormatter().setHorizontalAlignment(i*2, j, HasHorizontalAlignment.ALIGN_CENTER);
 					flexTable.getCellFormatter().setHorizontalAlignment(i*2, j+1, HasHorizontalAlignment.ALIGN_CENTER);
@@ -106,33 +98,28 @@ public class AnthropomorphismQuestionnaireDialogBox extends DialogBox {
 				flexTable.getFlexCellFormatter().setRowSpan(i*2, maxAnswerNo+1, 2);
 				flexTable.getCellFormatter().setWidth(i*2, 0, "175px");
 				flexTable.getCellFormatter().setWidth(i*2, maxAnswerNo+1, "175px");
-				flexTable.getCellFormatter().setHeight(i*2, 1, "15px");
-				flexTable.getCellFormatter().setHeight(i*2+1, 1, "24px");
+//				flexTable.getCellFormatter().setHeight(i*2, 1, "15px");		// Size for the MTurk experiment
+//				flexTable.getCellFormatter().setHeight(i*2+1, 1, "24px");	// Size for the MTurk experiment
+				flexTable.getCellFormatter().setHeight(i*2, 1, "30px");
+				flexTable.getCellFormatter().setHeight(i*2+1, 1, "48px");
 			}
 
-/*			for(int i=0; i<maxAnswerNo; i++) {
-				flexTable.getCellFormatter().setHorizontalAlignment(0, i+1, HasHorizontalAlignment.ALIGN_CENTER);
-				flexTable.getCellFormatter().setHorizontalAlignment(1, i, HasHorizontalAlignment.ALIGN_CENTER);
-				flexTable.getCellFormatter().setWidth(2, i+1, "60px");
-			}*/
-			
 			setQuestion(0, experimentConditions, plyRemaining);
 		}
 
 		applyDataRowStyles();
-		absolutePanel.add(explanation, 10, 10);
-		absolutePanel.add(flexTable, 10, 35);
+//		absolutePanel.add(explanation, 10, 10);  // for MTurk experiment (9 questions)
+//		absolutePanel.add(flexTable, 10, 35);	 // for MTurk experiment (9 questions)
+		absolutePanel.add(explanation, 10, 100); // for fMRI experiment (2 questions)
+		absolutePanel.add(flexTable, 10, 185);	 // for fMRI experiment (2 questions)
 		absolutePanel.setSize("800px", "565px");
 	}
 	
 	private void applyDataRowStyles() {
 		flexTable.setStyleName("FlexTable");
 		HTMLTable.RowFormatter rf = flexTable.getRowFormatter();
-//		rf.addStyleName(0, "FlexTable-ColumnLabel");
-//		rf.addStyleName(1, "FlexTable-ColumnChoice");
 		
 		for(int row=0; row<flexTable.getRowCount(); ++row) {
-//			if(row%2 != 0)
 			if(row%4 == 0 || row%4 == 1)
 				rf.addStyleName(row, "FlexTable-OddRow");
 			else
@@ -142,7 +129,6 @@ public class AnthropomorphismQuestionnaireDialogBox extends DialogBox {
 	
 	public void applyDataRowStylesAgain(int row) {
 		for(int col=0; col<maxAnswerNo; col++) {
-//			if(row%2 != 0)
 			if(row%4 == 0) {
 				flexTable.getCellFormatter().setStyleName(row, col, "FlexTable-OddRow");
 				flexTable.getCellFormatter().setStyleName(row, col+1, "FlexTable-OddRow");
@@ -161,13 +147,20 @@ public class AnthropomorphismQuestionnaireDialogBox extends DialogBox {
 	
 	public void setQuestion(final int currentQuestionNo, final ExperimentConditions experimentConditions, final int plyRemaining) {
 		flexTable.setWidget(currentQuestionNo*2, 0, questions_label.get(currentQuestionNo));
-		flexTable.setWidget(currentQuestionNo*2, 1, new HTML(constants.one_HTML()));
+		flexTable.setWidget(currentQuestionNo*2, 1, new HTML(constants.one_HTML_big()));
+		flexTable.setWidget(currentQuestionNo*2, 2, new HTML(constants.two_HTML_big()));
+		flexTable.setWidget(currentQuestionNo*2, 3, new HTML(constants.three_HTML_big()));
+		flexTable.setWidget(currentQuestionNo*2, 4, new HTML(constants.four_HTML_big()));
+		flexTable.setWidget(currentQuestionNo*2, 5, new HTML(constants.five_HTML_big()));
+		flexTable.setWidget(currentQuestionNo*2, 6, new HTML(constants.six_HTML_big()));
+		flexTable.setWidget(currentQuestionNo*2, 7, new HTML(constants.seven_HTML_big()));
+/*		flexTable.setWidget(currentQuestionNo*2, 1, new HTML(constants.one_HTML())); // Size for the MTurk experiment
 		flexTable.setWidget(currentQuestionNo*2, 2, new HTML(constants.two_HTML()));
 		flexTable.setWidget(currentQuestionNo*2, 3, new HTML(constants.three_HTML()));
 		flexTable.setWidget(currentQuestionNo*2, 4, new HTML(constants.four_HTML()));
 		flexTable.setWidget(currentQuestionNo*2, 5, new HTML(constants.five_HTML()));
 		flexTable.setWidget(currentQuestionNo*2, 6, new HTML(constants.six_HTML()));
-		flexTable.setWidget(currentQuestionNo*2, 7, new HTML(constants.seven_HTML()));
+		flexTable.setWidget(currentQuestionNo*2, 7, new HTML(constants.seven_HTML()));*/
 
 		flexTable.setWidget(currentQuestionNo*2, maxAnswerNo+1, questions_label_right.get(currentQuestionNo));
 		
@@ -200,19 +193,20 @@ public class AnthropomorphismQuestionnaireDialogBox extends DialogBox {
 	}
 	
 	public void submit(final ExperimentConditions experimentConditions, final int plyRemaining) {
-		Button btnSubmit = new Button(constants.ok_button());
+		Button btnSubmit = new Button(constants.ok_button());	
+		btnSubmit.setStylePrimaryName("MiddleButton-style");
 		btnSubmit.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				hide();
 				experimentConditions.setAnthropomorphism_1(userAnswer[0]);
 				experimentConditions.setAnthropomorphism_2(userAnswer[1]);
-				experimentConditions.setAnthropomorphism_3(userAnswer[2]);
+/*				experimentConditions.setAnthropomorphism_3(userAnswer[2]);
 				experimentConditions.setAnthropomorphism_4(userAnswer[3]);
 				experimentConditions.setAnthropomorphism_5(userAnswer[4]);
 				experimentConditions.setAnthropomorphism_6(userAnswer[5]);
 				experimentConditions.setAnthropomorphism_7(userAnswer[6]);
 				experimentConditions.setAnthropomorphism_8(userAnswer[7]);
-				experimentConditions.setAnthropomorphism_9(userAnswer[8]);
+				experimentConditions.setAnthropomorphism_9(userAnswer[8]);*/
 
 				eventBus.fireEvent(new LogExperimentInformationEvent());
 				eventBus.fireEvent(new NegotiationConclusionAcknowledgedEvent());
@@ -236,8 +230,16 @@ public class AnthropomorphismQuestionnaireDialogBox extends DialogBox {
 			}
 		});
 
-		btnSubmit.setSize("250px", "33px");
-		absolutePanel.add(btnSubmit, 307, 510);
+//		btnSubmit.setSize("250px", "33px");		// Size for the MTurk experiment
+//		absolutePanel.add(btnSubmit, 307, 510);	// Size for the MTurk experiment
+		btnSubmit.setSize("200px", "50px");
+		absolutePanel.add(btnSubmit, 290, 430);
 	}	
+	
+	protected void beginDragging(MouseDownEvent e)
+	{
+		e.preventDefault();
+	}
+
 }
 

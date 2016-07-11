@@ -1,6 +1,7 @@
 package edu.usc.cct.rapport.web_games.client.trading_area;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.DialogBox;
@@ -51,5 +52,10 @@ public class PartnerAssignmentDialogBox extends DialogBox {
 		loadingImage.setUrl("http://shiraz.usc.edu/negotiation/images/loading_small.gif");
 		absolutePanel.add(loadingImage, 390, 400);
 	};
+
+	protected void beginDragging(MouseDownEvent e)
+	{
+		e.preventDefault();
+	}
 
 };

@@ -230,7 +230,7 @@ public class FairnessQuestionnaire1DialogBox extends DialogBox {
 					dialogBox.show();
 				}
 				hide();
-				experimentConditions.setFairnessOfTheAgentOffer_1(userAnswer[0]);
+//				experimentConditions.setFairnessOfTheAgentOffer_1(userAnswer[0]);
 
 			}
 		});

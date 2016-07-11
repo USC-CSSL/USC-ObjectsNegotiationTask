@@ -1,6 +1,7 @@
 package edu.usc.cct.rapport.web_games.client.trading_area;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.DialogBox;
@@ -49,5 +50,11 @@ public class PartnerLabelDialogBox extends DialogBox {
 //		absolutePanel.add(showPartner , 110, 170);
 		absolutePanel.add(flexTable, 10, 10);
 	};
+	
+	protected void beginDragging(MouseDownEvent e)
+	{
+		e.preventDefault();
+	}
+
 
 };

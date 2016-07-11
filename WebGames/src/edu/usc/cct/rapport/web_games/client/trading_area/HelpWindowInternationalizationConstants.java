@@ -125,6 +125,33 @@ public interface HelpWindowInternationalizationConstants extends Constants {
 	@DefaultStringValue("[TRANSLATION MISSING] 8")
 	String eight_HTML();
 
+	@DefaultStringValue("[TRANSLATION MISSING] 0")
+	String zero_HTML_big();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 1")
+	String one_HTML_big();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] 2")
+	String two_HTML_big();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] 3")
+	String three_HTML_big();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] 4")
+	String four_HTML_big();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] 5")
+	String five_HTML_big();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] 6")
+	String six_HTML_big();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 7")
+	String seven_HTML_big();
+
+	@DefaultStringValue("[TRANSLATION MISSING] 8")
+	String eight_HTML_big();
+
 	@DefaultStringValue("[TRANSLATION MISSING] Not important at all")
 	String not_important_at_all();
 	
@@ -1016,6 +1043,18 @@ public interface HelpWindowInternationalizationConstants extends Constants {
 	
 	@DefaultStringValue("[TRANSLATION MISSING] Please rate your impresion of your partner on these scales:")
 	String anthropomorphism();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Artificial")
+	String anthropomorphism1_left_fMRI();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Lifelike")
+	String anthropomorphism1_right_fMRI();
+
+	@DefaultStringValue("[TRANSLATION MISSING] Unconscious")
+	String anthropomorphism2_left_fMRI();
+	
+	@DefaultStringValue("[TRANSLATION MISSING] Conscious")
+	String anthropomorphism2_right_fMRI();
 		
 	@DefaultStringValue("[TRANSLATION MISSING] Robot like")
 	String anthropomorphism1_left();

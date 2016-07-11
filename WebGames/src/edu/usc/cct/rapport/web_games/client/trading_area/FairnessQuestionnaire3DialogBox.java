@@ -166,7 +166,7 @@ public class FairnessQuestionnaire3DialogBox extends DialogBox {
 					dialogBox.show();
 				}
 				hide();
-				experimentConditions.setFairnessOfTheAgentOffer_3(userAnswer[0]);
+//				experimentConditions.setFairnessOfTheAgentOffer_3(userAnswer[0]);
 
 			}
 		});

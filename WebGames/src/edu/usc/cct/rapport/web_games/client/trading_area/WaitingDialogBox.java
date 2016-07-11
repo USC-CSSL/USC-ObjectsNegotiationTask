@@ -1,6 +1,7 @@
 package edu.usc.cct.rapport.web_games.client.trading_area;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.DialogBox;
@@ -111,6 +112,11 @@ public class WaitingDialogBox extends DialogBox {
 		absolutePanel.add(loadingImage, 390, 400);
 //		flexTable.setWidget(1, 0, loadingImage); // image
 //		flexTable.getCellFormatter().setHorizontalAlignment(1, 0, HasHorizontalAlignment.ALIGN_CENTER);
+	}
+	
+	protected void beginDragging(MouseDownEvent e)
+	{
+		e.preventDefault();
 	}
 }
 	

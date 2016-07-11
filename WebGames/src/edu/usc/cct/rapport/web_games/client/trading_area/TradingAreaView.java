@@ -135,7 +135,8 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 		
 //		dockLayoutPanelDragDropHoldingArea.addNorth(dockLayoutPanelCounterpartArea, 1);  // when there are 5 items each
 //		dockLayoutPanelDragDropHoldingArea.addNorth(dockLayoutPanelCounterpartArea, 30);
-		dockLayoutPanelDragDropHoldingArea.addNorth(dockLayoutPanelCounterpartArea, 55);
+		dockLayoutPanelDragDropHoldingArea.addNorth(dockLayoutPanelCounterpartArea, 50);
+//		dockLayoutPanelDragDropHoldingArea.addNorth(dockLayoutPanelCounterpartArea, 55);
 //		dockLayoutPanelDragDropHoldingArea.addNorth(dockLayoutPanelCounterpartArea, 110); // when there are 3 items each
 //		dockLayoutPanelDragDropHoldingArea.addNorth(wrapper_up, 210);*/
 
@@ -144,7 +145,8 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 //		dockLayoutPanelDragDropHoldingArea.addSouth(wrapper_down, 210);
 //		dockLayoutPanelDragDropHoldingArea.addSouth(dockLayoutPanelPlayerArea, 1);  // when there are 5 items each
 //		dockLayoutPanelDragDropHoldingArea.addSouth(dockLayoutPanelPlayerArea, 30);
-		dockLayoutPanelDragDropHoldingArea.addSouth(dockLayoutPanelPlayerArea, 55);
+		dockLayoutPanelDragDropHoldingArea.addSouth(dockLayoutPanelPlayerArea, 30);
+//		dockLayoutPanelDragDropHoldingArea.addSouth(dockLayoutPanelPlayerArea, 55);
 //		dockLayoutPanelDragDropHoldingArea.addSouth(dockLayoutPanelPlayerArea, 110); // when there are 3 items each
 		
 		agentDealValuationWidgets = new EnumMap<AgentEnum, AgentDealValuationWidget>(AgentEnum.class);
@@ -390,6 +392,11 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 			final Button partnerTypeNotification = tradingActionButtons.get(TradingActionEnum.partnerTypeNotification);
 			final Button connectionEstablished = tradingActionButtons.get(TradingActionEnum.connectionEstablished);
 			final Button endWaitingForAgentsOfferReview = tradingActionButtons.get(TradingActionEnum.endWaitingForAgentsOfferReview);
+			final Button checkAgentsReportedEmotion = tradingActionButtons.get(TradingActionEnum.checkAgentsReportedEmotion);
+			final Button endWaitingForAgentsOfferAcceptance = tradingActionButtons.get(TradingActionEnum.endWaitingForAgentsOfferAcceptance);
+			final Button showAgentsOfferAcceptanceResult = tradingActionButtons.get(TradingActionEnum.showAgentsOfferAcceptanceResult);
+			final Button reportSelfEmotion = tradingActionButtons.get(TradingActionEnum.reportSelfEmotion);
+			final Button decidingOfferAcceptance = tradingActionButtons.get(TradingActionEnum.decidingOfferAcceptance);
 			makeInitialProposal.setStylePrimaryName("BigButton-style");
 			acceptProposal.setStylePrimaryName("BigButton-style");
 			makeCounterproposal.setStylePrimaryName("BigButton-style");
@@ -409,6 +416,16 @@ public class TradingAreaView extends WebGamesView implements ITradingAreaView {
 			connectionEstablished.setVisible(false);
 			endWaitingForAgentsOfferReview.setEnabled(false);
 			endWaitingForAgentsOfferReview.setVisible(false);
+			checkAgentsReportedEmotion.setEnabled(false);
+			checkAgentsReportedEmotion.setVisible(false);
+			endWaitingForAgentsOfferAcceptance.setEnabled(false);
+			endWaitingForAgentsOfferAcceptance.setVisible(false);
+			showAgentsOfferAcceptanceResult.setEnabled(false);
+			showAgentsOfferAcceptanceResult.setVisible(false);
+			reportSelfEmotion.setEnabled(false);
+			reportSelfEmotion.setVisible(false);
+			decidingOfferAcceptance.setEnabled(false);
+			decidingOfferAcceptance.setVisible(false);
 
 			final Proposal mostRecentlyOfferedProposal = negotiationSession.getMostRecentProposal();
 //			acceptProposal.setEnabled(null != mostRecentlyOfferedProposal);

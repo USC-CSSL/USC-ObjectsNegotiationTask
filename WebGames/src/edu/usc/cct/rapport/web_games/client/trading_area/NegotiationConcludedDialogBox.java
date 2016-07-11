@@ -3,6 +3,7 @@ package edu.usc.cct.rapport.web_games.client.trading_area;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Button;
@@ -113,7 +114,9 @@ public class NegotiationConcludedDialogBox extends DialogBox {
 		
 	};
 
-
-
+	protected void beginDragging(MouseDownEvent e)
+	{
+		e.preventDefault();
+	}
 
 };

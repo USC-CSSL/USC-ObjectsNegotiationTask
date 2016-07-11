@@ -1,6 +1,7 @@
 package edu.usc.cct.rapport.web_games.client.trading_area;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -45,6 +46,11 @@ public class OfferAcceptanceStartDialogBox extends DialogBox {
 		loadingImage.setUrl("http://shiraz.usc.edu/negotiation/images/loading_small.gif");
 		flexTable.setWidget(1, 0, loadingImage); // image
 		flexTable.getCellFormatter().setHorizontalAlignment(1, 0, HasHorizontalAlignment.ALIGN_CENTER);
+	}
+	
+	protected void beginDragging(MouseDownEvent e)
+	{
+		e.preventDefault();
 	}
 }
 	

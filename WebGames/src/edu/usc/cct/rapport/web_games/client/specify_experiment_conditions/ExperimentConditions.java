@@ -35,8 +35,8 @@ public class ExperimentConditions implements DoublySerializable {
 //	private int expScenario;
 	private String agentSelfReportedEmotion;
 	private int partnerLabel;
-	private int partnerLabelCheck;
-	private String partnerLabelCheckComment;
+/*	private int partnerLabelCheck;
+	private String partnerLabelCheckComment;*/
 
 	
 	//pre-questions
@@ -109,13 +109,13 @@ public class ExperimentConditions implements DoublySerializable {
 	// Anthropomorphism
 	private int Anthropomorphism_1;
 	private int Anthropomorphism_2;
-	private int Anthropomorphism_3;
+/*	private int Anthropomorphism_3;
 	private int Anthropomorphism_4;
 	private int Anthropomorphism_5;
 	private int Anthropomorphism_6;
 	private int Anthropomorphism_7;
 	private int Anthropomorphism_8;
-	private int Anthropomorphism_9;
+	private int Anthropomorphism_9;*/
 	
 	// SelfReportedEmotion
 	private String SelfReportedEmotion_1;
@@ -125,15 +125,15 @@ public class ExperimentConditions implements DoublySerializable {
 	private String SelfReportedEmotion_5;
 	private String SelfReportedEmotion_6;
 
-	// Fairness of the agent's offer Questions
+/*	// Fairness of the agent's offer Questions
 	private int FairnessOfTheAgentOffer_1;
 	private int FairnessOfTheAgentOffer_2;
 	private int FairnessOfTheAgentOffer_3;
 	private int FairnessOfTheAgentOffer_4;
 	private int FairnessOfTheAgentOffer_5;
-	private int FairnessOfTheAgentOffer_6;
+	private int FairnessOfTheAgentOffer_6;*/
 	
-	// Social Value Orientation Questions
+/*	// Social Value Orientation Questions
 	private int SVO_1_you;
 	private int SVO_1_other;
 	private int SVO_2_you;
@@ -145,7 +145,7 @@ public class ExperimentConditions implements DoublySerializable {
 	private int SVO_5_you;
 	private int SVO_5_other;
 	private int SVO_6_you;
-	private int SVO_6_other;	
+	private int SVO_6_other;*/	
 	
 	// Value of Expression Questions
 	private int VEQ_01;
@@ -160,18 +160,18 @@ public class ExperimentConditions implements DoublySerializable {
 	private int VEQ_10;
 	private int VEQ_11;
 	
-	private int ageOfParticipant;
+/*	private int ageOfParticipant;
 	private int genderOfParticipant;
 	private int educationOfParticipant;
 	private int religiosityOfParticipant;
 	private int ethnicityOfParticipant;
 	private int economicClassOfParticipant;
 	private int politicalOrientationOfParticipant;
-	private String commentOfParticipant;
+	private String commentOfParticipant;*/
 	private String participantID;
 	private double startTimestamp;
 //	private String startTime;
-	private String coinTossResult;
+//	private String coinTossResult;
 
 	
 
@@ -214,8 +214,8 @@ public class ExperimentConditions implements DoublySerializable {
 //		this.expScenario=expScenario;
 		this.agentSelfReportedEmotion = agentSelfReportedEmotion;
 		this.partnerLabel=partnerLabel;
-		this.partnerLabelCheck=-1;
-		this.partnerLabelCheckComment="";
+/*		this.partnerLabelCheck=-1;
+		this.partnerLabelCheckComment="";*/
 		this.participantID = participantID;
 		
 /*		this.SVValue=0;
@@ -246,18 +246,18 @@ public class ExperimentConditions implements DoublySerializable {
 		this.NSA_04=0;
 		this.NSA_05=0;*/
 		
-		this.ageOfParticipant=0;
+/*		this.ageOfParticipant=0;
 		this.genderOfParticipant=0;
 		this.educationOfParticipant=0;
 		this.religiosityOfParticipant=0;
 		this.ethnicityOfParticipant=0;
 		this.economicClassOfParticipant=0;
 		this.politicalOrientationOfParticipant=0;
-		this.commentOfParticipant= "";
+		this.commentOfParticipant= "";*/
 //		this.participantID="0";
 		this.startTimestamp=0;
 //		this.startTime="0";
-		this.coinTossResult="Null";
+//		this.coinTossResult="Null";
 				
 /*		this.MFQ_01=0;
 		this.MFQ_02=0;
@@ -295,13 +295,13 @@ public class ExperimentConditions implements DoublySerializable {
 		
 		this.Anthropomorphism_1=-1;
 		this.Anthropomorphism_2=-1;
-		this.Anthropomorphism_3=-1;
+/*		this.Anthropomorphism_3=-1;
 		this.Anthropomorphism_4=-1;
 		this.Anthropomorphism_5=-1;
 		this.Anthropomorphism_6=-1;
 		this.Anthropomorphism_7=-1;
 		this.Anthropomorphism_8=-1;
-		this.Anthropomorphism_9=-1;
+		this.Anthropomorphism_9=-1;*/
 		
 		this.SelfReportedEmotion_1="";
 		this.SelfReportedEmotion_2="";
@@ -310,15 +310,15 @@ public class ExperimentConditions implements DoublySerializable {
 		this.SelfReportedEmotion_5="";
 		this.SelfReportedEmotion_6="";
 
-		this.FairnessOfTheAgentOffer_1=-1;
+/*		this.FairnessOfTheAgentOffer_1=-1;
 		this.FairnessOfTheAgentOffer_2=-1;
 		this.FairnessOfTheAgentOffer_3=-1;
 		this.FairnessOfTheAgentOffer_4=-1;
 		this.FairnessOfTheAgentOffer_5=-1;
-		this.FairnessOfTheAgentOffer_6=-1;
+		this.FairnessOfTheAgentOffer_6=-1;*/
 
 		
-		this.SVO_1_you=0;
+/*		this.SVO_1_you=0;
 		this.SVO_1_other=0;
 		this.SVO_2_you=0;
 		this.SVO_2_other=0;
@@ -329,7 +329,7 @@ public class ExperimentConditions implements DoublySerializable {
 		this.SVO_5_you=0;
 		this.SVO_5_other=0;
 		this.SVO_6_you=0;
-		this.SVO_6_other=0;
+		this.SVO_6_other=0;*/
 
 /*		this.VEQ_01=0;
 		this.VEQ_02=0;
@@ -370,8 +370,8 @@ public class ExperimentConditions implements DoublySerializable {
 //		result.add("expScenario");
 		result.add("agentSelfReportedEmotion");
 		result.add("partnerLabel");
-		result.add("partnerLabelCheck");
-		result.add("partnerLabelCheckComment");
+/*		result.add("partnerLabelCheck");
+		result.add("partnerLabelCheckComment");*/
 		
 /*		result.add("SVValue");
 		result.add("SVValueFood");
@@ -404,18 +404,18 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add("NSA_04");
 		result.add("NSA_05");*/
 		
-		result.add("ageOfParticipant");
+/*		result.add("ageOfParticipant");
 		result.add("genderOfParticipant");
 		result.add("educationOfParticipant");
 		result.add("religiosityOfParticipant");
 		result.add("ethnicityOfParticipant");
 		result.add("economicClassOfParticipant");
 		result.add("politicalOrientationOfParticipant");
-		result.add("commentOfParticipant");
+		result.add("commentOfParticipant");*/
 		result.add("participantID");
 		result.add("startTimestamp");
 //		result.add("startTime");
-		result.add("coinTossResult");
+//		result.add("coinTossResult");
 				
 /*		result.add("MFQ_01");
 		result.add("MFQ_02");
@@ -453,13 +453,13 @@ public class ExperimentConditions implements DoublySerializable {
 		
 		result.add("Anthropomorphism_1");
 		result.add("Anthropomorphism_2");
-		result.add("Anthropomorphism_3");
+/*		result.add("Anthropomorphism_3");
 		result.add("Anthropomorphism_4");
 		result.add("Anthropomorphism_5");
 		result.add("Anthropomorphism_6");
 		result.add("Anthropomorphism_7");
 		result.add("Anthropomorphism_8");
-		result.add("Anthropomorphism_9");
+		result.add("Anthropomorphism_9");*/
 		
 		result.add("SelfReportedEmotion_1");
 		result.add("SelfReportedEmotion_2");
@@ -468,14 +468,14 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add("SelfReportedEmotion_5");
 		result.add("SelfReportedEmotion_6");
 		
-		result.add("FairnessOfTheAgentOffer_1");
+/*		result.add("FairnessOfTheAgentOffer_1");
 		result.add("FairnessOfTheAgentOffer_2");
 		result.add("FairnessOfTheAgentOffer_3");
 		result.add("FairnessOfTheAgentOffer_4");
 		result.add("FairnessOfTheAgentOffer_5");
-		result.add("FairnessOfTheAgentOffer_6");
+		result.add("FairnessOfTheAgentOffer_6");*/
 		
-		result.add("SVO_1_you");
+/*		result.add("SVO_1_you");
 		result.add("SVO_1_other");
 		result.add("SVO_2_you");
 		result.add("SVO_2_other");
@@ -486,7 +486,7 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add("SVO_5_you");
 		result.add("SVO_5_other");
 		result.add("SVO_6_you");
-		result.add("SVO_6_other");
+		result.add("SVO_6_other");*/
 		
 /*		result.add("VEQ_01");
 		result.add("VEQ_02");
@@ -529,8 +529,8 @@ public class ExperimentConditions implements DoublySerializable {
 //		result.add(Integer.toString(this.expScenario));
 		result.add(this.agentSelfReportedEmotion);
 		result.add(Integer.toString(this.partnerLabel));
-		result.add(Integer.toString(this.partnerLabelCheck));
-		result.add(this.partnerLabelCheckComment);
+/*		result.add(Integer.toString(this.partnerLabelCheck));
+		result.add(this.partnerLabelCheckComment);*/
 		
 /*		result.add(Integer.toString(this.SVValue));
 		result.add(Integer.toString(this.SVValueWater));
@@ -562,18 +562,18 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add(Integer.toString(this.NSA_04));
 		result.add(Integer.toString(this.NSA_05));*/
 
-		result.add(Integer.toString(this.ageOfParticipant));
+/*		result.add(Integer.toString(this.ageOfParticipant));
 		result.add(Integer.toString(this.genderOfParticipant));
 		result.add(Integer.toString(this.educationOfParticipant));
 		result.add(Integer.toString(this.religiosityOfParticipant));
 		result.add(Integer.toString(this.ethnicityOfParticipant));		
 		result.add(Integer.toString(this.economicClassOfParticipant));
 		result.add(Integer.toString(this.politicalOrientationOfParticipant));
-		result.add(this.commentOfParticipant);
+		result.add(this.commentOfParticipant);*/
 		result.add(this.participantID);
 		result.add(Double.toString(this.startTimestamp));
 //		result.add(this.startTime);
-		result.add(this.coinTossResult);
+//		result.add(this.coinTossResult);
 		
 /*		result.add(Integer.toString(this.MFQ_01));
 		result.add(Integer.toString(this.MFQ_02));
@@ -611,13 +611,13 @@ public class ExperimentConditions implements DoublySerializable {
 		
 		result.add(Integer.toString(this.Anthropomorphism_1));
 		result.add(Integer.toString(this.Anthropomorphism_2));
-		result.add(Integer.toString(this.Anthropomorphism_3));
+/*		result.add(Integer.toString(this.Anthropomorphism_3));
 		result.add(Integer.toString(this.Anthropomorphism_4));
 		result.add(Integer.toString(this.Anthropomorphism_5));
 		result.add(Integer.toString(this.Anthropomorphism_6));
 		result.add(Integer.toString(this.Anthropomorphism_7));
 		result.add(Integer.toString(this.Anthropomorphism_8));
-		result.add(Integer.toString(this.Anthropomorphism_9));
+		result.add(Integer.toString(this.Anthropomorphism_9));*/
 		
 		result.add(this.SelfReportedEmotion_1);
 		result.add(this.SelfReportedEmotion_2);
@@ -626,14 +626,14 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add(this.SelfReportedEmotion_5);
 		result.add(this.SelfReportedEmotion_6);
 
-		result.add(Integer.toString(this.FairnessOfTheAgentOffer_1));
+/*		result.add(Integer.toString(this.FairnessOfTheAgentOffer_1));
 		result.add(Integer.toString(this.FairnessOfTheAgentOffer_2));
 		result.add(Integer.toString(this.FairnessOfTheAgentOffer_3));
 		result.add(Integer.toString(this.FairnessOfTheAgentOffer_4));
 		result.add(Integer.toString(this.FairnessOfTheAgentOffer_5));
-		result.add(Integer.toString(this.FairnessOfTheAgentOffer_6));
+		result.add(Integer.toString(this.FairnessOfTheAgentOffer_6));*/
 		
-		result.add(Integer.toString(this.SVO_1_you));
+/*		result.add(Integer.toString(this.SVO_1_you));
 		result.add(Integer.toString(this.SVO_1_other));
 		result.add(Integer.toString(this.SVO_2_you));
 		result.add(Integer.toString(this.SVO_2_other));
@@ -644,7 +644,7 @@ public class ExperimentConditions implements DoublySerializable {
 		result.add(Integer.toString(this.SVO_5_you));
 		result.add(Integer.toString(this.SVO_5_other));
 		result.add(Integer.toString(this.SVO_6_you));
-		result.add(Integer.toString(this.SVO_6_other));
+		result.add(Integer.toString(this.SVO_6_other));*/
 		
 /*		result.add(Integer.toString(this.VEQ_01));
 		result.add(Integer.toString(this.VEQ_02));
@@ -1116,15 +1116,13 @@ public class ExperimentConditions implements DoublySerializable {
 		return this.NSA_05;
 	};*/
 
-	public void setAgeOfParticipant(int ageOfParticipant) {
+/*	public void setAgeOfParticipant(int ageOfParticipant) {
 		this.ageOfParticipant = ageOfParticipant;
 	}
 
 	public int getAgeOfParticipant() {
 		return this.ageOfParticipant;
 	};
-
-	
 	
 	public void setGenderOfParticipant(int genderOfParticipant) {
 		this.genderOfParticipant = genderOfParticipant;
@@ -1133,8 +1131,6 @@ public class ExperimentConditions implements DoublySerializable {
 	public int getGenderOfParticipant() {
 		return this.genderOfParticipant;
 	};
-
-	
 	
 	public void setEducationOfParticipant(int educationOfParticipant) {
 		this.educationOfParticipant = educationOfParticipant;
@@ -1143,8 +1139,6 @@ public class ExperimentConditions implements DoublySerializable {
 	public int getEducationOfParticipant() {
 		return this.educationOfParticipant;
 	};
-
-	
 	
 	public void setReligiosityOfParticipant(int religiosityOfParticipant) {
 		this.religiosityOfParticipant = religiosityOfParticipant;
@@ -1184,7 +1178,7 @@ public class ExperimentConditions implements DoublySerializable {
 
 	public String getCommentOfParticipant() {
 		return this.commentOfParticipant;
-	};
+	};*/
 	
 	
 	
@@ -1251,7 +1245,7 @@ public class ExperimentConditions implements DoublySerializable {
 		this.VEQ_11 = VEQ_11;
 	}
 	
-	public void setPartnerLabelCheck(int partnerLabelChcekAnswer) {
+/*	public void setPartnerLabelCheck(int partnerLabelChcekAnswer) {
 		this.partnerLabelCheck = partnerLabelChcekAnswer;
 	}
 	
@@ -1261,10 +1255,10 @@ public class ExperimentConditions implements DoublySerializable {
 
 	public String getPartnerLabelCheckComment() {
 		return this.partnerLabelCheckComment;
-	};
+	};*/
 
 	
-	public void setFairnessOfTheAgentOffer_1(int Fairness_1) {
+/*	public void setFairnessOfTheAgentOffer_1(int Fairness_1) {
 		this.FairnessOfTheAgentOffer_1 = Fairness_1;
 	}
 
@@ -1286,9 +1280,9 @@ public class ExperimentConditions implements DoublySerializable {
 
 	public void setFairnessOfTheAgentOffer_6(int Fairness_6) {
 		this.FairnessOfTheAgentOffer_6 = Fairness_6;
-	}
+	}*/
 
-	public void setSVO_1(int SVO_1) {
+/*	public void setSVO_1(int SVO_1) {
 		this.SVO_1_you = 85;
 
 		if(SVO_1 == 0) {
@@ -1465,7 +1459,7 @@ public class ExperimentConditions implements DoublySerializable {
 			this.SVO_6_you   = 85;
 			this.SVO_6_other = 85;
 		}	
-	}
+	}*/
 
 	public void setMFQ_01(int MFQ_01) {
 		this.MFQ_01 = MFQ_01;
@@ -1598,9 +1592,9 @@ public class ExperimentConditions implements DoublySerializable {
 		this.MFQ_32 = MFQ_32;
 	}
 	
-	public void setCoinTossResult(String coinTossResult) {
+/*	public void setCoinTossResult(String coinTossResult) {
 		this.coinTossResult = coinTossResult;
-	}
+	}*/
 	
 	public void setAnthropomorphism_1(int Anthropomorphism_1) {
 		this.Anthropomorphism_1 = Anthropomorphism_1;
@@ -1610,7 +1604,7 @@ public class ExperimentConditions implements DoublySerializable {
 		this.Anthropomorphism_2 = Anthropomorphism_2;
 	}
 
-	public void setAnthropomorphism_3(int Anthropomorphism_3) {
+/*	public void setAnthropomorphism_3(int Anthropomorphism_3) {
 		this.Anthropomorphism_3 = Anthropomorphism_3;
 	}
 
@@ -1636,7 +1630,7 @@ public class ExperimentConditions implements DoublySerializable {
 
 	public void setAnthropomorphism_9(int Anthropomorphism_9) {
 		this.Anthropomorphism_9 = Anthropomorphism_9;
-	}
+	}*/
 
 	public void setSelfReportedEmotion_1(String SelfReportedEmotion_1) {
 		this.SelfReportedEmotion_1 = SelfReportedEmotion_1;

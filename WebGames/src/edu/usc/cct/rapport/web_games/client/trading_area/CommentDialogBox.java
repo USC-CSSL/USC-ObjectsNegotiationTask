@@ -59,7 +59,7 @@ public class CommentDialogBox extends DialogBox {
 				String localName = com.google.gwt.i18n.client.LocaleInfo.getCurrentLocale().getLocaleName();
 
 				hide();
-				experimentConditions.setCommentOfParticipant(textArea.getText());
+//				experimentConditions.setCommentOfParticipant(textArea.getText());
 				eventBus.fireEvent(new LogExperimentInformationEvent());
 				
 				timer.schedule(1000);

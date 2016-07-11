@@ -200,11 +200,11 @@ public class SocialValueOrientationQuestionnaire2DialogBox extends DialogBox {
 		Button btnSubmit = new Button(constants.ok_button());
 		btnSubmit.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
-				experimentConditions.setSVO_2(userAnswer[0]);
-				experimentConditions.setSVO_3(userAnswer[1]);
-				experimentConditions.setSVO_4(userAnswer[2]);
-				experimentConditions.setSVO_5(userAnswer[3]);
-				experimentConditions.setSVO_6(userAnswer[4]);
+//				experimentConditions.setSVO_2(userAnswer[0]);
+//				experimentConditions.setSVO_3(userAnswer[1]);
+//				experimentConditions.setSVO_4(userAnswer[2]);
+//				experimentConditions.setSVO_5(userAnswer[3]);
+//				experimentConditions.setSVO_6(userAnswer[4]);
 
 				final DemographicsDialogBox dialogBox = new DemographicsDialogBox(eventBus, experimentConditions);
 				dialogBox.setPopupPosition(105, 75);

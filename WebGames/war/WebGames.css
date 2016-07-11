@@ -451,6 +451,11 @@ font-size: 15pt;
 	font-size: 15px;
 }
 
+.Explanation-style-big {
+/*	background-color: #e7f2fd;*/
+	font-size: 23px;
+}
+
 .FlexTable {
 	border-top: 2px solid #eeeeee;
 	border-left: 2px solid #eeeeee;

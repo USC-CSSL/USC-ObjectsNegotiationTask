@@ -3,6 +3,7 @@ package edu.usc.cct.rapport.web_games.client.trading_area;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
@@ -102,6 +103,11 @@ public class ProposalResultDialogBox extends DialogBox implements ClickHandler {
 	public void onClick(final ClickEvent event) {
 		hide();
 	};
+	
+	protected void beginDragging(MouseDownEvent e)
+	{
+		e.preventDefault();
+	}
 }
 	
 

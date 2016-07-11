@@ -6,6 +6,7 @@ import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.AbsolutePanel;
@@ -111,9 +112,9 @@ public class ReviewReportedFacialExpressionDialogBox extends DialogBox {
 					public void onClick(ClickEvent event) {
 						
 						// EK0707: should be checkAgentsReportedEmotion
-						final double timestampEndWaitingForAgentsOfferReview = Duration.currentTimeMillis();
-						final TradingAction newTradingAction = new TradingAction(AgentEnum.counterpart, timestampEndWaitingForAgentsOfferReview, TradingActionEnum.endWaitingForAgentsOfferReview, null);
-						eventBus.fireEvent(new EndWaitingForAgentsOfferReviewEvent(newTradingAction));
+						final double timestampCheckAgentsReportedEmotion = Duration.currentTimeMillis();
+						final TradingAction newTradingAction = new TradingAction(AgentEnum.counterpart, timestampCheckAgentsReportedEmotion, TradingActionEnum.checkAgentsReportedEmotion, null);
+						eventBus.fireEvent(new CheckAgentsReportedEmotionEvent(newTradingAction));
 						
 						final WaitingDialogBox waitingDialogBox = new WaitingDialogBox (eventBus, "waitForCounterpart", partnerLabel);
 						final ProposalResultDialogBox resultDialogBox = new ProposalResultDialogBox(temp, partnerLabel);
@@ -145,9 +146,9 @@ public class ReviewReportedFacialExpressionDialogBox extends DialogBox {
 //											    	  tradingAction.setTimestamp(timestamp);
 											    	  
 													// EK0707: should be showAgentsOfferAcceptanceResult
-													final double timestampEndWaitingForAgentsOfferReview = Duration.currentTimeMillis();
-													final TradingAction newTradingAction = new TradingAction(AgentEnum.counterpart, timestampEndWaitingForAgentsOfferReview, TradingActionEnum.endWaitingForAgentsOfferReview, null);
-													eventBus.fireEvent(new EndWaitingForAgentsOfferReviewEvent(newTradingAction));
+													final double timestampShowAgentsOfferAcceptanceResult = Duration.currentTimeMillis();
+													final TradingAction newTradingAction = new TradingAction(AgentEnum.counterpart, timestampShowAgentsOfferAcceptanceResult, TradingActionEnum.showAgentsOfferAcceptanceResult, null);
+													eventBus.fireEvent(new ShowAgentsOfferAcceptanceResultEvent(newTradingAction));
 							
 				//							    	  String acceptedStr = "accepted";
 											    	  String rejectedStr = "rejected";
@@ -189,9 +190,9 @@ public class ReviewReportedFacialExpressionDialogBox extends DialogBox {
 								resultDialogBox.show();
 								
 								// EK0707: should be endWaitingForAgentsOfferAcceptance
-								final double timestampEndWaitingForAgentsOfferReview = Duration.currentTimeMillis();
-								final TradingAction newTradingAction = new TradingAction(AgentEnum.counterpart, timestampEndWaitingForAgentsOfferReview, TradingActionEnum.endWaitingForAgentsOfferReview, null);
-								eventBus.fireEvent(new EndWaitingForAgentsOfferReviewEvent(newTradingAction));
+								final double timestampEndWaitingForAgentsOfferAcceptance = Duration.currentTimeMillis();
+								final TradingAction newTradingAction = new TradingAction(AgentEnum.counterpart, timestampEndWaitingForAgentsOfferAcceptance, TradingActionEnum.endWaitingForAgentsOfferAcceptance, null);
+								eventBus.fireEvent(new EndWaitingForAgentsOfferAcceptanceEvent(newTradingAction));
 								
 								String acceptedStr = "accepted";
 								if(temp.equals(acceptedStr))
@@ -215,6 +216,11 @@ public class ReviewReportedFacialExpressionDialogBox extends DialogBox {
 		};
 		
 		timer.schedule(5000);
+	}
+	
+	protected void beginDragging(MouseDownEvent e)
+	{
+		e.preventDefault();
 	}
 }
 	
